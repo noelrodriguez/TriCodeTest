@@ -12,6 +12,7 @@ namespace TriCodeTest.Models.MenuModels
         public string Name { get; set; }
         public string Description { get; set; }
         public Option Option { get; set; }
+        // Navigation Properties
         public List<MenuItemIngredients> MenuItemIngredients { get; set; }
     }
 }

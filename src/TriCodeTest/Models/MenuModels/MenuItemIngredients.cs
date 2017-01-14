@@ -11,6 +11,7 @@ namespace TriCodeTest.Models.MenuModels
         [Key]
         public int MenuItemId { get; set; }
         public int IngredientId { get; set; }
+        // Navigation Properties
         public MenuItem MenuItem { get; set; }
         public Ingredient Ingredient { get; set; }
     }

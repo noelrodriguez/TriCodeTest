@@ -8,8 +8,8 @@ using TriCodeTest.Data;
 namespace TriCodeTest.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170112185221_MenuModels")]
-    partial class MenuModels
+    [Migration("20170114024944_ModelsCreation")]
+    partial class ModelsCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -280,6 +280,28 @@ namespace TriCodeTest.Data.Migrations
                     b.ToTable("Subcategory");
                 });
 
+            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateTime");
+
+                    b.Property<string>("OrderMenuItems");
+
+                    b.Property<int>("Status");
+
+                    b.Property<double>("TotalPrice");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderInfo");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -352,6 +374,13 @@ namespace TriCodeTest.Data.Migrations
                         .WithMany("Subcategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderInfo", b =>
+                {
+                    b.HasOne("TriCodeTest.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
         }
     }

@@ -279,118 +279,26 @@ namespace TriCodeTest.Data.Migrations
                     b.ToTable("Subcategory");
                 });
 
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.Order", b =>
+            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateTime");
 
+                    b.Property<string>("OrderMenuItems");
+
                     b.Property<int>("Status");
 
                     b.Property<double>("TotalPrice");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedAddOn", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<double>("Price");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderedAddOn");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedIngredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("Option");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderedIngredient");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.Property<double>("Price");
-
-                    b.Property<int?>("Size");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderedItem");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedItemAddOns", b =>
-                {
-                    b.Property<int>("OrderedItemId");
-
-                    b.Property<int>("OrderedAddOnId");
-
-                    b.HasKey("OrderedItemId");
-
-                    b.HasIndex("OrderedAddOnId");
-
-                    b.HasIndex("OrderedItemId");
-
-                    b.ToTable("OrderedItemAddOns");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedItemIngredients", b =>
-                {
-                    b.Property<int>("OrderedItemId");
-
-                    b.Property<int>("OrderedIngredientId");
-
-                    b.HasKey("OrderedItemId");
-
-                    b.HasIndex("OrderedIngredientId");
-
-                    b.HasIndex("OrderedItemId");
-
-                    b.ToTable("OrderedItemIngredients");
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderOrderedItems", b =>
-                {
-                    b.Property<int>("OrderId");
-
-                    b.Property<int>("OrderedItemId");
-
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("OrderedItemId");
-
-                    b.ToTable("OrderOrderedItems");
+                    b.ToTable("OrderInfo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -467,51 +375,11 @@ namespace TriCodeTest.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.Order", b =>
+            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderInfo", b =>
                 {
                     b.HasOne("TriCodeTest.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedItemAddOns", b =>
-                {
-                    b.HasOne("TriCodeTest.Models.OrderModels.OrderedAddOn", "OrderedAddOn")
-                        .WithMany("OrderedItemAddOns")
-                        .HasForeignKey("OrderedAddOnId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TriCodeTest.Models.OrderModels.OrderedItem", "OrderedItem")
-                        .WithMany("OrderedItemAddOns")
-                        .HasForeignKey("OrderedItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderedItemIngredients", b =>
-                {
-                    b.HasOne("TriCodeTest.Models.OrderModels.OrderedIngredient", "OrderedIngredient")
-                        .WithMany("OrderedItemIngredients")
-                        .HasForeignKey("OrderedIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TriCodeTest.Models.OrderModels.OrderedItem", "OrderedItem")
-                        .WithMany("OrderedItemIngredients")
-                        .HasForeignKey("OrderedItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TriCodeTest.Models.OrderModels.OrderOrderedItems", b =>
-                {
-                    b.HasOne("TriCodeTest.Models.OrderModels.Order", "Order")
-                        .WithMany("OrderOrderedItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TriCodeTest.Models.OrderModels.OrderedItem", "OrderedItem")
-                        .WithMany("OrderOrderedItems")
-                        .HasForeignKey("OrderedItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
         }
     }

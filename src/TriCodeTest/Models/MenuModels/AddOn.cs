@@ -15,6 +15,7 @@ namespace TriCodeTest.Models.MenuModels
         public double Price { get; set; }
         [Display(Name = "Subcategory")]
         public int SubcategoryId { get; set; }
+        // Navigation Properties
         public Subcategory Subcategory { get; set; }
     }
 }

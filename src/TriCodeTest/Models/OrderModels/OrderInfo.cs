@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TriCodeTest.Models.MenuModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace TriCodeTest.Models.OrderModels
 {
-    public class Order
+    public class OrderInfo
     {
         public int Id { get; set; }
+        [Required]
         public double TotalPrice { get; set; }
+        [Required]
         public DateTime DateTime { get; set; }
         public Status Status { get; set; }
         // Navigation Properties
         public ApplicationUser User { get; set; }
-        public List<OrderMenuItem> OrderMenuItems { get; set; }
+        // JSON Object
+        public string OrderMenuItems { get; set; }
     }
 }
