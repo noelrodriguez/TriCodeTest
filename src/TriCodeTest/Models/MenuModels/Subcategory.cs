@@ -14,6 +14,7 @@ namespace TriCodeTest.Models.MenuModels
         [Required]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
+        // Navigation Properties
         public Category Category { get; set; }
         public List<MenuItem> MenuItems { get; set; }
         public List<AddOn> AddOns { get; set; }

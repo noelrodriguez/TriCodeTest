@@ -13,12 +13,13 @@ namespace TriCodeTest.Models.MenuModels
         public string Description { get; set; }
         [Required]
         public double Price { get; set; }
+        public byte[] ItemImage { get; set; }
+        public Size? Size { get; set; }
         [Required]
         [Display(Name = "Subcategory")]
         public int SubcategoryId { get; set; }
+        // Navigation Properties
         public Subcategory Subcategory { get; set; }
-        public byte[] ItemImage { get; set; }
-        public Size? Size { get; set; }
         public List<MenuItemIngredients> MenuItemIngredients { get; set; }
     }
 }

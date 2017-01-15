@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TriCodeTest.Data.Migrations
 {
-    public partial class MenuModels : Migration
+    public partial class ModelsCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,6 +36,29 @@ namespace TriCodeTest.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ingredient", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderInfo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    OrderMenuItems = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
+                    TotalPrice = table.Column<double>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderInfo", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderInfo_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +176,11 @@ namespace TriCodeTest.Data.Migrations
                 name: "IX_Subcategory_CategoryId",
                 table: "Subcategory",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderInfo_UserId",
+                table: "OrderInfo",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -162,6 +190,9 @@ namespace TriCodeTest.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "MenuItemIngredients");
+
+            migrationBuilder.DropTable(
+                name: "OrderInfo");
 
             migrationBuilder.DropTable(
                 name: "Ingredient");
