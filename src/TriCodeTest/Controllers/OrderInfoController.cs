@@ -22,7 +22,7 @@ namespace TriCodeTest.Controllers
         // GET: OrderInfo
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderInfo.ToListAsync());
+            return View(await _context.OrderInfo.Where(s => s.Status == Models.Status.Received).ToListAsync());
         }
 
         // GET: OrderInfo/Details/5

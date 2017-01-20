@@ -20,7 +20,9 @@ namespace TriCodeTest.Data
         {
             context.Database.EnsureCreated();
 
-            var Noel = context.Users.Where(x => x.Email == "noel@gmail.com");
+            var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
+
+            
 
             if (context.OrderInfo.Any())
             {
@@ -31,6 +33,7 @@ namespace TriCodeTest.Data
             {
                 DateTime = System.DateTime.Now,
                 Status = Models.Status.Received,
+                User = Noel,
             };
 
             OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
@@ -77,6 +80,7 @@ namespace TriCodeTest.Data
                 DateTime = MyOrder.DateTime,
                 Status = MyOrder.Status,
                 TotalPrice = MyOrder.TotalPrice,
+                User = MyOrder.User,
                 OrderMenuItems = JSON
             };
 
