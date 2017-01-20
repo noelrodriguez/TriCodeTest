@@ -81,7 +81,8 @@ namespace TriCodeTest
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    // Changed this route from controller=Home 
+                    template: "{controller=OrderInfo}/{action=Index}/{id?}");
             });
 
             // To seed the database

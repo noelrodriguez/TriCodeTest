@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
 using TriCodeTest.Models.OrderModels;
+using Newtonsoft.Json;
 
 namespace TriCodeTest.Controllers
 {
@@ -22,7 +23,9 @@ namespace TriCodeTest.Controllers
         // GET: OrderInfo
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderInfo.Where(s => s.Status == Models.Status.Received).ToListAsync());
+            var returnView = await _context.OrderInfo.Include(oi => oi.User).Where(s => s.Status != Models.Status.Cart && s.Status != Models.Status.Completed).GroupBy(s => s.Status).ToListAsync();
+            
+            return View(returnView.SelectMany(d => d));
         }
 
         // GET: OrderInfo/Details/5
@@ -149,6 +152,34 @@ namespace TriCodeTest.Controllers
         private bool OrderInfoExists(int id)
         {
             return _context.OrderInfo.Any(e => e.Id == id);
+        }
+
+        private Order OrderDeserialize(OrderInfo model)
+        {
+            Order OrderModel = new Order
+            {
+                User = model.User,
+                DateTime = model.DateTime,
+                Status = model.Status,
+                TotalPrice = model.TotalPrice,
+            };
+            List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
+            OrderModel.OrderMenuItems = OrderMenuItems;
+            return OrderModel;
+        }
+
+        private OrderInfo OrderSerialize(Order model)
+        {
+            OrderInfo OrderInfoModel = new OrderInfo
+            {
+                User = model.User,
+                DateTime = model.DateTime,
+                Status = model.Status,
+                TotalPrice = model.TotalPrice,
+            };
+            string json = JsonConvert.SerializeObject(model.OrderMenuItems);
+            OrderInfoModel.OrderMenuItems = json;
+            return OrderInfoModel;
         }
     }
 }

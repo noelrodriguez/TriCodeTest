@@ -73,7 +73,7 @@ namespace TriCodeTest.Data
 
             MyOrder.TotalPrice = Total;
 
-            string JSON = JsonConvert.SerializeObject(MyOrder);
+            string JSON = JsonConvert.SerializeObject(MyOrder.OrderMenuItems);
 
             OrderInfo MyOrderInfo = new OrderInfo()
             {
