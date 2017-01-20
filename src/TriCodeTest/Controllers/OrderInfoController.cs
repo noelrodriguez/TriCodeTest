@@ -23,9 +23,16 @@ namespace TriCodeTest.Controllers
         // GET: OrderInfo
         public async Task<IActionResult> Index()
         {
+            Order viewModel = new Order();
             var returnView = await _context.OrderInfo.Include(oi => oi.User).Where(s => s.Status != Models.Status.Cart && s.Status != Models.Status.Completed).GroupBy(s => s.Status).ToListAsync();
-            
-            return View(returnView.SelectMany(d => d));
+            var allOrderInfo = returnView.SelectMany(d => d);
+            List<Order> Orders = new List<Order>();
+            foreach (OrderInfo i in allOrderInfo)
+            {
+                viewModel = OrderDeserialize(i);
+                Orders.Add(viewModel);
+            }
+            return View(Orders);
         }
 
         // GET: OrderInfo/Details/5
@@ -158,6 +165,7 @@ namespace TriCodeTest.Controllers
         {
             Order OrderModel = new Order
             {
+                Id = model.Id,
                 User = model.User,
                 DateTime = model.DateTime,
                 Status = model.Status,
