@@ -19,14 +19,9 @@ namespace TriCodeTest.Data
         public static void Initialize(ApplicationDbContext context)
         {
             context.Database.EnsureCreated();
-
+            
             // Add Order
-            /*var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
-                        
-            if (context.OrderInfo.Any())
-            {
-                return;
-            }
+            var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
 
             Order MyOrder = new Order()
             {
@@ -37,23 +32,10 @@ namespace TriCodeTest.Data
 
             OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
             {
-                MenuItem = new Models.MenuModels.MenuItem()
+                MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).Single(m => m.Name == "Cowboy Burger"),
+                AddOns = new List<AddOn>
                 {
-                    Name = "Cowboy Burger",
-                    Price = 9.99,
-                },
-                AddOns = new List<Models.MenuModels.AddOn>()
-                {
-                    new Models.MenuModels.AddOn()
-                    {
-                        Name = "Jalapeno",
-                        Price = .50,
-                    },
-                    new Models.MenuModels.AddOn()
-                    {
-                        Name = "Avocado",
-                        Price = .75,
-                    }
+                    context.AddOn.Single(a => a.Name == "Avocado"), context.AddOn.Single(a => a.Name == "Jalapenos"),
                 }
             };
             List<OrderMenuItem> TheItems = new List<OrderMenuItem>();
@@ -83,7 +65,38 @@ namespace TriCodeTest.Data
                 OrderMenuItems = JSON
             };
 
-            context.OrderInfo.Add(MyOrderInfo);*/
+            context.OrderInfo.Add(MyOrderInfo);
+
+            /*OrderMenuItem AllMenuItems = new OrderMenuItem()
+            {
+                MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).Single(m => m.Name == "Cowboy Burger"),
+                AddOns = new List<AddOn>
+                {
+                    context.AddOn.Single(a => a.Name == "Avocado"), context.AddOn.Single(a => a.Name == "Jalapenos")
+                }
+            };
+
+            double total = AllMenuItems.MenuItem.Price;
+            foreach (AddOn ao in AllMenuItems.AddOns)
+            {
+                total += ao.Price;
+            }
+
+            List<OrderMenuItem> ListOfOMI = new List<OrderMenuItem> { AllMenuItems };
+
+            var json = JsonConvert.SerializeObject(ListOfOMI);
+
+            OrderInfo DBOrder = new OrderInfo()
+            {
+                User = Noel,
+                DateTime = System.DateTime.Now,
+                Status = Models.Status.Received,
+                TotalPrice = total,
+                OrderMenuItems = json
+            };
+
+            context.OrderInfo.Add(DBOrder);*/
+
 
             // Beginning to add a complete set of dummy data
 
