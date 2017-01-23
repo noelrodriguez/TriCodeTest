@@ -8,7 +8,6 @@ namespace TriCodeTest.Models.MenuModels
 {
     public class MenuItemIngredients
     {
-        [Key]
         public int MenuItemId { get; set; }
         public int IngredientId { get; set; }
         // Navigation Properties

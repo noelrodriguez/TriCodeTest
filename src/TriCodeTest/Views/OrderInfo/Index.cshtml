@@ -43,7 +43,17 @@
                 @String.Format("{0:t}", item.DateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderMenuItems)
+                @{ 
+                    foreach (var food in item.OrderMenuItems)
+                    {
+                        @food.MenuItem.Name <span>with</span><br />
+                        foreach (var i in food.AddOns)
+                        {
+                            @i.Name <br />
+                        }
+                    }
+                }
+                <!--Html.DisplayFor(modelItem => item.OrderMenuItems)-->
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
