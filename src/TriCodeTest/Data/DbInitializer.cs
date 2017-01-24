@@ -20,7 +20,7 @@ namespace TriCodeTest.Data
         {
             context.Database.EnsureCreated();
             
-            // Add Order
+            /* Add Order
             var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
 
             Order MyOrder = new Order()
@@ -66,6 +66,7 @@ namespace TriCodeTest.Data
             };
 
             context.OrderInfo.Add(MyOrderInfo);
+            context.SaveChanges();
 
             /*OrderMenuItem AllMenuItems = new OrderMenuItem()
             {
