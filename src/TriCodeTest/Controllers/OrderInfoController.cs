@@ -23,16 +23,10 @@ namespace TriCodeTest.Controllers
         // GET: OrderInfo
         public async Task<IActionResult> Index()
         {
-            Order viewModel = new Order();
-            var returnView = await _context.OrderInfo.Include(oi => oi.User).Where(s => s.Status != Models.Status.Cart && s.Status != Models.Status.Completed).GroupBy(s => s.Status).ToListAsync();
-            var allOrderInfo = returnView.SelectMany(d => d);
-            List<Order> Orders = new List<Order>();
-            foreach (OrderInfo i in allOrderInfo)
-            {
-                viewModel = OrderDeserialize(i);
-                Orders.Add(viewModel);
-            }
-            return View(Orders);
+            Order singleOrder = new Order();
+            var allOrderInfos = await _context.OrderInfo.Include(oi => oi.User).Where(s => s.Status != Models.Status.Cart && s.Status != Models.Status.Completed).GroupBy(s => s.Status).SelectMany(oi => oi).ToListAsync();
+            List<Order> orders = ListOrderDeserialize(allOrderInfos);
+            return View(orders);
         }
 
         // GET: OrderInfo/Details/5
@@ -48,8 +42,9 @@ namespace TriCodeTest.Controllers
             {
                 return NotFound();
             }
+            var order = OrderDeserialize(orderInfo);
 
-            return View(orderInfo);
+            return View(order);
         }
 
         /*
@@ -188,6 +183,26 @@ namespace TriCodeTest.Controllers
             string json = JsonConvert.SerializeObject(model.OrderMenuItems);
             OrderInfoModel.OrderMenuItems = json;
             return OrderInfoModel;
+        }
+
+        private List<Order> ListOrderDeserialize(List<OrderInfo> listOrderInfo)
+        {
+            List<Order> ListOrders = new List<Order>();
+            foreach (OrderInfo oi in listOrderInfo)
+            {
+                Order OrderModel = new Order
+                {
+                    Id = oi.Id,
+                    User = oi.User,
+                    DateTime = oi.DateTime,
+                    Status = oi.Status,
+                    TotalPrice = oi.TotalPrice,
+                };
+                List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(oi.OrderMenuItems);
+                OrderModel.OrderMenuItems = OrderMenuItems;
+                ListOrders.Add(OrderModel);
+            }
+            return ListOrders;
         }
     }
 }

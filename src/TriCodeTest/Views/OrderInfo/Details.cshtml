@@ -1,4 +1,4 @@
-@model TriCodeTest.Models.OrderModels.OrderInfo
+@model TriCodeTest.Models.OrderModels.Order
 
 @{
     ViewData["Title"] = "Details";
@@ -14,13 +14,22 @@
             @Html.DisplayNameFor(model => model.DateTime)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DateTime)
+            @String.Format("{0:g}", Model.DateTime)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OrderMenuItems)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OrderMenuItems)
+            @{
+                foreach (var item in Model.OrderMenuItems)
+                {
+                    @String.Format("{0} with ", item.MenuItem.Name);
+                    foreach (var addon in item.AddOns)
+                    {
+                        @String.Format("{0} ", addon.Name);
+                    }
+                }
+            }
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
