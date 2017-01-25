@@ -28,6 +28,24 @@
                     {
                         @String.Format("{0} ", addon.Name);
                     }
+                    foreach (var ingredient in item.MenuItem.MenuItemIngredients)
+                    {
+                        //if (ingredient.Ingredient.Option != Option.Normal)
+                        //{
+                        //    @String.Format("{0} ", ingredient.Ingredient.Name);
+                        //}
+                        switch (ingredient.Ingredient.Option)
+                        {
+                            case Option.Normal:
+                                break;
+                            case Option.Low:
+                                @String.Format("low {0} ", ingredient.Ingredient.Name);
+                                break;
+                            case Option.None:
+                                @String.Format("no {0} ", ingredient.Ingredient.Name);
+                                break;
+                        }
+                    }
                 }
             }
         </dd>
