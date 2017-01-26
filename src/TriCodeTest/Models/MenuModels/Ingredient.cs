@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TriCodeTest.Models.MenuModels
 {
@@ -12,6 +13,7 @@ namespace TriCodeTest.Models.MenuModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [NotMapped]
         public Option Option { get; set; }
         // Navigation Properties
         [JsonIgnore]

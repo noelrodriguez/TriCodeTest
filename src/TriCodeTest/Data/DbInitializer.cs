@@ -32,10 +32,10 @@ namespace TriCodeTest.Data
 
             OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
             {
-                MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).ThenInclude(i => i.Ingredient).Single(m => m.Name == "Banzai Burger"),
+                MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).ThenInclude(i => i.Ingredient).Single(m => m.Name == "Bleu Ribbon Burger"),
                 AddOns = new List<AddOn>
                 {
-                    context.AddOn.Single(a => a.Name == "Bacon"),
+                    context.AddOn.Single(a => a.Name == "Bacon"), context.AddOn.Single(a => a.Name == "Avocado")
                 }
             };
             List<OrderMenuItem> TheItems = new List<OrderMenuItem>();
