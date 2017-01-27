@@ -4,6 +4,9 @@
     var categoryList = Model.CategoryMenu.ToList();
     var subCategoryList = Model.SubCategoryMenu.ToList();
     var menuItemList = Model.MenuItemMenu.ToList();
+    var menuItemIngredientsList = Model.MenuItemIngredientsMenu.ToList();
+    var addonList = Model.AddonMenu.ToList();
+    var ingredientsList = Model.IngridientMenu.ToList();
     
 }
 
@@ -26,7 +29,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach (var item in categoryList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                        </tr>
+
+                    }
+                    @*<tr>
                         <td>Drinks</td>
                         <td>(Descrption)</td>
                     </tr>
@@ -37,7 +48,7 @@
                     <tr>
                         <td>Dinner</td>
                         <td>(Description)</td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
 
@@ -55,7 +66,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach(var item in categoryList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                        </tr>
+
+                    }
+                    @*<tr>
                         <td>Coffee</td>
                     </tr>
                     <tr>
@@ -69,7 +87,7 @@
                     </tr>
                     <tr>
                         <td>Specialty</td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
 
@@ -88,7 +106,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        @foreach(var item in menuItemList)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Price</td>
+                            </tr>
+
+                        }
+
+                        @*<tr>
                             <td>Coke</td>
                             <td>$1.00</td>
                         </tr>
@@ -99,7 +126,7 @@
                         <tr>
                             <td>Root Beer</td>
                             <td>$1.00</td>
-                        </tr>
+                        </tr>*@
                     </tbody>
                 </table>
 
