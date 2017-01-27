@@ -83,7 +83,8 @@ namespace TriCodeTest.Controllers
             {
                 return NotFound();
             }
-            return View(orderInfo);
+            var order = OrderDeserialize(orderInfo);
+            return View(order);
         }
 
         // POST: OrderInfo/Edit/5
@@ -91,8 +92,9 @@ namespace TriCodeTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice")] OrderInfo orderInfo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice")] Order order)
         {
+            OrderInfo orderInfo = OrderSerialize(order);
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -102,7 +104,9 @@ namespace TriCodeTest.Controllers
             {
                 try
                 {
-                    _context.Update(orderInfo);
+                    _context.OrderInfo.Attach(orderInfo);
+                    var entry = _context.Entry(orderInfo);
+                    entry.Property(s => s.Status).IsModified = true;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -118,7 +122,7 @@ namespace TriCodeTest.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(orderInfo);
+            return View(order);
         }
 
         /*
@@ -175,6 +179,7 @@ namespace TriCodeTest.Controllers
         {
             OrderInfo OrderInfoModel = new OrderInfo
             {
+                Id = model.Id,
                 User = model.User,
                 DateTime = model.DateTime,
                 Status = model.Status,

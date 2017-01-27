@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<button id="edit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button id="edit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal">
     Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -19,7 +19,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                This is a test!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -62,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.LastName)
+                <p id="@item.User.Id">@Html.DisplayFor(modelItem => item.User.LastName)</p>
             </td>
             <td>
                 @String.Format("{0:t}", item.DateTime)
@@ -71,17 +71,6 @@
                 @{
                     @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name);
                 }
-                @{
-                    //foreach (var food in item.OrderMenuItems)
-                    {
-                        //@String.Format("{0}", food.MenuItem.Name) <br />
-                        //foreach (var addon in food.AddOns)
-                        {
-                            //@String.Format("{0}", addon.Name)
-                        }
-                    }
-                }
-                <!--Html.DisplayFor(modelItem => item.OrderMenuItems)-->
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
@@ -90,8 +79,7 @@
                 @String.Format("{0:c}", item.TotalPrice)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "OrderInfo", new { id = item.Id }, new { @class = "lnkEdit" })
-                @Html.ActionLink("Details", "Details", "OrderInfo", new { id = item.Id }, new { @class = "lnkDetail" })
+                <a href="#" onclick="openModal(item)">Open Modal</a> | 
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
@@ -101,7 +89,13 @@
 </table>
 
 <script>
-    var modal = document.getElementById('myModal');
-    var editBtn = document.getElementById('edit');
-    var span = document.getElementsByClassName("close")[0];
+    $(document).ready(function(){
+        function openModal(order) 
+        {
+            $("#orderModal").modal()
+            var modalBody = document.getElementById("#modal-body");
+            var model = order;
+            modalBody.textContent("Name: " + model)
+        };
+    });
 </script>

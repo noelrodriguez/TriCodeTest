@@ -44,10 +44,12 @@
                             case Option.None:
                                 @String.Format("no {0} ", ingredient.Ingredient.Name);
                                 break;
+                            default:
+                                break;
+                            }
                         }
                     }
                 }
-            }
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Status)
