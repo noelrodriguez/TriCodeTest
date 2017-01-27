@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "d0f332d29bdce1963030276e3bdcc3c30f70534f"
+    "signature": "2574458263488ce5e2e68ac565be1533c3477718"
   },
   "compilationOptions": {
     "defines": [
@@ -34,13 +34,27 @@
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
+          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
+          "bootstrap": "3.3.7",
+          "jquery.datatables": "1.10.12",
+          "jQuery": "3.1.1"
         },
         "runtime": {
           "TriCodeTest.dll": {}
         },
         "compile": {
           "TriCodeTest.dll": {}
+        }
+      },
+      "bootstrap/3.3.7": {
+        "dependencies": {
+          "jQuery": "3.1.1"
+        }
+      },
+      "jQuery/3.1.1": {},
+      "jquery.datatables/1.10.12": {
+        "dependencies": {
+          "jQuery": "3.1.1"
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.1": {
@@ -3727,6 +3741,21 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "bootstrap/3.3.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3YTWhPNh6UcnUvzw9u6A2/hy2w0h4lznxPbX6FY47lFia3+Ib4zBixTpW6YieYA/b2fLXbkjoD59OjcVF3cJXw=="
+    },
+    "jQuery/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XGsgwse025NxNPHjY7GE8HMFNzjqsa7a/PmNS1S5bVU++pNpZmiTnzUBK6OmECnqG/fIMVaAYHTnfoYd/Wz28g=="
+    },
+    "jquery.datatables/1.10.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pCOpZKP20u72TQW/OupWH3ry6ZNacDf2dAa+4Wt57ylfCVnvtX9CeptuvcSr6mGpIAQAciYK/D/VoWIIR3UCGg=="
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.1": {
       "type": "package",

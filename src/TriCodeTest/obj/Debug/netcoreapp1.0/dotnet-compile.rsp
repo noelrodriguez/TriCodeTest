@@ -235,6 +235,8 @@ C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\000000000000
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\20170114024944_ModelsCreation.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\20170114024944_ModelsCreation.Designer.cs
+C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\20170120044944_NameForApplicationUser.cs
+C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\20170120044944_NameForApplicationUser.Designer.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\ApplicationUser.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\Option.cs
@@ -262,6 +264,7 @@ C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\MenuModels\Ingredient
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\MenuModels\MenuItem.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\MenuModels\MenuItemIngredients.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\MenuModels\Subcategory.cs
+C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\MenuViewModels\MenuCreationViewModel.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\OrderModels\Order.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\OrderModels\OrderInfo.cs
 C:\Users\westo\Projects\TriCodeTest\src\TriCodeTest\Models\OrderModels\OrderMenuItem.cs

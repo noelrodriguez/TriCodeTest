@@ -1,8 +1,192 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewData["Title"] = "Menu Creation";
+﻿@model TriCodeTest.Models.MenuViewModels.MenuCreationViewModel
+
+@{ 
+    var categoryList = Model.CategoryMenu.ToList();
+    var subCategoryList = Model.SubCategoryMenu.ToList();
+    var menuItemList = Model.MenuItemMenu.ToList();
+    
 }
-<h2>Menu Creation</h2>
-<p>Test of menu creation page</p>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Menu Management</h2>
+    <p>Test of menu creation page</p>
+    <div style="display:inline-block;width:100%;">
+        @*Category Table*@
+        <div style="float:left;width:30%;padding-right:10px" class="table-bordered">
+            <h3 style="text-align:center">Categories</h3>
+            <table id="categories" class="display">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Drinks</td>
+                        <td>(Descrption)</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>(Description)</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>(Description)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button id="add-category" class="btn">Add Category</button>
+            <button id="remove-category" class="btn">Remove Category</button>
+        </div>
+
+        @*Subcategory Table*@
+        <div style="float:left;width:30%;padding-right:10px" class="table-bordered">
+            <h3 style="text-align:center">Subcategories</h3>
+            <table id="subcategory" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Coffee</td>
+                    </tr>
+                    <tr>
+                        <td>Tea</td>
+                    </tr>
+                    <tr>
+                        <td>Soda</td>
+                    </tr>
+                    <tr>
+                        <td>Cold Case</td>
+                    </tr>
+                    <tr>
+                        <td>Specialty</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button id="add-subcategory" class="btn">Add Menu Item</button>
+            <button id="remove-subcategory" class="btn">Remove Menu Item</button>
+        </div>
+
+        @*Menu Items Table*@
+        <div style="float:left;width:30%;" class="table-bordered">
+            <h3 style="text-align:center">Menu Items</h3>
+                <table id="menuitem" class="display">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Coke</td>
+                            <td>$1.00</td>
+                        </tr>
+                        <tr>
+                            <td>Sprite</td>
+                            <td>$1.00</td>
+                        </tr>
+                        <tr>
+                            <td>Root Beer</td>
+                            <td>$1.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button id="add-menuitem" class="btn">Add Addon</button>
+                <button id="remove-menuitem" class="btn">Remove Addon</button>
+        </div>
+    </div>
+</body>
+</html>
+@*Load datatables css*@
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css" />
+@*Load datatables js*@
+@section Scripts{
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Categories Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var table = $('#categories').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#categories tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+            //Remove row button listeners
+            $('#remove-category').click(function () {
+                consol.log("Removing Category");
+                table.row('.selected').remove().draw(false);
+            });
+
+            $('#remove-subcategory').click(function () {
+                consol.log("Removing Item");
+                table.row('.selected').remove().draw(false);
+            });
+
+            $('#remove-menuitem').click(function () {
+                consol.log("Removing Addon");
+                table.row('.selected').remove().draw(false);
+            });
+
+
+            //Items Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var table = $('#subcategory').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#subcategory tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            //Addons Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var table = $('#menuitem').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#menuitem tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+        });
+    </script>
+}
