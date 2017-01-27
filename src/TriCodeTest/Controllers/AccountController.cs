@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using TriCodeTest.Models;
 using TriCodeTest.Models.AccountViewModels;
 using TriCodeTest.Services;
+using TriCodeTest.Data;
 
 namespace TriCodeTest.Controllers
 {
@@ -22,6 +23,7 @@ namespace TriCodeTest.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext _context;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -35,7 +37,10 @@ namespace TriCodeTest.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = new ApplicationDbContext();
+
         }
+
 
         //
         // GET: /Account/Login
@@ -115,8 +120,55 @@ namespace TriCodeTest.Controllers
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    await _userManager.AddToRoleAsync(user, "Customer");
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+                    return RedirectToLocal(returnUrl);
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous] //Admin registration is only for admins.
+        public IActionResult AdminRegister122434293400(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminRegister122434293400(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var userRole = await _userManager.FindByNameAsync(model.Email);
+                    var checkRole = await _userManager.IsInRoleAsync(userRole, model.Email);
+                    //Two conditions. Check if user is admin or not else make user stuff. 
+                    if (!checkRole)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    } 
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Stuff");
+                    }
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    _logger.LogInformation(3, "User created with password and assigned a role");
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
