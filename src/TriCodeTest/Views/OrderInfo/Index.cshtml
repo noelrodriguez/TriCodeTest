@@ -1,8 +1,13 @@
 @model IEnumerable<TriCodeTest.Models.OrderModels.Order>
+@using Newtonsoft.Json;
 
 @{
     ViewData["Title"] = "Index";
 }
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<!--link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" /-->
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-2.5.0/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.0/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css" />*@
 
 <button id="edit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal">
     Launch demo modal
@@ -19,7 +24,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                This is a test!
+                <div class="container">
+                    <p class="orderItem"></p>
+                    <div><p class="itemIngredients"></p></div>
+                    <div><p class="itemAddOns"></p></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -31,7 +40,7 @@
 
 <h2>Index</h2>
 
-<table class="table">
+<table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>
@@ -62,7 +71,7 @@
                 @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
             <td>
-                <p id="@item.User.Id">@Html.DisplayFor(modelItem => item.User.LastName)</p>
+                @Html.DisplayFor(modelItem => item.User.LastName)
             </td>
             <td>
                 @String.Format("{0:t}", item.DateTime)
@@ -79,7 +88,7 @@
                 @String.Format("{0:c}", item.TotalPrice)
             </td>
             <td>
-                <a href="#" onclick="openModal(item)">Open Modal</a> | 
+                <a onclick="openModal(@JsonConvert.SerializeObject(item))">Open Modal</a> | 
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
@@ -88,14 +97,47 @@
     </tbody>
 </table>
 
+@section scripts
+{   
+@*<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-2.5.0/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.0/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.js"></script>*@
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <script>
-    $(document).ready(function(){
-        function openModal(order) 
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            "paging": false,
+            "bSort": false,
+            "bFilter": false
+        });
+
+        $('#example tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            alert('You clicked on ' + data[3] + '\'s row');
+        });
+    })(jQuery);
+    function openModal(order)
+    {
+        console.log(order);
+        var orderModal = $("#orderModal");
+        var itemsHTML = "";
+        for (var i = 0; i < order.OrderMenuItems.length; i++)
         {
-            $("#orderModal").modal()
-            var modalBody = document.getElementById("#modal-body");
-            var model = order;
-            modalBody.textContent("Name: " + model)
-        };
-    });
+            itemsHTML += "@Html.DisplayNameFor(model => model.OrderMenuItems)" + ": " + order.OrderMenuItems[i].MenuItem.Name;
+            //for (var j = 0; j < order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length; j++)
+            //{
+                //var ingredient = order.OrderMenuItems[i].MenuItem.MenuItemIngredients[j].Ingredient
+                //itemsHTML += ingredient.Option + " " + ingredient.Name;
+            //}
+            //itemsHTML += "</div>";
+        }
+        console.log(itemsHTML);
+        orderModal.find("#testhere").html(order.TotalPrice);
+        orderModal.modal("show");
+        //$("#orderModal").modal();
+        return false;
+    }
 </script>
+}
