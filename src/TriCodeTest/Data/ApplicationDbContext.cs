@@ -17,10 +17,6 @@ namespace TriCodeTest.Data
         {
         }
 
-        public ApplicationDbContext()
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

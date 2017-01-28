@@ -10,3 +10,7 @@ Getting started the project
 5. Database migration: command (PM> update-database)
 6. Last step: Build/run project.
 7. Push branch changes.
+
+
+## Admin Registration
+1. To access admin Registration go to /Account/AdminRegister122434293400

@@ -12,7 +12,7 @@ namespace TriCodeTest.RoleSeeding
     public class RoleSeeding
     {
         //List of roles
-        private static readonly string[] Roles = new string[] { "Admin", "Stuff", "Customer" };
+        private static readonly string[] Roles = new string[] { "Admin", "Staff", "Customer" };
 
         //Seed roles to the database
         public static async Task SeedRole(IServiceProvider serviceProvider)
