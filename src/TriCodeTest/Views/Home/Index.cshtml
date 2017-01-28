@@ -2,6 +2,99 @@
     ViewData["Title"] = "Home Page";
 }
 
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+
+<style>
+
+    tr {
+        cursor: default;
+    }
+
+    .highlight {
+        background: #ffd800;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    #myInput {
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-top: 25px;
+    margin-bottom: 20px; /* Add some space below the input */
+}
+</style>
+
+<table id="myTable" class="display">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Creation Date</th>
+        <th>Access Level</th>
+    </tr>
+    <tbody>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+<button id="addUser" class="button" style="font-size:16px"  onclick="location.href='@Url.Action("AddUser", "AddUser")'">
+    Add User
+</button>
+<button id="editUser" class="button" style="font-size:16px" font-family: arial, sans-serif>
+    Edit User
+</button>
+<button id="deleteUser" class="button" style="font-size:16px" font-family: arial, sans-serif>
+    Delete User
+</button>
+
+
+<!--
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -64,7 +157,9 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+-->
 
+<!--
 <div class="row">
     <div class="col-md-3">
         <h2>Application uses</h2>
@@ -107,3 +202,4 @@
         </ul>
     </div>
 </div>
+-->
