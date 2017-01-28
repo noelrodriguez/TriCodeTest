@@ -54,6 +54,7 @@
 
             <button id="add-category" class="btn">Add Category</button>
             <button id="remove-category" class="btn">Remove Category</button>
+            <button id="edit-category" class="btn">Edit Category</button>
         </div>
 
         @*Subcategory Table*@
@@ -66,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in categoryList)
+                    @foreach(var item in subCategoryList)
                     {
                         <tr>
                             <td>@item.Name</td>
@@ -91,8 +92,9 @@
                 </tbody>
             </table>
 
-            <button id="add-subcategory" class="btn">Add Menu Item</button>
-            <button id="remove-subcategory" class="btn">Remove Menu Item</button>
+            <button id="add-subcategory" class="btn">Add Subcategory</button>
+            <button id="remove-subcategory" class="btn">Remove Subcategory</button>
+            <button id="edit-subcategory" class="btn">Edit Subcategory</button>
         </div>
 
         @*Menu Items Table*@
@@ -130,8 +132,9 @@
                     </tbody>
                 </table>
 
-                <button id="add-menuitem" class="btn">Add Addon</button>
-                <button id="remove-menuitem" class="btn">Remove Addon</button>
+                <button id="add-menuitem" class="btn">Add Menu Item</button>
+                <button id="remove-menuitem" class="btn">Remove Menu Item</button>
+                <button id="edit-menuItem" class="btn">Edit Selected Menu Item</button>
         </div>
     </div>
 </body>
@@ -144,41 +147,31 @@
     <script>
         $(document).ready(function () {
             //Categories Table Functions, These functions control the functionality and look and feel of the menu data tables
-            var table = $('#categories').DataTable({
+            var categoryTable = $('#categories').DataTable({
                 "paging": false,
                 "info": false,
                 "scrollY": "500px"
             });
+            
+            
 
             $('#categories tbody').on('click', 'tr', function () {
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
                 }
                 else {
-                    table.$('tr.selected').removeClass('selected');
+                    categoryTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
                 }
             });
 
-            //Remove row button listeners
+            //Remove Category Button Listener
             $('#remove-category').click(function () {
-                consol.log("Removing Category");
-                table.row('.selected').remove().draw(false);
+                categoryTable.row('.selected').remove().draw(false);
             });
-
-            $('#remove-subcategory').click(function () {
-                consol.log("Removing Item");
-                table.row('.selected').remove().draw(false);
-            });
-
-            $('#remove-menuitem').click(function () {
-                consol.log("Removing Addon");
-                table.row('.selected').remove().draw(false);
-            });
-
 
             //Items Table Functions, These functions control the functionality and look and feel of the menu data tables
-            var table = $('#subcategory').DataTable({
+            var subCategoryTable = $('#subcategory').DataTable({
                 "paging": false,
                 "info": false,
                 "scrollY": "500px"
@@ -190,14 +183,19 @@
 
                 }
                 else {
-                    table.$('tr.selected').removeClass('selected');
+                    subCategoryTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
 
                 }
             });
 
+            //Remove subcategory Button Listener
+            $('#remove-subcategory').click(function () {
+                subCategoryTable.row('.selected').remove().draw(false);
+            });
+
             //Addons Table Functions, These functions control the functionality and look and feel of the menu data tables
-            var table = $('#menuitem').DataTable({
+            var menuItemTable = $('#menuitem').DataTable({
                 "paging": false,
                 "info": false,
                 "scrollY": "500px"
@@ -209,11 +207,31 @@
 
                 }
                 else {
-                    table.$('tr.selected').removeClass('selected');
+                    menuItemTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
 
                 }
             });
+
+            //Remove menuitem Button Listener
+            $('#remove-menuitem').click(function () {
+                menuItemTable.row('.selected').remove().draw(false);
+            });
+
+            //Add button listeners
+            $('#add-category').click(function () {
+                
+                //Add row to category
+                //DEMO
+                alert("@categoryList.First().Name");
+                categoryTable.row.add([
+                    "@categoryList.First().Name",
+                    "@categoryList.First().Description"
+                ]).draw(false);
+                
+
+            });
+
         });
     </script>
 }
