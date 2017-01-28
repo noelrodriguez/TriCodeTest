@@ -13,4 +13,4 @@ Getting started the project
 
 
 ## Admin Registration
-1. To access admin Registration go to /Account/AdminRegister122434293400
+1. To access admin Registration go to /Account/AdminRegister
