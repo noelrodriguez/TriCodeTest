@@ -303,6 +303,30 @@ namespace TriCodeTest.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
+        // GET: /Manage/SetPassword
+        [HttpGet]
+        public IActionResult SetLastName()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/SetPassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SetLastName(UpdateFirstAndLastName model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await GetCurrentUserAsync();
+            //Users.SingleOrDefault(c => c.FirstName == model.FirstName);
+            var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+
+
+            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+        }
         //GET: /Manage/ManageLogins
         [HttpGet]
         public async Task<IActionResult> ManageLogins(ManageMessageId? message = null)
