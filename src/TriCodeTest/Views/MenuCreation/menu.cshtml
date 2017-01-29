@@ -7,7 +7,6 @@
     var menuItemIngredientsList = Model.MenuItemIngredientsMenu.ToList();
     var addonList = Model.AddonMenu.ToList();
     var ingredientsList = Model.IngridientMenu.ToList();
-    
 }
 
 <!DOCTYPE html>
@@ -145,17 +144,124 @@
 @section Scripts{
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
     <script>
+        //http://stackoverflow.com/questions/17356497/get-the-table-row-data-with-a-click
         $(document).ready(function () {
+            //Global Dictionaries
+            var categoryDictionary = [];
+            var subCategoryDictionary = [];
+            var menuItemDictionary = [];
+            var addonDictionary = [];
+            var ingredientsDictionary = [];
+            var menuItemIngredientsDictionary = [];
+
+            //load dictionaries with values from the model
+
+            //populate category dictionary
+            @foreach (var item in categoryList)
+            {
+                <text>
+            categoryDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategories",
+                        "@item.Description",
+                        "@item.Id"]
+            });
+            </text>
+
+            }
+
+            //populate subcategory dictionary
+            @foreach (var item in subCategoryList)
+            {
+                <text>
+            subCategoryDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Category.Name",
+                        "@item.MenuItems",
+                        "@item.AddOns",
+                        "@item.Description",
+                        "@item.CategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }
+
+            //Populate menuItem dictionary
+            @foreach (var item in menuItemList)
+            {
+                <text>
+            menuItemDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategory",
+                        "@item.MenuItemIngredients",
+                        "@item.Price",
+                        "@item.Size",
+                        "@item.ItemImage",
+                        "@item.SubcategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }
+
+            @foreach (var item in menuItemIngredientsList)
+            {
+                <text>
+            menuItemIngredientsDictionary.push({
+                key: "@item.Ingredient",
+                value: ["@item.IngredientId",
+                        "@item.MenuItem",
+                        "@item.MenuItemId"]
+            });
+                </text>
+
+            }
+
+            //Populate Addon dictionary
+            @foreach (var item in addonList)
+            {
+                <text>
+            addonDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategory",
+                        "@item.Description",
+                        "@item.Price",
+                        "@item.SubcategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }
+
+            //Populate ingredients Dictionary
+            @foreach (var item in ingredientsList)
+            {
+                <text>
+            ingredientsDictionary.push({
+                key: "@item.Name",
+                value: ["@item.MenuItemIngredients",
+                        "@item.Description",
+                        "@item.Option",
+                        "@item.Id"]
+            });
+                </text>
+
+            }
+
             //Categories Table Functions, These functions control the functionality and look and feel of the menu data tables
             var categoryTable = $('#categories').DataTable({
                 "paging": false,
                 "info": false,
                 "scrollY": "500px"
             });
-            
-            
+
+
 
             $('#categories tbody').on('click', 'tr', function () {
+                //Variable to hold row data
+                var rowData = categoryTable.row(this).data();
+                console.log(rowData);
+                @*@Html.Hidden("rowData", 0);*@
+                @*var razorRowData = "@Html.ActionLink("Link text", "Action Name", new { id = "rowData"})"*@
+
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
                 }
@@ -163,7 +269,49 @@
                     categoryTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
                 }
+                //Clear subCategory and menuItem tables
+                subCategoryTable.clear();
+                subCategoryTable.draw(); // redraws table with no data
+                menuItemTable.clear();
+                menuItemTable.draw(); // redraws table with no data
+
+                //Iterate over all the subcategories in subCategoryDictionary and find
+                //those with the same Category as the one currently selected
+                for (var item in subCategoryDictionary)
+                {
+                    //console.log(subCategoryDictionary[item].key); //The name of the subCategory
+                    //console.log(subCategoryDictionary[item].value) //An array of different values of the object
+                    //console.log(rowData[0])
+                    console.log("@subCategoryList.First().Category");
+
+                    if(subCategoryDictionary[item].value[0].toString() == rowData[0])
+                    {
+                        console.log("TEST");
+                        subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
+                    }
+                    
+                }
+                //subCategoryTable.draw();
+
+
+
+                @*var text = "@Html.ActionLink( "Link text", "Action Name", new { id = "JSVar" })"
+                text = text.replace("JSVar", rowData);*@
+
+                //create razor string
+                //var subCategoryDictionary = {};
+
+                @*@foreach(var item in subCategoryList)
+                {
+                    <text>
+                        console.log("@item.Name");
+                    </text>
+                    //console.log(item);
+                }*@
+
             });
+
+            
 
             //Remove Category Button Listener
             $('#remove-category').click(function () {
@@ -219,19 +367,21 @@
             });
 
             //Add button listeners
+            //Add category
             $('#add-category').click(function () {
-                
-                //Add row to category
-                //DEMO
+                //Display category Modal
                 alert("@categoryList.First().Name");
+
+                //Add Category to Database and Category table remove all items from subcategories and Menu Items
                 categoryTable.row.add([
                     "@categoryList.First().Name",
                     "@categoryList.First().Description"
                 ]).draw(false);
-                
+
 
             });
 
         });
     </script>
+
 }
