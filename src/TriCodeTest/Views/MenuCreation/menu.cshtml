@@ -192,7 +192,7 @@
                 <text>
             menuItemDictionary.push({
                 key: "@item.Name",
-                value: ["@item.Subcategory",
+                value: ["@item.Subcategory.Name",
                         "@item.MenuItemIngredients",
                         "@item.Price",
                         "@item.Size",
@@ -203,13 +203,14 @@
             </text>
             }
 
+            //Populate menuItemIngredientsDictionary
             @foreach (var item in menuItemIngredientsList)
             {
                 <text>
             menuItemIngredientsDictionary.push({
-                key: "@item.Ingredient",
+                key: "@item.Ingredient.Name",
                 value: ["@item.IngredientId",
-                        "@item.MenuItem",
+                        "@item.MenuItem.Name",
                         "@item.MenuItemId"]
             });
                 </text>
@@ -222,7 +223,7 @@
                 <text>
             addonDictionary.push({
                 key: "@item.Name",
-                value: ["@item.Subcategory",
+                value: ["@item.Subcategory.Name",
                         "@item.Description",
                         "@item.Price",
                         "@item.SubcategoryId",
@@ -256,12 +257,9 @@
 
 
             $('#categories tbody').on('click', 'tr', function () {
-                //Variable to hold row data
+                //Variable to hold selected Category row data
                 var rowData = categoryTable.row(this).data();
-                console.log(rowData);
-                @*@Html.Hidden("rowData", 0);*@
-                @*var razorRowData = "@Html.ActionLink("Link text", "Action Name", new { id = "rowData"})"*@
-
+  
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
                 }
@@ -279,35 +277,12 @@
                 //those with the same Category as the one currently selected
                 for (var item in subCategoryDictionary)
                 {
-                    //console.log(subCategoryDictionary[item].key); //The name of the subCategory
-                    //console.log(subCategoryDictionary[item].value) //An array of different values of the object
-                    //console.log(rowData[0])
-                    console.log("@subCategoryList.First().Category");
 
                     if(subCategoryDictionary[item].value[0].toString() == rowData[0])
                     {
-                        console.log("TEST");
                         subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
                     }
-                    
                 }
-                //subCategoryTable.draw();
-
-
-
-                @*var text = "@Html.ActionLink( "Link text", "Action Name", new { id = "JSVar" })"
-                text = text.replace("JSVar", rowData);*@
-
-                //create razor string
-                //var subCategoryDictionary = {};
-
-                @*@foreach(var item in subCategoryList)
-                {
-                    <text>
-                        console.log("@item.Name");
-                    </text>
-                    //console.log(item);
-                }*@
 
             });
 
@@ -326,6 +301,9 @@
             });
 
             $('#subcategory tbody').on('click', 'tr', function () {
+                var rowData = subCategoryTable.row(this).data();
+
+
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
 
@@ -335,6 +313,21 @@
                     $(this).addClass('selected');
 
                 }
+
+                //ACTIVATE TABLE SWITCHING!
+                menuItemTable.clear();
+                //menuItemTable.draw();
+
+                for (var item in menuItemDictionary)
+                {
+                    if (menuItemDictionary[item].value[0].toString() == rowData[0])
+                    {
+                        //Add new menuItem to the table
+                        menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                    }
+
+                }
+
             });
 
             //Remove subcategory Button Listener
