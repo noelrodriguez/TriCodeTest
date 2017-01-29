@@ -316,14 +316,15 @@
 
                 //ACTIVATE TABLE SWITCHING!
                 menuItemTable.clear();
-                //menuItemTable.draw();
+                menuItemTable.draw();
 
                 for (var item in menuItemDictionary)
                 {
                     if (menuItemDictionary[item].value[0].toString() == rowData[0])
                     {
                         //Add new menuItem to the table
-                        menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                        //menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                        menuItemTable.row.add([menuItemDictionary[item].key, menuItemDictionary[item].value[2]]).draw( false );
                     }
 
                 }
