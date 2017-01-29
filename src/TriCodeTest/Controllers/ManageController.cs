@@ -102,21 +102,35 @@ namespace TriCodeTest.Controllers
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
+        public async Task<IActionResult> AddPhoneNumber(ApplicationUser model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            // Generate the token and send it
             var user = await GetCurrentUserAsync();
-            if (user == null)
+            if (user != null)
             {
-                return View("Error");
+                var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+                userData.PhoneNumber = model.PhoneNumber;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
             }
-            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
-            await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
-            return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
+
+            return RedirectToAction("index");
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
+            //// Generate the token and send it
+            //var user = await GetCurrentUserAsync();
+            //if (user == null)
+            //{
+            //    return View("Error");
+            //}
+            //var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
+            //await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
+            //return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }
 
         //
@@ -289,18 +303,23 @@ namespace TriCodeTest.Controllers
         // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SetFirstName(UpdateFirstAndLastName model)
+        public async Task<IActionResult> SetFirstName(ApplicationUser model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             var user = await GetCurrentUserAsync();
-            //Users.SingleOrDefault(c => c.FirstName == model.FirstName);
-            var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
-
-
-            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+            if (user != null)
+            {
+                var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+                userData.FirstName = model.FirstName;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
+ 
+            }
+           
+            return RedirectToAction("index");
         }
 
         // GET: /Manage/SetPassword
@@ -314,18 +333,23 @@ namespace TriCodeTest.Controllers
         // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SetLastName(UpdateFirstAndLastName model)
+        public async Task<IActionResult> SetLastName(ApplicationUser model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             var user = await GetCurrentUserAsync();
-            //Users.SingleOrDefault(c => c.FirstName == model.FirstName);
-            var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+            if (user != null)
+            {
+                var userData = _context.Users.First(c => c.Id == user.Id);
+                userData.LastName = model.LastName;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
+            }
+       
 
-
-            return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+            return RedirectToAction("index");
         }
         //GET: /Manage/ManageLogins
         [HttpGet]
