@@ -20,7 +20,7 @@ namespace TriCodeTest.Data
         {
             context.Database.EnsureCreated();
             
-            /* Add Order
+            // Add Order
             var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
 
             Order MyOrder = new Order()
@@ -35,7 +35,7 @@ namespace TriCodeTest.Data
                 MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).ThenInclude(i => i.Ingredient).Single(m => m.Name == "Chicken Quesadilla"),
                 AddOns = new List<AddOn>
                 {
-                    context.AddOn.Single(a => a.Name == "Avocado")
+                    
                 }
             };
             List<OrderMenuItem> TheItems = new List<OrderMenuItem>();
