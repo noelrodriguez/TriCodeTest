@@ -9,6 +9,9 @@
           "jQuery": "[1.9.1, 4.0.0)"
         }
       },
+      "bootstrap-dialog/3.3.4.1": {
+        "type": "package"
+      },
       "jQuery/3.1.1": {
         "type": "package"
       },
@@ -4399,6 +4402,18 @@
         "content/fonts/glyphicons-halflings-regular.ttf",
         "content/fonts/glyphicons-halflings-regular.woff",
         "content/fonts/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "bootstrap-dialog/3.3.4.1": {
+      "sha512": "xjJhZehd2OLP6+IeZBmlUecWwOKV91STNNwDfGqIXSlVzMSoMPa2TcYmzJEzyxQnz4K9Fwqs1PagXwgmAIfwGw==",
+      "type": "package",
+      "path": "bootstrap-dialog/3.3.4.1",
+      "files": [
+        "bootstrap-dialog.3.3.4.1.nupkg.sha512",
+        "bootstrap-dialog.nuspec",
+        "content/content/bootstrap-dialog.css",
+        "content/content/bootstrap-dialog.less",
+        "content/scripts/bootstrap-dialog.js"
       ]
     },
     "jQuery/3.1.1": {
@@ -11335,6 +11350,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
       "bootstrap >= 3.3.7",
+      "bootstrap-dialog >= 3.3.4.1",
       "jQuery >= 3.1.1",
       "jquery.datatables >= 1.10.12"
     ],

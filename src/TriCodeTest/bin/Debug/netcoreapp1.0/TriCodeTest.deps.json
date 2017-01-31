@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "2574458263488ce5e2e68ac565be1533c3477718"
+    "signature": "43ac3505ceb11c1c3abe4243ddde7480b1474390"
   },
   "compilationOptions": {
     "defines": [
@@ -37,7 +37,8 @@
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "bootstrap": "3.3.7",
           "jquery.datatables": "1.10.12",
-          "jQuery": "3.1.1"
+          "jQuery": "3.1.1",
+          "bootstrap-dialog": "3.3.4.1"
         },
         "runtime": {
           "TriCodeTest.dll": {}
@@ -51,6 +52,7 @@
           "jQuery": "3.1.1"
         }
       },
+      "bootstrap-dialog/3.3.4.1": {},
       "jQuery/3.1.1": {},
       "jquery.datatables/1.10.12": {
         "dependencies": {
@@ -3746,6 +3748,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-3YTWhPNh6UcnUvzw9u6A2/hy2w0h4lznxPbX6FY47lFia3+Ib4zBixTpW6YieYA/b2fLXbkjoD59OjcVF3cJXw=="
+    },
+    "bootstrap-dialog/3.3.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xjJhZehd2OLP6+IeZBmlUecWwOKV91STNNwDfGqIXSlVzMSoMPa2TcYmzJEzyxQnz4K9Fwqs1PagXwgmAIfwGw=="
     },
     "jQuery/3.1.1": {
       "type": "package",

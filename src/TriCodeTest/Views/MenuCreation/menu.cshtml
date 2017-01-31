@@ -36,18 +36,6 @@
                         </tr>
 
                     }
-                    @*<tr>
-                        <td>Drinks</td>
-                        <td>(Descrption)</td>
-                    </tr>
-                    <tr>
-                        <td>Lunch</td>
-                        <td>(Description)</td>
-                    </tr>
-                    <tr>
-                        <td>Dinner</td>
-                        <td>(Description)</td>
-                    </tr>*@
                 </tbody>
             </table>
 
@@ -73,21 +61,6 @@
                         </tr>
 
                     }
-                    @*<tr>
-                        <td>Coffee</td>
-                    </tr>
-                    <tr>
-                        <td>Tea</td>
-                    </tr>
-                    <tr>
-                        <td>Soda</td>
-                    </tr>
-                    <tr>
-                        <td>Cold Case</td>
-                    </tr>
-                    <tr>
-                        <td>Specialty</td>
-                    </tr>*@
                 </tbody>
             </table>
 
@@ -115,19 +88,6 @@
                             </tr>
 
                         }
-
-                        @*<tr>
-                            <td>Coke</td>
-                            <td>$1.00</td>
-                        </tr>
-                        <tr>
-                            <td>Sprite</td>
-                            <td>$1.00</td>
-                        </tr>
-                        <tr>
-                            <td>Root Beer</td>
-                            <td>$1.00</td>
-                        </tr>*@
                     </tbody>
                 </table>
 
@@ -138,11 +98,162 @@
     </div>
 </body>
 </html>
+
+@*Add Category Modal*@
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-name" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="category-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="desctiption-text"></textarea>
+                    </div>
+                    @*<div>
+                            <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="button" id="addCategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Category Modal*@
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-name" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="category-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="desctiption-text"></textarea>
+                    </div>
+                    @*<div>
+                        <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
+                    </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="button" id="editCategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Add Subcategory Modal*@
+<div class="modal fade" id="addSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="subcategory-name" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="subcategory-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="desctiption-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addSubcategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Subcategory Modal*@
+<div class="modal fade" id="editSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="subcategory-name" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="subcategory-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="desctiption-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="editSubcategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Confirm Delete Modal*@
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you would like to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="confirmDelete">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @*Load datatables css*@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" /> @*Allows use of bootstrapDialog*@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css" />
 @*Load datatables js*@
 @section Scripts{
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
     <script>
         //http://stackoverflow.com/questions/17356497/get-the-table-row-data-with-a-click
         $(document).ready(function () {
@@ -286,11 +397,94 @@
 
             });
 
-            
+            //Add category
+            $('#add-category').click(function () {
+                //Display category Modal
+
+                //Display modal
+                $('#addCategoryModal').modal('show');
+                var $modal = $('#addCategoryModal');
+                $modal.find('.modal-title').text('Add Category') // Change the modal title
+
+                // On submit add new category and description to the database, redraw the table from the database, and select the new category
+                //$modal.on('submit', function (e) {
+                //    e.preventDefault();
+                //    $.post('test',
+                //        function (data, status, xhr) {
+                //            alert($('#categorySubmit').value());
+
+                //        });
+                //alert($('#categorySubmit').val());
+                //});
+                //alert($('#categorySubmit').val());
+                // On close, do nothing.
+
+                //Add Category to Database and Category table remove all items from subcategories and Menu Items
+                @*categoryTable.row.add([
+                    "@categoryList.First().Name",
+                    "@categoryList.First().Description"
+                ]).draw(false);*@
+
+
+                });
+
+            //Edit Category Button listener
+            $('#edit-category').click(function () {
+                //Check if a row is selected. If not don't show modal
+                var $row = categoryTable.$('tr.selected');
+               
+                if ($row.length)
+                {
+                    var rowData = categoryTable.row('tr.selected').data();
+
+                    $('#editCategoryModal').modal('show');
+                    var $modal = $('#categoryModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    $modal.find('.modal-body input').val(rowData[0]);//Add category name
+                    $modal.find('.modal-body textarea').val(rowData[1] + "EXAMPLE DESCRIPTION") //Add Category Description to Description box????
+                    
+                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
+
+                    //On close nothing happens
+
+                }
+                
+            });
 
             //Remove Category Button Listener
             $('#remove-category').click(function () {
-                categoryTable.row('.selected').remove().draw(false);
+                var $row = categoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = categoryTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Category?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                categoryTable.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+
+                            }
+                        }]
+                    });
+
+                }
+
+                //Update database on removed Category
+
+
+                //categoryTable.row('.selected').remove().draw(false);
             });
 
             //Items Table Functions, These functions control the functionality and look and feel of the menu data tables
@@ -333,7 +527,32 @@
 
             //Remove subcategory Button Listener
             $('#remove-subcategory').click(function () {
-                subCategoryTable.row('.selected').remove().draw(false);
+                var $row = subCategoryTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = subCategoryTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Subcategory?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                subCategoryTable.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+
+                            }
+                        }]
+                    });
+
+                }
             });
 
             //Addons Table Functions, These functions control the functionality and look and feel of the menu data tables
@@ -357,22 +576,75 @@
 
             //Remove menuitem Button Listener
             $('#remove-menuitem').click(function () {
-                menuItemTable.row('.selected').remove().draw(false);
+                var $row = menuItemTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = menuItemTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Menu Item?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                menuItemTable.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+
+                            }
+                        }]
+                    });
+
+                }
             });
 
             //Add button listeners
             //Add category
-            $('#add-category').click(function () {
+            //$('#add-category').click(function () {
                 //Display category Modal
-                alert("@categoryList.First().Name");
+
+                //Display modal
+               // $('#categoryModal').modal('show');
+                //var $modal = $('#categoryModal');
+                //$modal.find('.modal-title').text('Add Category') // Change the modal title
+
+                // On submit add new category and description to the database, redraw the table from the database, and select the new category
+                //$modal.on('submit', function (e) {
+                //    e.preventDefault();
+                //    $.post('test',
+                //        function (data, status, xhr) {
+                //            alert($('#categorySubmit').value());
+
+                //        });
+                    //alert($('#categorySubmit').val());
+                //});
+                //alert($('#categorySubmit').val());
+                // On close, do nothing.
 
                 //Add Category to Database and Category table remove all items from subcategories and Menu Items
-                categoryTable.row.add([
+               @*categoryTable.row.add([
                     "@categoryList.First().Name",
                     "@categoryList.First().Description"
-                ]).draw(false);
+                ]).draw(false);*@
 
 
+           // });
+
+            //Add Category submit listener
+            $('#addCategorySubmit').click(function() {
+                console.log("Test");
+                var categoryName = $('input').value();
+                var categoryDescription = $('textarea').value();
+                console.log(categoryName);
+                console.log(categoryDescription);
+                //alert(categoryName + " " + categoryDescription);
+                $('#categoryModal').modal('hide');
             });
 
         });
