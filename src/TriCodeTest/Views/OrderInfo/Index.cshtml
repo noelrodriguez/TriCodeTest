@@ -37,6 +37,9 @@
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
+            <th style="display:none">
+                Order Id
+            </th>
             <th>
                 Firstname
             </th>
@@ -61,6 +64,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <th style="display:none">
+                @Html.DisplayFor(modelItem => item.Id)
+            </th>
             <td>
                 @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
@@ -76,7 +82,8 @@
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                <select asp-for="@item.Status" asp-items="Html.GetEnumSelectList<Status>()" id="status-choice"></select>
+                <span asp-validation-for="@item.Status" class="text-danger" />
             </td>
             <td>
                 @String.Format("{0:c}", item.TotalPrice)
@@ -95,30 +102,43 @@
 {   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <script>
+    // This removes the searching, sorting, and paging of the DataTable
     $(document).ready(function () {
         var table = $('#example').DataTable({
             "paging": false,
             "bSort": false,
             "bFilter": false
         });
-
+        
+        // This is functionality for clickin on a row of the DataTable, not sure if it will be used though
         $('#example tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
-            //console.log(data);
+            //console.log(data[0]);
             //alert('You clicked on ' + data[3] + '\'s row');
         });
+
+        $("#example tbody #status-choice").change('tr', function (event) {
+            var orderId = table.row(this).data();
+            console.log(orderId);
+            @*$.ajax({
+                url: @Url.Action("Edit", "OrderInfo"),
+
+
+            })*@
+
+        })
     });
 
+    // Displays the detailed information of the Order for its AddOns and modified Ingredients
     function openModal(order)
     {
         console.log(order);
         var itemHTML = $("#orderItem");
         itemHTML.empty();
-        //itemHTML.append("<li id='itemIngredients'></li><li id='itemAddOns'></li>");
-        //var ingredientsHTML = $("#itemIngredients");
-        //var addonsHTML = $("#itemAddOns")
         var orderModal = $("#orderModal");
 
+        // Goes through and begins populating the form with MenuItems and their corresponding AddOns/modified
+        // Ingredients
         for (var i = 0; i < order.OrderMenuItems.length; i++)
         {
             if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length != 0) {
@@ -148,9 +168,21 @@
                 }
             }
         }
+        //$(this).data = Model.SingleOrDefault(oid => oid.Id == )
         $("#orderModal").modal();
         return false;
     }
+    @*$("#status-choice").change(function (event) {
+        var data = {
+        
+        }
+        $.ajax({
+            url: @Url.Action("Edit", "OrderInfo"),
+
+
+        })
+
+    })*@
 </script>
 }
 
