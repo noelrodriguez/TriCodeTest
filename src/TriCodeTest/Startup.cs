@@ -80,9 +80,8 @@ namespace TriCodeTest
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    // Changed this route from controller=Home 
-                    template: "{controller=OrderInfo}/{action=Index}/{id?}");
+                    name: "default", 
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             // To seed the database

@@ -4,6 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
+@* 
+    This view was used when showing the details of an Order was in a
+    separate view. The details is now in a modal.
+*@
 <h2>Details</h2>
 
 <div>
@@ -30,10 +34,6 @@
                     }
                     foreach (var ingredient in item.MenuItem.MenuItemIngredients)
                     {
-                        //if (ingredient.Ingredient.Option != Option.Normal)
-                        //{
-                        //    @String.Format("{0} ", ingredient.Ingredient.Name);
-                        //}
                         switch (ingredient.Ingredient.Option)
                         {
                             case Option.Normal:

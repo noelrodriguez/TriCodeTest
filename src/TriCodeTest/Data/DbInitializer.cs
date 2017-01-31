@@ -20,8 +20,9 @@ namespace TriCodeTest.Data
         {
             context.Database.EnsureCreated();
             
-            // Add Order
-            var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();
+            // This is the code used to create an Order
+            /* Add Order
+            var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();  // Account you choose to link it to
 
             Order MyOrder = new Order()
             {
@@ -30,6 +31,7 @@ namespace TriCodeTest.Data
                 User = Noel,
             };
 
+            // The MenuItem and its AddOns are added here. So far just one MenuItem but could switch to more MenuItems
             OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
             {
                 MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).ThenInclude(i => i.Ingredient).Single(m => m.Name == "Chicken Quesadilla"),
@@ -39,6 +41,7 @@ namespace TriCodeTest.Data
                 }
             };
             List<OrderMenuItem> TheItems = new List<OrderMenuItem>();
+            // 
             foreach (var ing in MyOrderMenuItem.MenuItem.MenuItemIngredients)
             {
                 if (ing.Ingredient.Name == "Sour Cream")

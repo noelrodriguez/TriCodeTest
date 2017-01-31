@@ -2,7 +2,7 @@
 @using Newtonsoft.Json;
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Order Management";
 }
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<h2>Index</h2>
+<h2>Order Management</h2>
 
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
@@ -77,13 +77,13 @@
                 @String.Format("{0:t}", item.DateTime)
             </td>
             <td>
-                @{
-                    @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name);
-                }
+                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name);
             </td>
             <td>
-                <select asp-for="@item.Status" asp-items="Html.GetEnumSelectList<Status>()" id="status-choice"></select>
-                <span asp-validation-for="@item.Status" class="text-danger" />
+                @Html.DisplayFor(modelItem => item.Status)
+                @* This is code for getting the inline update of status working. NOT IMPLEMENTED *@
+                @*<select asp-for="@item.Status" asp-items="Html.GetEnumSelectList<Status>()" id="status-choice"></select>
+                <span asp-validation-for="@item.Status" class="text-danger" />*@
             </td>
             <td>
                 @String.Format("{0:c}", item.TotalPrice)
@@ -91,7 +91,6 @@
             <td>
                 <a onclick="openModal(@JsonConvert.SerializeObject(item))">Order Details</a> | 
                 <a asp-action="Edit" asp-route-id="@item.Id">Status</a>
-                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
             </td>
         </tr>
 }
@@ -102,30 +101,28 @@
 {   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <script>
+    var table;
+    var row;
+    var status;
     // This removes the searching, sorting, and paging of the DataTable
     $(document).ready(function () {
-        var table = $('#example').DataTable({
+        table = $('#example').DataTable({
             "paging": false,
             "bSort": false,
             "bFilter": false
         });
         
-        // This is functionality for clickin on a row of the DataTable, not sure if it will be used though
+        // This is functionality for clickin on a row of the DataTable. NOT IMPLEMENTED RIGHT NOW
         $('#example tbody').on('click', 'tr', function () {
-            var data = table.row(this).data();
-            //console.log(data[0]);
-            //alert('You clicked on ' + data[3] + '\'s row');
+            row = table.row(this).data();
         });
 
-        $("#example tbody #status-choice").change('tr', function (event) {
-            var orderId = table.row(this).data();
-            console.log(orderId);
+        // Code to get in line status update working. NOT IMPLEMENTED RIGHT NOW
+        $("#status-choice").change('tr', function (event) {
+            status = $(this).val();
             @*$.ajax({
                 url: @Url.Action("Edit", "OrderInfo"),
-
-
             })*@
-
         })
     });
 
@@ -168,21 +165,9 @@
                 }
             }
         }
-        //$(this).data = Model.SingleOrDefault(oid => oid.Id == )
         $("#orderModal").modal();
         return false;
     }
-    @*$("#status-choice").change(function (event) {
-        var data = {
-        
-        }
-        $.ajax({
-            url: @Url.Action("Edit", "OrderInfo"),
-
-
-        })
-
-    })*@
 </script>
 }
 
