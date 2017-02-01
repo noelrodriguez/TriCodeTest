@@ -146,7 +146,7 @@
 </div>
 
 @*Edit Category Modal*@
-<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -471,7 +471,7 @@
                     var rowData = categoryTable.row('tr.selected').data();
 
                     $('#editCategoryModal').modal('show');
-                    var $modal = $('#categoryModal');
+                    var $modal = $('#editCategoryModal');
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
                     $modal.find('.modal-body input').val(rowData[0]);//Add category name
                     $modal.find('.modal-body textarea').val(rowData[1] + "EXAMPLE DESCRIPTION") //Add Category Description to Description box????
