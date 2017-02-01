@@ -117,7 +117,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <h5 class="modal-title" id="addCategoryModalTitle">Add Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -146,11 +146,11 @@
 </div>
 
 @*Edit Category Modal*@
-<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <h5 class="modal-title" id="editCategoryModalTitle">Edit Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -166,8 +166,8 @@
                         <textarea class="form-control" id="desctiption-text"></textarea>
                     </div>
                     @*<div>
-                        <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
-                    </div>*@
+                            <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
+                        </div>*@
                 </form>
             </div>
             <div class="modal-footer">
@@ -183,7 +183,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <h5 class="modal-title" id="addSubcategoryModal">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -213,7 +213,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <h5 class="modal-title" id="editSubcategoryModal">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -558,6 +558,14 @@
 
             });
 
+            //Add subcategory Button Listener
+            $('#add-subcategory').click(function () {
+
+                $('#addSubcategoryModal').modal('show');
+                var $modal = $('#addSubcategoryModal');
+                $modal.find('.modal-title').text('Add Subcategory') // Change the modal title
+            });
+
             //Edit subcategory Button Listener
             $('#edit-subcategory').click(function () {
                 var $row = subCategoryTable.$('tr.selected');
@@ -652,7 +660,7 @@
                     //$modal.find('.modal-body input').val(rowData[0]);
                     $('#menuitem-image').val(data.value[4]);
                     $('#menuitem-name').val(data.key);
-                    $('#menuitem-price').val('$'+data.value[2]);
+                    $('#menuitem-price').val(data.value[2]);
                     $('#menuitem-size').val(data.value[3]);
                     $('#menuitem-ingredients').val(data.value[1]);
 
@@ -700,15 +708,30 @@
 
             //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
 
-            //Add Category submit listener
-            $('#addCategorySubmit').click(function() {
-                console.log("Test");
-                var categoryName = $('input').value();
-                var categoryDescription = $('textarea').value();
-                console.log(categoryName);
-                console.log(categoryDescription);
+            //Add Category and Edit Category submit listeners
+            $('#addCategorySubmit').on('click', function(e) {
+                console.log("Submit Add Category");
+                //var categoryName = $('#category-name').value();
+                //var categoryDescription = $('category-description').value();
+                //console.log(categoryName);
+                //console.log(categoryDescription);
                 //alert(categoryName + " " + categoryDescription);
-                $('#categoryModal').modal('hide');
+                $('#addCategoryModal').modal('hide');
+            });
+
+            $('#editCategorySubmit').on('click', function (e) {
+                console.log("Submit Edit Category");
+                //Do stuff
+
+                $('#editCategoryModal').modal('hide');
+            });
+
+
+            //Add Subcategory and Edit Subcategory submit listeners.
+            $('#addSubcategorySubmit').on('click', function (e) {
+                console.log("Submit Add Subcategory");
+
+                $('#addSubcategoryModal').modal('hide');
             });
 
         });
