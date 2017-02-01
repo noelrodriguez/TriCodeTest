@@ -93,7 +93,7 @@
 
                 <button id="add-menuitem" class="btn">Add Menu Item</button>
                 <button id="remove-menuitem" class="btn">Remove Menu Item</button>
-                <button id="edit-menuItem" class="btn">Edit Selected Menu Item</button>
+                <button id="edit-menuitem" class="btn">Edit Selected Menu Item</button>
         </div>
     </div>
 </body>
@@ -225,27 +225,47 @@
     </div>
 </div>
 
-@*Confirm Delete Modal*@
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@*Edit Menu Item*@
+<div class="modal fade" id="editMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="menuitemModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you would like to delete this item?
+                <form>
+                    <div class="form-group">
+                        <label for="menuitem-image" class="form-control-label">Menu Item Image</label>
+                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-name" class="form-control-label">Menu Item</label>
+                        <input type="text" class="form-control" id="menuitem-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-price" class="form-control-label">Price</label>
+                        <input type="number" class="form-control" id="menuitem-price" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-size" class="form-control-label">Size</label>
+                        <input type="number" class="form-control" id="menuitem-size" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
+                        <textarea class="form-control" id="menuitem-ingredients"></textarea>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" id="confirmDelete">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="editMenuitemSubmit">Submit</button>
             </div>
         </div>
     </div>
 </div>
-
 
 @*Load datatables css*@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" /> @*Allows use of bootstrapDialog*@
@@ -525,6 +545,28 @@
 
             });
 
+            //Edit subcategory Button Listener
+            $('#edit-subcategory').click(function () {
+                var $row = subCategoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = subCategoryTable.row('tr.selected').data();
+
+                    $('#editSubcategoryModal').modal('show');
+                    var $modal = $('#editSubcategoryModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    $modal.find('.modal-body input').val(rowData[0]);//Add category name
+                    $modal.find('.modal-body textarea').val("EXAMPLE DESCRIPTION FOR SUBCATEGORY")
+
+                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
+
+                    //On close nothing happens
+
+                }
+
+            });
+
             //Remove subcategory Button Listener
             $('#remove-subcategory').click(function () {
                 var $row = subCategoryTable.$('tr.selected');
@@ -574,6 +616,41 @@
                 }
             });
 
+            $('#edit-menuitem').click(function () {
+                var $row = menuItemTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = menuItemTable.row('tr.selected').data();
+                    var data = {};
+                    //Find all information on selected menu item
+                    for (var item in menuItemDictionary)
+                    {
+                        if (menuItemDictionary[item].key == rowData[0])
+                        {
+                            data = menuItemDictionary[item];
+
+                        }
+                    }
+
+                    
+
+                    $('#editMenuitemModal').modal('show');
+                    var $modal = $('#editMenuitemModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    $modal.find('.modal-body input menuitem-name').val(rowData[0]);
+
+                    //$modal.find('.modal-body input').val(rowData[0]);//Add category name
+                    //$modal.find('.modal-body textarea').val("EXAMPLE DESCRIPTION FOR SUBCATEGORY")
+
+                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
+
+                    //On close nothing happens
+
+
+                }
+            });
+
             //Remove menuitem Button Listener
             $('#remove-menuitem').click(function () {
                 var $row = menuItemTable.$('tr.selected');
@@ -604,37 +681,7 @@
                 }
             });
 
-            //Add button listeners
-            //Add category
-            //$('#add-category').click(function () {
-                //Display category Modal
-
-                //Display modal
-               // $('#categoryModal').modal('show');
-                //var $modal = $('#categoryModal');
-                //$modal.find('.modal-title').text('Add Category') // Change the modal title
-
-                // On submit add new category and description to the database, redraw the table from the database, and select the new category
-                //$modal.on('submit', function (e) {
-                //    e.preventDefault();
-                //    $.post('test',
-                //        function (data, status, xhr) {
-                //            alert($('#categorySubmit').value());
-
-                //        });
-                    //alert($('#categorySubmit').val());
-                //});
-                //alert($('#categorySubmit').val());
-                // On close, do nothing.
-
-                //Add Category to Database and Category table remove all items from subcategories and Menu Items
-               @*categoryTable.row.add([
-                    "@categoryList.First().Name",
-                    "@categoryList.First().Description"
-                ]).draw(false);*@
-
-
-           // });
+            //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
 
             //Add Category submit listener
             $('#addCategorySubmit').click(function() {
