@@ -196,11 +196,11 @@
                 <form>
                     <div class="form-group">
                         <label for="subcategory-name" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="subcategory-name">
+                        <input type="text" class="form-control" id="subcategory-name-add">
                     </div>
                     <div class="form-group">
                         <label for="description-text" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="desctiption-text"></textarea>
+                        <textarea class="form-control" id="subcategory-description-add"></textarea>
                     </div>
                 </form>
             </div>
@@ -764,8 +764,21 @@
             //Add Subcategory and Edit Subcategory submit listeners.
             $('#addSubcategorySubmit').on('click', function (e) {
                 console.log("Submit Add Subcategory");
+                
+                var subCategoryName = $('#subcategory-name-add').val();
+                var subCategoryDescription = $('#subcategory-description-add').val();
+                console.log(subCategoryName);
+                console.log(subCategoryDescription);
+
 
                 $('#addSubcategoryModal').modal('hide');
+            });
+
+            $('#editSubcategorySubmit').on('click', function (e) {
+                console.log("Submit Edit Subcategory");
+
+
+                $('#editSubcategoryModal').modal('hide');
             });
 
         });
