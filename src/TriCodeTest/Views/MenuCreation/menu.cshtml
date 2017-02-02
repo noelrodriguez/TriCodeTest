@@ -126,11 +126,11 @@
                 <form>
                     <div class="form-group">
                         <label for="category-name" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="category-name">
+                        <input type="text" class="form-control" id="category-name-add">
                     </div>
                     <div class="form-group">
                         <label for="description-text" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="desctiption-text"></textarea>
+                        <textarea class="form-control" id="category-description-add"></textarea>
                     </div>
                     @*<div>
                             <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
@@ -158,12 +158,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="category-name" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="category-name">
+                        <label for="category-id-edit" class="form-control-label">Category ID</label>
+                        <input type="text" class="form-control" id="category-id-edit" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="category-name-edit" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="category-name-edit">
                     </div>
                     <div class="form-group">
                         <label for="description-text" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="desctiption-text"></textarea>
+                        <textarea class="form-control" id="category-description-edit"></textarea>
                     </div>
                     @*<div>
                             <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
@@ -470,16 +474,20 @@
                 {
                     var rowData = categoryTable.row('tr.selected').data();
 
+                    var data = {};
+                    //Find all information on selected menu item
+                    for (var item in categoryDictionary) {
+                        if (categoryDictionary[item].key == rowData[0]) {
+                            data = categoryDictionary[item];
+                        }
+                    }
+
                     $('#editCategoryModal').modal('show');
                     var $modal = $('#editCategoryModal');
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
-                    $modal.find('.modal-body input').val(rowData[0]);//Add category name
-                    $modal.find('.modal-body textarea').val(rowData[1] + "EXAMPLE DESCRIPTION") //Add Category Description to Description box????
-                    
-                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
-
-                    //On close nothing happens
-
+                    $('#category-id-edit').val(data.value[2]);
+                    $('#category-name-edit').val(data.key);
+                    $modal.find('.modal-body textarea').val(rowData[1]) //Add Category Description to Description box
                 }
                 
             });
@@ -711,17 +719,43 @@
             //Add Category and Edit Category submit listeners
             $('#addCategorySubmit').on('click', function(e) {
                 console.log("Submit Add Category");
-                //var categoryName = $('#category-name').value();
-                //var categoryDescription = $('category-description').value();
-                //console.log(categoryName);
-                //console.log(categoryDescription);
-                //alert(categoryName + " " + categoryDescription);
+                //====================UNCOMMENT THIS ONCE CONTROLLER IS SETUP================================
+                //Post to MenuCreationController/AddCategory
+                //$.post("MenuCreationController/AddCategory", { CategoryName: $('#category-name-add').val(), CategoryDescription: $('#category-description-add').val() }, function (data) {
+                //    //Post data to the database
+                //})
+                //    .done(function () {
+                //        //On Successfully updating Database update the Category table wit the new Category
+                //    })
+                //    .fail(function () {
+                //        //On Failing to update the database indicate this to the user
+                //    });
+                var categoryName = $('#category-name-add').val();
+                var categoryDescription = $('#category-description-add').val();
+                console.log(categoryName);
+                console.log(categoryDescription);
                 $('#addCategoryModal').modal('hide');
             });
 
             $('#editCategorySubmit').on('click', function (e) {
                 console.log("Submit Edit Category");
-                //Do stuff
+
+                var categoryName = $('#category-name-edit').val();
+                var categoryDescription = $('#category-description-edit').val();
+                var categoryId = $('#category-id-edit').val();
+                //Post to MenuCreationController/EditCategory
+                //$.post("MenuCreationController/EditCategory", { CategoryID: categoryId, CategoryName: categoryName, CategoryDescription: categoryDescription }, function (data) {
+
+                //})
+                //    .done(function () {
+                //        //On successfully updating Database, update the category with the new information.
+                //    })
+                //    .fail(function () {
+                //        //On Failing to update the category indicate this to the user.
+                //});
+                console.log("Category Name: " + categoryName);
+                console.log("Category Description: " + categoryDescription);
+                console.log("Category id: " + categoryId);
 
                 $('#editCategoryModal').modal('hide');
             });
