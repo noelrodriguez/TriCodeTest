@@ -77,7 +77,7 @@
                 @String.Format("{0:t}", item.DateTime)
             </td>
             <td>
-                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name);
+                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
