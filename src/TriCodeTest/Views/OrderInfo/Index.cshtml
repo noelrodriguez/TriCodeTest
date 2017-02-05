@@ -77,7 +77,7 @@
                 @String.Format("{0:t}", item.DateTime)
             </td>
             <td>
-                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name);
+                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
@@ -89,8 +89,8 @@
                 @String.Format("{0:c}", item.TotalPrice)
             </td>
             <td>
-                <a onclick="openModal(@JsonConvert.SerializeObject(item))">Order Details</a> | 
-                <a asp-action="Edit" asp-route-id="@item.Id">Status</a>
+                @*<a onclick="openModal(@JsonConvert.SerializeObject(item))">Order Details</a> |*@ 
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default">Status</a>
             </td>
         </tr>
 }
@@ -101,6 +101,7 @@
 {   
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <script>
+    var allOrders = @Html.Raw(JsonConvert.SerializeObject(Model));
     var table;
     var row;
     var status;
@@ -112,9 +113,11 @@
             "bFilter": false
         });
         
-        // This is functionality for clickin on a row of the DataTable. NOT IMPLEMENTED RIGHT NOW
-        $('#example tbody').on('click', 'tr', function () {
+        // This is functionality for clickin on a row of the DataTable
+        // Clicking on a row opens the order's details
+        $('#example tbody').on('click', 'td:not(:last-child)', function () {
             row = table.row(this).data();
+            openModal(allOrders[table.row(this).index()]);
         });
 
         // Code to get in line status update working. NOT IMPLEMENTED RIGHT NOW
@@ -129,7 +132,6 @@
     // Displays the detailed information of the Order for its AddOns and modified Ingredients
     function openModal(order)
     {
-        console.log(order);
         var itemHTML = $("#orderItem");
         itemHTML.empty();
         var orderModal = $("#orderModal");
@@ -139,7 +141,7 @@
         for (var i = 0; i < order.OrderMenuItems.length; i++)
         {
             if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length != 0) {
-                itemHTML.append("<li id='itemIngredients'></li>");
+                itemHTML.append("<li id='itemIngredients'>Ingredients: </li>");
                 var ingredientsHTML = $("#itemIngredients");
                 itemHTML.prepend("<strong>" + order.OrderMenuItems[i].MenuItem.Name + "</strong>");
                 for (var j = 0; j < order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length; j++) {
@@ -157,7 +159,7 @@
                 }
             }
             if (order.OrderMenuItems[i].AddOns.length != 0) {
-                itemHTML.append("<li id='itemAddOns'></li>");
+                itemHTML.append("<li id='itemAddOns'>Add-ons: </li>");
                 var addonsHTML = $("#itemAddOns");
                 for (var j = 0; j < order.OrderMenuItems[i].AddOns.length; j++) {
                     var addons = order.OrderMenuItems[i].AddOns[j];

@@ -18,7 +18,7 @@
         <div class="form-group">
             <label asp-for="Status" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
+                <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
                 <span asp-validation-for="Status" class="text-danger" />
             </div>
         </div>
@@ -35,5 +35,10 @@
 </div>
 
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#statuses option[value=0]").remove();
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
