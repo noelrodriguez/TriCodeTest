@@ -72,7 +72,7 @@ namespace TriCodeTest.Controllers
                     }
                     else
                     {
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToLocal(returnUrl); // This will navigate to the customers view
                     }
                 }
                 if (result.RequiresTwoFactor)
@@ -181,7 +181,8 @@ namespace TriCodeTest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created with password and assigned a role");
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
                 }
                 AddErrors(result);
             }

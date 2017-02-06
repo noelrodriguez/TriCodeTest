@@ -82,7 +82,7 @@ namespace TriCodeTest
             {
                 routes.MapRoute(
                     name: "default", 
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
 
             // To seed the database
