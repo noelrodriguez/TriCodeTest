@@ -1,80 +1,71 @@
 ﻿@model IndexViewModel
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6 col-md-offset-3">
-            <div class="card" style="padding-bottom: 20px">
-                <div class="card-block">
-                    <div class="text-center">
-                        <h3 style="padding-top:20px"><i class="fa fa-pencil"></i> Change your account settings</h3>
-                            <hr class="mt-2 mb-2">
+@{
+    ViewData["Title"] = "Manage your account";
+}
 
-                            <dl class="dl-horizontal">
-                                <dt>First Name:</dt>
-                                <dd>
-                                    @(Model.FirstName ?? "None")
-                                    @if (Model.FirstName != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="SetFirstName" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        {
-                                            <a asp-controller="Manage" asp-action="SetFirstName" class="btn-bracketed btn-raised">Add</a>
-                                        }
+<h2>@ViewData["Title"].</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
 
-                                    }
-
-                                </dd>
-                                <dt>Last Name:</dt>
-                                <dd>
-                                    @(Model.LastName ?? "None")
-                                    @if (Model.LastName != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="SetLastName" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        {
-                                            <a asp-controller="Manage" asp-action="SetLastName" class="btn-bracketed btn-raised">Add</a>
-                                        }
-                                    }
-                                </dd>
-                                <dt>Password:</dt>
-                                <dd>
-
-                                    @if (Model.HasPassword)
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            @if (Model.HasPassword)
             {
-                                        <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
-                                    }
-                                </dd>
+                <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
+            }
+            else
+            {
+                <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
+            }
+        </dd>
+        <dt>External Logins:</dt>
+        <dd>
 
-                                <dt>Phone Number:</dt>
-                                <dd>
-                                    @(Model.PhoneNumber ?? "None")
-                                    @if (Model.PhoneNumber != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Change</a>
-                                        <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post"></form>
-                                    }
-                                    else
-                                    {
-                                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
-                                    }
+            @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
+        </dd>
+        <dt>Phone Number:</dt>
+        <dd>
+            <p>
+                Phone Numbers can used as a second factor of verification in two-factor authentication.
+                See <a href="http://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+            </p>
+            @*@(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Change</a>
+                    <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
+                        [<button type="submit" class="btn-link">Remove</button>]
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
+                }*@
+        </dd>
 
-                                </dd>
-                            </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <dt>Two-Factor Authentication:</dt>
+        <dd>
+            <p>
+                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                for setting up this application to support two-factor authentication.
+            </p>
+            @*@if (Model.TwoFactor)
+                {
+                    <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
+                        Enabled <button type="submit" class="btn-link btn-bracketed">Disable</button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
+                        <button type="submit" class="btn-link btn-bracketed">Enable</button> Disabled
+                    </form>
+                }*@
+        </dd>
+    </dl>
 </div>
-
-
