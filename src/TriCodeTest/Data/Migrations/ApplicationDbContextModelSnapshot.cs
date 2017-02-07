@@ -256,7 +256,7 @@ namespace TriCodeTest.Data.Migrations
 
                     b.Property<int>("IngredientId");
 
-                    b.HasKey("MenuItemId", "IngredientId");
+                    b.HasKey("MenuItemId");
 
                     b.HasIndex("IngredientId");
 

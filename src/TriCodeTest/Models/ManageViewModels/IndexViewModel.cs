@@ -13,9 +13,6 @@ namespace TriCodeTest.Models.ManageViewModels
         public IList<UserLoginInfo> Logins { get; set; }
 
         public string PhoneNumber { get; set; }
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
 
         public bool TwoFactor { get; set; }
 

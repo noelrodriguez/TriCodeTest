@@ -9,21 +9,6 @@ namespace TriCodeTest.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "FirstName")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "LastName")]
-        public string LastName { get; set; }
-
-        [Required]
-        [Phone]
-        [Display(Name = "Phone")]
-        public string Phone { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

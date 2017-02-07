@@ -1,4 +1,4 @@
-{
+﻿{
   "userSecretsId": "aspnet-TriCodeTest-4c260973-06b4-422a-a39c-29ba17c5fbc2",
 
   "dependencies": {
@@ -43,8 +43,7 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    },
-    "FontAwesome": "4.7.0"
+    }
   },
 
   "tools": {
