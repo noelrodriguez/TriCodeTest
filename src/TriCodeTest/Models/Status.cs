@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace TriCodeTest.Models
 {
@@ -9,7 +10,9 @@ namespace TriCodeTest.Models
     {
         Cart,
         Received,
+        [Display(Name = "In Progress")]
         In_Progress,
+        [Display(Name = "Pick Up")]
         Pick_Up,
         Completed
     }
