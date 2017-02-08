@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
+using Microsoft.AspNetCore.Authorization;
 using TriCodeTest.Models.MenuModels;
 using TriCodeTest.Models.MenuViewModels;
 
 namespace TriCodeTest.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MenuCreationController : Controller
     {
         private readonly ApplicationDbContext _context;
-
         public MenuCreationController(ApplicationDbContext context)
         {
             _context = context;
