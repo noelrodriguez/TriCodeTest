@@ -1,5 +1,5 @@
---temp-output:C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\bin\src\TriCodeTest\obj\Debug\netcoreapp1.0\
---out:C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\bin\src\TriCodeTest\bin\Debug\netcoreapp1.0\TriCodeTest.dll
+--temp-output:C:\Users\Alex\Desktop\CleanVersion\TriCodeTest\src\TriCodeTest\bin\src\TriCodeTest\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Alex\Desktop\CleanVersion\TriCodeTest\src\TriCodeTest\bin\src\TriCodeTest\bin\Debug\netcoreapp1.0\TriCodeTest.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -229,18 +229,13 @@ C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Startup.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Controllers\AccountController.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Controllers\HomeController.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Controllers\ManageController.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Controllers\MenuCreationController.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Controllers\OrderInfoController.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\ApplicationDbContext.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\DbInitializer.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170114024944_ModelsCreation.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170114024944_ModelsCreation.Designer.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170120044944_NameForApplicationUser.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170120044944_NameForApplicationUser.Designer.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170123014657_MenuItemIngredientsKey.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\20170123014657_MenuItemIngredientsKey.Designer.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\ApplicationUser.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\Option.cs
@@ -268,7 +263,6 @@ C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\MenuModels\Ingred
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\MenuModels\MenuItem.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\MenuModels\MenuItemIngredients.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\MenuModels\Subcategory.cs
-C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\MenuViewModels\MenuCreationViewModel.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\OrderModels\Order.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\OrderModels\OrderInfo.cs
 C:\src_project\FinalProject\TriCodeTest\src\TriCodeTest\Models\OrderModels\OrderMenuItem.cs
