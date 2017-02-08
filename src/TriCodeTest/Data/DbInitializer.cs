@@ -22,7 +22,7 @@ namespace TriCodeTest.Data
 
             // This is the code used to create an Order (Creates an order with multiple number of same items right now, used for testing)
             //Add Order
-            /*var Szliard = context.Users.Where(x => x.Email == "szilard@szilardtechcom").FirstOrDefault();  // Account you choose to link it to
+            var Szliard = context.Users.Where(x => x.Email == "szilard@szilardtechcom").FirstOrDefault();  // Account you choose to link it to
 
              Order MyOrder = new Order()
              {
@@ -107,14 +107,14 @@ namespace TriCodeTest.Data
 
              OrderInfo DBOrder = new OrderInfo()
              {
-                 User = Noel,
+                 User = Szliard,
                  DateTime = System.DateTime.Now,
                  Status = Models.Status.Received,
                  TotalPrice = total,
                  OrderMenuItems = json
              };
 
-             context.OrderInfo.Add(DBOrder);*/
+             context.OrderInfo.Add(DBOrder);
 
 
             // Beginning to add a complete set of dummy data
