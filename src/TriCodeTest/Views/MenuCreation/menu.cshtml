@@ -561,7 +561,16 @@
                         }, {
                             label: 'Remove',
                             action: function (dialog) {
-                                categoryTable.row('.selected').remove().draw(false);
+
+                                for (var item in categoryDictionary) {
+                                    if (categoryDictionary[item].key.toString() == rowData[0]) {
+                                        categoryDictionary.splice(item, 1); //Remove item from dictionary
+                                    }
+
+                                }
+                                updateCategoryTable();
+
+                                //categoryTable.row('.selected').remove().draw(false);
                                 //Close the Dialog
                                 dialog.close();
 
@@ -676,7 +685,19 @@
                         }, {
                             label: 'Remove',
                             action: function (dialog) {
-                                subCategoryTable.row('.selected').remove().draw(false);
+
+                                for (var item in subCategoryDictionary)
+                                {
+                                    if (subCategoryDictionary[item].key.toString() == rowData[0])
+                                    {
+                                        subCategoryDictionary.splice(item, 1); //Remove item from dictionary
+                                    }
+
+                                }
+
+                                //TODO: REMOVE menu items attached to this item
+                                updateSubcategoryTable();
+                                //subCategoryTable.row('.selected').remove().draw(false);
                                 //Close the Dialog
                                 dialog.close();
 
@@ -763,7 +784,17 @@
                         }, {
                             label: 'Remove',
                             action: function (dialog) {
-                                menuItemTable.row('.selected').remove().draw(false);
+                                for (var item in menuItemDictionary)
+                                {
+                                    if (menuItemDictionary[item].key.toString() == rowData[0])
+                                    {
+                                        menuItemDictionary.splice(item, 1); //Remove item from dictionary
+                                    }
+
+                                }
+                                updateMenuitemTable();
+                                //menuItemTable.row('.selected').remove().draw(false);
+
                                 //Close the Dialog
                                 dialog.close();
 
@@ -1071,11 +1102,11 @@
 
                 }
 
-                updateSubcategoryTable(); //Call function to update the subcategory table
+                updateMenuitemTable(); //Call function to update the menu item table
 
 
 
-                $('editMenuitemModal').modal('hide');
+                $('#editMenuitemModal').modal('hide');
             });
 
 
