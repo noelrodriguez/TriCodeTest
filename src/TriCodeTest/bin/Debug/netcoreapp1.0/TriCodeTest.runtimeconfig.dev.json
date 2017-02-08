@@ -1,7 +1,11 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\cosmost\\.nuget\\packages"
+=======
+      "C:\\Users\\westo\\.nuget\\packages"
+>>>>>>> merging-all
     ]
   }
 }
