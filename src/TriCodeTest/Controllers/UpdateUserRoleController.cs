@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TriCodeTest.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using TriCodeTest.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,20 +21,26 @@ namespace TriCodeTest.Controllers
     {
 
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly RoleManager<ApplicationUser> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _context;
         public UpdateUserRoleController(
-            UserManager<ApplicationUser> userManager,
+            UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager,
             ApplicationDbContext context)
         {
             _userManager = userManager;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
             _context = context;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var users = _userManager.Users.ToList();
+            UpdateUserRoleViewModel model = new UpdateUserRoleViewModel()
+            {
+                Users = _userManager.Users.Include(u => u.Roles).ToList(),
+                Roles = _roleManager.Roles.ToList()
+            };
+            var users = _userManager.Users.Include(u => u.Roles).ToList();
+            var test = _roleManager.Roles.ToList();
             var roles = _context.Roles.ToList();
             var userRoles = _context.UserRoles.ToList();
 
@@ -42,7 +49,7 @@ namespace TriCodeTest.Controllers
 
             //var roles = _roleManager.Roles.ToList();
             //var roles = _userManager.GetUsersInRoleAsync(users.);
-            return View(users);
+            return View(model);
         }
 
         public ActionResult UpdateUserRole()

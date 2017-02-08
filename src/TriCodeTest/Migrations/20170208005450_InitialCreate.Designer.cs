@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using TriCodeTest.Data;
 
-namespace TriCodeTest.Data.Migrations
+namespace TriCodeTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170208005450_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -219,8 +220,6 @@ namespace TriCodeTest.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Option");
-
                     b.HasKey("Id");
 
                     b.ToTable("Ingredient");
@@ -239,8 +238,6 @@ namespace TriCodeTest.Data.Migrations
 
                     b.Property<double>("Price");
 
-                    b.Property<int?>("Size");
-
                     b.Property<int>("SubcategoryId");
 
                     b.HasKey("Id");
@@ -256,7 +253,7 @@ namespace TriCodeTest.Data.Migrations
 
                     b.Property<int>("IngredientId");
 
-                    b.HasKey("MenuItemId");
+                    b.HasKey("MenuItemId", "IngredientId");
 
                     b.HasIndex("IngredientId");
 

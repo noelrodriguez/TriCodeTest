@@ -67,7 +67,15 @@ namespace TriCodeTest.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    ApplicationUser user = await _userManager.FindByNameAsync(model.Email);
+                    if (await _userManager.IsInRoleAsync(user, "Admin") || await _userManager.IsInRoleAsync(user, "Staff") )
+                    {
+                        return RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl); // This will navigate to the customers view
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -175,7 +183,8 @@ namespace TriCodeTest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created with password and assigned a role");
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
                 }
                 AddErrors(result);
             }
@@ -192,7 +201,7 @@ namespace TriCodeTest.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(AccountController.Login), "Account");
         }
 
         //
