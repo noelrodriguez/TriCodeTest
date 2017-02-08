@@ -1,0 +1,113 @@
+@model IEnumerable<TriCodeTest.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "UpdateUserRole Index";
+}
+
+<h2>UpdateUserRole Index</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+
+<style>
+    tr {
+        cursor: default;
+    }
+
+    .highlight {
+        background: #ffd800;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    #myInput {
+        width: 100%; /* Full-width */
+        font-size: 16px; /* Increase font-size */
+        padding: 12px 20px 12px 40px; /* Add some padding */
+        border: 1px solid #ddd; /* Add a grey border */
+        margin-top: 25px;
+        margin-bottom: 20px; /* Add some space below the input */
+    }
+</style>
+
+<table id="userTable" class="display">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var u in Model){
+    <tr>
+        <td>
+            @u.FirstName
+        </td>
+        <td>
+            @u.LastName
+        </td>
+        <td>
+            @u.Email
+        </td>
+        <td>
+          
+        </td>
+       
+            @*@foreach (var role in u.Roles)
+            {
+               
+
+            }*@
+                    @*<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Edit Role</a>*@
+    </tr>
+}
+    </tbody>
+</table>
+
+<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Change User Roles</a>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("userTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
