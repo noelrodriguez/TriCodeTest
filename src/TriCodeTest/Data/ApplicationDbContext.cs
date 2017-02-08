@@ -32,5 +32,6 @@ namespace TriCodeTest.Data
         public DbSet<AddOn> AddOn { get; set; }
         public DbSet<MenuItemIngredients> MenuItemIngredients { get; set; }
         public DbSet<OrderInfo> OrderInfo { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
