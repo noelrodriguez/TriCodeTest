@@ -15,7 +15,6 @@
 </head>
 <body>
     <h2>Menu Management</h2>
-    <p>Test of menu creation page</p>
     <div style="display:inline-block;width:100%;">
         @*Category Table*@
         <div style="float:left;width:30%;padding-right:10px" class="table-bordered">
@@ -225,12 +224,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="subcategory-name" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="subcategory-name">
+                        <label for="subcategory-id-edit" class="form-control-label">Subcategory ID</label>
+                        <input type="text" class="form-control" id="subcategory-id-edit" readonly />
                     </div>
                     <div class="form-group">
-                        <label for="description-text" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="desctiption-text"></textarea>
+                        <label for="subcategory-name-edit" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="subcategory-name-edit">
+                    </div>
+                    <div class="form-group">
+                        <label for="subcategory-description-edit" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="subcategory-description-edit"></textarea>
                     </div>
                 </form>
             </div>
@@ -242,12 +245,12 @@
     </div>
 </div>
 
-@*Edit Menu Item*@
-<div class="modal fade" id="editMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="menuitemModalLabel" aria-hidden="true">
+@*Add Menu Item*@
+<div class="modal fade" id="addMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="addMenuitemModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModal">Edit</h5>
+                <h5 class="modal-title" id="addMenuitemModal">Add Menu Item</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -255,24 +258,70 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="menuitem-image" class="form-control-label">Menu Item Image</label>
-                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image" />
+                        <label for="menuitem-image-add" class="form-control-label">Menu Item Image</label>
+                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-add" />
                     </div>
                     <div class="form-group">
-                        <label for="menuitem-name" class="form-control-label">Menu Item</label>
-                        <input type="text" class="form-control" id="menuitem-name">
+                        <label for="menuitem-name-add" class="form-control-label">Menu Item</label>
+                        <input type="text" class="form-control" id="menuitem-name-add">
                     </div>
                     <div class="form-group">
-                        <label for="menuitem-price" class="form-control-label">Price</label>
-                        <input type="number" class="form-control" id="menuitem-price" />
+                        <label for="menuitem-price-add" class="form-control-label">Price</label>
+                        <input type="number" class="form-control" id="menuitem-price-add" />
                     </div>
                     <div class="form-group">
-                        <label for="menuitem-size" class="form-control-label">Size</label>
-                        <input type="number" class="form-control" id="menuitem-size" />
+                        <label for="menuitem-size-add" class="form-control-label">Size</label>
+                        <input type="number" class="form-control" id="menuitem-size-add" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-ingredients-add" class="form-control-label">Ingredients</label>
+                        <textarea class="form-control" id="menuitem-ingredients-add"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addMenuitemSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Menu Item*@
+<div class="modal fade" id="editMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="menuitemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMenuitemModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
+                        <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-image-edit" class="form-control-label">Menu Item Image</label>
+                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-edit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-name-edit" class="form-control-label">Menu Item</label>
+                        <input type="text" class="form-control" id="menuitem-name-edit">
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-price-edit" class="form-control-label">Price</label>
+                        <input type="number" class="form-control" id="menuitem-price-edit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-size-edit" class="form-control-label">Size</label>
+                        <input type="number" class="form-control" id="menuitem-size-edit" />
                     </div>
                     <div class="form-group">
                         <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
-                        <textarea class="form-control" id="menuitem-ingredients"></textarea>
+                        <textarea class="form-control" id="menuitem-ingredients-edit"></textarea>
                     </div>
                 </form>
             </div>
@@ -407,7 +456,7 @@
             $('#categories tbody').on('click', 'tr', function () {
                 //Variable to hold selected Category row data
                 var rowData = categoryTable.row(this).data();
-  
+
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
                 }
@@ -469,7 +518,7 @@
             $('#edit-category').click(function () {
                 //Check if a row is selected. If not don't show modal
                 var $row = categoryTable.$('tr.selected');
-               
+
                 if ($row.length)
                 {
                     var rowData = categoryTable.row('tr.selected').data();
@@ -489,7 +538,7 @@
                     $('#category-name-edit').val(data.key);
                     $modal.find('.modal-body textarea').val(rowData[1]) //Add Category Description to Description box
                 }
-                
+
             });
 
             //Remove Category Button Listener
@@ -582,10 +631,22 @@
                 {
                     var rowData = subCategoryTable.row('tr.selected').data();
 
+                    var data = {};
+                    //Find all information on selected subcategory
+                    for (var item in subCategoryDictionary) {
+                        if (subCategoryDictionary[item].key == rowData[0]) {
+                            data = subCategoryDictionary[item];
+                        }
+                    }
+
+
+
+
                     $('#editSubcategoryModal').modal('show');
                     var $modal = $('#editSubcategoryModal');
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
-                    $modal.find('.modal-body input').val(rowData[0]);//Add category name
+                    $('#subcategory-id-edit').val(data.value[5]);
+                    $('#subcategory-name-edit').val(data.key);
                     $modal.find('.modal-body textarea').val("EXAMPLE DESCRIPTION FOR SUBCATEGORY")
 
                     //On submit modal will submit data to database to be changed and redraw the table with the edited data.
@@ -626,7 +687,7 @@
                 }
             });
 
-            //Addons Table Functions, These functions control the functionality and look and feel of the menu data tables
+            //Menu Item Table Functions, These functions control the functionality and look and feel of the menu data tables
             var menuItemTable = $('#menuitem').DataTable({
                 "paging": false,
                 "info": false,
@@ -645,6 +706,11 @@
                 }
             });
 
+            $('#add-menuitem').click(function () {
+                $('#addMenuitemModal').modal('show');
+                console.log('TEST');
+            });
+
             $('#edit-menuitem').click(function () {
                 var $row = menuItemTable.$('tr.selected');
 
@@ -657,28 +723,22 @@
                     {
                         if (menuItemDictionary[item].key == rowData[0])
                         {
-                            data = menuItemDictionary[item];        
+                            data = menuItemDictionary[item];
                         }
                     }
-                    
+                    console.log("edit menu item modal show");
+                    console.log("menu item name: " + data.key);
 
                     $('#editMenuitemModal').modal('show');
                     var $modal = $('#editMenuitemModal');
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
                     //$modal.find('.modal-body input').val(rowData[0]);
-                    $('#menuitem-image').val(data.value[4]);
-                    $('#menuitem-name').val(data.key);
-                    $('#menuitem-price').val(data.value[2]);
-                    $('#menuitem-size').val(data.value[3]);
-                    $('#menuitem-ingredients').val(data.value[1]);
-
-
-                    //$modal.find('.modal-body input').val(rowData[0]);//Add category name
-                    //$modal.find('.modal-body textarea').val("EXAMPLE DESCRIPTION FOR SUBCATEGORY")
-
-                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
-
-                    //On close nothing happens
+                    $('#menuitem-id-edit').val(data.value[6])
+                    $('#menuitem-image-edit').val(data.value[4]);
+                    $('#menuitem-name-edit').val(data.key);
+                    $('#menuitem-price-edit').val(data.value[2]);
+                    $('#menuitem-size-edit').val(data.value[3]);
+                    $('#menuitem-ingredients-edit').val(data.value[1]);
 
 
                 }
@@ -714,6 +774,68 @@
                 }
             });
 
+            //===============Update Menu Table Functions=================================
+
+
+            function updateCategoryTable() {
+                //Clear Category and menuItem tables
+                categoryTable.clear();
+                categoryTable.draw();
+                subCategoryTable.clear();
+                subCategoryTable.draw();
+                menuItemTable.clear();
+                menuItemTable.draw();
+
+                //Iterate over all the subcategories in subCategoryDictionary and find
+                //those with the same Category as the one currently selected
+                for (var item in categoryDictionary) {
+                    //Add Category to Database and Category table remove all items from subcategories and Menu Items
+                categoryTable.row.add([
+                    categoryDictionary[item].key,
+                    categoryDictionary[item].value[1]
+                ]).draw(false);
+                }
+            }
+
+            //Function to update subCategoryTable
+            function updateSubcategoryTable() {
+                subCategoryTable.clear();
+                subCategoryTable.draw(); // redraws table with no data
+                menuItemTable.clear();
+                menuItemTable.draw(); // redraws table with no data
+
+                var selectedCategory = categoryTable.row('tr.selected').data(); //Returns array of data that is currently selected in the categoryTable
+
+                for (var item in subCategoryDictionary) {
+                    console.log(subCategoryDictionary[item]);
+                    if (subCategoryDictionary[item].value[0].toString() == selectedCategory[0].toString())
+                    {
+                        //Add new menuItem to the table
+                        //menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                        subCategoryTable.row.add([subCategoryDictionary[item].key]).draw( false );
+                    }
+
+                }
+            }
+
+            //Function to update menu item table when a new item has been added to the menuItemDictionary
+            function updateMenuitemTable() {
+                menuItemTable.clear();
+                menuItemTable.draw();
+
+                var selectedSubcategory = subCategoryTable.row('tr.selected').data(); //Returns array of data that is currently selected inthe subCategoryTable
+
+                for (var item in menuItemDictionary) {
+
+                    if (menuItemDictionary[item].value[0].toString() == selectedSubcategory[0].toString())
+                    {
+                        menuItemTable.row.add([menuItemDictionary[item].key, menuItemDictionary[item].value[2]]).draw( false );
+                    }
+
+                }
+            }
+
+
             //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
 
             //Add Category and Edit Category submit listeners
@@ -734,6 +856,16 @@
                 var categoryDescription = $('#category-description-add').val();
                 console.log(categoryName);
                 console.log(categoryDescription);
+
+                //Demo Display
+                categoryDictionary.push({
+                    key: categoryName,
+                    value: ["",
+                            categoryDescription,
+                            Math.floor((Math.random() * 10 ) + 21)] //Temporary
+                });
+
+                updateCategoryTable();
                 $('#addCategoryModal').modal('hide');
             });
 
@@ -757,6 +889,23 @@
                 console.log("Category Description: " + categoryDescription);
                 console.log("Category id: " + categoryId);
 
+                //Demo Display
+
+                //var selectedCategory = categoryTable.$('tr.selected').data();
+                //updated selected item with the new data
+                for (var item in categoryDictionary)
+                {
+                    //Find the selected item and change its values according to the new data.
+                    //TODO: VALIDATE
+                    if (categoryDictionary[item].value[2] == categoryId)
+                    {
+                        categoryDictionary[item].key = categoryName;
+                        categoryDictionary[item].value[1] = categoryDescription;
+                    }
+
+                }
+
+                updateCategoryTable();
                 $('#editCategoryModal').modal('hide');
             });
 
@@ -764,11 +913,46 @@
             //Add Subcategory and Edit Subcategory submit listeners.
             $('#addSubcategorySubmit').on('click', function (e) {
                 console.log("Submit Add Subcategory");
-                
-                var subCategoryName = $('#subcategory-name-add').val();
-                var subCategoryDescription = $('#subcategory-description-add').val();
-                console.log(subCategoryName);
-                console.log(subCategoryDescription);
+
+                var subcategoryName = $('#subcategory-name-add').val();
+                var subcategoryDescription = $('#subcategory-description-add').val();
+                //Post to MenuCreationController/AddSubcategory
+                //$.post("MenuCreationController/AddSubcategory", { SubcategoryName : subcategoryName, SubcategoryDescription : subcategoryDescription }, function (data) {
+
+                //})
+                //    .done(function () {
+                //        //On successfully adding new subcategory to the database.
+                //})
+                //    .fail(function () {
+                //        //On failing to add a new subcategory to the database. Indicate this to the user.
+                //});
+
+                console.log(subcategoryName);
+                console.log(subcategoryDescription);
+
+                var selectedCategory = categoryTable.row('tr.selected').data();
+                selectedCategoryData = {};
+                for (var item in categoryDictionary)
+                {
+                    if (categoryDictionary[item].key.toString() == selectedCategory[0])
+                    {
+                        console.log(categoryDictionary[item]);
+                        selectedCategoryData = categoryDictionary[item];
+
+                    }
+
+                }
+                //Demo Display
+                subCategoryDictionary.push({
+                    key: subcategoryName,
+                    value: [selectedCategory[0], //selected category name
+                            "", //menuitems
+                            "", //addons
+                            subcategoryDescription,
+                            selectedCategoryData.value[2],
+                            Math.floor((Math.random() * 10 ) + 11)]
+                });
+                updateSubcategoryTable();
 
 
                 $('#addSubcategoryModal').modal('hide');
@@ -777,9 +961,123 @@
             $('#editSubcategorySubmit').on('click', function (e) {
                 console.log("Submit Edit Subcategory");
 
+                var subcategoryID = $('#subcategory-id-edit').val();
+                var subcategoryName = $('#subcategory-name-edit').val();
+                var subcategoryDescription = $('#subcategory-description-edit').val();
+                //Post to MenuCreationController/EditSubcategory
+                //$.post("MenuCreationController/EditSubcategory", {SubcategoryID : subcategoryID, SubcategoryName : subcategoryName, SubcategoryDescription : subcategoryDescription}, function (data) {
+
+                //})
+                //    .done(function () {
+                //        //On successfully editing subcategory to the database update the table
+                //})
+                //    .fail(function () {
+                //        //On failure to edit the item... Tell the user.
+                //});
+
+                console.log(subcategoryID);
+                console.log(subcategoryName);
+                console.log(subcategoryDescription);
+
+                //Demo Display!
+                for (var item in subCategoryDictionary) {
+                    //Find the selected item and change its values according to the new data.
+                    //TODO: VALIDATE
+                    if (subCategoryDictionary[item].value[5] == subcategoryID) {
+                        subCategoryDictionary[item].key = subcategoryName;
+                        subCategoryDictionary[item].value[3] = subcategoryDescription;
+                    }
+
+                }
+
+                updateSubcategoryTable(); //Call function to update the subcategory table
+
+
 
                 $('#editSubcategoryModal').modal('hide');
             });
+
+            //Add and Edit Menu Item Submit button listeners
+            $('#addMenuitemSubmit').on('click', function (e) {
+                console.log("Submit Add Menu Item");
+
+                var menuitemImage = $('#menuitem-image-add').val();
+                var menuitemName = $('#menuitem-name-add').val();
+                var menuitemPrice = $('#menuitem-price-add').val();
+                var menuitemSize = $('#menuitem-size-add').val();
+                var menuitemIngredients = $('#menuitem-ingredients-add').val();
+                //POST REQUEST GOES HERE MenuCreationController/AddMenuItem
+
+
+
+                console.log(menuitemImage);
+                console.log(menuitemName);
+                console.log(menuitemPrice);
+                console.log(menuitemSize);
+                console.log(menuitemIngredients);
+
+
+                //Demo Stuff
+                //Steps: get the selected Category, push data to the dictionary
+                var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                selectedData = {};
+                for (var item in subCategoryDictionary) {
+                    if (subCategoryDictionary[item].key.toString() == selectedSubcategory[0]) {
+
+                        selectedData = subCategoryDictionary[item];
+
+                    }
+
+                }
+                //Demo Display
+                menuItemDictionary.push({
+                    key: menuitemName,
+                    value: [selectedData.key,
+                            "", //Menu Item Ingredients
+                            menuitemPrice,
+                            menuitemSize,
+                            menuitemImage,
+                            selectedData.value[6],
+                            Math.floor((Math.random() * 10 ) + 34)]
+                });
+                updateMenuitemTable();
+
+
+
+                $('#addMenuitemModal').modal('hide');
+
+            });
+
+            $('#editMenuitemSubmit').on('click', function (e) {
+                console.log("Submit Edit Menu Item");
+
+                var menuitemID = $('#menuitem-id-edit').val();
+                var menuitemName = $('#menuitem-name-edit').val();
+                var menuitemPrice = $('#menuitem-price-edit').val();
+                var menuitemSize = $('#menuitem-size-edit').val();
+                var menuitemIngredients = $('#menuitem-ingredients-edit').val();
+                //POST GOES HERE MenuCreationController/EditMenuItem
+
+                //Display Demo
+                for (var item in menuItemDictionary) {
+                    //Find the selected item and change its values according to the new data.
+                    //TODO: VALIDATE
+                    if (menuItemDictionary[item].value[6] == menuitemID) {
+                        menuItemDictionary[item].key = menuitemName;
+                        menuItemDictionary[item].value[2] = menuitemPrice;
+                        menuItemDictionary[item].value[3] = menuitemSize;
+                        menuItemDictionary[item].value[1] = menuitemIngredients;
+                    }
+
+                }
+
+                updateSubcategoryTable(); //Call function to update the subcategory table
+
+
+
+                $('editMenuitemModal').modal('hide');
+            });
+
 
         });
     </script>
