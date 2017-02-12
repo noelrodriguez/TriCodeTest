@@ -1,7 +1,7 @@
 @model TriCodeTest.Models.UpdateUserRoleViewModel
 @using Newtonsoft.Json
 @{
-    ViewData["Title"] = "UpdateUserRole Index";
+    ViewData["Title"] = "Update User Role";
 }
 
 <h2>UpdateUserRole Index</h2>
@@ -48,6 +48,9 @@
     }
 </style>
 
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
 <table id="userTable" class="display">
     <thead>
         <tr>
@@ -60,42 +63,53 @@
             <th>
                 Email
             </th>
-            <th></th>
+            <th>
+                Role
+            </th>
+            <th>
+                Set Role
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var u in Model.Users){
-    <tr>
-        <td>
-            @u.FirstName
-        </td>
-        <td>
-            @u.LastName
-        </td>
-        <td>
-            @u.Email
-        </td>
-        <td>
-            @foreach (var role in Model.Roles)
-                {
-                    @if (u.Roles.First().RoleId == role.Id) {
-                        @role.Name
+        @foreach (var u in Model.Users)
+        {
+            <tr>
+                <td>
+                    @u.FirstName
+                </td>
+                <td>
+                    @u.LastName
+                </td>
+                <td>
+                    @u.Email
+                </td>
+                <td>
+                    @foreach (var role in Model.Roles)
+                    {
+                        @if (u.Roles.First().RoleId == role.Id)
+                        {
+                            @role.Name
+                        }
                     }
-                }
-        </td>
-       
-            @*@foreach (var role in u.Roles)
-            {
-               
-
-            }*@
+                </td>
+                <td>
                     @*<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Edit Role</a>*@
-    </tr>
-}
+                    @*<a asp-action="setRoleCust" asp-route-id="@u.Email" class="btn btn-default">Set to Cust</a>*@
+                    @*<a href="#" onclick="location.href='@Url.Action("setRoleCustomer")'">SetRoleCust</a><br />*@
+
+                    @Html.ActionLink("Customer", "SetRoleCustomer", "UpdateUserRole", new { UserName = u.UserName }) |
+                    @Html.ActionLink("Staff", "SetRoleStaff", "UpdateUserRole", new { UserName = u.UserName }) |
+                    @Html.ActionLink("Admin", "SetRoleAdmin", "UpdateUserRole", new { UserName = u.UserName })
+
+                    @*<a asp-action="Edit" asp-route-id="@u.UserName">Edit</a>*@
+                </td>
+                @*<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Edit Role</a>*@
+            </tr>
+        }
     </tbody>
 </table>
-
-<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Change User Roles</a>
+@*<a asp-controller="UpdateUserRole" asp-action="UpdateUserRole">Change User Roles</a>*@
 
 <script>
     var test = @Html.Raw(JsonConvert.SerializeObject(Model));

@@ -11,12 +11,13 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TriCodeTest.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class UpdateUserRoleController : Controller
     {
 
@@ -52,14 +53,103 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
-        public ActionResult UpdateUserRole()
+        public ActionResult UpdateUserRole(FormCollection userId)
         {
+            UpdateUserRoleViewModel model = new UpdateUserRoleViewModel()
+            {
+                Users = _userManager.Users.Include(u => u.Roles).ToList(),
+                Roles = _roleManager.Roles.ToList()
+            };
+
+            var users = _userManager.Users.Include(u => u.Roles).ToList();
             // prepopulat roles for the view dropdown
             var list = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
             var uList = _context.Users.ToList().Select(rr => new SelectListItem { Value = rr.UserName.ToString(), Text = rr.UserName }).ToList();
             ViewBag.Users = uList;
+
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> setRoleAdmin(string UserName)
+        {
+            var roles = _context.Roles.ToList();
+            var users = _context.Users.ToList();
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(UserName);
+                var userId = user.Id;
+                var oldRoleName = await _userManager.GetRolesAsync(user);
+
+                if(!oldRoleName.Contains("Admin"))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, oldRoleName[0]);
+                    await _userManager.AddToRoleAsync(user, "Admin");
+                }
+
+                _context.Entry(user).State = EntityState.Modified;
+
+                return RedirectToAction("Index", users);
+            }
+
+            return RedirectToAction("Index", users);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> setRoleStaff(string UserName)
+        {
+            var roles = _context.Roles.ToList();
+            var users = _context.Users.ToList();
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(UserName);
+                var userId = user.Id;
+                var oldRoleName = await _userManager.GetRolesAsync(user);
+
+                if (!oldRoleName.Contains("Staff"))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, oldRoleName[0]);
+                    await _userManager.AddToRoleAsync(user, "Staff");
+                }
+
+                _context.Entry(user).State = EntityState.Modified;
+
+                return RedirectToAction("Index", users);
+            }
+
+            return RedirectToAction("Index", users);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> setRoleCustomer(string UserName)
+        {
+            var roles = _context.Roles.ToList();
+            var users = _context.Users.ToList();
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(UserName);
+                var userId = user.Id;
+                var oldRoleName = await _userManager.GetRolesAsync(user);
+
+                if (!oldRoleName.Contains("Customer"))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, oldRoleName[0]);
+                    await _userManager.AddToRoleAsync(user, "Customer");
+                }
+
+                _context.Entry(user).State = EntityState.Modified;
+
+                return RedirectToAction("Index", users);
+            }
+
+            return RedirectToAction("Index", users);
         }
 
         [HttpPost]
@@ -73,17 +163,10 @@ namespace TriCodeTest.Controllers
             if (ModelState.IsValid)
             {
                 // THIS LINE IS IMPORTANT
-                //var oldUser = Manager.FindById(userName.Id);
                 var oldUser = await _userManager.FindByNameAsync(UserName);
-                var oldUserId =  oldUser.Id;
-                //var oldRoleId = oldUser.Roles.SingleOrDefault().RoleId;
+                var oldUserId = oldUser.Id;
                 var oldRoleName = await _userManager.GetRolesAsync(oldUser);
-                //var result = string.Join(", ", oldRoleName.ToArray());
-                //var oldRoleName = oldRole.ToString();
-                //var oldRole2 = await _roleManager.FindByNameAsync(oldRoleString);
-                //var oldRoleName = userRoles.SingleOrDefault(r => r.RoleId == oldRoleId);
-                //var oldRoleName = DB.Roles.SingleOrDefault(r => r.Id == oldRoleId).Name;
-
+                
                 if (!oldRoleName.Contains(RoleName))
                 {
                     await _userManager.RemoveFromRoleAsync(oldUser, oldRoleName[0]);
@@ -93,16 +176,6 @@ namespace TriCodeTest.Controllers
 
                 return RedirectToAction("Index", users);
             }
-
-            //ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            ////var account = new AccountController();
-            //_userManager.AddToRoleAsync(user, RoleName);
-
-            //ViewBag.ResultMessage = "Role created successfully !";
-
-            //// prepopulat roles for the view dropdown
-            //var list = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            //ViewBag.Roles = list;
 
             return RedirectToAction("Index", users);
         }
