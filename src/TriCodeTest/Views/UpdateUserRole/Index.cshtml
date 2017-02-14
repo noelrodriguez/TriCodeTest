@@ -130,10 +130,16 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
+            success: function(response){
+                if (response == 'True'){
+                    location.reload();
+                }
+            },
             error: function(error){
                 x = error;
             }
         });
+        console.log(user);
     }
 function myFunction() {
   var input, filter, table, tr, td, i;

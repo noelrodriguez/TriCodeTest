@@ -104,6 +104,7 @@ namespace TriCodeTest.Controllers
         {
             var roles = _context.Roles.ToList();
             var users = _context.Users.ToList();
+            bool succcessfullyChanged = false;
 
             if (ModelState.IsValid)
             {
@@ -115,14 +116,15 @@ namespace TriCodeTest.Controllers
                 {
                     await _userManager.RemoveFromRoleAsync(user, oldRoleName[0]);
                     await _userManager.AddToRoleAsync(user, "Staff");
+                    succcessfullyChanged = true;
                 }
 
                 _context.Entry(user).State = EntityState.Modified;
 
-                return RedirectToAction(nameof(OrderInfoController.Index), "UpdateUserRole", null);
+                return Content(succcessfullyChanged.ToString());
             }
 
-            return RedirectToAction("Index", users);
+            return Content(succcessfullyChanged.ToString());
         }
 
         [HttpPost]
