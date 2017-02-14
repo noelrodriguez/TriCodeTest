@@ -99,15 +99,15 @@ namespace TriCodeTest.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> setRoleStaff(string UserName)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> setRoleStaff([FromBody] PostRoleUpdateUserRoleViewModel model)
         {
             var roles = _context.Roles.ToList();
             var users = _context.Users.ToList();
 
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(UserName);
+                var user = await _userManager.FindByEmailAsync(model.Email);
                 var userId = user.Id;
                 var oldRoleName = await _userManager.GetRolesAsync(user);
 
@@ -119,7 +119,7 @@ namespace TriCodeTest.Controllers
 
                 _context.Entry(user).State = EntityState.Modified;
 
-                return RedirectToAction("Index", users);
+                return RedirectToAction(nameof(OrderInfoController.Index), "UpdateUserRole", null);
             }
 
             return RedirectToAction("Index", users);

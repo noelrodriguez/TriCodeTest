@@ -99,8 +99,9 @@
                     @*<a href="#" onclick="location.href='@Url.Action("setRoleCustomer")'">SetRoleCust</a><br />*@
 
                     @Html.ActionLink("Customer", "SetRoleCustomer", "UpdateUserRole", new { UserName = u.UserName }) |
-                    @Html.ActionLink("Staff", "SetRoleStaff", "UpdateUserRole", new { UserName = u.UserName }) |
-                    @Html.ActionLink("Admin", "SetRoleAdmin", "UpdateUserRole", new { UserName = u.UserName })
+                    @Html.ActionLink("Staff", "SetRoleStaff", "UpdateUserRole", new { id = u.UserName }) |
+                    @Html.ActionLink("Admin", "SetRoleAdmin", "UpdateUserRole", new { id = u.UserName }) |
+                    <a onclick="updateUserRole(@JsonConvert.SerializeObject(u),@JsonConvert.SerializeObject(Model.Roles.SingleOrDefault(r => r.Name == "Staff")))">TESTING STAFF</a>
 
                     @*<a asp-action="Edit" asp-route-id="@u.UserName">Edit</a>*@
                 </td>
@@ -113,6 +114,27 @@
 
 <script>
     var test = @Html.Raw(JsonConvert.SerializeObject(Model));
+    var x;
+
+    function updateUserRole(user, roles){
+        console.log(user.Email);
+        console.log(roles.Name);
+        var data = { Email:user.Email, Role:roles.Name };
+        console.log(data);
+        $.ajax({
+            url: '@Url.Action("setRoleStaff", "UpdateUserRole")',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'aplication/json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            error: function(error){
+                x = error;
+            }
+        });
+    }
 function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");

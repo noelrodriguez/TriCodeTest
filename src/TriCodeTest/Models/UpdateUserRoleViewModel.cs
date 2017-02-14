@@ -11,4 +11,10 @@ namespace TriCodeTest.Models
         public IEnumerable<ApplicationUser> Users { get; set; }
         public IEnumerable<IdentityRole> Roles { get; set; }
     }
+
+    public class PostRoleUpdateUserRoleViewModel
+    {
+        public string Email { get; set; }
+        public string Role { get; set; }
+    }
 }
