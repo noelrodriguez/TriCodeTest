@@ -230,6 +230,7 @@ C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Controllers\AccountController.
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Controllers\EditUserRoleController.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Controllers\HomeController.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Controllers\ManageController.cs
+C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Controllers\UpdateUserRoleController.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Data\ApplicationDbContext.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
@@ -242,6 +243,7 @@ C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\ApplicationUser.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Option.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Size.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Status.cs
+C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\UpdateUserRoleViewModel.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\LoginViewModel.cs
