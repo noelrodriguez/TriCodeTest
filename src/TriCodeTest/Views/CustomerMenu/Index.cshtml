@@ -1,68 +1,83 @@
 @model TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel
 @using Newtonsoft.Json
+
 @{
     ViewData["Title"] = "Customer Menu";
+    Layout = "../Shared/_LayoutCustomer.cshtml";
 }
 
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.css" />
 
 <h2>Customer Menu</h2>
 
-<ul id="menuList" data-role="listview">
-    
-</ul>
+<ul id="menuList" data-role="listview"></ul>
 
 @*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Categories)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subcategories)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MenuItems)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var category in Model.Categories)
-            {
-            <td>
-                @Html.DisplayFor(modelItem => category.Name)
-            </td>
-            }
-            @foreach (var subcategory in Model.Subcategories)
-            {
-            <td>
-                @Html.DisplayFor(modelItem => subcategory.Name)
-            </td>
-            }
-            @foreach (var menuitem in Model.MenuItems)
-            {
-            <td>
-                @Html.DisplayFor(modelItem => menuitem.Name))
-            </td>
-            }
-            <td></td>
-        </tr>
-    </tbody>
-</table>*@
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categories)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subcategories)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MenuItems)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var category in Model.Categories)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => category.Name)
+                </td>
+                }
+                @foreach (var subcategory in Model.Subcategories)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => subcategory.Name)
+                </td>
+                }
+                @foreach (var menuitem in Model.MenuItems)
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => menuitem.Name))
+                </td>
+                }
+                <td></td>
+            </tr>
+        </tbody>
+    </table>*@
 
 @section Scripts
 {
-<script type="text/javascript" charset="utf8" src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>   
-<script>
-    var loadedData = @Html.Raw(JsonConvert.SerializeObject(Model));
-    $(document).ready(function () {
-        var menu = $('#menuList');
+    <script type="text/javascript" charset="utf8" src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>
+    <script>
+        var loadedData = @Html.Raw(JsonConvert.SerializeObject(Model));
+        var menu = $("#menuList");
         //menu.append('<li><a onclick="">');
-        for (var categories in loadedData){
-            menu.append('<li>' + categories. + '</li>');
+        //loadedData.Categories.forEach(function(category){
+        //    menu.append("<li onclick='loadSubcategories(" + category.Id + ")'>" + category.Name + "</li>");
+        //});
+        $(document).ready(function () {
+            @foreach (var category in Model.Categories)
+            {
+                @:menu.append("<li onclick='loadSubcategories(@JsonConvert.SerializeObject(category))'>@category.Name</li>");
+                                    }
+            menu.listview("refresh");
+        });
+        function loadSubcategories(category){
+            console.log(category.Subcategories);
+            menu.empty();
+            for (var i = 0; i < category.Subcategories.length; i++){
+                var subcategory = category.Subcategories[i];
+                menu.append("<li>" + subcategory.Name + "</li>");
+            }
+            menu.listview("refresh");
         }
-    });
-</script>
+        //'loadSubcategories(" + $(this).html + "
+    </script>
 }
