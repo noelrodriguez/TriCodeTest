@@ -3,14 +3,101 @@
 
 @{
     ViewData["Title"] = "Customer Menu";
-    Layout = "../Shared/_LayoutCustomer.cshtml";
+    Layout = "../Shared/_CustomerLayout.cshtml";
 }
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.css" />
 
-<h2>Customer Menu</h2>
 
-<ul id="menuList" data-role="listview"></ul>
+@*@*<div data-role="page" id="categories">
+        <div data-role="panel" data-display="reveal" id="myPanel">
+            <div class="ui-panel-inner">
+                @await Html.PartialAsync("_CustomerLoginPartial")
+                <ul data-role="listview">
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                </ul>
+            </div>
+            <div data-role="header">
+                <a href="#myPanel" data-role="button" data-rel="back" data-inline="true" data-icon="bars">
+                    Menu
+                </a>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul id="menuList" data-role="listview"></ul>
+            </div>
+        </div>
+    </div>*@
+
+@* Page One *@
+
+<div data-role="page" id="categories">
+    <div data-role="panel" id="myPanel">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    <div data-role="header">
+        <a href="#myPanel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            Food Order
+        </h3>
+    </div>
+    <div role="main" class="ui-content">
+        <ul id="categoryList" data-role="listview">
+            @foreach (var category in Model.Categories)
+            {
+                <li onclick="TESTloadSubcategories(@JsonConvert.SerializeObject(category))">@category.Name</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@* Page Two *@
+
+<div data-role="page" id="subcategories">
+    <div data-role="panel" id="myPanel">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    <div data-role="header">
+        <a href="#myPanel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            Food Order
+        </h3>
+    </div>
+    <div role="main" class="ui-content">
+        <ul id="subcategoryList" data-role="listview">
+            <li>test</li>
+        </ul>
+    </div>
+</div>
+
+@* Page Three *@
+
+<div data-role="page" id="menuitems">
+    <div data-role="panel" id="myPanel">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    <div data-role="header">
+        <a href="#myPanel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            Food Order
+        </h3>
+    </div>
+    <div role="main" class="ui-content">
+        <ul id="menuitemList" data-role="listview"></ul>
+    </div>
+</div>
 
 @*<table class="table">
         <thead>
@@ -52,32 +139,61 @@
         </tbody>
     </table>*@
 
+
 @section Scripts
 {
-    <script type="text/javascript" charset="utf8" src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>
+
     <script>
         var loadedData = @Html.Raw(JsonConvert.SerializeObject(Model));
-        var menu = $("#menuList");
         //menu.append('<li><a onclick="">');
         //loadedData.Categories.forEach(function(category){
         //    menu.append("<li onclick='loadSubcategories(" + category.Id + ")'>" + category.Name + "</li>");
         //});
         $(document).ready(function () {
-            @foreach (var category in Model.Categories)
+            @*@foreach (var category in Model.Categories)
             {
-                @:menu.append("<li onclick='loadSubcategories(@JsonConvert.SerializeObject(category))'>@category.Name</li>");
-                                    }
-            menu.listview("refresh");
+                @:var menu = $("#categoryList");
+                @:menu.append("<li onclick='TESTloadSubcategories(@JsonConvert.SerializeObject(category))'>@category.Name</li>");
+                                                }
+            menu.listview("refresh");*@
         });
-        function loadSubcategories(category){
-            console.log(category.Subcategories);
-            menu.empty();
+        //function loadSubcategories(category){
+        //    console.log(category.Id);
+        //    menu.empty();
+        //    for (var i = 0; i < category.Subcategories.length; i++){
+        //        var subcategory = category.Subcategories[i];
+        //        menu.append("<li>" + subcategory.Name + "</li>");
+        //    }
+        //    menu.listview("refresh");
+        //}
+        function TESTloadSubcategories(category){
+            console.log(category);
+            var list = $("#subcategoryList");
             for (var i = 0; i < category.Subcategories.length; i++){
                 var subcategory = category.Subcategories[i];
-                menu.append("<li>" + subcategory.Name + "</li>");
+                list.append("<li onclick='TESTloadMenuitems(" + subcategory + ")>" + subcategory.Name + "</li>");
+                console.log("<li onclick='TESTloadMenuitems(" + subcategory + ")>" + subcategory.Name + "</li>");
             }
-            menu.listview("refresh");
+            $(":mobile-pagecontainer").pagecontainer("change", "#subcategories", {
+                transition: 'slide'
+            
+            });
         }
-        //'loadSubcategories(" + $(this).html + "
+        //function TESTloadMenuitems(subcategory){
+        //    console.log(subcategory);
+        //    var list = $("#menuitemList");
+        //    for (var i = 0; i < subcategory.MenuItems.length; i++){
+        //        var menuitem = subcategory.MenuItems[i];
+        //        list.append("<li>" + menuitem.Name + "</li>");
+        //    }
+        //    $(":mobile-pagecontainer").pagecontainer("change", "#menuitems", {
+        //        transition: 'slide'
+            
+        //    });
+        //}
+        //$(document).on("pageshow"), function(event){
+        //    var ul = $("#sidebar");
+        //    ul.listview("refresh");
+        //}
     </script>
 }

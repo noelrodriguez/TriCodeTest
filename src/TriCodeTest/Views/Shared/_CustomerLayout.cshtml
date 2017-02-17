@@ -9,6 +9,7 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -20,7 +21,7 @@
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-fixed-top navbar-default ">
+    @*<div class="navbar navbar-fixed-top navbar-default ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,13 +32,10 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="MenuCreation" asp-action="Menu">Account</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
+                @await Html.PartialAsync("_CustomerLoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
     <div>
         @RenderBody()
     </div>
@@ -45,6 +43,7 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
