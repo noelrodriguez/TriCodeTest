@@ -26,7 +26,7 @@ namespace TriCodeTest.Controllers
             {
                 Categories = _context.Category.ToList(),
                 Subcategories = _context.Subcategory.ToList(),
-                MenuItems = _context.MenuItem.Include(mi => mi.MenuItemIngredients).ToList()
+                MenuItems = _context.MenuItem.Include(mi => mi.MenuItemIngredients).ThenInclude(mi => mi.Ingredient).ToList()
             };
             return View(LoadMenuViewModel);
         }
