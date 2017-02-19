@@ -183,24 +183,61 @@
 
 @*Add Subcategory Modal*@
 <div class="modal fade" id="addSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addSubcategoryModal">Edit</h5>
+                <h5 class="modal-title" id="addSubcategoryModal">Add</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="subcategory-name" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="subcategory-name-add">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="subcategory-name" class="form-control-label">Category</label>
+                                <input type="text" class="form-control" id="subcategory-name-add">
+                            </div>
+                            <div class="form-group">
+                                <label for="description-text" class="form-control-label">Description</label>
+                                <textarea class="form-control" id="subcategory-description-add"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Addons</div>
+                                    <div class="panel-body">
+                                        <table id="addon" class="display">
+                                            <thead>
+                                                <tr>
+                                                   <th>Name</th>
+                                                    <th>Price</th> 
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="float:left">
+                                    <label for="addAddonName-text" class="form-control-label">Addon Name</label>
+                                    <input type="text" id="addAddonName-text" class="form-control" />
+                                    <label for="addAddonPrice-text" class="form-control-label">Addon Price</label>
+                                    <input type="number" id="addAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
+                                </div>
+                                <div class="col-md-6" style="float:right">
+                                    <button type="button" id="addAddonButton-add" class="btn">Add Addon</button>
+                                    <button type="button" id="removeAddonButton-add" class="btn">Remove Addon</button>
+                                </div>
+                            </div>
+                        
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description-text" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="subcategory-description-add"></textarea>
-                    </div>
+                    
                 </form>
             </div>
             <div class="modal-footer">
@@ -211,9 +248,28 @@
     </div>
 </div>
 
+@*Add subcategory Modals for Adding Addons (Antequated at this point... decided to go with inline adding so there aren't like 20 modals...)*@
+@*<div id="addonModal" class="modal hide fade" tabindex="-1" data-focu-on="">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Add Addon</h3>
+    </div>
+    <div class="modal-body">
+        <label for="addonNameTextBox" class="form-control-label">Addon</label>
+        <input type="text" data-tabindex="1" id="addonNameTextBox"/>
+        <label for="addonDescriptionTextBox" class="form-control-label">Description</label>
+        <input type="text" data-tabindex="2" id="addonDescriptionTextBox" />
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn">Close</button>
+        <button type="button" class="btn btn-primary" id="addon-submit-button">Submit</button>
+    </div>
+</div>*@
+
+
 @*Edit Subcategory Modal*@
 <div class="modal fade" id="editSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editSubcategoryModal">Edit</h5>
@@ -223,18 +279,58 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="subcategory-id-edit" class="form-control-label">Subcategory ID</label>
-                        <input type="text" class="form-control" id="subcategory-id-edit" readonly />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="subcategory-id-edit" class="form-control-label">Subcategory ID</label>
+                                <input type="text" class="form-control" id="subcategory-id-edit" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="subcategory-name-edit" class="form-control-label">Category</label>
+                                <input type="text" class="form-control" id="subcategory-name-edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="subcategory-description-edit" class="form-control-label">Description</label>
+                                <textarea class="form-control" id="subcategory-description-edit"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Addons</div>
+                                    <div class="panel-body">
+                                        <table id="addonEdit" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="float:left">
+                                        <!--Change names of Variables so there aren't conflicts-->
+                                        <label for="editAddonName-text" class="form-control-label">Addon Name</label>
+                                        <input type="text" id="editAddonName-text" class="form-control" />
+                                        <label for="editAddonPrice-text" class="form-control-label">Addon Price</label>
+                                        <input type="number" id="editAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
+                                    </div>
+                                    <div class="col-md-6" style="float:right">
+                                        <button type="button" id="addAddonButton-edit" class="btn">Add Addon</button>
+                                        <button type="button" id="removeAddonButton-edit" class="btn">Remove Addon</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
-                    <div class="form-group">
-                        <label for="subcategory-name-edit" class="form-control-label">Category</label>
-                        <input type="text" class="form-control" id="subcategory-name-edit">
-                    </div>
-                    <div class="form-group">
-                        <label for="subcategory-description-edit" class="form-control-label">Description</label>
-                        <textarea class="form-control" id="subcategory-description-edit"></textarea>
-                    </div>
+                    
                 </form>
             </div>
             <div class="modal-footer">
@@ -258,13 +354,23 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="menuitem-image-add" class="form-control-label">Menu Item Image</label>
-                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-add" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="menuitem-image-add" class="form-control-label">Menu Item Image</label>
+                                <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-add" />
+                                <label for="menuitem-name-add" class="form-control-label">Menu Item</label>
+                                <input type="text" class="form-control" id="menuitem-name-add">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="thumbnail">
+                                    <img src="#" alt="preview Image" id="menuitem-image-add-preview" />
+                                </div>    
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="menuitem-name-add" class="form-control-label">Menu Item</label>
-                        <input type="text" class="form-control" id="menuitem-name-add">
-                    </div>
+                    @*<div class="form-group"> old menu item place
+                    </div>*@
                     <div class="form-group">
                         <label for="menuitem-price-add" class="form-control-label">Price</label>
                         <input type="number" class="form-control" id="menuitem-price-add" />
@@ -300,8 +406,18 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
-                        <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
+                                <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="thumbnail">
+                                    <img src="#" alt="preview" id="menuitem-image-edit-preview"/>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="form-group">
                         <label for="menuitem-image-edit" class="form-control-label">Menu Item Image</label>
@@ -346,6 +462,7 @@
             //Global Dictionaries
             var categoryDictionary = [];
             var subCategoryDictionary = [];
+            var addonDictionary = [];
             var menuItemDictionary = [];
             var addonDictionary = [];
             var ingredientsDictionary = [];
@@ -380,6 +497,23 @@
                         "@item.CategoryId",
                         "@item.Id"]
             });
+            </text>
+            }
+
+            
+            //
+            @foreach (var item in addonList)
+            {
+                <text>
+            addonDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Price",
+                        "@item.Description",
+                        "@item.Subcategory.Name",
+                        "@item.SubcategoryId"]
+            });
+
+
             </text>
             }
 
@@ -624,6 +758,114 @@
 
             });
 
+            //Subcategory addon table for the subcategory modals! I decided it would be easier to just implement a new datatable
+            //for this menu type as it should be easier to manage this way.
+            var addonTable = $('#addon').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+
+            $('#addon tbody').on('click', 'tr', function () {
+                var rowData = addonTable.row(this).data();
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    addonTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            //Create table for editing addons basically the same thing as addonTable but for editing and you can't reuse the same datatable.
+            var addonTableEdit = $('#addonEdit').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+
+            $('#addonEdit tbody').on('click', 'tr', function () {
+                var rowData = addonTableEdit.row(this).data();
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    addonTableEdit.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+            //END SUBCATEGORY TABLE FORMATTING 
+
+            $('#addAddonButton-add').on( 'click', function() {
+                //Button listener for clicking the add addon button on the subcategory modal
+                //Appends the values in the text controls to the addon table for the given subcategory
+                //Text controls = 'addAddonName-text' and 'addAddonDescription-text'
+                //If 'addAddonName-text is empty, or the name already exists then don't add it.'
+                
+                var addonName = $('#addAddonName-text').val();
+                var addonPrice = $('#addAddonPrice-text').val();
+
+                //Check if name already exists in table???!?!?!
+
+
+                if (addonName != "")
+                {
+                    //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
+                    addonTable.row.add([addonName, addonPrice]).draw(false);
+                }
+                else
+                {
+                    //TODO change up this erro message so it centers and does stuff.
+                    var type = BootstrapDialog.TYPE_WARNING;
+                    BootstrapDialog.show({
+                        type: type,
+                        title: 'Invalid Addon Name',
+                        message: 'Please enter a name for the addon.'
+                    });
+
+                }
+
+            });
+
+            //listener for when remove addon button is clicked on the Add subcategory modal
+            $('#removeAddonButton-add').click(function () {
+                var $row = addonTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = addonTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Addon?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+
+                                //Remove the selected row
+                                addonTable.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }]
+                    });
+
+                }
+            });
+
             //Add subcategory Button Listener
             $('#add-subcategory').click(function () {
 
@@ -729,8 +971,23 @@
 
             $('#add-menuitem').click(function () {
                 $('#addMenuitemModal').modal('show');
-                console.log('TEST');
+                //console.log('TEST');
             });
+
+            $('#menuitem-image-add').change(function () {
+                readURLmenuItemAdd(this);
+            });
+
+            //add-menuitem image preview function :) ================================================================
+            function readURLmenuItemAdd(input) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#menuitem-image-add-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
 
             $('#edit-menuitem').click(function () {
                 var $row = menuItemTable.$('tr.selected');
@@ -764,6 +1021,21 @@
 
                 }
             });
+
+            $('#menuitem-image-edit').change(function () {
+                readURLmenuItemEdit(this);
+            });
+
+            //edit-menuitem image preview function :) ================================================================
+            function readURLmenuItemEdit(input) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#menuitem-image-edit-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
 
             //Remove menuitem Button Listener
             $('#remove-menuitem').click(function () {
