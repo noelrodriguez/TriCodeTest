@@ -101,6 +101,7 @@
                 </table>
                 <div class="btn pull-left" style="width:100%">
                     <table style="width:100%">
+                        <!--Menu item control buttons. Includes Add, Remove, and Edit Each displays a modal for the respective function-->
                         <tr><td><button id="add-menuitem" class="btn" style="width:100%">Add Menu Item</button></td></tr>
                         <tr><td><button id="remove-menuitem" class="btn" style="width:100%">Remove Menu Item</button></td></tr>
                         <tr><td><button id="edit-menuitem" class="btn" style="width:100%">Edit Selected Menu Item</button></td></tr>
@@ -108,8 +109,47 @@
                 </div>
         </div>
     </div>
+    <!--Manage ingredients menu button. Displays a modal for managing all of the ingredients in the menu-->
+    <button id="manage-ingredients-button" class="btn" style="width:100%">Manage Menu Ingredients</button>
 </body>
 </html>
+
+<!--MODAL SECTION-->
+<!--This section contains modal data for the various controls in Menu Management and allows the display of various tables and inputs in modals-->
+
+<!--Manage ingredients modal. Contains a dropdown of all menu items, as well as a table of their ingredients.-->
+<div class="modal fade" id="ingredientsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ingredientsModalTitle">Manage Ingredients</h5>
+                <!--Put x button on top right-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                <!--End modal header-->
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="menuitem-dropdown" class="form-control-label">Menu Item</label>
+                        <select class="form-control" id="menuitem-dropdown">
+                            <option>Menu Items...</option>
+                        </select>
+                        @*<input type="button" class="dropdown-toggle form-control" data-toggle="dropdown" id="menuitem-dropdown" />*@
+                        @*<div class="dropdown">
+                            <button id="menuitem-dropdown" type="button" class="dropdown-toggle" data-toggle="dropdown">Menu Item...<span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" id="menuitemDropdown">
+                            </ul>
+                        </div>*@
+                        
+                    </div>
+                </form>
+                <!--End modal Body-->
+            </div>
+            <!--End modal content-->
+        </div>
+    </div>
+    <!--End Modal-->
+</div>
 
 @*Add Category Modal*@
 <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,11 +164,11 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="category-name" class="form-control-label">Category</label>
+                        <label for="category-name-add" class="form-control-label">Category</label>
                         <input type="text" class="form-control" id="category-name-add">
                     </div>
                     <div class="form-group">
-                        <label for="description-text" class="form-control-label">Description</label>
+                        <label for="category-description-add" class="form-control-label">Description</label>
                         <textarea class="form-control" id="category-description-add"></textarea>
                     </div>
                     @*<div>
@@ -248,25 +288,6 @@
     </div>
 </div>
 
-@*Add subcategory Modals for Adding Addons (Antequated at this point... decided to go with inline adding so there aren't like 20 modals...)*@
-@*<div id="addonModal" class="modal hide fade" tabindex="-1" data-focu-on="">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h3>Add Addon</h3>
-    </div>
-    <div class="modal-body">
-        <label for="addonNameTextBox" class="form-control-label">Addon</label>
-        <input type="text" data-tabindex="1" id="addonNameTextBox"/>
-        <label for="addonDescriptionTextBox" class="form-control-label">Description</label>
-        <input type="text" data-tabindex="2" id="addonDescriptionTextBox" />
-    </div>
-    <div class="modal-footer">
-        <button type="button" data-dismiss="modal" class="btn">Close</button>
-        <button type="button" class="btn btn-primary" id="addon-submit-button">Submit</button>
-    </div>
-</div>*@
-
-
 @*Edit Subcategory Modal*@
 <div class="modal fade" id="editSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -313,7 +334,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6" style="float:left">
-                                        <!--Change names of Variables so there aren't conflicts-->
+                                        <!--addonEdit Table controls for adding and removing items-->
                                         <label for="editAddonName-text" class="form-control-label">Addon Name</label>
                                         <input type="text" id="editAddonName-text" class="form-control" />
                                         <label for="editAddonPrice-text" class="form-control-label">Addon Price</label>
@@ -501,7 +522,7 @@
             }
 
             
-            //
+            //addon table
             @foreach (var item in addonList)
             {
                 <text>
@@ -512,7 +533,6 @@
                         "@item.Subcategory.Name",
                         "@item.SubcategoryId"]
             });
-
 
             </text>
             }
@@ -866,6 +886,39 @@
                 }
             });
 
+            //Listenter for when add addon button is clicked 
+            $('#addAddonButton-edit').click(function () {
+                //Button listener for clicking the add addon button on the subcategory modal
+                //Appends the values in the text controls to the addon table for the given subcategory
+                //Text controls = 'addAddonName-text' and 'addAddonDescription-text'
+                //If 'addAddonName-text is empty, or the name already exists then don't add it.'
+
+                var addonName = $('#editAddonName-text').val();
+                var addonPrice = $('#editAddonPrice-text').val();
+
+                //Check if name already exists in table???!?!?!
+
+                if (addonName != "") {
+                    //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
+                    addonTableEdit.row.add([addonName, addonPrice]).draw(false);
+                }
+                else {
+                    //TODO change up this erro message so it centers and does stuff.
+                    var type = BootstrapDialog.TYPE_WARNING;
+                    BootstrapDialog.show({
+                        type: type,
+                        title: 'Invalid Addon Name',
+                        message: 'Please enter a name for the addon.'
+                    });
+
+                }
+            });
+
+            //Listener for when remove addon button is clicked on the edit subcategory modal
+            $('#removeAddonButton-edit').click(function () {
+
+            });
+
             //Add subcategory Button Listener
             $('#add-subcategory').click(function () {
 
@@ -890,7 +943,20 @@
                         }
                     }
 
+                    //Reset text boxes
+                    $('#editAddonName-text').val("");
+                    $('#editAddonPrice-text').val("0.00");
+                    addonTableEdit.clear();
+                    for (var item in addonDictionary)
+                    {
+                        if(addonDictionary[item].value[2] == rowData[0])
+                        {
+                            
+                            console.log(addonDictionary[item].key);
+                            addonTableEdit.row.add([addonDictionary[item].key, addonDictionary[item].value[0]]).draw(false);
+                        }
 
+                    }
 
 
                     $('#editSubcategoryModal').modal('show');
@@ -1077,6 +1143,46 @@
                 }
             });
 
+            //Ingredients table initialization. Contains all ingredients for the menu
+            var ingredientsTable = $('#ingredients').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#ingredients tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    ingredientsTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+
+
+            //Menu Ingredients menu management modal startup button
+            $('#manage-ingredients-button').on('click', function () {
+                console.log("Ingredient management Click");
+                
+
+                
+                //Populate modal with ingredients and a dropdown of menu items.
+                //$('#menuitem-dropdown').html("<option>Menu Item...</option>");
+                for (var item in menuItemDictionary)
+                {
+                    //ingredientsTable.row.add([ingredientsTable[item].key, [item].value[1]]).draw(false);
+                    $('#menuitem-dropdown').append("<option>" + menuItemDictionary[item].key + "</option>");
+                }
+
+                $('#ingredientsModal').modal('show');
+
+
+            });
+
             //===============Update Menu Table Functions=================================
 
 
@@ -1233,6 +1339,16 @@
                 console.log(subcategoryName);
                 console.log(subcategoryDescription);
 
+                //Iterate over all values of the addAddon data table
+                console.log("List of values in addon table:");
+                addonTable
+                    .data()
+                    .each(function (value, index) {
+                        //Value is 2 element array of value[0]: name, and value[1]: price
+                        console.log(value);
+                    });
+
+
                 var selectedCategory = categoryTable.row('tr.selected').data();
                 selectedCategoryData = {};
                 for (var item in categoryDictionary)
@@ -1318,6 +1434,8 @@
                 console.log(menuitemPrice);
                 console.log(menuitemSize);
                 console.log(menuitemIngredients);
+
+                
 
 
                 //Demo Stuff
