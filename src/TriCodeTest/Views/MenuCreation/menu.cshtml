@@ -542,7 +542,7 @@
             </text>
             }
 
-            
+
             //addon table
             @foreach (var item in addonList)
             {
@@ -733,7 +733,7 @@
                             categoryId = categoryDictionary[item].value[2];
                             console.log(categoryId);
                         }
-                        
+
                     }
 
                     BootstrapDialog.show({
@@ -865,14 +865,14 @@
 
                 }
             });
-            //END SUBCATEGORY TABLE FORMATTING 
+            //END SUBCATEGORY TABLE FORMATTING
 
             $('#addAddonButton-add').on( 'click', function() {
                 //Button listener for clicking the add addon button on the subcategory modal
                 //Appends the values in the text controls to the addon table for the given subcategory
                 //Text controls = 'addAddonName-text' and 'addAddonDescription-text'
                 //If 'addAddonName-text is empty, or the name already exists then don't add it.'
-                
+
                 var addonName = $('#addAddonName-text').val();
                 var addonPrice = $('#addAddonPrice-text').val();
 
@@ -929,7 +929,7 @@
                 }
             });
 
-            //Listenter for when add addon button is clicked 
+            //Listenter for when add addon button is clicked
             $('#addAddonButton-edit').click(function () {
                 //Button listener for clicking the add addon button on the subcategory modal
                 //Appends the values in the text controls to the addon table for the given subcategory
@@ -994,7 +994,7 @@
                     {
                         if(addonDictionary[item].value[2] == rowData[0])
                         {
-                            
+
                             console.log(addonDictionary[item].key);
                             addonTableEdit.row.add([addonDictionary[item].key, addonDictionary[item].value[0]]).draw(false);
                         }
@@ -1210,9 +1210,9 @@
             //Menu Ingredients menu management modal startup button
             $('#manage-ingredients-button').on('click', function () {
                 console.log("Ingredient management Click");
-                
 
-                
+
+
                 //Populate modal with ingredients and a dropdown of menu items.
                 //$('#menuitem-dropdown').html("<option>Menu Item...</option>");
                 for (var item in menuItemDictionary)
@@ -1371,22 +1371,16 @@
                                         result['description'],
                                         result['id']]
                             });
-                            console.log('Updating Table');
                             updateCategoryTable();
                         } else {
-
-
+                            console.log("Something went wrong while adding the new category.");
                         }
                     }
                 });
-
-                //Demo Display
-                
-
-                
                 $('#addCategoryModal').modal('hide');
             });
 
+            //EDIT CATEGORY SUBMIT.
             $('#editCategorySubmit').on('click', function (e) {
                 console.log("Submit Edit Category");
 
@@ -1407,23 +1401,53 @@
                 console.log("Category Description: " + categoryDescription);
                 console.log("Category id: " + categoryId);
 
-                //Demo Display
-
-                //var selectedCategory = categoryTable.$('tr.selected').data();
-                //updated selected item with the new data
+                var subcategories;
                 for (var item in categoryDictionary)
                 {
-                    //Find the selected item and change its values according to the new data.
-                    //TODO: VALIDATE
                     if (categoryDictionary[item].value[2] == categoryId)
                     {
-                        categoryDictionary[item].key = categoryName;
-                        categoryDictionary[item].value[1] = categoryDescription;
+                        subcategories = categoryDictionary[item].value[0];
+
                     }
 
                 }
 
-                updateCategoryTable();
+                var CategoryModel = {
+                    Id: categoryId,
+                    Name: categoryName,
+                    Description: categoryDescription,
+                    Subcategories: subcategories
+                };
+
+
+                //Post to MenuCreation/EditCategory
+                $.ajax({
+                    url: '@Url.Action("EditCategory", "MenuCreation")',
+                    method: 'POST',
+                    data: CategoryModel,
+                    success: function (result) {
+                        if (result) {
+                            for (var item in categoryDictionary) {
+                                //Find the selected item and change its values according to the new data.
+                                //TODO: VALIDATE
+                                if (categoryDictionary[item].value[2] == categoryId) {
+                                    categoryDictionary[item].key = categoryName;
+                                    categoryDictionary[item].value[1] = categoryDescription;
+                                }
+
+                            }
+
+                            updateCategoryTable();
+
+                        } else {
+                            console.log("Something went wrong while adding the new category.");
+                        }
+                    }
+                });
+
+                //var selectedCategory = categoryTable.$('tr.selected').data();
+                //updated selected item with the new data
+                
                 $('#editCategoryModal').modal('hide');
             });
 
@@ -1544,7 +1568,7 @@
                 console.log(menuitemSize);
                 console.log(menuitemIngredients);
 
-                
+
 
 
                 //Demo Stuff

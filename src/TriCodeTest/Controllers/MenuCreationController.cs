@@ -172,6 +172,8 @@ namespace TriCodeTest.Controllers
             return Json(false);
         }
 
+        // POST: MenuCreation/AddCategory
+        // Adds the specified category object to the database and returns that updated category
         [HttpPost]
         public async Task<ActionResult> AddCategory(Category obj)
         {
@@ -198,6 +200,45 @@ namespace TriCodeTest.Controllers
             }
             _context.Category.Remove(category);
             await _context.SaveChangesAsync();
+            return Json(true);
+        }
+
+        // POST: MenuCreation/EditCategory
+        // given category object update this category
+
+        [HttpPost]
+        public async Task<ActionResult> EditCategory(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(obj);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoryExists(obj.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+
+
+            //_context.Update(obj);
+            //await _context.SaveChangesAsync();
+
+            //var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
+            //if (category == null)
+            //{
+            //    return NotFound();
+            //}
             return Json(true);
         }
 
