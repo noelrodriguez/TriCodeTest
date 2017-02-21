@@ -185,6 +185,8 @@ namespace TriCodeTest.Controllers
             return Json(obj); //Return the updated object back to view after it has been added to the database.
         }
 
+        // POST: MenuCreation/RemoveCategory
+        //Removes category specified by id
         [HttpPost]
         public async Task<ActionResult> RemoveCategory(int id)
         {

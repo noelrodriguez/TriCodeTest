@@ -759,36 +759,28 @@
                                         {
                                             //Remove from table
                                             console.log(result);
-                                        } else {
-                                            //Don't remove from table
+                                            //remove item from dictionary
+                                            for (var item in categoryDictionary) {
+                                                if (categoryDictionary[item].key.toString() == rowData[0]) {
+                                                    categoryDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
 
+                                            }
+                                            //Update category table with new values
+                                            updateCategoryTable();
+
+                                        } else {
+                                            //Do nothing... Maybe display alert
                                         }
                                     }
                                 });
-
-                                //remove item from dictionary
-                                for (var item in categoryDictionary) {
-                                    if (categoryDictionary[item].key.toString() == rowData[0]) {
-                                        categoryDictionary.splice(item, 1); //Remove item from dictionary
-                                    }
-
-                                }
-                                updateCategoryTable();
-
-                                //categoryTable.row('.selected').remove().draw(false);
                                 //Close the Dialog
                                 dialog.close();
-
                             }
                         }]
                     });
 
                 }
-
-                //Update database on removed Category
-
-
-                //categoryTable.row('.selected').remove().draw(false);
             });
 
             //Items Table Functions, These functions control the functionality and look and feel of the menu data tables
@@ -1370,9 +1362,17 @@
                     data: CategoryModel,
                     success: function (result) {
                         if (result) {
-                            console.log(result.Id);
-                            console.log(result.Name);
-
+                            console.log(result);
+                            console.log(result['id']); //Grab id
+                            console.log(result['name']); //Grab name
+                            categoryDictionary.push({
+                                key: result['name'],
+                                value: [result['subcategories'], //array of subcategories
+                                        result['description'],
+                                        result['id']]
+                            });
+                            console.log('Updating Table');
+                            updateCategoryTable();
                         } else {
 
 
@@ -1381,14 +1381,9 @@
                 });
 
                 //Demo Display
-                categoryDictionary.push({
-                    key: categoryName,
-                    value: ["",
-                            categoryDescription,
-                            Math.floor((Math.random() * 10 ) + 21)] //Temporary
-                });
+                
 
-                updateCategoryTable();
+                
                 $('#addCategoryModal').modal('hide');
             });
 
