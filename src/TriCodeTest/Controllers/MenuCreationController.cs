@@ -165,6 +165,40 @@ namespace TriCodeTest.Controllers
             return RedirectToAction("Index");
         }
 
+        // POST: MenuCreation/AddIngredient
+        [HttpPost]
+        public ActionResult AddIngredient(Ingredient obj)
+        {
+            return Json(false);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddCategory(Category obj)
+        {
+            _context.Add(obj); //Add to the database
+            var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
+            if(updated < 1) //determine that at least one item was added to the database
+            {
+                return NotFound();
+            }
+
+            return Json(obj); //Return the updated object back to view after it has been added to the database.
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RemoveCategory(int id)
+        {
+            System.Diagnostics.Debug.WriteLine(id);
+            var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _context.Category.Remove(category);
+            await _context.SaveChangesAsync();
+            return Json(true);
+        }
+
         private bool CategoryExists(int id)
         {
             return _context.Category.Any(e => e.Id == id);

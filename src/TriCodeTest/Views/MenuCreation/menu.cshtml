@@ -129,19 +129,40 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="menuitem-dropdown" class="form-control-label">Menu Item</label>
-                        <select class="form-control" id="menuitem-dropdown">
-                            <option>Menu Items...</option>
-                        </select>
-                        @*<input type="button" class="dropdown-toggle form-control" data-toggle="dropdown" id="menuitem-dropdown" />*@
-                        @*<div class="dropdown">
-                            <button id="menuitem-dropdown" type="button" class="dropdown-toggle" data-toggle="dropdown">Menu Item...<span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu" id="menuitemDropdown">
-                            </ul>
-                        </div>*@
-                        
-                    </div>
+                    @*<div class="row">*@
+                        <div class="form-group">
+                            <label for="menuitem-dropdown" class="form-control-label">Menu Item</label>
+                            <select class="form-control" id="menuitem-dropdown">
+                                <option>Menu Items...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Ingredients</h3>
+                            <table id="ingredients" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--Ingredient table button controls-->
+                            <div class="row">
+                                <div class="col-md-6" style="float:left">
+                                    <label for="addIngredientName-text" class="form-control-label">Ingredient Name</label>
+                                    <input type="text" id="addIngredientName-text" class="form-control" />
+                                    <label for="addIngredientDescription-text" class="form-control-label">Ingredient Description</label>
+                                    <textarea id="addIngredientDescription-text" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-6" style="float:right">
+                                    <button type="button" id="addIngredientButton" class="btn">Add Ingredient</button>
+                                    <button type="button" id="removeIngredientButton" class="btn">Remove Ingredient</button>
+                                </div>
+                            </div>
+                        </div>
+                    @*</div>*@
                 </form>
                 <!--End modal Body-->
             </div>
@@ -703,6 +724,18 @@
                 {
                     var rowData = categoryTable.row('tr.selected').data();
 
+                    var categoryId;
+                    //get Id of rowData
+                    for (var item in categoryDictionary)
+                    {
+                        if (categoryDictionary[item].key == rowData[0])
+                        {
+                            categoryId = categoryDictionary[item].value[2];
+                            console.log(categoryId);
+                        }
+                        
+                    }
+
                     BootstrapDialog.show({
                         title: 'Remove Category?',
                         message: 'Are you sure you would like to remove ' + rowData[0] + '?',
@@ -716,6 +749,24 @@
                             label: 'Remove',
                             action: function (dialog) {
 
+                                //Post to MenuCreation/RemoveCategory
+                                $.ajax({
+                                    url: '@Url.Action("RemoveCategory", "MenuCreation")',
+                                    method: 'POST',
+                                    data: {Id: categoryId},
+                                    success: function (result) {
+                                        if (result)
+                                        {
+                                            //Remove from table
+                                            console.log(result);
+                                        } else {
+                                            //Don't remove from table
+
+                                        }
+                                    }
+                                });
+
+                                //remove item from dictionary
                                 for (var item in categoryDictionary) {
                                     if (categoryDictionary[item].key.toString() == rowData[0]) {
                                         categoryDictionary.splice(item, 1); //Remove item from dictionary
@@ -1183,6 +1234,45 @@
 
             });
 
+            //Add ingredient to the ingredient table on the ingredient modal
+            //also adds the ingredient to the ingredient dictionary
+            $('#addIngredientButton').on('click', function () {
+                //grab the currently selected menu item, ingredient name, and description
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+                var ingredientName = $('#addIngredientName-text').text();
+                var ingredientDescription = $('#addIngredientDescription-text').text();
+
+                //Post this data and add to the table. TODO
+                var IngredientModel = {
+                    Id: "",
+                    Name: ingredientName,
+                    Description: ingredientDescription,
+                    Option: { None: 1, Low: 2, Normal: 3 },
+                    menuitemIngredients: ""
+                };
+
+                var MenuItemIngredientModel = {
+                    MenuItemId: "",
+                    IngredientId: "",
+                    MenuItem: "",
+                    Ingredient: IngredientModel
+                };
+
+            });
+
+            //Remove ingredient from the ingredient table on the ingredient modal
+            //also removes the ingredient from the dictionary
+            $('#removeIngredientButton').on('click', function () {
+                //Check if row is selected
+
+
+
+                //grap the currently selected menu item and the current selected row
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+
+
+            });
+
             //===============Update Menu Table Functions=================================
 
 
@@ -1265,6 +1355,30 @@
                 var categoryDescription = $('#category-description-add').val();
                 console.log(categoryName);
                 console.log(categoryDescription);
+
+                //Post to MenuCreation/AddCategory
+                var CategoryModel = {
+                    Id: "",
+                    Name: categoryName,
+                    Description: categoryDescription,
+                    Subcategories: ""
+                };
+
+                $.ajax({
+                    url: '@Url.Action("AddCategory", "MenuCreation")',
+                    method: 'POST',
+                    data: CategoryModel,
+                    success: function (result) {
+                        if (result) {
+                            console.log(result.Id);
+                            console.log(result.Name);
+
+                        } else {
+
+
+                        }
+                    }
+                });
 
                 //Demo Display
                 categoryDictionary.push({
@@ -1497,6 +1611,26 @@
 
 
                 $('#editMenuitemModal').modal('hide');
+            });
+
+            //Listener for menuitem-dropdown selection chenge so different ingredients can show.
+            $('#menuitem-dropdown').change(function () {
+                console.log("Menu Dropdown Action");
+                //grab selected menu item
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+
+                //iterate over ingredients and find which ones are for the selected menu item.
+                for (var item in menuItemIngredientsDictionary)
+                {
+                    console.log(menuItemIngredientsDictionary[item].key);
+                    if (menuItemIngredientsDictionary[item].value[1] == menuItem)
+                    {
+                        ingredientsTable.row.add([menuItemIngredientsDictionary[item].key, menuItemIngredientsDictionary[item].value[1]]).draw(false);
+
+                    }
+
+                }
+
             });
 
 
