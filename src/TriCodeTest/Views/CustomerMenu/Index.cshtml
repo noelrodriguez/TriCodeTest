@@ -41,7 +41,7 @@
             @foreach (var category in Model.Categories)
             {
                 <li onclick="loadSubcategories(@JsonConvert.SerializeObject(category))">
-                    <h2>@category.Name</h2><p>@category.Description</p>
+                    <a href="#"><h2>@category.Name</h2><p>@category.Description</p></a>
                 </li>
             }
         </ul>
@@ -149,8 +149,10 @@
     var loadedData = @Html.Raw(JsonConvert.SerializeObject(Model));
 
     // Makes sure to refresh the listview in the panel in the categories page (NOT REALLY NEEDED)
-    //$(document).on("pagebeforeshow", "#categories-page", function() {
-    //    $("#categoryList").listview("refresh");
+    //$(document).on("pageinit", "#subcategories-page", function() {
+    //    $(":mobile-pagecontainer").pagecontainer("change", "#categories-page", {
+    //        transition: 'slide'
+    //    });
     //});
 
     // Dynamically loads subcategories based on category chosen
@@ -159,7 +161,7 @@
         list.empty();
         for (var i = 0; i < category.Subcategories.length; i++){
             var subcategory = category.Subcategories[i];
-            list.append("<li onclick='loadMenuitems(" + JSON.stringify(subcategory) + ")'><h2>" + subcategory.Name + "</h2><p>" + subcategory.Description + "</p></li>");
+            list.append("<li onclick='loadMenuitems(" + JSON.stringify(subcategory) + ")'><a href='#'><h2>" + subcategory.Name + "</h2><p>" + subcategory.Description + "</p></a></li>");
         }
         $(":mobile-pagecontainer").pagecontainer("change", "#subcategories-page", {
             transition: 'slide'
@@ -168,7 +170,10 @@
     // Refreshes the subcategory list before page loads to format it to jquery mobile
     $(document).on("pagebeforeshow", "#subcategories-page", function() {
         $("#subcategoryList").listview("refresh");
-
+        if($("#subcategoryList").is(":empty")){
+            $(":mobile-pagecontainer").pagecontainer("change", "#categories-page", {
+            });
+        }
     });
 
     // Dynamically loads menu items based on subcategory chosen
@@ -177,7 +182,7 @@
         list.empty();
         for (var i = 0; i < subcategory.MenuItems.length; i++){
             var menuitem = subcategory.MenuItems[i];
-            list.append("<li onclick='loadDetails(" + JSON.stringify(menuitem) + ")'><h2>" + menuitem.Name + "</h2><p>" + menuitem.Description + "</p></li>");
+            list.append("<li onclick='loadDetails(" + JSON.stringify(menuitem) + ")'><a href='#'><h2>" + menuitem.Name + "</h2><p>" + menuitem.Description + "</p></a></li>");
         }
         $(":mobile-pagecontainer").pagecontainer("change", "#menuitems-page", {
             transition: 'slide'
@@ -186,6 +191,10 @@
     // Refreshes the menu items list before page loads to format it to jquery mobile
     $(document).on("pagebeforeshow", "#menuitems-page", function() {
         $("#menuitemList").listview("refresh");
+        if($("#menuitemList").is(":empty")){
+            $(":mobile-pagecontainer").pagecontainer("change", "#categories-page", {
+            });
+        }
     });
 
     // Dynamically loads details of menu item (THIS MIGHT NOT BE NEEDED IF WE DO IT LIKE STARBUCKS)
