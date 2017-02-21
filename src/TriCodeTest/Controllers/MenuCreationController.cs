@@ -228,18 +228,20 @@ namespace TriCodeTest.Controllers
                     }
                 }
             }
-
-
-
-            //_context.Update(obj);
-            //await _context.SaveChangesAsync();
-
-            //var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
-            //if (category == null)
-            //{
-            //    return NotFound();
-            //}
             return Json(true);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddSubcategory(Subcategory obj)
+        {
+            _context.Add(obj); //Add to the database
+            var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
+            if (updated < 1) //determine that at least one item was added to the database
+            {
+                return NotFound();
+            }
+
+            return Json(obj); //Return the updated object back to view after it has been added to the database. 
         }
 
         private bool CategoryExists(int id)

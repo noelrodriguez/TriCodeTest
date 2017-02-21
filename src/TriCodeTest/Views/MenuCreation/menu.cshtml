@@ -826,7 +826,7 @@
             var addonTable = $('#addon').DataTable({
                 "paging": false,
                 "info": false,
-                "scrollY": "500px"
+                "scrollY": "300px"
             });
 
 
@@ -848,7 +848,7 @@
             var addonTableEdit = $('#addonEdit').DataTable({
                 "paging": false,
                 "info": false,
-                "scrollY": "500px"
+                "scrollY": "300px"
             });
 
 
@@ -877,12 +877,23 @@
                 var addonPrice = $('#addAddonPrice-text').val();
 
                 //Check if name already exists in table???!?!?!
+                var exists = false;
+                addonTable
+                    .column(0)
+                    .data()
+                    .each(function (value, index) {
+                        if (addonName == value)
+                        {
+                            exists = true;
+                        }
+                    });
 
-
-                if (addonName != "")
+                if (addonName != "" && !exists)
                 {
                     //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
                     addonTable.row.add([addonName, addonPrice]).draw(false);
+                    $('#addAddonNAme-text').val("");
+                    $('#addAddonPrice-text').val("");
                 }
                 else
                 {
@@ -968,6 +979,15 @@
                 $('#addSubcategoryModal').modal('show');
                 var $modal = $('#addSubcategoryModal');
                 $modal.find('.modal-title').text('Add Subcategory') // Change the modal title
+
+                //Clear all controls on the page in the modal so we don't have leftover info
+                addonTable.clear();
+                addonTable.draw();
+                $('#subcategory-name-add').val("");
+                $('#subcategory-description-add').val("");
+                $('#addAddonName-text').val("");
+                $('#addAddonPrice-text').val("");
+
             });
 
             //Edit subcategory Button Listener
@@ -990,6 +1010,7 @@
                     $('#editAddonName-text').val("");
                     $('#editAddonPrice-text').val("0.00");
                     addonTableEdit.clear();
+                    addonTableEdit.draw();
                     for (var item in addonDictionary)
                     {
                         if(addonDictionary[item].value[2] == rowData[0])
@@ -1190,7 +1211,7 @@
             var ingredientsTable = $('#ingredients').DataTable({
                 "paging": false,
                 "info": false,
-                "scrollY": "500px"
+                "scrollY": "300px"
             });
 
             $('#ingredients tbody').on('click', 'tr', function () {
@@ -1332,17 +1353,6 @@
             //Add Category and Edit Category submit listeners
             $('#addCategorySubmit').on('click', function(e) {
                 console.log("Submit Add Category");
-                //====================UNCOMMENT THIS ONCE CONTROLLER IS SETUP================================
-                //Post to MenuCreationController/AddCategory
-                //$.post("MenuCreationController/AddCategory", { CategoryName: $('#category-name-add').val(), CategoryDescription: $('#category-description-add').val() }, function (data) {
-                //    //Post data to the database
-                //})
-                //    .done(function () {
-                //        //On Successfully updating Database update the Category table wit the new Category
-                //    })
-                //    .fail(function () {
-                //        //On Failing to update the database indicate this to the user
-                //    });
                 var categoryName = $('#category-name-add').val();
                 var categoryDescription = $('#category-description-add').val();
                 console.log(categoryName);
@@ -1387,27 +1397,19 @@
                 var categoryName = $('#category-name-edit').val();
                 var categoryDescription = $('#category-description-edit').val();
                 var categoryId = $('#category-id-edit').val();
-                //Post to MenuCreationController/EditCategory
-                //$.post("MenuCreationController/EditCategory", { CategoryID: categoryId, CategoryName: categoryName, CategoryDescription: categoryDescription }, function (data) {
-
-                //})
-                //    .done(function () {
-                //        //On successfully updating Database, update the category with the new information.
-                //    })
-                //    .fail(function () {
-                //        //On Failing to update the category indicate this to the user.
-                //});
                 console.log("Category Name: " + categoryName);
                 console.log("Category Description: " + categoryDescription);
                 console.log("Category id: " + categoryId);
 
+                //get list of subcategories
                 var subcategories;
+                var jssubcategories;
                 for (var item in categoryDictionary)
                 {
                     if (categoryDictionary[item].value[2] == categoryId)
                     {
                         subcategories = categoryDictionary[item].value[0];
-
+                        //jssubcategories = <%= new JavaScriptSerializer().Serialize(ViewData["subcategories"]) %>;
                     }
 
                 }
