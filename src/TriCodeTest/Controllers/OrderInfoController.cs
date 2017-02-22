@@ -33,29 +33,6 @@ namespace TriCodeTest.Controllers
             List<Order> orders = ListOrderDeserialize(allOrderInfos);
             return View(orders);
         }
-        /// <summary>
-        /// Displays details of order info. Used when it was being loaded in a
-        /// separate view.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        // GET: OrderInfo/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orderInfo = await _context.OrderInfo.SingleOrDefaultAsync(m => m.Id == id);
-            if (orderInfo == null)
-            {
-                return NotFound();
-            }
-            var order = OrderDeserialize(orderInfo);
-
-            return View(order);
-        }
 
         /// <summary>
         /// Returns a single Order by the Id passed in.
