@@ -232,6 +232,7 @@ C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Controllers\HomeContro
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Controllers\ManageController.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Controllers\MenuCreationController.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Controllers\OrderInfoController.cs
+C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Controllers\UpdateUserRoleController.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Data\ApplicationDbContext.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Data\DbInitializer.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.cs
@@ -248,6 +249,7 @@ C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\CartCheckout.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\Option.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\Size.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\Status.cs
+C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\UpdateUserRoleViewModel.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\cosmost\Source\Repos\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\LoginViewModel.cs

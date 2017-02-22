@@ -19,6 +19,6 @@ namespace TriCodeTest.Models
 
         public int MenuItemId { get; set; }
 
-        public virtual MenuModels.MenuItem MenuItem { get; set; }
+        public virtual List<MenuModels.MenuItem> MenuItem { get; set; }
     }
 }
