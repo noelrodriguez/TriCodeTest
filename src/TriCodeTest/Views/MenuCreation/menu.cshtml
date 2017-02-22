@@ -265,6 +265,7 @@
                                 <textarea class="form-control" id="subcategory-description-add"></textarea>
                             </div>
                         </div>
+                        <!--Addon Table and Controls TODO: Ability to edit addons-->
                         <div class="col-md-8">
                             <div class="form-group">
                                 <div class="panel panel-default">
@@ -274,6 +275,7 @@
                                             <thead>
                                                 <tr>
                                                    <th>Name</th>
+                                                    <th>Description</th>
                                                     <th>Price</th> 
                                                 </tr>
                                             </thead>
@@ -287,6 +289,8 @@
                                 <div class="col-md-6" style="float:left">
                                     <label for="addAddonName-text" class="form-control-label">Addon Name</label>
                                     <input type="text" id="addAddonName-text" class="form-control" />
+                                    <label for="addAddonDescription-text" class="form-control-label">Addon Description</label>
+                                    <textarea id="addAddonDescription-text" class="form-control"></textarea>
                                     <label for="addAddonPrice-text" class="form-control-label">Addon Price</label>
                                     <input type="number" id="addAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
                                 </div>
@@ -874,6 +878,7 @@
                 //If 'addAddonName-text is empty, or the name already exists then don't add it.'
 
                 var addonName = $('#addAddonName-text').val();
+                var addonDescription = $('#addAddonDescription-text').val();
                 var addonPrice = $('#addAddonPrice-text').val();
 
                 //Check if name already exists in table???!?!?!
@@ -887,13 +892,14 @@
                             exists = true;
                         }
                     });
-
+                //Validate
                 if (addonName != "" && !exists)
                 {
-                    //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
-                    addonTable.row.add([addonName, addonPrice]).draw(false);
-                    $('#addAddonNAme-text').val("");
-                    $('#addAddonPrice-text').val("");
+                    addonTable.row.add([addonName,addonDescription, addonPrice]).draw(false); //Add new data to addonTable
+                    //Clear the text boxes for the next input
+                    $('#addAddonName-text').val("");
+                    $('#addAddonDescription-text').val("");
+                    $('#addAddonPrice-text').val("0.00");
                 }
                 else
                 {
@@ -902,7 +908,7 @@
                     BootstrapDialog.show({
                         type: type,
                         title: 'Invalid Addon Name',
-                        message: 'Please enter a name for the addon.'
+                        message: 'Please enter a valid name for the addon, which does not exist already.'
                     });
 
                 }
@@ -1045,6 +1051,20 @@
                 if ($row.length) {
                     var rowData = subCategoryTable.row('tr.selected').data();
 
+                    var subcategoryId;
+
+                    for (var item in subCategoryDictionary)
+                    {
+                        if (subCategoryDictionary[item].key == rowData[0])
+                        {
+                            subcategoryId = subCategoryDictionary[item].value[5];
+                        }
+
+                    }
+
+                    console.log(subcategoryId);
+
+
                     BootstrapDialog.show({
                         title: 'Remove Subcategory?',
                         message: 'Are you sure you would like to remove ' + rowData[0] + '?',
@@ -1058,18 +1078,32 @@
                             label: 'Remove',
                             action: function (dialog) {
 
-                                for (var item in subCategoryDictionary)
-                                {
-                                    if (subCategoryDictionary[item].key.toString() == rowData[0])
-                                    {
-                                        subCategoryDictionary.splice(item, 1); //Remove item from dictionary
+                                //Post to: MenuCreation/RemoveSubcategory
+                                $.ajax({
+                                    url: '@Url.Action("RemoveSubcategory", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { Id: subcategoryId },
+                                    success: function (result) {
+                                        if (result) {
+                                            //Remove from table
+                                            console.log(result);
+                                            //remove item from dictionary
+
+                                            for (var item in subCategoryDictionary) {
+                                                if (subCategoryDictionary[item].key.toString() == rowData[0]) {
+                                                    subCategoryDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+                                            //Update category table with new values
+                                            updateSubcategoryTable();
+
+                                        } else {
+                                            //Do nothing... Maybe display alert
+                                        }
                                     }
+                                });
 
-                                }
-
-                                //TODO: REMOVE menu items attached to this item
-                                updateSubcategoryTable();
-                                //subCategoryTable.row('.selected').remove().draw(false);
                                 //Close the Dialog
                                 dialog.close();
 
@@ -1449,7 +1483,7 @@
 
                 //var selectedCategory = categoryTable.$('tr.selected').data();
                 //updated selected item with the new data
-                
+
                 $('#editCategoryModal').modal('hide');
             });
 
@@ -1460,30 +1494,11 @@
 
                 var subcategoryName = $('#subcategory-name-add').val();
                 var subcategoryDescription = $('#subcategory-description-add').val();
-                //Post to MenuCreationController/AddSubcategory
-                //$.post("MenuCreationController/AddSubcategory", { SubcategoryName : subcategoryName, SubcategoryDescription : subcategoryDescription }, function (data) {
-
-                //})
-                //    .done(function () {
-                //        //On successfully adding new subcategory to the database.
-                //})
-                //    .fail(function () {
-                //        //On failing to add a new subcategory to the database. Indicate this to the user.
-                //});
 
                 console.log(subcategoryName);
                 console.log(subcategoryDescription);
 
-                //Iterate over all values of the addAddon data table
-                console.log("List of values in addon table:");
-                addonTable
-                    .data()
-                    .each(function (value, index) {
-                        //Value is 2 element array of value[0]: name, and value[1]: price
-                        console.log(value);
-                    });
-
-
+                //Get the currently selected category from the category table
                 var selectedCategory = categoryTable.row('tr.selected').data();
                 selectedCategoryData = {};
                 for (var item in categoryDictionary)
@@ -1496,18 +1511,100 @@
                     }
 
                 }
-                //Demo Display
-                subCategoryDictionary.push({
-                    key: subcategoryName,
-                    value: [selectedCategory[0], //selected category name
-                            "", //menuitems
-                            "", //addons
-                            subcategoryDescription,
-                            selectedCategoryData.value[2],
-                            Math.floor((Math.random() * 10 ) + 11)]
-                });
-                updateSubcategoryTable();
 
+                //Construct and post the CategoryModel (for reference), SubcategoryModel (to add), and the AddonModel (to Add)
+                //Selected CategoryModel Date for reference
+                var CategoryModel = {
+                    Id: selectedCategoryData.value[2],
+                    Name: selectedCategory[0],
+                    Description: selectedCategoryData.value[1],
+                    Subcategories: selectedCategoryData.value[0]
+                };
+
+                //New SubcategoryModel
+                var SubcategoryModel = {
+                    Id: "",
+                    Name: subcategoryName,
+                    Description: subcategoryDescription,
+                    CategoryId: selectedCategoryData.value[2],
+                    Category: "",
+                    MenuItems: [],
+                    AddOns: []
+                };
+
+                //Iterate over all addons in the table, create an addon object and append them to the SubcategoryModel AddOns key
+                var addonList = [];
+                addonTable
+                    .data()
+                    .each(function (value, index) {
+                        //Value is 3 element array of value[0]: name, value[1]: description, and value[2]: price
+                        console.log(value);
+                        //Create addon model
+                        var AddOnModel = {
+                            Id: "",
+                            Name: value[0],
+                            Description: value[1],
+                            Price: value[2],
+                            SubcategoryId: "",
+                            Subcategory: ""
+                        };
+                        //Append model to SubcategoryModel AddOns
+                        addonList.push(AddOnModel);
+                    });
+
+                console.log("SubcategoryModel Object:");
+                console.log(SubcategoryModel);
+
+                console.log("Pre-Post");
+                //Post: MenuCreation/AddSubcategory
+                $.ajax({
+                    url: '@Url.Action("AddSubcategory", "MenuCreation")',
+                    method: 'POST',
+                    data: { subcategoryObj: SubcategoryModel, categoryObj: CategoryModel, addonsObj: addonList },
+                    success: function (result) {
+                        if (result) {
+                            console.log(result);
+                            console.log(result['addOns']);
+                            subCategoryDictionary.push({
+                                key: result['name'],
+                                value: [selectedCategory[0], //selected category name
+                                        result['menuitems'], //menuitems
+                                        result['addOns'], //addons
+                                        result['description'],
+                                        result['categoryid'],
+                                        result['id']]
+                            });
+
+                            //Update addonDictionary
+                            for (var item in result['addOns'])
+                            {
+                                addonDictionary.push({
+                                key: result['addOns'][item]['name'],
+                                value: [result['name'],
+                                        result['addOns'][item]['description'],
+                                        result['addOns'][item]['price'], //price
+                                        result['id'], //subid
+                                        result['addOns'][item]['id']] //id
+                            });
+
+                            }
+
+
+                            //Update the subcategory table to display new subcategory
+                            updateSubcategoryTable();
+
+                        } else {
+                            console.log("Something went wrong while adding the new subcategory.");
+                        }
+                    }
+                });
+
+                addonTable.clear();
+                addonTable.draw();
+
+                //Clear the text boxes for next input
+                var subcategoryName = $('#subcategory-name-add').val("");
+                var subcategoryDescription = $('#subcategory-description-add').val("");
 
                 $('#addSubcategoryModal').modal('hide');
             });

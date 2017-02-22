@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
 using TriCodeTest.Models.MenuModels;
 using TriCodeTest.Models.MenuViewModels;
+using Newtonsoft.Json;
 
 namespace TriCodeTest.Controllers
 {
@@ -231,17 +232,56 @@ namespace TriCodeTest.Controllers
             return Json(true);
         }
 
+        // POST: MenuCreation/AddSubcategory
+        // Given subcategory, category, and a list of addons update the database and return the
+        // subcategory object.
+
         [HttpPost]
-        public async Task<ActionResult> AddSubcategory(Subcategory obj)
+        public async Task<ActionResult> AddSubcategory(Subcategory subcategoryObj, Category categoryObj, List<AddOn> addonsObj)
         {
-            _context.Add(obj); //Add to the database
+            Subcategory newSubcategory = new Subcategory()
+            {
+                Id = subcategoryObj.Id,
+                Name = subcategoryObj.Name,
+                Description = subcategoryObj.Description,
+                CategoryId = categoryObj.Id
+            };
+
+
+            _context.Subcategory.Add(newSubcategory);
             var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
             if (updated < 1) //determine that at least one item was added to the database
             {
                 return NotFound();
             }
 
-            return Json(obj); //Return the updated object back to view after it has been added to the database. 
+            foreach (var item in addonsObj)
+            {
+                System.Diagnostics.Debug.WriteLine(item.Name);
+                item.SubcategoryId = newSubcategory.Id;
+                _context.AddOn.Add(item); //Add each addon to the database
+            }
+            await _context.SaveChangesAsync();
+            
+
+            return Json(newSubcategory);
+
+        }
+
+        // POST: MenuCreation/RemoveSubcategory
+        // Remove the indicated subcategory and return true when complete
+        [HttpPost]
+        public async Task<ActionResult> RemoveSubcategory(int id)
+        {
+            System.Diagnostics.Debug.WriteLine(id);
+            var subcategory = await _context.Subcategory.SingleOrDefaultAsync(m => m.Id == id);
+            if (subcategory == null)
+            {
+                return NotFound();
+            }
+            _context.Subcategory.Remove(subcategory);
+            await _context.SaveChangesAsync();
+            return Json(true);
         }
 
         private bool CategoryExists(int id)
