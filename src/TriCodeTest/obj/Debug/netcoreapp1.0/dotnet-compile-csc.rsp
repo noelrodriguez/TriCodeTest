@@ -240,6 +240,7 @@
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Data\Migrations\20170123014657_MenuItemIngredientsKey.Designer.cs"
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Data\Migrations\ApplicationDbContextModelSnapshot.cs"
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\ApplicationUser.cs"
+"C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\HistoryViewModel.cs"
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Option.cs"
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Size.cs"
 "C:\Users\Alex\Desktop\TriCodeTest\src\TriCodeTest\Models\Status.cs"

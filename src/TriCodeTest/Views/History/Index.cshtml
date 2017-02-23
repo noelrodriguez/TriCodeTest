@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DateTime)
+                Date/Time
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderMenuItems)
+                Items Ordered
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                Status
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
+                Price
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@*@foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
@@ -43,11 +43,9 @@
                 @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
         </tr>
 }
-    </tbody>*@
+    </tbody>
 </table>
