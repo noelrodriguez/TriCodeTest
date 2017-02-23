@@ -9,6 +9,12 @@ using TriCodeTest.Data;
 
 namespace TriCodeTest.RoleSeeding
 {
+    /// <summary>
+    /// This class does role seeding during application bootstraping.
+    /// The has roles array
+    /// Has a function called SeedRole that take a parameter of type 
+    /// IServiceProvider
+    /// </summary>
     public class RoleSeeding
     {
         /// <summary>
@@ -17,7 +23,7 @@ namespace TriCodeTest.RoleSeeding
         private static readonly string[] Roles = new string[] { "Admin", "Staff", "Customer" };
 
         /// <summary>
-        /// Seed roles to the database
+        /// Method seeds roles in the database for use later
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
