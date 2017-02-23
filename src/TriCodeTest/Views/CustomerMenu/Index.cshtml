@@ -199,12 +199,36 @@
 
     // Dynamically loads details of menu item (THIS MIGHT NOT BE NEEDED IF WE DO IT LIKE STARBUCKS)
     function loadDetails(menuitem){
-        var descriptionText = $("#description-text");
-        descriptionText.empty();
-        descriptionText.append(menuitem.Description);
-        $(":mobile-pagecontainer").pagecontainer("change", "#details-page", {
-            transition: 'slide'
-        });
+        console.log(menuitem);
+        var URL = '@Url.Action("PostMenuItemToCart", "CustomerMenu")' + menuitem.Id;
+        window.location = '@Url.Action("PostMenuItemToCart", "CustomerMenu")' + '/' + menuitem.Id;
+        @*$.ajax({
+            url: '@Url.Action("PostMenuItemToCart", "CustomerMenu")',
+            type: 'POST',
+            data: JSON.stringify(menuitem),
+            contentType: 'aplication/json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function(response){
+                //if (response == 'True'){
+                //    location.reload();
+                //}
+                console.log(response);
+            },
+            error: function(error){
+                x = error;
+            }
+        });*@
+        @*@{ var test = JsonConvert.DeserializeObject(@:menuitem);
+            Url.Action("PostMenuItemToCart", "CustomerMenu");}*@
+        //var descriptionText = $("#description-text");
+        //descriptionText.empty();
+        //descriptionText.append(menuitem.Description);
+        //$(":mobile-pagecontainer").pagecontainer("change", "#details-page", {
+        //    transition: 'slide'
+        //});
     }
 </script>
 }

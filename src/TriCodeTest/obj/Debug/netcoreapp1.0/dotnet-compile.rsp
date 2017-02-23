@@ -228,10 +228,12 @@ Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Program.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Startup.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\AccountController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\CustomerMenuController.cs
+Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\EditUserRoleController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\HomeController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\ManageController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\MenuCreationController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\OrderInfoController.cs
+Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Controllers\UpdateUserRoleController.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Data\ApplicationDbContext.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Data\DbInitializer.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.cs
@@ -247,6 +249,7 @@ Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\ApplicationUse
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\Option.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\Size.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\Status.cs
+Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\UpdateUserRoleViewModel.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ForgotPasswordViewModel.cs
 Z:\Users\Noel\Documents\GitHub\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\LoginViewModel.cs
