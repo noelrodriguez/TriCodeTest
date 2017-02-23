@@ -1353,7 +1353,7 @@
                 var selectedCategory = categoryTable.row('tr.selected').data(); //Returns array of data that is currently selected in the categoryTable
 
                 for (var item in subCategoryDictionary) {
-                    console.log(subCategoryDictionary[item]);
+                    //console.log(subCategoryDictionary[item]);
                     if (subCategoryDictionary[item].value[0].toString() == selectedCategory[0].toString())
                     {
                         //Add new menuItem to the table
@@ -1557,6 +1557,7 @@
 
                 console.log("Pre-Post");
                 //Post: MenuCreation/AddSubcategory
+                var newSubcategoryId;
                 $.ajax({
                     url: '@Url.Action("AddSubcategory", "MenuCreation")',
                     method: 'POST',
@@ -1565,6 +1566,7 @@
                         if (result) {
                             console.log(result);
                             console.log(result['addOns']);
+                            newSubcategoryId = result['id'];
                             subCategoryDictionary.push({
                                 key: result['name'],
                                 value: [selectedCategory[0], //selected category name
@@ -1575,21 +1577,6 @@
                                         result['id']]
                             });
 
-                            //Update addonDictionary
-                            for (var item in result['addOns'])
-                            {
-                                addonDictionary.push({
-                                key: result['addOns'][item]['name'],
-                                value: [result['name'],
-                                        result['addOns'][item]['description'],
-                                        result['addOns'][item]['price'], //price
-                                        result['id'], //subid
-                                        result['addOns'][item]['id']] //id
-                            });
-
-                            }
-
-
                             //Update the subcategory table to display new subcategory
                             updateSubcategoryTable();
 
@@ -1598,8 +1585,44 @@
                         }
                     }
                 });
-
+                console.log(newSubcategoryId);
+                newSubcategoryId = Number(newSubcategoryId);
                 //Ajax get
+                $.ajax({
+                    //GET: MenuCreation/GetAddons
+                    //retrieves list of subcategory addons
+                    url: '@Url.Action("GetAddons", "MenuCreation")',
+                    method: 'GET',
+                    data: { id: newSubcategoryId },
+                    success: function (result) {
+                        if (result) {
+                            console.log("This is the addon:" + result);
+                            //add data to the dictionary
+                            //Update addonDictionary
+                            //for (var item in result['addOns']) {
+                            //    addonDictionary.push({
+                            //        key: result['addOns'][item]['name'],
+                            //        value: [result['name'],
+                            //                result['addOns'][item]['description'],
+                            //                result['addOns'][item]['price'], //price
+                            //                result['id'], //subid
+                            //                result['addOns'][item]['id']] //id
+                            //    });
+
+                            //}
+
+                        } else {
+
+
+                        }
+
+
+
+                    }
+                    
+                });
+
+
 
                 addonTable.clear();
                 addonTable.draw();

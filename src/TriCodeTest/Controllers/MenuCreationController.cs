@@ -263,18 +263,23 @@ namespace TriCodeTest.Controllers
             }
             await _context.SaveChangesAsync();
 
-            var returnObject = await _context.Subcategory.Include(m => m.Category).Include(w => w.AddOns).FirstOrDefaultAsync(x => x.Id == newSubcategory.Id);
+            //var returnObject = await _context.Subcategory.Include(m => m.Category).Include(w => w.AddOns).FirstOrDefaultAsync(x => x.Id == newSubcategory.Id);
 
-            return Json(returnObject);
+            return Json(newSubcategory);
 
         }
 
         // GET: MenuCreation/GetAddons
-        //[HttpGet]
-        //public async Task<ActionResult> GetAddons(int id)
-        //{
-        //    //var Addons = await _context.AddOn.
-        //}
+        //Given subcategory construct list of addons and return them!
+        [HttpGet]
+        public ActionResult GetAddons(int id)
+        {
+            System.Diagnostics.Debug.WriteLine("============================================");
+            System.Diagnostics.Debug.WriteLine(id);
+            var Addons = _context.AddOn.Select(x => x.SubcategoryId == id).ToList();
+
+            return Json(Addons);
+        }
 
         // POST: MenuCreation/RemoveSubcategory
         // Remove the indicated subcategory and return true when complete
