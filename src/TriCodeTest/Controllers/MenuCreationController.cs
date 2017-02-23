@@ -262,11 +262,19 @@ namespace TriCodeTest.Controllers
                 _context.AddOn.Add(item); //Add each addon to the database
             }
             await _context.SaveChangesAsync();
-            
 
-            return Json(newSubcategory);
+            var returnObject = await _context.Subcategory.Include(m => m.Category).Include(w => w.AddOns).FirstOrDefaultAsync(x => x.Id == newSubcategory.Id);
+
+            return Json(returnObject);
 
         }
+
+        // GET: MenuCreation/GetAddons
+        //[HttpGet]
+        //public async Task<ActionResult> GetAddons(int id)
+        //{
+        //    //var Addons = await _context.AddOn.
+        //}
 
         // POST: MenuCreation/RemoveSubcategory
         // Remove the indicated subcategory and return true when complete
