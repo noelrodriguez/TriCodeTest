@@ -11,10 +11,16 @@ namespace TriCodeTest.RoleSeeding
 {
     public class RoleSeeding
     {
-        //List of roles
+        /// <summary>
+        /// List of roles
+        /// </summary>
         private static readonly string[] Roles = new string[] { "Admin", "Staff", "Customer" };
 
-        //Seed roles to the database
+        /// <summary>
+        /// Seed roles to the database
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <returns></returns>
         public static async Task SeedRole(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())

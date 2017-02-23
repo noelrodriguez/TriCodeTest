@@ -24,6 +24,14 @@ namespace TriCodeTest.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="smsSender"></param>
+        /// <param name="loggerFactory"></param>
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -39,8 +47,12 @@ namespace TriCodeTest.Controllers
         }
 
 
-        //
-        // GET: /Account/Login
+        /// <summary>
+        /// GET: /Account/Login
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+       
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
@@ -48,9 +60,13 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-        //
-        // POST: /Account/Login
+        /// <summary>
+        ///  POST: /Account/Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -94,7 +110,11 @@ namespace TriCodeTest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // GET: /Account/Register
         [HttpGet]
@@ -105,6 +125,12 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // POST: /Account/Register
         [HttpPost]
@@ -137,7 +163,11 @@ namespace TriCodeTest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous] //Admin registration is only for admins.
         public IActionResult AdminRegister(string returnUrl = null)
@@ -146,6 +176,12 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -191,6 +227,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -290,7 +330,12 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View(model);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         // GET: /Account/ConfirmEmail
         [HttpGet]
         [AllowAnonymous]
@@ -318,6 +363,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -347,6 +397,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Account/ForgotPasswordConfirmation
         [HttpGet]
