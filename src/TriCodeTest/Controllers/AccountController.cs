@@ -16,7 +16,7 @@ using TriCodeTest.Data;
 namespace TriCodeTest.Controllers
 {
     /// <summary>
-    /// This class deals registration, login, password reset, 
+    /// This class deals with registration, login, password reset, 
     /// </summary>
     [Authorize]
     public class AccountController : Controller
