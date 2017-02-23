@@ -227,10 +227,12 @@
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Program.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Startup.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\AccountController.cs
+C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\HistoryController.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\HomeController.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\ManageController.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\MenuCreationController.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\OrderInfoController.cs
+C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Controllers\UpdateUserRoleController.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Data\ApplicationDbContext.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Data\DbInitializer.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Data\Migrations\00000000000000_CreateIdentitySchema.cs
@@ -243,9 +245,11 @@ C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Data\Migrations\20170123014657_MenuItemIngredientsKey.Designer.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\ApplicationUser.cs
+C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\HistoryViewModel.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\Option.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\Size.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\Status.cs
+C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\UpdateUserRoleViewModel.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\westo\Projects\TriCodeMergeAllPresentation\TriCodeTest\src\TriCodeTest\Models\AccountViewModels\LoginViewModel.cs
