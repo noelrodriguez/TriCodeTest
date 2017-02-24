@@ -1,0 +1,110 @@
+@model TriCodeTest.Models.OrderModels.Order
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+@* This will need to be moved to a separate linked style sheet under ~/css/*@
+<style>
+    #categoryList {
+        font: bold 24px;
+    }
+</style>
+
+@* Cart Page *@
+<div data-role="page" id="cart-page">
+    @* Panel *@
+    <div data-role="panel" class="myPanel" id="category-page-panel" data-position="right">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    @* Header *@
+    <div data-role="header">
+        <a href="" style="display:none"></a>
+        <a href="#category-page-panel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul id="categoryList" data-role="listview">
+            @if (Model.OrderMenuItems != null)
+            {
+                @foreach (var menuItem in Model.OrderMenuItems)
+                {
+                    <li>
+                        <a href="#"><h2>@menuItem.MenuItem.Name</h2></a>
+                    </li>
+                }
+            }
+            <li data-icon="false">
+                <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@* Details Page *@
+
+<div data-role="page" id="details-page">
+    @* Panel *@
+    <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    @* Header *@
+    <div data-role="header">
+        <a href="#" data-rel="back" data-role="button">Go back</a>
+        <a href="#details-page-panel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+    </div>
+    @* Main Content (gets loaded dynamically) *@
+    <div role="main" class="ui-content">
+        <div id="details-header-row" class="ui-responsive">
+            <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
+        </div>
+        <div id="description-container" class="ui-responsive">
+            <h6 id="description">
+                <span id="description-text">Menu item details would go here</span>
+            </h6>
+        </div>
+        <div class="main-details ui-responsive">
+            <div class="ui-block-a" style="width:50%">
+                <div id="menuitem-labels" class="ui-bar">
+                    Name
+                </div>
+            </div>
+            <div class="ui-block-b" style="width:50%">
+                <div id="menuitem-info" class="ui-bar">
+                    Details
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+<script>
+    var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+
+    function loadDetails(menuitem){
+        console.log(menuitem);   
+    }
+
+    function addAnotherItem(){
+        window.location = '@Url.Action("Index", "CustomerMenu")';
+    }
+</script>
+}

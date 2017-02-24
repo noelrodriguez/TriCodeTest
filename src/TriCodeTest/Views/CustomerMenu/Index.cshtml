@@ -4,15 +4,13 @@
 @{
     ViewData["Title"] = "Customer Menu";
     // Pre-loads the _CustomerLayout partial view since customers and staff views are significantly different
-    Layout = "../Shared/_CustomerLayout.cshtml";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
 @* This will need to be moved to a separate linked style sheet under ~/css/*@
 <style>
 #description span {
     font: bold 18px Cursive;
-}
-#description {
 }
 </style>
 
@@ -21,7 +19,10 @@
 <div data-role="page" id="categories-page">
     @* Panel *@
     <div data-role="panel" class="myPanel" id="category-page-panel" data-position="right">
-        <ul data-role="listview" id="sidebar">
+        <ul id="sidebar">
+            <li>
+                <a role="button" class="btn navbar-btn" href='@Url.Action("Cart", "CustomerMenu")'>Cart</a>
+            </li>
             @await Html.PartialAsync("_CustomerLoginPartial")
         </ul>
     </div>

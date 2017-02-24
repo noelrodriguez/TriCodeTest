@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TriCodeTest.Models.MenuModels;
+using TriCodeTest.Models.OrderModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace TriCodeTest.Models.CustomerMenuViewModels
