@@ -15,6 +15,9 @@ using TriCodeTest.Data;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// This class deals with registration, login, password reset, 
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
@@ -24,6 +27,14 @@ namespace TriCodeTest.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Initial and assign fields.
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="smsSender"></param>
+        /// <param name="loggerFactory"></param>
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -39,8 +50,12 @@ namespace TriCodeTest.Controllers
         }
 
 
-        //
-        // GET: /Account/Login
+        /// <summary>
+        /// GET: /Account/Login
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+       
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
@@ -48,8 +63,12 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-        //
+        /// <summary>
+        ///  Log the user in the application
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -94,7 +113,11 @@ namespace TriCodeTest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /// <summary>
+        /// Register user view
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // GET: /Account/Register
         [HttpGet]
@@ -105,6 +128,12 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        ///  Register the user with the data passed
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // POST: /Account/Register
         [HttpPost]
@@ -137,7 +166,11 @@ namespace TriCodeTest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /// <summary>
+        /// Admin registration view
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous] //Admin registration is only for admins.
         public IActionResult AdminRegister(string returnUrl = null)
@@ -146,6 +179,12 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// GET Admin data and register
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -191,6 +230,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Log off method
+        /// </summary>
+        /// <returns></returns>
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -201,7 +244,12 @@ namespace TriCodeTest.Controllers
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(AccountController.Login), "Account");
         }
-
+        /// <summary>
+        /// External login (Not implemented)
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -215,6 +263,12 @@ namespace TriCodeTest.Controllers
             return Challenge(properties, provider);
         }
 
+        /// <summary>
+        /// ExternalLoginCallback not going to be implemented
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="remoteError"></param>
+        /// <returns></returns>
         //
         // GET: /Account/ExternalLoginCallback
         [HttpGet]
@@ -290,7 +344,12 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View(model);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         // GET: /Account/ConfirmEmail
         [HttpGet]
         [AllowAnonymous]
@@ -318,6 +377,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -347,6 +411,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Account/ForgotPasswordConfirmation
         [HttpGet]
