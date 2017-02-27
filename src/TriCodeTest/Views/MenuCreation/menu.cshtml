@@ -257,7 +257,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="subcategory-name" class="form-control-label">Category</label>
+                                <label for="subcategory-name" class="form-control-label">Subcategory</label>
                                 <input type="text" class="form-control" id="subcategory-name-add">
                             </div>
                             <div class="form-group">
@@ -332,7 +332,7 @@
                                 <input type="text" class="form-control" id="subcategory-id-edit" readonly />
                             </div>
                             <div class="form-group">
-                                <label for="subcategory-name-edit" class="form-control-label">Category</label>
+                                <label for="subcategory-name-edit" class="form-control-label">Subcategory</label>
                                 <input type="text" class="form-control" id="subcategory-name-edit">
                             </div>
                             <div class="form-group">
@@ -359,9 +359,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6" style="float:left">
-                                        <!--addonEdit Table controls for adding and removing items-->
+                                        <!--addonEdit Table controls for adding and removing items editAddonDescription-text-->
                                         <label for="editAddonName-text" class="form-control-label">Addon Name</label>
                                         <input type="text" id="editAddonName-text" class="form-control" />
+                                        <label for="editAddonDescription-text" class="form-control-label">Addon Description</label>
+                                        <textarea id="editAddonDescription-text" class="form-control"></textarea>
                                         <label for="editAddonPrice-text" class="form-control-label">Addon Price</label>
                                         <input type="number" id="editAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
                                     </div>
@@ -954,13 +956,58 @@
                 //If 'addAddonName-text is empty, or the name already exists then don't add it.'
 
                 var addonName = $('#editAddonName-text').val();
+                var addonDescription = $('#editAddonDescription-text').val();
                 var addonPrice = $('#editAddonPrice-text').val();
+                var subId = $('#subcategory-id-edit').val();
+                var subName = "";
+
+                for (var sub in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[sub].value[5] == subId)
+                    {
+                        subName = subCategoryDictionary[sub].key;
+
+                    }
+                }
+
 
                 //Check if name already exists in table???!?!?!
+                var AddOnModel = {
+                    Id: "",
+                    Name: addonName,
+                    Description: addonDescription,
+                    Price: addonPrice,
+                    SubcategoryId: subId,
+                    Subcategory: ""
+                };
+
 
                 if (addonName != "") {
                     //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
-                    addonTableEdit.row.add([addonName, addonPrice]).draw(false);
+                    $.ajax({
+                        url: '@Url.Action("AddAddon", "MenuCreation")',
+                        method: 'POST',
+                        data: { obj: AddOnModel},
+                        success: function (data) {
+                            if (data) {
+                                //Add addon to the table
+                                addonTableEdit.row.add([data['name'], data['price']]).draw(false);
+                                addonDictionary.push({
+                                    key: data['name'],
+                                    value: [data['price'],
+                                            data['description'],
+                                            subName,
+                                            data['subcategoryId']]
+                                });
+
+                            }
+                        }
+
+                    });
+
+
+
+                    
                 }
                 else {
                     //TODO change up this erro message so it centers and does stuff.
@@ -1034,7 +1081,8 @@
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
                     $('#subcategory-id-edit').val(data.value[5]);
                     $('#subcategory-name-edit').val(data.key);
-                    $modal.find('.modal-body textarea').val("EXAMPLE DESCRIPTION FOR SUBCATEGORY")
+                    $modal.find('.modal-body textarea').val(data.value[3])
+                    $('#editAddonDescription-text').val("");
 
                     //On submit modal will submit data to database to be changed and redraw the table with the edited data.
 
@@ -1489,6 +1537,7 @@
 
 
             //Add Subcategory and Edit Subcategory submit listeners.
+            //submits new subcategory to the database and updates the tables.
             $('#addSubcategorySubmit').on('click', function (e) {
                 console.log("Submit Add Subcategory");
 
@@ -1552,10 +1601,10 @@
                         addonList.push(AddOnModel);
                     });
 
-                console.log("SubcategoryModel Object:");
-                console.log(SubcategoryModel);
+                //console.log("SubcategoryModel Object:");
+                //console.log(SubcategoryModel);
 
-                console.log("Pre-Post");
+                //console.log("Pre-Post");
                 //Post: MenuCreation/AddSubcategory
                 var newSubcategoryId;
                 $.ajax({
@@ -1577,6 +1626,42 @@
                                         result['id']]
                             });
 
+                            //on success post get request for addons
+                            console.log("new subcategory id: " + newSubcategoryId);
+                            newSubcategoryId = Number(newSubcategoryId);
+                            //Ajax get
+                            $.ajax({
+                                //GET: MenuCreation/GetAddons
+                                //retrieves list of subcategory addons
+                                url: '@Url.Action("GetAddons", "MenuCreation")',
+                                method: 'GET',
+                                data: { id: newSubcategoryId },
+                                success: function (data) {
+                                    if (data) { //check if something is returned
+                                        //console.log("This is the addon:" + data);
+                                        //add each addon to the addon dictionary
+                                        for (var addon in data)
+                                        {
+                                            addonDictionary.push({
+                                                key: data[addon]['name'],
+                                                value: [data[addon]['price'],
+                                                        data[addon]['description'],
+                                                        result['name'],
+                                                        data[addon]['subcategoryId']]
+                                            });
+
+                                        }
+
+                                        //console.log("subcateory category name" + result['name']);
+                                        //console.log("subcateory id" + result[0]['subcategoryId']);
+
+                                    } else {
+                                        console.log("Something happened while getting addons");
+
+                                    }
+                                }
+
+                            });
                             //Update the subcategory table to display new subcategory
                             updateSubcategoryTable();
 
@@ -1585,44 +1670,6 @@
                         }
                     }
                 });
-                console.log(newSubcategoryId);
-                newSubcategoryId = Number(newSubcategoryId);
-                //Ajax get
-                $.ajax({
-                    //GET: MenuCreation/GetAddons
-                    //retrieves list of subcategory addons
-                    url: '@Url.Action("GetAddons", "MenuCreation")',
-                    method: 'GET',
-                    data: { id: newSubcategoryId },
-                    success: function (result) {
-                        if (result) {
-                            console.log("This is the addon:" + result);
-                            //add data to the dictionary
-                            //Update addonDictionary
-                            //for (var item in result['addOns']) {
-                            //    addonDictionary.push({
-                            //        key: result['addOns'][item]['name'],
-                            //        value: [result['name'],
-                            //                result['addOns'][item]['description'],
-                            //                result['addOns'][item]['price'], //price
-                            //                result['id'], //subid
-                            //                result['addOns'][item]['id']] //id
-                            //    });
-
-                            //}
-
-                        } else {
-
-
-                        }
-
-
-
-                    }
-                    
-                });
-
-
 
                 addonTable.clear();
                 addonTable.draw();
