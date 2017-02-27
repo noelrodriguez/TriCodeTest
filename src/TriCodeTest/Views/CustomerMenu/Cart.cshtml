@@ -34,7 +34,7 @@
     @* Main Content *@
     <div role="main" class="ui-content">
         <ul id="categoryList" data-role="listview">
-            @if (Model.OrderMenuItems != null)
+            @*@if (Model.OrderMenuItems != null)
             {
                 @foreach (var menuItem in Model.OrderMenuItems)
                 {
@@ -45,7 +45,24 @@
             }
             <li data-icon="false">
                 <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
-            </li>
+            </li>*@
+            @if (Model == null || Model.OrderMenuItems.FirstOrDefault() == null)
+            {
+                <li data-icon="false">
+                    <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
+                </li>
+            } else
+            {
+                @foreach (var menuItem in Model.OrderMenuItems)
+                {
+                    <li>
+                        <a href="#"><h2>@menuItem.MenuItem.Name</h2></a>
+                    </li>
+                }
+                <li data-icon="false">
+                    <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
+                </li>
+            }
         </ul>
     </div>
 </div>

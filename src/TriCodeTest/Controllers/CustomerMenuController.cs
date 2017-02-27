@@ -37,10 +37,21 @@ namespace TriCodeTest.Controllers
             return View(LoadMenuViewModel);
         }
 
-        public IActionResult PostMenuItemToCart(int id)
+        public async Task<IActionResult> PostMenuItemToCart(int id)
         {
-            var TEST = id;
-            var MenuItem = _context.MenuItem.FirstOrDefault(mi => mi.Id == id);
+            var user = await GetCurrentUserAsync();
+            var menuItem = await _context.MenuItem.SingleOrDefaultAsync(mi => mi.Id == id);
+            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+
+            if (cart == null)
+            {
+                cart = AddNewOrderToDatabase(user);
+            }
+            // Adds menu item to the Order(Cart)
+            Order viewModelCart = OrderDeserialize(cart);
+            viewModelCart.OrderMenuItems.Add(ConvertToOrderMenuItem(menuItem));
+            cart.OrderMenuItems = OrderSerialize(viewModelCart).OrderMenuItems;
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(CustomerMenuController.Cart), "CustomerMenu", null);
         }
@@ -48,14 +59,12 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Cart()
         {
             var user = await GetCurrentUserAsync();
-            var cart = await _context.OrderInfo.Where(s => s.Status == Models.Status.Cart).Where(usr => usr.User.Id == user.Id).SingleOrDefaultAsync();
+            var cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
             if (cart != null)
             {
                 return View(OrderDeserialize(cart));
             }
-            AddNewOrderToDatabase(user);
-            Order viewModelOrder = OrderDeserialize(await _context.OrderInfo.Where(s => s.Status == Models.Status.Cart).Where(usr => usr.User.Id == user.Id).SingleOrDefaultAsync());
-            return View(cart);
+            return View(null);
         }
 
         //public IActionResult LoadCart()
@@ -68,7 +77,7 @@ namespace TriCodeTest.Controllers
             return _userManager.GetUserAsync(HttpContext.User);
         }
 
-        private void AddNewOrderToDatabase(ApplicationUser user)
+        private OrderInfo AddNewOrderToDatabase(ApplicationUser user)
         {
             OrderInfo newOrder = new OrderInfo()
             {
@@ -79,10 +88,12 @@ namespace TriCodeTest.Controllers
             };
             _context.OrderInfo.Add(newOrder);
             _context.SaveChanges();
+            return newOrder;
         }
 
         private Order OrderDeserialize(OrderInfo model)
         {
+            var test = model;
             Order OrderModel = new Order
             {
                 Id = model.Id,
@@ -90,8 +101,9 @@ namespace TriCodeTest.Controllers
                 DateTime = model.DateTime,
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
+                OrderMenuItems = new List<OrderMenuItem>()
             };
-            if (OrderModel.OrderMenuItems != null)
+            if (model.OrderMenuItems != null)
             {
                 List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
                 OrderModel.OrderMenuItems = OrderMenuItems;
@@ -113,5 +125,19 @@ namespace TriCodeTest.Controllers
             OrderInfoModel.OrderMenuItems = json;
             return OrderInfoModel;
         }
+
+        private OrderMenuItem ConvertToOrderMenuItem(MenuItem item)
+        {
+            OrderMenuItem orderMenuItem = new OrderMenuItem()
+            {
+                MenuItem = item,
+            };
+            return orderMenuItem;
+        }
+
+        //private MenuItem ConvertToMenuItem(OrderMenuItem item)
+        //{
+            
+        //}
     }
 }
