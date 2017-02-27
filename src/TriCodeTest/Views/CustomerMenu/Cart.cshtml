@@ -56,7 +56,7 @@
                 @foreach (var menuItem in Model.OrderMenuItems)
                 {
                     <li>
-                        <a href="#"><h2>@menuItem.MenuItem.Name</h2></a>
+                        <a href="#" onclick="editItem(@JsonConvert.SerializeObject(menuItem))"><h2>@menuItem.MenuItem.Name</h2></a>
                     </li>
                 }
                 <li data-icon="false">
@@ -116,8 +116,10 @@
 <script>
     var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
 
-    function loadDetails(menuitem){
-        console.log(menuitem);   
+    function editItem(menuitem){
+        console.log(menuitem);
+        console.log(menuitem.MenuItem.Id);
+        window.location = '@Url.Action("EditItem", "CustomerMenu")' + '/' + menuitem.MenuItem.Id;
     }
 
     function addAnotherItem(){

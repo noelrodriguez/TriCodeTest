@@ -26,6 +26,8 @@ namespace TriCodeTest.Controllers
             _context = context;
             _userManager = userManager;
         }
+
+        // GET: CustomerMenu
         public IActionResult Index()
         {
             LoadMenuViewModel LoadMenuViewModel = new LoadMenuViewModel()
@@ -37,10 +39,23 @@ namespace TriCodeTest.Controllers
             return View(LoadMenuViewModel);
         }
 
+        // GET: CustomerMenu/Cart
+        public async Task<IActionResult> Cart()
+        {
+            var user = await GetCurrentUserAsync();
+            var cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+            if (cart != null)
+            {
+                return View(OrderDeserialize(cart));
+            }
+            return View(null);
+        }
+
+        // POST: CustomerMenu/PostMenuItemToCart/5
         public async Task<IActionResult> PostMenuItemToCart(int id)
         {
             var user = await GetCurrentUserAsync();
-            var menuItem = await _context.MenuItem.SingleOrDefaultAsync(mi => mi.Id == id);
+            var menuItem = await _context.MenuItem.Include(ing => ing.MenuItemIngredients).ThenInclude(ing => ing.Ingredient).SingleOrDefaultAsync(mi => mi.Id == id);
             OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
 
             if (cart == null)
@@ -56,21 +71,26 @@ namespace TriCodeTest.Controllers
             return RedirectToAction(nameof(CustomerMenuController.Cart), "CustomerMenu", null);
         }
 
-        public async Task<IActionResult> Cart()
+        // GET: CustomerMenu/EditItem/5
+        public async Task<IActionResult> EditItem(int? id)
         {
-            var user = await GetCurrentUserAsync();
-            var cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
-            if (cart != null)
+            if (id == null)
             {
-                return View(OrderDeserialize(cart));
+                return NotFound();
             }
-            return View(null);
-        }
 
-        //public IActionResult LoadCart()
-        //{
-        //    Get info cart;
-        //}
+            var user = await GetCurrentUserAsync();
+            var listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).OrderMenuItems;
+            foreach (var menuitem in listOfMenuitems)
+            {
+                if (menuitem.MenuItem.Id == id)
+                {
+                    return View(menuitem);
+                }
+            }
+                
+            return RedirectToAction(nameof(CustomerMenuController.Cart), "CustomerMenu", null);
+        }
 
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
@@ -134,10 +154,5 @@ namespace TriCodeTest.Controllers
             };
             return orderMenuItem;
         }
-
-        //private MenuItem ConvertToMenuItem(OrderMenuItem item)
-        //{
-            
-        //}
     }
 }
