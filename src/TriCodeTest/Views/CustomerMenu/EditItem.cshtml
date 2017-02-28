@@ -7,33 +7,55 @@
 }
 
 <style>
-    #description span {
+    /*#description span {
         font: bold 18px Cursive;
+    }
+    #header-item-name {
+        
+    }*/
+    #header-image h2 {
+        position: absolute;
+        top: 380px;
+        left: 25px;
+        color: white;
+    }
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading {
+        margin: 0;
+    }
+    .ui-li-static.ui-collapsible {
+        padding: 0;
+    }
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+        border-top-width: 0;
+    }
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+    .ui-li-static.ui-collapsible > .ui-collapsible-content {
+        border-bottom-width: 0;
     }
 </style>
 
 @*<form asp-action="Edit">
-    <div class="form-horizontal">
-        <hr />
-        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="DateTime" />
-        <input type="hidden" asp-for="OrderMenuItems" />
-        <input type="hidden" asp-for="TotalPrice" />
-        <div class="form-group">
-            <label asp-for="Status" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
-                <span asp-validation-for="Status" class="text-danger" />
+        <div class="form-horizontal">
+            <hr />
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateTime" />
+            <input type="hidden" asp-for="OrderMenuItems" />
+            <input type="hidden" asp-for="TotalPrice" />
+            <div class="form-group">
+                <label asp-for="Status" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
+                    <span asp-validation-for="Status" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</form>*@
+    </form>*@
 
 <div data-role="page" id="edititem-page">
     @* Header *@
@@ -46,11 +68,67 @@
     @* Main Content *@
     <div role="main" class="ui-content">
         <div id="details-header-row">
-            <img src="~/images/food-banner.jpeg" id="menuitemImg" style="margin:auto"/>
+            <div id="header-image">
+                <img src="~/images/food-banner.jpeg" id="menuitemImg" />
+                <h2>@Model.MenuItem.Name</h2>
+            </div>
         </div>
-        <ul id="categoryList" data-role="listview">
-            <li>This is a test</li>
+        <ul data-role="listview">
+            <li><h4>@Model.MenuItem.Description</h4></li>
+            <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                <h2>Size</h2>
+                <form id="size-choice">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="size" id="size-choice-null" value="null" checked="checked" />
+                        <label for="size-choice-null">No Size</label>
+                        <input type="radio" name="size" id="size-choice-small" value="@Size.Small" />
+                        <label for="size-choice-small">@Size.Small</label>
+                        <input type="radio" name="size" id="size-choice-medium" value="@Size.Medium" />
+                        <label for="size-choice-medium">@Size.Medium</label>
+                        <input type="radio" name="size" id="size-choice-large" value="@Size.Large" />
+                        <label for="size-choice-large">@Size.Large</label>
+                    </fieldset>
+                </form>
+            </li>
+            <li><a href="#"><h2>Add-ons</h2></a></li>
+            <li><a href="#"><h2>Ingredients</h2></a></li>
         </ul>
+        @*<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <h2>Size</h2>
+            <form id="size-choice">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="radio" name="size" id="size-choice-null" value="null" checked="checked" />
+                    <label for="size-choice-null">No Size</label>
+                    <input type="radio" name="size" id="size-choice-small" value="@Size.Small" />
+                    <label for="size-choice-small">@Size.Small</label>
+                    <input type="radio" name="size" id="size-choice-medium" value="@Size.Medium" />
+                    <label for="size-choice-medium">@Size.Medium</label>
+                    <input type="radio" name="size" id="size-choice-large" value="@Size.Large" />
+                    <label for="size-choice-large">@Size.Large</label>
+                </fieldset>
+            </form>
+        </div>*@
+        @*<a href="#"><h2>Test</h2></a>
+        <div data-role="collapsible">
+            <h3>Ingredients</h3>
+            <p>I'm the collapsible content for section 3</p>
+        </div>*@
+        @*<ul id="categoryList" data-role="listview">
+            <li><p>@Model.MenuItem.Description</p></li>
+            @if (Model.MenuItem.Size != null)
+            {
+                <li><h2>Size</h2></li>
+            }
+            <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                <h2>Add-ons</h2>
+                <ul data-role="listview" data-theme="b">
+                    <li>Test</li>
+                    <li>Test</li>
+                    <li>Test</li>
+                </ul>
+            </li>
+            <li><a href="#"><h2>Ingredients</h2></a></li>
+        </ul>*@
     </div>
 </div>
 
@@ -58,56 +136,60 @@
     <a asp-action="Index">Back to Cart</a>
 </div>
 
-@* Details Page *@
-
-@*<div data-role="page" id="details-page">
-    @* Panel 
-    <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
-        <ul data-role="listview" id="sidebar">
-            @await Html.PartialAsync("_CustomerLoginPartial")
-        </ul>
-    </div>
-    @* Header 
-    <div data-role="header">
-        <a href="#" data-rel="back" data-role="button">Back</a>
-        <a href="#details-page-panel" data-role="button" data-icon="bars">
-            Menu
-        </a>
-        <h3>
-            <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
-        </h3>
-    </div>
-    @* Main Content (gets loaded dynamically) 
-    <div role="main" class="ui-content">
-        <div id="details-header-row" class="ui-responsive">
-            <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
-        </div>
-        <div id="description-container" class="ui-responsive">
-            <h6 id="description">
-                <span id="description-text">Menu item details would go here</span>
-            </h6>
-        </div>
-        <div class="main-details ui-responsive">
-            <div class="ui-block-a" style="width:50%">
-                <div id="menuitem-labels" class="ui-bar">
-                    Name
-                </div>
-            </div>
-            <div class="ui-block-b" style="width:50%">
-                <div id="menuitem-info" class="ui-bar">
-                    Details
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
 
 @section Scripts {
     <script>
         var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
         function goBack(){
-            window.location = '@Url.Action("Cart", "CustomerMenu")';        
+            window.location = '@Url.Action("Cart", "CustomerMenu")';
         }
+        $("#size-choice").bind("change", function(event, ui){
+            console.log($("input[name=size]:checked").val());
+        })
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+@* Details Page *@
+
+@*<div data-role="page" id="details-page">
+        @* Panel
+        <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
+            <ul data-role="listview" id="sidebar">
+                @await Html.PartialAsync("_CustomerLoginPartial")
+            </ul>
+        </div>
+        @* Header
+        <div data-role="header">
+            <a href="#" data-rel="back" data-role="button">Back</a>
+            <a href="#details-page-panel" data-role="button" data-icon="bars">
+                Menu
+            </a>
+            <h3>
+                <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
+            </h3>
+        </div>
+        @* Main Content (gets loaded dynamically)
+        <div role="main" class="ui-content">
+            <div id="details-header-row" class="ui-responsive">
+                <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
+            </div>
+            <div id="description-container" class="ui-responsive">
+                <h6 id="description">
+                    <span id="description-text">Menu item details would go here</span>
+                </h6>
+            </div>
+            <div class="main-details ui-responsive">
+                <div class="ui-block-a" style="width:50%">
+                    <div id="menuitem-labels" class="ui-bar">
+                        Name
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:50%">
+                    <div id="menuitem-info" class="ui-bar">
+                        Details
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
