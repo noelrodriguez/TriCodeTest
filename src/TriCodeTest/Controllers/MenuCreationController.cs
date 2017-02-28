@@ -246,6 +246,24 @@ namespace TriCodeTest.Controllers
             return Json(true);
         }
 
+        /// <summary>
+        /// Get request for a specific subcategory with a specific id
+        /// </summary>
+        /// <param name="id">Database Id of a subcategory</param>
+        /// <returns>Returns a subcategory model object matching the id</returns>
+        [HttpGet]
+        public async Task<ActionResult> GetSubcategory(int id)
+        {
+
+            var subcategory = await _context.Subcategory.SingleOrDefaultAsync(s => s.Id == id);
+            if (subcategory == null)
+            {
+                return NotFound();
+            }
+            
+            return Json(subcategory);
+        }
+
         // POST: MenuCreation/AddSubcategory
         // Given subcategory, category, and a list of addons update the database and return the
         // subcategory object.
@@ -267,7 +285,6 @@ namespace TriCodeTest.Controllers
                 CategoryId = categoryObj.Id
             };
 
-
             _context.Subcategory.Add(newSubcategory);
             var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
             if (updated < 1) //determine that at least one item was added to the database
@@ -285,6 +302,35 @@ namespace TriCodeTest.Controllers
 
             return Json(newSubcategory);
 
+        }
+        /// <summary>
+        /// Given a subcategory model object update the existing subcategory in the database with the new data
+        /// </summary>
+        /// <param name="obj">Subcategory Model Object</param>
+        /// <returns>Returns true when object is updated in database</returns>
+        [HttpPost]
+        public async Task<ActionResult> EditSubcategory(Subcategory obj)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(obj);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoryExists(obj.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return Json(true);
         }
         /// <summary>
         /// Returns a list of the addons with the specific subcategory id.

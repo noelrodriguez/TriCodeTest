@@ -349,6 +349,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
+                                                    <th>Description</th>
                                                     <th>Price</th>
                                                 </tr>
                                             </thead>
@@ -549,7 +550,7 @@
             }
 
 
-            //addon table
+            //populate addon dictionary
             @foreach (var item in addonList)
             {
                 <text>
@@ -558,7 +559,8 @@
                 value: ["@item.Price",
                         "@item.Description",
                         "@item.Subcategory.Name",
-                        "@item.SubcategoryId"]
+                        "@item.SubcategoryId",
+                        "@item.Id"]
             });
 
             </text>
@@ -595,7 +597,8 @@
 
             }
 
-            //Populate Addon dictionary
+            //oops
+            @*//Populate Addon dictionary
             @foreach (var item in addonList)
             {
                 <text>
@@ -608,7 +611,7 @@
                         "@item.Id"]
             });
             </text>
-            }
+            }*@
 
             //Populate ingredients Dictionary
             @foreach (var item in ingredientsList)
@@ -997,7 +1000,8 @@
                                     value: [data['price'],
                                             data['description'],
                                             subName,
-                                            data['subcategoryId']]
+                                            data['subcategoryId'],
+                                            data['id']]
                                 });
 
                             }
@@ -1023,7 +1027,76 @@
 
             //Listener for when remove addon button is clicked on the edit subcategory modal
             $('#removeAddonButton-edit').click(function () {
+                var $row = addonTableEdit.$('tr.selected');
+                var subName;
+                for (var item in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[item].value[5] == $('#subcategory-id-edit'))
+                    {
+                        subName = subCategoryDictionary[item].key;
+                    }
+                }
 
+
+
+                if ($row.length) {
+                    var rowData = addonTableEdit.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Addon?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                //post to RemoveAddon
+                                var addonId;
+                                for (var item in addonDictionary)
+                                {
+                                    if (addonDictionary[item].key == rowData[0])
+                                    {
+                                        addonId = addonDictionary[item].value[4];
+
+                                    }
+
+                                }
+                                $.ajax({
+                                    url: '@Url.Action("RemoveAddon", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { obj: AddOnModel },
+                                    success: function (data) {
+                                        if (data) {
+                                            //Add addon to the table
+                                            addonTableEdit.row.add([data['name'], data['price']]).draw(false);
+                                            addonDictionary.push({
+                                                key: data['name'],
+                                                value: [data['price'],
+                                                        data['description'],
+                                                        subName,
+                                                        data['subcategoryId'],
+                                                        data['id']]
+                                            });
+
+                                        }
+                                    }
+
+                                });
+
+
+                                //Remove the selected row
+                                addonTableEdit.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }]
+                    });
+
+                }
             });
 
             //Add subcategory Button Listener
@@ -1070,7 +1143,7 @@
                         {
 
                             console.log(addonDictionary[item].key);
-                            addonTableEdit.row.add([addonDictionary[item].key, addonDictionary[item].value[0]]).draw(false);
+                            addonTableEdit.row.add([addonDictionary[item].key, addonDictionary[item].value[1], addonDictionary[item].value[0]]).draw(false);
                         }
 
                     }
@@ -1393,6 +1466,7 @@
 
             //Function to update subCategoryTable
             function updateSubcategoryTable() {
+                console.log("Updating subcategory table");
                 subCategoryTable.clear();
                 subCategoryTable.draw(); // redraws table with no data
                 menuItemTable.clear();
@@ -1647,7 +1721,8 @@
                                                 value: [data[addon]['price'],
                                                         data[addon]['description'],
                                                         result['name'],
-                                                        data[addon]['subcategoryId']]
+                                                        data[addon]['subcategoryId'],
+                                                        data[addon]['id']]
                                             });
 
                                         }
@@ -1687,35 +1762,94 @@
                 var subcategoryID = $('#subcategory-id-edit').val();
                 var subcategoryName = $('#subcategory-name-edit').val();
                 var subcategoryDescription = $('#subcategory-description-edit').val();
-                //Post to MenuCreationController/EditSubcategory
-                //$.post("MenuCreationController/EditSubcategory", {SubcategoryID : subcategoryID, SubcategoryName : subcategoryName, SubcategoryDescription : subcategoryDescription}, function (data) {
-
-                //})
-                //    .done(function () {
-                //        //On successfully editing subcategory to the database update the table
-                //})
-                //    .fail(function () {
-                //        //On failure to edit the item... Tell the user.
-                //});
 
                 console.log(subcategoryID);
                 console.log(subcategoryName);
                 console.log(subcategoryDescription);
 
-                //Demo Display!
-                for (var item in subCategoryDictionary) {
-                    //Find the selected item and change its values according to the new data.
-                    //TODO: VALIDATE
-                    if (subCategoryDictionary[item].value[5] == subcategoryID) {
-                        subCategoryDictionary[item].key = subcategoryName;
-                        subCategoryDictionary[item].value[3] = subcategoryDescription;
+                var currentSubcategory;
+
+                for (var sub in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[sub].value[5] == subcategoryID)
+                    {
+                        currentSubcategory = subCategoryDictionary[sub];
                     }
 
                 }
 
-                updateSubcategoryTable(); //Call function to update the subcategory table
+                $.ajax({
+                    //GET: MenuCreation/GetSubcategory
+                    url: '@Url.Action("GetSubcategory", "MenuCreation")',
+                    method: 'GET',
+                    data: {id: subcategoryID},
+                    success: function (result) {
+                        if (result) {
+
+                            var SubcategoryModel = {
+                                Id: subcategoryID,
+                                Name: subcategoryName,
+                                Description: subcategoryDescription,
+                                CategoryId: result['categoryId'],
+                                Category: result['category'],
+                                MenuItems: result['menuitems'],
+                                AddOns: result['addOns']
+                            };
+                            //Post data to EditSubcategory
+                            $.ajax({
+                                //Post: MenuCreation/GetAddons
+                                //Posts updated subcategory data to the database.
+                                url: '@Url.Action("EditSubcategory", "MenuCreation")',
+                                method: 'POST',
+                                data: { obj: SubcategoryModel },
+                                success: function (data) {
+                                    if (data) { //check if something is returned
+                                        console.log("New Subcategory name" + subcategoryName);
+                                        //Update javascript dictionary references.
+                                        for (var item in subCategoryDictionary)
+                                        {
+                                            if (subCategoryDictionary[item].value[5] == result['id'])
+                                            {
+                                                subCategoryDictionary[item].key = subcategoryName;
+                                                subCategoryDictionary[item].value[3] = subcategoryDescription;
+                                            }
+
+                                        }
+                                        for (var item in addonDictionary)
+                                        {
+                                            if (addonDictionary[item].value[3] == result['id'])
+                                            {
+                                                addonDictionary[item].value[2] = subcategoryName;
+                                            }
+
+                                        }
+                                        for (var item in menuItemDictionary)
+                                        {
+                                            if (menuItemDictionary[item].value[5] == result['id'])
+                                            {
+                                                menuItemDictionary[item].value[0] = subcategoryName;
+                                            }
+
+                                        }
+
+                                        updateSubcategoryTable(); //Call function to update the subcategory table
+                                    } else {
+                                        console.log("Something happened while getting addons");
+
+                                    }
+                                }
+
+                            });
 
 
+                        } else
+                        {
+                            console.log("Error while getting subcategory");
+
+                        }
+
+                    }
+                });
 
                 $('#editSubcategoryModal').modal('hide');
             });
