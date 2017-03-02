@@ -70,7 +70,7 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order, string phoneNumber)
         {
             OrderInfo orderInfo = OrderSerialize(order);
-            //var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -125,6 +125,7 @@ namespace TriCodeTest.Controllers
                 DateTime = model.DateTime,
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
+                UserId = model.User.Id
             };
             List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
             OrderModel.OrderMenuItems = OrderMenuItems;
