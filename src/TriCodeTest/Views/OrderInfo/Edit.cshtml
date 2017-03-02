@@ -1,5 +1,5 @@
 @model TriCodeTest.Models.OrderModels.Order
-
+@using Newtonsoft.Json
 @{
     ViewData["Title"] = "Edit";
 }
@@ -15,6 +15,7 @@
         <input type="hidden" asp-for="DateTime" />
         <input type="hidden" asp-for="OrderMenuItems" />
         <input type="hidden" asp-for="TotalPrice" />
+        <input type="hidden" asp-for="UserId" />
         <div class="form-group">
             <label asp-for="Status" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -36,6 +37,7 @@
 
 @section Scripts {
     <script>
+        var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
         $(document).ready(function () {
             $("#statuses option[value=0]").remove();
         });
