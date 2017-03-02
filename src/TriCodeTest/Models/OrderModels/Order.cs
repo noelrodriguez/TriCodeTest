@@ -15,6 +15,7 @@ namespace TriCodeTest.Models.OrderModels
         [Display(Name = "Time")]
         public DateTime DateTime { get; set; }
         public Status Status { get; set; }
+        public string UserId { get; set; }
         // Navigation Properties
         public ApplicationUser User { get; set; }
         [Display(Name = "Items")]
