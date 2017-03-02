@@ -15,6 +15,7 @@ namespace TriCodeTest.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        // Small test 
         public OrderInfoController(ApplicationDbContext context)
         {
             _context = context;    
