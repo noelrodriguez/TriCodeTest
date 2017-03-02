@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
 using TriCodeTest.Models.OrderModels;
 using Newtonsoft.Json;
+using TriCodeTest.TwilioNotification;
 
 namespace TriCodeTest.Controllers
 {
@@ -70,7 +71,7 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order)
         {
             OrderInfo orderInfo = OrderSerialize(order);
-            var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            var numberToSms = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -84,6 +85,16 @@ namespace TriCodeTest.Controllers
                     var entry = _context.Entry(orderInfo);
                     entry.Property(s => s.Status).IsModified = true;
                     await _context.SaveChangesAsync();
+
+                    if (order.Status.Equals(Models.Status.Received))
+                    {
+                        Notification.SendNotification(numberToSms, "Your order has been received."
+                            + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
+                    }
+                    if (order.Status.Equals(Models.Status.Pick_Up))
+                    {
+                        Notification.SendNotification(numberToSms, "Your order is ready for pickup. DO NOT REPLY! Data rates may apply");
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

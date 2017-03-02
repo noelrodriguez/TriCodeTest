@@ -45,7 +45,8 @@
       "type": "build"
     },
     "FontAwesome": "4.7.0",
-    "SendGrid.NetCore": "1.0.0-rtm-00002"
+    "SendGrid.NetCore": "1.0.0-rtm-00002",
+    "Twilio": "5.0.2"
   },
 
   "tools": {
