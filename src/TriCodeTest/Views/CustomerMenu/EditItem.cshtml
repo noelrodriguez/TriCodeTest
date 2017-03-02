@@ -1,0 +1,300 @@
+﻿@model TriCodeTest.Models.OrderModels.OrderMenuItem
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<style>
+    /*#description span {
+        font: bold 18px Cursive;
+    }
+    #header-item-name {
+
+    }*/
+    #header-image h2 {
+        position: absolute;
+        top: 380px;
+        left: 25px;
+        color: white;
+    }
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading {
+        margin: 0;
+    }
+
+    .ui-li-static.ui-collapsible {
+        padding: 0;
+    }
+
+        .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+            border-top-width: 0;
+        }
+
+        .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+        .ui-li-static.ui-collapsible > .ui-collapsible-content {
+            border-bottom-width: 0;
+        }
+</style>
+
+@*<form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateTime" />
+            <input type="hidden" asp-for="OrderMenuItems" />
+            <input type="hidden" asp-for="TotalPrice" />
+            <div class="form-group">
+                <label asp-for="Status" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
+                    <span asp-validation-for="Status" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>*@
+@* Edit Item Page *@
+
+<div data-role="page" id="edit-item-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="" data-role="button" onclick="goBack()">Back</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" onclick="postItem()">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <div id="details-header-row">
+            <div id="header-image">
+                <img src="~/images/food-banner.jpeg" id="menuitemImg" />
+                <h2>@Model.MenuItem.Name</h2>
+            </div>
+        </div>
+        <ul data-role="listview">
+            <li><h4>@Model.MenuItem.Description</h4></li>
+            <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                <h2>Size</h2>
+                <form id="size-choice">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="size" id="size-choice-null" value=null checked="checked" />
+                        <label for="size-choice-null">No Size</label>
+                        <input type="radio" name="size" id="size-choice-small" value=@Size.Small />
+                        <label for="size-choice-small">@Size.Small</label>
+                        <input type="radio" name="size" id="size-choice-medium" value=@Size.Medium />
+                        <label for="size-choice-medium">@Size.Medium</label>
+                        <input type="radio" name="size" id="size-choice-large" value=@Size.Large />
+                        <label for="size-choice-large">@Size.Large</label>
+                    </fieldset>
+                </form>
+            </li>
+            <li><a href="#"><h2>Add-ons</h2></a></li>
+            <li><a href="#" onclick="loadIngredientsPage(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
+        </ul>
+    </div>
+</div>
+
+@* Edit Ingredients Page *@
+
+<div data-role="page" id="edit-ingredient-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" onclick="dontSaveItemChanges()">Back</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" data-rel="back" data-role="button">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var ing in Model.MenuItem.MenuItemIngredients)
+            {
+                //<li><h2>@ing.Ingredient.Name</h2><p>@ing.Ingredient.Option</p></li>
+                <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                    <h2>@ing.Ingredient.Name</h2>
+                    <form id="@ing.Ingredient.Id-choice">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" checked="checked" />
+                            <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
+                            <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-none-@ing.IngredientId" value="@Option.None" />
+                            <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
+                        </fieldset>
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@*<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <h2>Size</h2>
+        <form id="size-choice">
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <input type="radio" name="size" id="size-choice-null" value="null" checked="checked" />
+                <label for="size-choice-null">No Size</label>
+                <input type="radio" name="size" id="size-choice-small" value="@Size.Small" />
+                <label for="size-choice-small">@Size.Small</label>
+                <input type="radio" name="size" id="size-choice-medium" value="@Size.Medium" />
+                <label for="size-choice-medium">@Size.Medium</label>
+                <input type="radio" name="size" id="size-choice-large" value="@Size.Large" />
+                <label for="size-choice-large">@Size.Large</label>
+            </fieldset>
+        </form>
+    </div>*@
+@*<a href="#"><h2>Test</h2></a>
+    <div data-role="collapsible">
+        <h3>Ingredients</h3>
+        <p>I'm the collapsible content for section 3</p>
+    </div>*@
+@*<ul id="categoryList" data-role="listview">
+        <li><p>@Model.MenuItem.Description</p></li>
+        @if (Model.MenuItem.Size != null)
+        {
+            <li><h2>Size</h2></li>
+        }
+        <li data-role="collapsible" data-iconpos="right" data-inset="false">
+            <h2>Add-ons</h2>
+            <ul data-role="listview" data-theme="b">
+                <li>Test</li>
+                <li>Test</li>
+                <li>Test</li>
+            </ul>
+        </li>
+        <li><a href="#"><h2>Ingredients</h2></a></li>
+    </ul>*@
+
+<div>
+    <a asp-action="Index">Back to Cart</a>
+</div>
+
+
+@section Scripts {
+    <script>
+        var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+        var ItemObject;
+
+        // Navigate back to cart
+        function goBack(){
+            window.location = '@Url.Action("Cart", "CustomerMenu")';
+        }
+
+        function dontSaveItemChanges(){
+            window.location = '@Url.Action("EditItem", "CustomerMenu", new { id = Model.MenuItem.Id })';
+        }
+
+        function postItem(){
+            ItemObject = {
+                MenuItem : MODEL.MenuItem,
+                AddOns : MODEL.AddOns
+            };
+            $.ajax({
+                url: '@Url.Action("EditItem", "CustomerMenu")',
+                method: 'POST',
+                data: ItemObject,
+                success: function(result){
+                    console.log(result);
+                }
+            });
+        }
+
+        // Create size radio button listener to set new size to javascript object of view model
+        $("#size-choice").bind("change", function(event, ui){
+            switch ($("input[name=size]:checked").val()){
+                case "null":
+                    MODEL.MenuItem.Size = null;
+                    break;
+                case "Small":
+                    MODEL.MenuItem.Size = 0;
+                    break;
+                case "Medium":
+                    MODEL.MenuItem.Size = 1;
+                    break;
+                case "Large":
+                    MODEL.MenuItem.Size = 2;
+                    break;
+            }
+            console.log(MODEL.MenuItem.Size);
+        })
+
+        // Load page to edit ingredients
+        function loadIngredientsPage(ingredientsList){
+            console.log(ingredientsList);
+            $(":mobile-pagecontainer").pagecontainer("change", "#edit-ingredient-page", {
+                transition: 'slide'
+            });
+        }
+
+        // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
+        $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
+            $("#" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+                switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
+                    case "Normal":
+                        ingredient.Ingredient.Option = 0;
+                        break;
+                    case "None":
+                        ingredient.Ingredient.Option = 1;
+                        break;
+                    case "Low":
+                        ingredient.Ingredient.Option = 2;
+                        break;
+                }
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@* Details Page *@
+
+@*<div data-role="page" id="details-page">
+        @* Panel
+        <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
+            <ul data-role="listview" id="sidebar">
+                @await Html.PartialAsync("_CustomerLoginPartial")
+            </ul>
+        </div>
+        @* Header
+        <div data-role="header">
+            <a href="#" data-rel="back" data-role="button">Back</a>
+            <a href="#details-page-panel" data-role="button" data-icon="bars">
+                Menu
+            </a>
+            <h3>
+                <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
+            </h3>
+        </div>
+        @* Main Content (gets loaded dynamically)
+        <div role="main" class="ui-content">
+            <div id="details-header-row" class="ui-responsive">
+                <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
+            </div>
+            <div id="description-container" class="ui-responsive">
+                <h6 id="description">
+                    <span id="description-text">Menu item details would go here</span>
+                </h6>
+            </div>
+            <div class="main-details ui-responsive">
+                <div class="ui-block-a" style="width:50%">
+                    <div id="menuitem-labels" class="ui-bar">
+                        Name
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:50%">
+                    <div id="menuitem-info" class="ui-bar">
+                        Details
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
