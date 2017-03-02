@@ -80,7 +80,7 @@ namespace TriCodeTest.Controllers
             }
 
             var user = await GetCurrentUserAsync();
-            var listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).OrderMenuItems;
+            List<OrderMenuItem> listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).OrderMenuItems;
             foreach (var menuitem in listOfMenuitems)
             {
                 if (menuitem.MenuItem.Id == id)
@@ -90,6 +90,17 @@ namespace TriCodeTest.Controllers
             }
                 
             return RedirectToAction(nameof(CustomerMenuController.Cart), "CustomerMenu", null);
+        }
+
+        // POST: CustomerMenu/EditItem/5
+        [HttpPost]
+        public async Task<ActionResult> EditItem(OrderMenuItem item)
+        {
+            if (ModelState.IsValid)
+            {
+                return Json(true);
+            }
+            return Json(false);
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync()

@@ -69,6 +69,7 @@
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
+        <a href="#" onclick="postItem()">Save</a>
     </div>
     @* Main Content *@
     <div role="main" class="ui-content">
@@ -84,21 +85,20 @@
                 <h2>Size</h2>
                 <form id="size-choice">
                     <fieldset data-role="controlgroup" data-type="horizontal">
-                        <input type="radio" name="size" id="size-choice-null" value="null" checked="checked" />
+                        <input type="radio" name="size" id="size-choice-null" value=null checked="checked" />
                         <label for="size-choice-null">No Size</label>
-                        <input type="radio" name="size" id="size-choice-small" value="@Size.Small" />
+                        <input type="radio" name="size" id="size-choice-small" value=@Size.Small />
                         <label for="size-choice-small">@Size.Small</label>
-                        <input type="radio" name="size" id="size-choice-medium" value="@Size.Medium" />
+                        <input type="radio" name="size" id="size-choice-medium" value=@Size.Medium />
                         <label for="size-choice-medium">@Size.Medium</label>
-                        <input type="radio" name="size" id="size-choice-large" value="@Size.Large" />
+                        <input type="radio" name="size" id="size-choice-large" value=@Size.Large />
                         <label for="size-choice-large">@Size.Large</label>
                     </fieldset>
                 </form>
             </li>
             <li><a href="#"><h2>Add-ons</h2></a></li>
-            <li><a href="#" onclick="loadIngredients(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
+            <li><a href="#" onclick="loadIngredientsPage(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
         </ul>
-        <button onclick="save()"></button>
     </div>
 </div>
 
@@ -107,11 +107,11 @@
 <div data-role="page" id="edit-ingredient-page">
     @* Header *@
     <div data-role="header">
-        <a href="#" data-rel="back" data-role="button">Back</a>
+        <a href="#" onclick="dontSaveItemChanges()">Back</a>
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
-        <a href="#" data-role="button" onclick="saveIngredients()">Save</a>
+        <a href="#" data-rel="back" data-role="button">Save</a>
     </div>
     @* Main Content *@
     <div role="main" class="ui-content">
@@ -121,13 +121,13 @@
                 //<li><h2>@ing.Ingredient.Name</h2><p>@ing.Ingredient.Option</p></li>
                 <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                     <h2>@ing.Ingredient.Name</h2>
-                    <form id="@ing.Ingredient.Name-choice">
+                    <form id="@ing.Ingredient.Id-choice">
                         <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-normal-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.Normal" checked="checked" />
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" checked="checked" />
                             <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
-                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-low-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.Low" />
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
                             <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
-                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-none-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.None" />
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-none-@ing.IngredientId" value="@Option.None" />
                             <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
                         </fieldset>
                     </form>
@@ -182,34 +182,75 @@
 @section Scripts {
     <script>
         var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+        var ItemObject;
+
+        // Navigate back to cart
         function goBack(){
             window.location = '@Url.Action("Cart", "CustomerMenu")';
         }
+
+        function dontSaveItemChanges(){
+            window.location = '@Url.Action("EditItem", "CustomerMenu", new { id = Model.MenuItem.Id })';
+        }
+
+        function postItem(){
+            ItemObject = {
+                MenuItem : MODEL.MenuItem,
+                AddOns : MODEL.AddOns
+            };
+            $.ajax({
+                url: '@Url.Action("EditItem", "CustomerMenu")',
+                method: 'POST',
+                data: ItemObject,
+                success: function(result){
+                    console.log(result);
+                }
+            });
+        }
+
+        // Create size radio button listener to set new size to javascript object of view model
         $("#size-choice").bind("change", function(event, ui){
-            MODEL.MenuItem.Size = $("input[name=size]:checked").val();
-            console.log($("input[name=size]:checked").val());
+            switch ($("input[name=size]:checked").val()){
+                case "null":
+                    MODEL.MenuItem.Size = null;
+                    break;
+                case "Small":
+                    MODEL.MenuItem.Size = 0;
+                    break;
+                case "Medium":
+                    MODEL.MenuItem.Size = 1;
+                    break;
+                case "Large":
+                    MODEL.MenuItem.Size = 2;
+                    break;
+            }
+            console.log(MODEL.MenuItem.Size);
         })
 
-        function loadIngredients(ingredientsList){
+        // Load page to edit ingredients
+        function loadIngredientsPage(ingredientsList){
             console.log(ingredientsList);
             $(":mobile-pagecontainer").pagecontainer("change", "#edit-ingredient-page", {
                 transition: 'slide'
             });
         }
 
-        function saveIngredients(){
-            var IngredientArray = MODEL.MenuItem.MenuItemIngredients;
-            console.log(IngredientArray);
-        }
-
-        $("#Tomato-choice").bind("change", function(event, ui){
-            console.log($("input[name=ingredient]:checked").val());
-            console.log($("input[name=ingredient]:checked").attr("ingId"));
-            console.log(MODEL.MenuItem.MenuItemIngredients);
-            $.each(MODEL.MenuItem.MenuItemIngredients, function(index, value){
-                console.log(index + " : " + value.IngredientId + " : " + $("input[name=ingredient]:checked").val());
+        // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
+        $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
+            $("#" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+                switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
+                    case "Normal":
+                        ingredient.Ingredient.Option = 0;
+                        break;
+                    case "None":
+                        ingredient.Ingredient.Option = 1;
+                        break;
+                    case "Low":
+                        ingredient.Ingredient.Option = 2;
+                        break;
+                }
             });
-        })
+        });
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
