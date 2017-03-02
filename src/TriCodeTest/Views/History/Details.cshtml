@@ -1,0 +1,72 @@
+@model TriCodeTest.Models.OrderModels.OrderInfo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Order Id
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMenuItems)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderMenuItems)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+    </dl>
+</div>
+
+
+    @*<a asp-action="Index">Back to List</a>*@
+    <form asp-action="Index">
+        <div class="form-horizontal">
+            @*<hr />
+
+            <input type="hidden" />*@
+
+            <div class="form-group">
+                <input type="submit" value="Return" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+
+<form asp-action="resubmitOrder" asp-route-Id="OrderInfo.Id">
+    <div class="form-horizontal">
+        @*<hr />*@
+
+        <input type="hidden" asp-for="Id" name="Id" />
+
+        <div class="form-group">
+            <input type="submit" value="Resbumit Order" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+
+
