@@ -68,7 +68,7 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }
 
-            var orderInfo = await _context.OrderInfo.SingleOrDefaultAsync(m => m.Id == id);
+            var orderInfo = await _context.OrderInfo.Include(usr => usr.User).SingleOrDefaultAsync(m => m.Id == id);
             if (orderInfo == null)
             {
                 return NotFound();
@@ -88,9 +88,10 @@ namespace TriCodeTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order, string phoneNumber)
         {
             OrderInfo orderInfo = OrderSerialize(order);
+            //var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -145,6 +146,7 @@ namespace TriCodeTest.Controllers
                 DateTime = model.DateTime,
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
+                UserId = model.User.Id
             };
             List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
             OrderModel.OrderMenuItems = OrderMenuItems;
