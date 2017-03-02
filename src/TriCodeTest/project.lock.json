@@ -3,8 +3,23 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
-      "FontAwesome/4.7.0": {
+      "bootstrap/3.3.7": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "[1.9.1, 4.0.0)"
+        }
+      },
+      "bootstrap-dialog/3.3.4.1": {
         "type": "package"
+      },
+      "jQuery/3.1.1": {
+        "type": "package"
+      },
+      "jquery.datatables/1.10.12": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.7.0"
+        }
       },
       "Libuv/1.9.0": {
         "type": "package",
@@ -44,19 +59,6 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
-        }
-      },
-      "Microsoft.AspNet.WebApi.Client/5.2.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Net.Http": "2.2.22",
-          "Newtonsoft.Json": "6.0.4"
-        },
-        "compile": {
-          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
-        },
-        "runtime": {
-          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.1": {
@@ -851,21 +853,6 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
-      },
-      "Microsoft.Bcl/1.1.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.Build": "1.0.14"
-        },
-        "compile": {
-          "lib/portable-net45+win8+wpa81/_._": {}
-        },
-        "runtime": {
-          "lib/portable-net45+win8+wpa81/_._": {}
-        }
-      },
-      "Microsoft.Bcl.Build/1.0.14": {
-        "type": "package"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
         "type": "package"
@@ -1715,21 +1702,6 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
-      "Microsoft.Net.Http/2.2.22": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl": "1.1.9",
-          "Microsoft.Bcl.Build": "1.0.14"
-        },
-        "compile": {
-          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
-          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
-          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
-        }
-      },
       "Microsoft.Net.Http.Headers/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -2569,23 +2541,6 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
-        }
-      },
-      "SendGrid.NetCore/1.0.0-rtm-00002": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.WebApi.Client": "5.2.3",
-          "Microsoft.AspNetCore.WebUtilities": "1.0.0",
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Net.Mail": "1.0.0-rtm-00002"
-        },
-        "compile": {
-          "lib/netstandard1.3/SendGrid.NetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/SendGrid.NetCore.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -3482,32 +3437,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "System.Net.Mail/1.0.0-rtm-00002": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "8.0.3",
-          "System.Collections": "4.0.11",
-          "System.Collections.Specialized": "4.0.1",
-          "System.Data.Common": "4.0.1",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.Globalization.Extensions": "4.0.1",
-          "System.IO.FileSystem": "4.0.1",
-          "System.Net.Primitives": "4.0.11",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Threading": "4.0.11",
-          "System.Threading.Thread": "4.0.0",
-          "System.Threading.ThreadPool": "4.0.10"
-        },
-        "compile": {
-          "lib/netstandard1.3/System.Net.Mail.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Net.Mail.dll": {}
         }
       },
       "System.Net.NameResolution/4.0.0": {
@@ -4662,22 +4591,291 @@
     }
   },
   "libraries": {
-    "FontAwesome/4.7.0": {
-      "sha512": "n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+    "bootstrap/3.3.7": {
+      "sha512": "3YTWhPNh6UcnUvzw9u6A2/hy2w0h4lznxPbX6FY47lFia3+Ib4zBixTpW6YieYA/b2fLXbkjoD59OjcVF3cJXw==",
       "type": "package",
-      "path": "FontAwesome/4.7.0",
+      "path": "bootstrap/3.3.7",
       "files": [
-        "Content/Content/font-awesome.css",
-        "Content/Content/font-awesome.min.css",
-        "Content/fonts/FontAwesome.otf",
-        "Content/fonts/fontawesome-webfont.eot",
-        "Content/fonts/fontawesome-webfont.svg",
-        "Content/fonts/fontawesome-webfont.ttf",
-        "Content/fonts/fontawesome-webfont.woff",
-        "Content/fonts/fontawesome-webfont.woff2",
-        "FontAwesome.4.7.0.nupkg.sha512",
-        "FontAwesome.nuspec",
-        "tools/install.ps1"
+        "bootstrap.3.3.7.nupkg.sha512",
+        "bootstrap.nuspec",
+        "content/Content/bootstrap-theme.css",
+        "content/Content/bootstrap-theme.css.map",
+        "content/Content/bootstrap-theme.min.css",
+        "content/Content/bootstrap-theme.min.css.map",
+        "content/Content/bootstrap.css",
+        "content/Content/bootstrap.css.map",
+        "content/Content/bootstrap.min.css",
+        "content/Content/bootstrap.min.css.map",
+        "content/Scripts/bootstrap.js",
+        "content/Scripts/bootstrap.min.js",
+        "content/fonts/glyphicons-halflings-regular.eot",
+        "content/fonts/glyphicons-halflings-regular.svg",
+        "content/fonts/glyphicons-halflings-regular.ttf",
+        "content/fonts/glyphicons-halflings-regular.woff",
+        "content/fonts/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "bootstrap-dialog/3.3.4.1": {
+      "sha512": "xjJhZehd2OLP6+IeZBmlUecWwOKV91STNNwDfGqIXSlVzMSoMPa2TcYmzJEzyxQnz4K9Fwqs1PagXwgmAIfwGw==",
+      "type": "package",
+      "path": "bootstrap-dialog/3.3.4.1",
+      "files": [
+        "bootstrap-dialog.3.3.4.1.nupkg.sha512",
+        "bootstrap-dialog.nuspec",
+        "content/content/bootstrap-dialog.css",
+        "content/content/bootstrap-dialog.less",
+        "content/scripts/bootstrap-dialog.js"
+      ]
+    },
+    "jQuery/3.1.1": {
+      "sha512": "XGsgwse025NxNPHjY7GE8HMFNzjqsa7a/PmNS1S5bVU++pNpZmiTnzUBK6OmECnqG/fIMVaAYHTnfoYd/Wz28g==",
+      "type": "package",
+      "path": "jQuery/3.1.1",
+      "files": [
+        "Content/Scripts/jquery-3.1.1-vsdoc.js",
+        "Content/Scripts/jquery-3.1.1.js",
+        "Content/Scripts/jquery-3.1.1.min.js",
+        "Content/Scripts/jquery-3.1.1.min.map",
+        "Content/Scripts/jquery-3.1.1.slim.js",
+        "Content/Scripts/jquery-3.1.1.slim.min.js",
+        "Content/Scripts/jquery-3.1.1.slim.min.map",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-3.1.1.intellisense.js",
+        "Tools/uninstall.ps1",
+        "jQuery.3.1.1.nupkg.sha512",
+        "jQuery.nuspec"
+      ]
+    },
+    "jquery.datatables/1.10.12": {
+      "sha512": "pCOpZKP20u72TQW/OupWH3ry6ZNacDf2dAa+4Wt57ylfCVnvtX9CeptuvcSr6mGpIAQAciYK/D/VoWIIR3UCGg==",
+      "type": "package",
+      "path": "jquery.datatables/1.10.12",
+      "files": [
+        "Content/Content/DataTables/css/autoFill.bootstrap.css",
+        "Content/Content/DataTables/css/autoFill.bootstrap.min.css",
+        "Content/Content/DataTables/css/autoFill.bootstrap4.css",
+        "Content/Content/DataTables/css/autoFill.bootstrap4.min.css",
+        "Content/Content/DataTables/css/autoFill.dataTables.css",
+        "Content/Content/DataTables/css/autoFill.dataTables.min.css",
+        "Content/Content/DataTables/css/autoFill.foundation.css",
+        "Content/Content/DataTables/css/autoFill.foundation.min.css",
+        "Content/Content/DataTables/css/autoFill.jqueryui.css",
+        "Content/Content/DataTables/css/autoFill.jqueryui.min.css",
+        "Content/Content/DataTables/css/autoFill.semanticui.css",
+        "Content/Content/DataTables/css/autoFill.semanticui.min.css",
+        "Content/Content/DataTables/css/buttons.bootstrap.css",
+        "Content/Content/DataTables/css/buttons.bootstrap.min.css",
+        "Content/Content/DataTables/css/buttons.bootstrap4.css",
+        "Content/Content/DataTables/css/buttons.bootstrap4.min.css",
+        "Content/Content/DataTables/css/buttons.dataTables.css",
+        "Content/Content/DataTables/css/buttons.dataTables.min.css",
+        "Content/Content/DataTables/css/buttons.foundation.css",
+        "Content/Content/DataTables/css/buttons.foundation.min.css",
+        "Content/Content/DataTables/css/buttons.jqueryui.css",
+        "Content/Content/DataTables/css/buttons.jqueryui.min.css",
+        "Content/Content/DataTables/css/buttons.semanticui.css",
+        "Content/Content/DataTables/css/buttons.semanticui.min.css",
+        "Content/Content/DataTables/css/colReorder.bootstrap.css",
+        "Content/Content/DataTables/css/colReorder.bootstrap.min.css",
+        "Content/Content/DataTables/css/colReorder.bootstrap4.css",
+        "Content/Content/DataTables/css/colReorder.bootstrap4.min.css",
+        "Content/Content/DataTables/css/colReorder.dataTables.css",
+        "Content/Content/DataTables/css/colReorder.dataTables.min.css",
+        "Content/Content/DataTables/css/colReorder.foundation.css",
+        "Content/Content/DataTables/css/colReorder.foundation.min.css",
+        "Content/Content/DataTables/css/colReorder.jqueryui.css",
+        "Content/Content/DataTables/css/colReorder.jqueryui.min.css",
+        "Content/Content/DataTables/css/colReorder.semanticui.css",
+        "Content/Content/DataTables/css/colReorder.semanticui.min.css",
+        "Content/Content/DataTables/css/common.scss",
+        "Content/Content/DataTables/css/dataTables.bootstrap.css",
+        "Content/Content/DataTables/css/dataTables.bootstrap.min.css",
+        "Content/Content/DataTables/css/dataTables.bootstrap4.css",
+        "Content/Content/DataTables/css/dataTables.bootstrap4.min.css",
+        "Content/Content/DataTables/css/dataTables.foundation.css",
+        "Content/Content/DataTables/css/dataTables.foundation.min.css",
+        "Content/Content/DataTables/css/dataTables.jqueryui.css",
+        "Content/Content/DataTables/css/dataTables.jqueryui.min.css",
+        "Content/Content/DataTables/css/dataTables.material.css",
+        "Content/Content/DataTables/css/dataTables.material.min.css",
+        "Content/Content/DataTables/css/dataTables.semanticui.css",
+        "Content/Content/DataTables/css/dataTables.semanticui.min.css",
+        "Content/Content/DataTables/css/dataTables.uikit.css",
+        "Content/Content/DataTables/css/dataTables.uikit.min.css",
+        "Content/Content/DataTables/css/fixedColumns.bootstrap.css",
+        "Content/Content/DataTables/css/fixedColumns.bootstrap.min.css",
+        "Content/Content/DataTables/css/fixedColumns.bootstrap4.css",
+        "Content/Content/DataTables/css/fixedColumns.bootstrap4.min.css",
+        "Content/Content/DataTables/css/fixedColumns.dataTables.css",
+        "Content/Content/DataTables/css/fixedColumns.dataTables.min.css",
+        "Content/Content/DataTables/css/fixedColumns.foundation.css",
+        "Content/Content/DataTables/css/fixedColumns.foundation.min.css",
+        "Content/Content/DataTables/css/fixedColumns.jqueryui.css",
+        "Content/Content/DataTables/css/fixedColumns.jqueryui.min.css",
+        "Content/Content/DataTables/css/fixedColumns.semanticui.css",
+        "Content/Content/DataTables/css/fixedColumns.semanticui.min.css",
+        "Content/Content/DataTables/css/fixedHeader.bootstrap.css",
+        "Content/Content/DataTables/css/fixedHeader.bootstrap.min.css",
+        "Content/Content/DataTables/css/fixedHeader.bootstrap4.css",
+        "Content/Content/DataTables/css/fixedHeader.bootstrap4.min.css",
+        "Content/Content/DataTables/css/fixedHeader.dataTables.css",
+        "Content/Content/DataTables/css/fixedHeader.dataTables.min.css",
+        "Content/Content/DataTables/css/fixedHeader.foundation.css",
+        "Content/Content/DataTables/css/fixedHeader.foundation.min.css",
+        "Content/Content/DataTables/css/fixedHeader.jqueryui.css",
+        "Content/Content/DataTables/css/fixedHeader.jqueryui.min.css",
+        "Content/Content/DataTables/css/fixedHeader.semanticui.css",
+        "Content/Content/DataTables/css/fixedHeader.semanticui.min.css",
+        "Content/Content/DataTables/css/jquery.dataTables.css",
+        "Content/Content/DataTables/css/jquery.dataTables.min.css",
+        "Content/Content/DataTables/css/jquery.dataTables_themeroller.css",
+        "Content/Content/DataTables/css/keyTable.bootstrap.css",
+        "Content/Content/DataTables/css/keyTable.bootstrap.min.css",
+        "Content/Content/DataTables/css/keyTable.bootstrap4.css",
+        "Content/Content/DataTables/css/keyTable.bootstrap4.min.css",
+        "Content/Content/DataTables/css/keyTable.dataTables.css",
+        "Content/Content/DataTables/css/keyTable.dataTables.min.css",
+        "Content/Content/DataTables/css/keyTable.foundation.css",
+        "Content/Content/DataTables/css/keyTable.foundation.min.css",
+        "Content/Content/DataTables/css/keyTable.jqueryui.css",
+        "Content/Content/DataTables/css/keyTable.jqueryui.min.css",
+        "Content/Content/DataTables/css/keyTable.semanticui.css",
+        "Content/Content/DataTables/css/keyTable.semanticui.min.css",
+        "Content/Content/DataTables/css/mixins.scss",
+        "Content/Content/DataTables/css/responsive.bootstrap.css",
+        "Content/Content/DataTables/css/responsive.bootstrap.min.css",
+        "Content/Content/DataTables/css/responsive.bootstrap4.css",
+        "Content/Content/DataTables/css/responsive.bootstrap4.min.css",
+        "Content/Content/DataTables/css/responsive.dataTables.css",
+        "Content/Content/DataTables/css/responsive.dataTables.min.css",
+        "Content/Content/DataTables/css/responsive.foundation.css",
+        "Content/Content/DataTables/css/responsive.foundation.min.css",
+        "Content/Content/DataTables/css/responsive.jqueryui.css",
+        "Content/Content/DataTables/css/responsive.jqueryui.min.css",
+        "Content/Content/DataTables/css/responsive.semanticui.css",
+        "Content/Content/DataTables/css/responsive.semanticui.min.css",
+        "Content/Content/DataTables/css/rowReorder.bootstrap.css",
+        "Content/Content/DataTables/css/rowReorder.bootstrap.min.css",
+        "Content/Content/DataTables/css/rowReorder.bootstrap4.css",
+        "Content/Content/DataTables/css/rowReorder.bootstrap4.min.css",
+        "Content/Content/DataTables/css/rowReorder.dataTables.css",
+        "Content/Content/DataTables/css/rowReorder.dataTables.min.css",
+        "Content/Content/DataTables/css/rowReorder.foundation.css",
+        "Content/Content/DataTables/css/rowReorder.foundation.min.css",
+        "Content/Content/DataTables/css/rowReorder.jqueryui.css",
+        "Content/Content/DataTables/css/rowReorder.jqueryui.min.css",
+        "Content/Content/DataTables/css/rowReorder.semanticui.css",
+        "Content/Content/DataTables/css/rowReorder.semanticui.min.css",
+        "Content/Content/DataTables/css/scroller.bootstrap.css",
+        "Content/Content/DataTables/css/scroller.bootstrap.min.css",
+        "Content/Content/DataTables/css/scroller.bootstrap4.css",
+        "Content/Content/DataTables/css/scroller.bootstrap4.min.css",
+        "Content/Content/DataTables/css/scroller.dataTables.css",
+        "Content/Content/DataTables/css/scroller.dataTables.min.css",
+        "Content/Content/DataTables/css/scroller.foundation.css",
+        "Content/Content/DataTables/css/scroller.foundation.min.css",
+        "Content/Content/DataTables/css/scroller.jqueryui.css",
+        "Content/Content/DataTables/css/scroller.jqueryui.min.css",
+        "Content/Content/DataTables/css/scroller.semanticui.css",
+        "Content/Content/DataTables/css/scroller.semanticui.min.css",
+        "Content/Content/DataTables/css/select.bootstrap.css",
+        "Content/Content/DataTables/css/select.bootstrap.min.css",
+        "Content/Content/DataTables/css/select.bootstrap4.css",
+        "Content/Content/DataTables/css/select.bootstrap4.min.css",
+        "Content/Content/DataTables/css/select.dataTables.css",
+        "Content/Content/DataTables/css/select.dataTables.min.css",
+        "Content/Content/DataTables/css/select.foundation.css",
+        "Content/Content/DataTables/css/select.foundation.min.css",
+        "Content/Content/DataTables/css/select.jqueryui.css",
+        "Content/Content/DataTables/css/select.jqueryui.min.css",
+        "Content/Content/DataTables/css/select.semanticui.css",
+        "Content/Content/DataTables/css/select.semanticui.min.css",
+        "Content/Content/DataTables/css/semanticui.scss",
+        "Content/Content/DataTables/images/details_close.png",
+        "Content/Content/DataTables/images/details_open.png",
+        "Content/Content/DataTables/images/sort_asc.png",
+        "Content/Content/DataTables/images/sort_asc_disabled.png",
+        "Content/Content/DataTables/images/sort_both.png",
+        "Content/Content/DataTables/images/sort_desc.png",
+        "Content/Content/DataTables/images/sort_desc_disabled.png",
+        "Content/Content/DataTables/swf/flashExport.swf",
+        "Content/Scripts/DataTables/autoFill.bootstrap.js",
+        "Content/Scripts/DataTables/autoFill.bootstrap.min.js",
+        "Content/Scripts/DataTables/autoFill.bootstrap4.js",
+        "Content/Scripts/DataTables/autoFill.bootstrap4.min.js",
+        "Content/Scripts/DataTables/autoFill.foundation.js",
+        "Content/Scripts/DataTables/autoFill.foundation.min.js",
+        "Content/Scripts/DataTables/autoFill.jqueryui.js",
+        "Content/Scripts/DataTables/autoFill.jqueryui.min.js",
+        "Content/Scripts/DataTables/autoFill.semanticui.js",
+        "Content/Scripts/DataTables/autoFill.semanticui.min.js",
+        "Content/Scripts/DataTables/buttons.bootstrap.js",
+        "Content/Scripts/DataTables/buttons.bootstrap.min.js",
+        "Content/Scripts/DataTables/buttons.bootstrap4.js",
+        "Content/Scripts/DataTables/buttons.bootstrap4.min.js",
+        "Content/Scripts/DataTables/buttons.colVis.js",
+        "Content/Scripts/DataTables/buttons.colVis.min.js",
+        "Content/Scripts/DataTables/buttons.flash.js",
+        "Content/Scripts/DataTables/buttons.flash.min.js",
+        "Content/Scripts/DataTables/buttons.foundation.js",
+        "Content/Scripts/DataTables/buttons.foundation.min.js",
+        "Content/Scripts/DataTables/buttons.html5.js",
+        "Content/Scripts/DataTables/buttons.html5.min.js",
+        "Content/Scripts/DataTables/buttons.jqueryui.js",
+        "Content/Scripts/DataTables/buttons.jqueryui.min.js",
+        "Content/Scripts/DataTables/buttons.print.js",
+        "Content/Scripts/DataTables/buttons.print.min.js",
+        "Content/Scripts/DataTables/buttons.semanticui.js",
+        "Content/Scripts/DataTables/buttons.semanticui.min.js",
+        "Content/Scripts/DataTables/dataTables.autoFill.js",
+        "Content/Scripts/DataTables/dataTables.autoFill.min.js",
+        "Content/Scripts/DataTables/dataTables.bootstrap.js",
+        "Content/Scripts/DataTables/dataTables.bootstrap.min.js",
+        "Content/Scripts/DataTables/dataTables.bootstrap4.js",
+        "Content/Scripts/DataTables/dataTables.bootstrap4.min.js",
+        "Content/Scripts/DataTables/dataTables.buttons.js",
+        "Content/Scripts/DataTables/dataTables.buttons.min.js",
+        "Content/Scripts/DataTables/dataTables.colReorder.js",
+        "Content/Scripts/DataTables/dataTables.colReorder.min.js",
+        "Content/Scripts/DataTables/dataTables.fixedColumns.js",
+        "Content/Scripts/DataTables/dataTables.fixedColumns.min.js",
+        "Content/Scripts/DataTables/dataTables.fixedHeader.js",
+        "Content/Scripts/DataTables/dataTables.fixedHeader.min.js",
+        "Content/Scripts/DataTables/dataTables.foundation.js",
+        "Content/Scripts/DataTables/dataTables.foundation.min.js",
+        "Content/Scripts/DataTables/dataTables.jqueryui.js",
+        "Content/Scripts/DataTables/dataTables.jqueryui.min.js",
+        "Content/Scripts/DataTables/dataTables.keyTable.js",
+        "Content/Scripts/DataTables/dataTables.keyTable.min.js",
+        "Content/Scripts/DataTables/dataTables.material.js",
+        "Content/Scripts/DataTables/dataTables.material.min.js",
+        "Content/Scripts/DataTables/dataTables.responsive.js",
+        "Content/Scripts/DataTables/dataTables.responsive.min.js",
+        "Content/Scripts/DataTables/dataTables.rowReorder.js",
+        "Content/Scripts/DataTables/dataTables.rowReorder.min.js",
+        "Content/Scripts/DataTables/dataTables.scroller.js",
+        "Content/Scripts/DataTables/dataTables.scroller.min.js",
+        "Content/Scripts/DataTables/dataTables.select.js",
+        "Content/Scripts/DataTables/dataTables.select.min.js",
+        "Content/Scripts/DataTables/dataTables.semanticui.js",
+        "Content/Scripts/DataTables/dataTables.semanticui.min.js",
+        "Content/Scripts/DataTables/dataTables.uikit.js",
+        "Content/Scripts/DataTables/dataTables.uikit.min.js",
+        "Content/Scripts/DataTables/jquery.dataTables.js",
+        "Content/Scripts/DataTables/jquery.dataTables.min.js",
+        "Content/Scripts/DataTables/responsive.bootstrap.js",
+        "Content/Scripts/DataTables/responsive.bootstrap.min.js",
+        "Content/Scripts/DataTables/responsive.bootstrap4.js",
+        "Content/Scripts/DataTables/responsive.bootstrap4.min.js",
+        "Content/Scripts/DataTables/responsive.foundation.js",
+        "Content/Scripts/DataTables/responsive.foundation.min.js",
+        "Content/Scripts/DataTables/responsive.jqueryui.js",
+        "Content/Scripts/DataTables/responsive.jqueryui.min.js",
+        "Content/Scripts/DataTables/responsive.semanticui.js",
+        "Content/Scripts/DataTables/responsive.semanticui.min.js",
+        "jquery.datatables.1.10.12.nupkg.sha512",
+        "jquery.datatables.nuspec"
       ]
     },
     "Libuv/1.9.0": {
@@ -4696,19 +4894,6 @@
         "runtimes/win7-arm/native/libuv.dll",
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll"
-      ]
-    },
-    "Microsoft.AspNet.WebApi.Client/5.2.3": {
-      "sha512": "3kiI8peSXbXHDDrRuo+QaX0iCEVRe0nvn2dBDRw656uPX32UalbBlSIDUDlJxu05eau4tnuhsikiUuugvvoUoQ==",
-      "type": "package",
-      "path": "Microsoft.AspNet.WebApi.Client/5.2.3",
-      "files": [
-        "Microsoft.AspNet.WebApi.Client.5.2.3.nupkg.sha512",
-        "Microsoft.AspNet.WebApi.Client.nuspec",
-        "lib/net45/System.Net.Http.Formatting.dll",
-        "lib/net45/System.Net.Http.Formatting.xml",
-        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
-        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.1": {
@@ -5304,127 +5489,6 @@
         "lib/net451/Microsoft.AspNetCore.WebUtilities.xml",
         "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.dll",
         "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.xml"
-      ]
-    },
-    "Microsoft.Bcl/1.1.9": {
-      "sha512": "USQ55innJy8K+tAXvVa1O8dUTp2s7pmJ5cJj6Tl02HtGc2xBDj0P2QH5620HbGXIWKWYhydoeQF8Rm/JRDBGhw==",
-      "type": "package",
-      "path": "Microsoft.Bcl/1.1.9",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Bcl.1.1.9.nupkg.sha512",
-        "Microsoft.Bcl.nuspec",
-        "content/monoandroid/_._",
-        "content/monotouch/_._",
-        "content/net45/_._",
-        "content/portable-net45+win8+wp8+wpa81/_._",
-        "content/portable-net45+win8+wpa81/_._",
-        "content/portable-net451+win81+wpa81/_._",
-        "content/portable-net451+win81/_._",
-        "content/portable-win81+wp81+wpa81/_._",
-        "content/sl4/_._",
-        "content/sl5/_._",
-        "content/win8/_._",
-        "content/wp8/_._",
-        "content/wpa81/_._",
-        "lib/monoandroid/_._",
-        "lib/monotouch/_._",
-        "lib/net40/System.IO.dll",
-        "lib/net40/System.IO.xml",
-        "lib/net40/System.Runtime.dll",
-        "lib/net40/System.Runtime.xml",
-        "lib/net40/System.Threading.Tasks.dll",
-        "lib/net40/System.Threading.Tasks.xml",
-        "lib/net40/ensureRedirect.xml",
-        "lib/net45/_._",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8/System.IO.dll",
-        "lib/portable-net40+sl4+win8/System.IO.xml",
-        "lib/portable-net40+sl4+win8/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+win8/System.IO.dll",
-        "lib/portable-net40+win8/System.IO.xml",
-        "lib/portable-net40+win8/System.Runtime.dll",
-        "lib/portable-net40+win8/System.Runtime.xml",
-        "lib/portable-net40+win8/System.Threading.Tasks.dll",
-        "lib/portable-net40+win8/System.Threading.Tasks.xml",
-        "lib/portable-net40+win8/ensureRedirect.xml",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/portable-net45+win8+wpa81/_._",
-        "lib/portable-net451+win81+wpa81/_._",
-        "lib/portable-net451+win81/_._",
-        "lib/portable-win81+wp81+wpa81/_._",
-        "lib/sl4-windowsphone71/System.IO.dll",
-        "lib/sl4-windowsphone71/System.IO.xml",
-        "lib/sl4-windowsphone71/System.Runtime.dll",
-        "lib/sl4-windowsphone71/System.Runtime.xml",
-        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
-        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
-        "lib/sl4-windowsphone71/ensureRedirect.xml",
-        "lib/sl4/System.IO.dll",
-        "lib/sl4/System.IO.xml",
-        "lib/sl4/System.Runtime.dll",
-        "lib/sl4/System.Runtime.xml",
-        "lib/sl4/System.Threading.Tasks.dll",
-        "lib/sl4/System.Threading.Tasks.xml",
-        "lib/sl5/System.IO.dll",
-        "lib/sl5/System.IO.xml",
-        "lib/sl5/System.Runtime.dll",
-        "lib/sl5/System.Runtime.xml",
-        "lib/sl5/System.Threading.Tasks.dll",
-        "lib/sl5/System.Threading.Tasks.xml",
-        "lib/win8/_._",
-        "lib/wp8/_._",
-        "lib/wpa81/_._"
-      ]
-    },
-    "Microsoft.Bcl.Build/1.0.14": {
-      "sha512": "cDLKSvNvRa519hplsbSoYqO69TjdDIhfjtKUM0g20/nVROoWsGav9KCI9HtnGjLmdV1+TcUUDhbotcllibjPEA==",
-      "type": "package",
-      "path": "Microsoft.Bcl.Build/1.0.14",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Bcl.Build.1.0.14.nupkg.sha512",
-        "Microsoft.Bcl.Build.nuspec",
-        "content/net40/_._",
-        "content/netcore45/_._",
-        "content/portable-net40+win8+sl4+wp71+wpa81/_._",
-        "content/sl4-windowsphone71/_._",
-        "content/sl4/_._",
-        "tools/Install.ps1",
-        "tools/Microsoft.Bcl.Build.Tasks.dll",
-        "tools/Microsoft.Bcl.Build.targets",
-        "tools/Uninstall.ps1"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
@@ -6140,69 +6204,6 @@
         "lib/net451/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml"
-      ]
-    },
-    "Microsoft.Net.Http/2.2.22": {
-      "sha512": "bqVLJ2UimlAEs2bn3y28lB1pmFRxuysv9pFyB0A86WEMYGYTfDyfjAGjm0fiaSRjlMNU1jVnp8Mxt8qe4OmpXQ==",
-      "type": "package",
-      "path": "Microsoft.Net.Http/2.2.22",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Net.Http.2.2.22.nupkg.sha512",
-        "Microsoft.Net.Http.nuspec",
-        "lib/monoandroid/System.Net.Http.Extensions.XML",
-        "lib/monoandroid/System.Net.Http.Extensions.dll",
-        "lib/monoandroid/System.Net.Http.Primitives.dll",
-        "lib/monoandroid/System.Net.Http.Primitives.xml",
-        "lib/monotouch/System.Net.Http.Extensions.XML",
-        "lib/monotouch/System.Net.Http.Extensions.dll",
-        "lib/monotouch/System.Net.Http.Primitives.dll",
-        "lib/monotouch/System.Net.Http.Primitives.xml",
-        "lib/net40/System.Net.Http.Extensions.XML",
-        "lib/net40/System.Net.Http.Extensions.dll",
-        "lib/net40/System.Net.Http.Primitives.dll",
-        "lib/net40/System.Net.Http.Primitives.xml",
-        "lib/net40/System.Net.Http.WebRequest.dll",
-        "lib/net40/System.Net.Http.WebRequest.xml",
-        "lib/net40/System.Net.Http.dll",
-        "lib/net40/System.Net.Http.xml",
-        "lib/net40/ensureRedirect.xml",
-        "lib/net45/System.Net.Http.Extensions.XML",
-        "lib/net45/System.Net.Http.Extensions.dll",
-        "lib/net45/System.Net.Http.Primitives.dll",
-        "lib/net45/System.Net.Http.Primitives.xml",
-        "lib/net45/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.XML",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.XML",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.XML",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.dll",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.dll",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.xml",
-        "lib/portable-net45+win8+wpa81/ensureRedirect.xml",
-        "lib/portable-net45+win8/System.Net.Http.Extensions.XML",
-        "lib/portable-net45+win8/System.Net.Http.Extensions.dll",
-        "lib/portable-net45+win8/System.Net.Http.Primitives.dll",
-        "lib/portable-net45+win8/System.Net.Http.Primitives.xml",
-        "lib/portable-net45+win8/ensureRedirect.xml",
-        "lib/sl4-windowsphone71/System.Net.Http.Extensions.XML",
-        "lib/sl4-windowsphone71/System.Net.Http.Extensions.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.Primitives.XML",
-        "lib/sl4-windowsphone71/System.Net.Http.Primitives.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.xml",
-        "lib/win8/System.Net.Http.Extensions.XML",
-        "lib/win8/System.Net.Http.Extensions.dll",
-        "lib/win8/System.Net.Http.Primitives.dll",
-        "lib/win8/System.Net.Http.Primitives.xml",
-        "lib/wpa81/System.Net.Http.Extensions.XML",
-        "lib/wpa81/System.Net.Http.Extensions.dll",
-        "lib/wpa81/System.Net.Http.Primitives.dll",
-        "lib/wpa81/System.Net.Http.Primitives.xml"
       ]
     },
     "Microsoft.Net.Http.Headers/1.0.0": {
@@ -7062,17 +7063,6 @@
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.0.1.nupkg.sha512",
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
-      ]
-    },
-    "SendGrid.NetCore/1.0.0-rtm-00002": {
-      "sha512": "nV9VH1z+QaQHGL2HAuPsz0Wi5+j28ECi7KJetR/CWQLekgknTvcLnVyifX9ti35jwU6vPwnqydn381Kf+6IKcA==",
-      "type": "package",
-      "path": "SendGrid.NetCore/1.0.0-rtm-00002",
-      "files": [
-        "SendGrid.NetCore.1.0.0-rtm-00002.nupkg.sha512",
-        "SendGrid.NetCore.nuspec",
-        "lib/net451/SendGrid.NetCore.dll",
-        "lib/netstandard1.3/SendGrid.NetCore.dll"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -9123,17 +9113,6 @@
         "runtimes/win/lib/net46/System.Net.Http.dll",
         "runtimes/win/lib/netcore50/System.Net.Http.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.Http.dll"
-      ]
-    },
-    "System.Net.Mail/1.0.0-rtm-00002": {
-      "sha512": "6OynwcCzHtBDDF2H7WvzXvbD8yldel7KQWhQtr7jBPrszH16hHkg6IDsSZNWgSofI4Jk1szMZvtUG9l6B5aWow==",
-      "type": "package",
-      "path": "System.Net.Mail/1.0.0-rtm-00002",
-      "files": [
-        "System.Net.Mail.1.0.0-rtm-00002.nupkg.sha512",
-        "System.Net.Mail.nuspec",
-        "lib/net451/System.Net.Mail.dll",
-        "lib/netstandard1.3/System.Net.Mail.dll"
       ]
     },
     "System.Net.NameResolution/4.0.0": {
@@ -11801,7 +11780,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "FontAwesome >= 4.7.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
@@ -11826,8 +11804,11 @@
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
-      "SendGrid.NetCore >= 1.0.0-rtm-00002",
-      "Twilio >= 5.0.2"
+      "Twilio >= 5.0.2",
+      "bootstrap >= 3.3.7",
+      "bootstrap-dialog >= 3.3.4.1",
+      "jQuery >= 3.1.1",
+      "jquery.datatables >= 1.10.12"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

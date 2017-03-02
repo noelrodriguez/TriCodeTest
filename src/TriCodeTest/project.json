@@ -44,8 +44,10 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "FontAwesome": "4.7.0",
-    "SendGrid.NetCore": "1.0.0-rtm-00002",
+    "bootstrap": "3.3.7",
+    "jquery.datatables": "1.10.12",
+    "jQuery": "3.1.1",
+    "bootstrap-dialog": "3.3.4.1",
     "Twilio": "5.0.2"
   },
 
@@ -74,8 +76,7 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "xmlDoc": true
+    "preserveCompilationContext": true
   },
 
   "runtimeOptions": {

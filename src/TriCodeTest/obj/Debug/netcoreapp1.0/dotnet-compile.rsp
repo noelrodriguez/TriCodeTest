@@ -8,13 +8,11 @@
 --suppress-warning:CS1705
 --optimize:False
 --emit-entry-point:True
---generate-xml-documentation:True
 --output-name:TriCodeTest
 --file-version:1.0.0.0
 --version:1.0.0.0
 --informational-version:1.0.0
 --target-framework:.NETCoreApp,Version=v1.0
---reference:C:\Users\cosmost\.nuget\packages\Microsoft.AspNet.WebApi.Client\5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.1\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.AspNetCore.Authentication\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Authentication.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.AspNetCore.Authentication.Cookies\1.0.0\lib\netstandard1.3\Microsoft.AspNetCore.Authentication.Cookies.dll
@@ -115,8 +113,6 @@
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.Extensions.WebEncoders\1.0.0\lib\netstandard1.0\Microsoft.Extensions.WebEncoders.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.IdentityModel.Logging\1.1.2\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.IdentityModel.Tokens\5.1.2\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll
---reference:C:\Users\cosmost\.nuget\packages\Microsoft.Net.Http\2.2.22\lib\portable-net45+win8\System.Net.Http.Extensions.dll
---reference:C:\Users\cosmost\.nuget\packages\Microsoft.Net.Http\2.2.22\lib\portable-net45+win8\System.Net.Http.Primitives.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.Net.Http.Headers\1.0.0\lib\netstandard1.1\Microsoft.Net.Http.Headers.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.VisualBasic\10.0.1\ref\netstandard1.1\Microsoft.VisualBasic.dll
 --reference:C:\Users\cosmost\.nuget\packages\Microsoft.VisualStudio.Web.BrowserLink.Loader\14.0.0\lib\netstandard1.5\Microsoft.VisualStudio.Web.BrowserLink.Loader.dll
@@ -145,7 +141,6 @@
 --reference:C:\Users\cosmost\.nuget\packages\NuGet.RuntimeModel\3.5.0-beta2-1484\lib\netstandard1.3\NuGet.RuntimeModel.dll
 --reference:C:\Users\cosmost\.nuget\packages\NuGet.Versioning\3.5.0-beta2-1484\lib\netstandard1.0\NuGet.Versioning.dll
 --reference:C:\Users\cosmost\.nuget\packages\Remotion.Linq\2.1.1\lib\netstandard1.0\Remotion.Linq.dll
---reference:C:\Users\cosmost\.nuget\packages\SendGrid.NetCore\1.0.0-rtm-00002\lib\netstandard1.3\SendGrid.NetCore.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.AppContext\4.3.0\ref\netstandard1.6\System.AppContext.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Buffers\4.3.0\lib\netstandard1.1\System.Buffers.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Collections\4.3.0\ref\netstandard1.3\System.Collections.dll
@@ -186,7 +181,6 @@
 --reference:C:\Users\cosmost\.nuget\packages\System.Linq.Parallel\4.0.1\ref\netstandard1.1\System.Linq.Parallel.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Linq.Queryable\4.0.1\ref\netstandard1.0\System.Linq.Queryable.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Net.Http\4.3.0\ref\netstandard1.3\System.Net.Http.dll
---reference:C:\Users\cosmost\.nuget\packages\System.Net.Mail\1.0.0-rtm-00002\lib\netstandard1.3\System.Net.Mail.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Net.NameResolution\4.0.0\ref\netstandard1.3\System.Net.NameResolution.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Net.Primitives\4.3.0\ref\netstandard1.3\System.Net.Primitives.dll
 --reference:C:\Users\cosmost\.nuget\packages\System.Net.Requests\4.0.11\ref\netstandard1.3\System.Net.Requests.dll
