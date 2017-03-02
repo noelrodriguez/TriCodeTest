@@ -111,6 +111,7 @@
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
+        <a href="#" data-role="button" onclick="saveIngredients()">Save</a>
     </div>
     @* Main Content *@
     <div role="main" class="ui-content">
@@ -120,14 +121,14 @@
                 //<li><h2>@ing.Ingredient.Name</h2><p>@ing.Ingredient.Option</p></li>
                 <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                     <h2>@ing.Ingredient.Name</h2>
-                    <form id="ingredient-choice">
+                    <form id="@ing.Ingredient.Name-choice">
                         <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="radio" name="ingredient" id="ingredient-choice-normal" value="@Option.Normal" checked="checked" />
-                            <label for="ingredient-choice-normal">@Option.Normal</label>
-                            <input type="radio" name="ingredient" id="ingredient-choice-low" value="@Option.Low" />
-                            <label for="ingredient-choice-low">@Option.Low</label>
-                            <input type="radio" name="ingredient" id="ingredient-choice-none" value="@Option.None" />
-                            <label for="ingredient-choice-none">@Option.None</label>
+                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-normal-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.Normal" checked="checked" />
+                            <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
+                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-low-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.Low" />
+                            <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
+                            <input type="radio" name="ingredient-@ing.Ingredient.Name" id="ingredient-choice-none-@ing.IngredientId" ingId="@ing.IngredientId" value="@Option.None" />
+                            <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
                         </fieldset>
                     </form>
                 </li>
@@ -195,6 +196,20 @@
                 transition: 'slide'
             });
         }
+
+        function saveIngredients(){
+            var IngredientArray = MODEL.MenuItem.MenuItemIngredients;
+            console.log(IngredientArray);
+        }
+
+        $("#Tomato-choice").bind("change", function(event, ui){
+            console.log($("input[name=ingredient]:checked").val());
+            console.log($("input[name=ingredient]:checked").attr("ingId"));
+            console.log(MODEL.MenuItem.MenuItemIngredients);
+            $.each(MODEL.MenuItem.MenuItemIngredients, function(index, value){
+                console.log(index + " : " + value.IngredientId + " : " + $("input[name=ingredient]:checked").val());
+            });
+        })
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
