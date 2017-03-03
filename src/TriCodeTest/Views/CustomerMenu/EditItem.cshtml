@@ -98,9 +98,9 @@
             {
                 <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                     <h2>@ing.Ingredient.Name</h2>
-                    <form id="@ing.Ingredient.Id-choice">
+                    <form id="form-ingredient-@ing.Ingredient.Id-choice">
                         <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" checked="checked" />
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" />
                             <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
                             <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
                             <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="ui-block-b">
                             <div class="ui-block-b-contents" style="float:right">
-                                <form id="@addon.Id-choice">
+                                <form id="form-addon-@addon.Id-choice">
                                         <input type="checkbox" data-role="flipswitch" name="addon-id-@addon.Id" id="addon-choice-@addon.Id"
                                                data-on-text="Yes" data-off-text="No">
                                 </form>
@@ -265,9 +265,30 @@
                 transition: 'slide'
             });
         }
+        // Before showing page select the chosen ingredient options on the radio buttons
+        $(document).on("pageshow", "#edit-ingredient-page", function() {
+            //$("#ingredient-choice-normal-8").prop("checked", true).checkboxradio("refresh");
+            $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient) {
+                var ingredientNormalChoice = $("#ingredient-choice-normal-" + ingredient.Ingredient.Id);
+                var ingredientLowChoice = $("#ingredient-choice-low-" + ingredient.Ingredient.Id);
+                var ingredientNoneChoice = $("#ingredient-choice-none-" + ingredient.Ingredient.Id);
+                console.log(ingredient.Ingredient.Option);
+                switch(ingredient.Ingredient.Option){
+                    case 0:
+                        ingredientNormalChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 1:
+                        ingredientNoneChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 2:
+                        ingredientLowChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                }
+            });
+        });
         // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
         $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
-            $("#" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+            $("#form-ingredient-" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
                 switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
                     case "Normal":
                         ingredient.Ingredient.Option = 0;
@@ -288,9 +309,9 @@
                 transition: 'slide'
             });
         }
-        
+
         $.each(MODEL.ChoiceOfAddons, function(index, addon){
-            $("#" + addon.Id + "-choice").bind("change", function(event, ui){
+            $("#form-addon-" + addon.Id + "-choice").bind("change", function(event, ui){
                 console.log($("input[name=addon-id-" + addon.Id + "]:checked").val());
                 if ($("input[name=addon-id-" + addon.Id + "]:checked").val() == "on"){
                     MODEL.AddOns.push(addon);
