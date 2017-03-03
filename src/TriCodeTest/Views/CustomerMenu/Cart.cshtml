@@ -1,4 +1,4 @@
-@model TriCodeTest.Models.OrderModels.Order
+@model TriCodeTest.Models.CustomerMenuViewModels.CartOrder
 @using Newtonsoft.Json
 
 @{
@@ -46,14 +46,14 @@
             <li data-icon="false">
                 <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
             </li>*@
-            @if (Model == null || Model.OrderMenuItems.FirstOrDefault() == null)
+            @if (Model == null || Model.CartOrderMenuItems.FirstOrDefault() == null)
             {
                 <li data-icon="false">
                     <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
                 </li>
             } else
             {
-                @foreach (var menuItem in Model.OrderMenuItems)
+                @foreach (var menuItem in Model.CartOrderMenuItems)
                 {
                     <li>
                         <a href="#" onclick="editItem(@JsonConvert.SerializeObject(menuItem))"><h2>@menuItem.MenuItem.Name</h2></a>
@@ -69,14 +69,14 @@
 
 @* Details Page *@
 
-<div data-role="page" id="details-page">
-    @* Panel *@
+@*<div data-role="page" id="details-page">
+    @* Panel 
     <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
         <ul data-role="listview" id="sidebar">
             @await Html.PartialAsync("_CustomerLoginPartial")
         </ul>
     </div>
-    @* Header *@
+    @* Header 
     <div data-role="header">
         <a href="#" data-rel="back" data-role="button">Go back</a>
         <a href="#details-page-panel" data-role="button" data-icon="bars">
@@ -86,10 +86,10 @@
             <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
     </div>
-    @* Main Content (gets loaded dynamically) *@
+    @* Main Content (gets loaded dynamically) 
     <div role="main" class="ui-content">
         <div id="details-header-row" class="ui-responsive">
-            <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
+            <img src="~/images/food-banner.jpeg" id="menuitemImg" />
         </div>
         <div id="description-container" class="ui-responsive">
             <h6 id="description">
@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 @section Scripts
 {

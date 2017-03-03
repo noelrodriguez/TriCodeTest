@@ -54,18 +54,20 @@ namespace TriCodeTest.Controllers
         // POST: CustomerMenu/PostMenuItemToCart/5
         public async Task<IActionResult> PostMenuItemToCart(int id)
         {
-            var user = await GetCurrentUserAsync();
-            var menuItem = await _context.MenuItem.Include(ing => ing.MenuItemIngredients).ThenInclude(ing => ing.Ingredient).SingleOrDefaultAsync(mi => mi.Id == id);
+            ApplicationUser user = await GetCurrentUserAsync();
+            MenuItem menuItem = await _context.MenuItem.Include(ing => ing.MenuItemIngredients).ThenInclude(ing => ing.Ingredient).SingleOrDefaultAsync(mi => mi.Id == id);
             OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+            Subcategory subcategory = await _context.Subcategory.Include(a => a.AddOns).SingleOrDefaultAsync(s => s.Id == menuItem.SubcategoryId);
 
             if (cart == null)
             {
                 cart = AddNewOrderToDatabase(user);
             }
             // Adds menu item to the Order(Cart)
-            Order viewModelCart = OrderDeserialize(cart);
-            viewModelCart.OrderMenuItems.Add(ConvertToOrderMenuItem(menuItem));
+            CartOrder viewModelCart = OrderDeserialize(cart);
+            viewModelCart.CartOrderMenuItems.Add(ConvertToOrderMenuItem(menuItem, subcategory));
             cart.OrderMenuItems = OrderSerialize(viewModelCart).OrderMenuItems;
+            cart.TotalPrice += menuItem.Price;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(CustomerMenuController.Cart), "CustomerMenu", null);
@@ -79,12 +81,13 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }
 
-            var user = await GetCurrentUserAsync();
-            List<OrderMenuItem> listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).OrderMenuItems;
+            ApplicationUser user = await GetCurrentUserAsync();
+            List<CartOrderMenuItem> listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).CartOrderMenuItems;
             foreach (var menuitem in listOfMenuitems)
             {
                 if (menuitem.MenuItem.Id == id)
                 {
+                    menuitem.AddOns = new List<AddOn>();
                     return View(menuitem);
                 }
             }
@@ -94,10 +97,35 @@ namespace TriCodeTest.Controllers
 
         // POST: CustomerMenu/EditItem/5
         [HttpPost]
-        public async Task<ActionResult> EditItem(OrderMenuItem item)
+        public async Task<ActionResult> EditItem(CartOrderMenuItem item)
         {
+            ApplicationUser user = await GetCurrentUserAsync();
+            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+            CartOrder viewModelCart = OrderDeserialize(cart);
+
             if (ModelState.IsValid)
             {
+                //CartOrderMenuItem menuitem = viewModelCart.CartOrderMenuItems.Find(i => i.MenuItem.Id == item.MenuItem.Id);
+                //menuitem.MenuItem.MenuItemIngredients = item.MenuItem.MenuItemIngredients;
+                foreach (var menuitem in viewModelCart.CartOrderMenuItems)
+                {
+                    if (menuitem.MenuItem.Id == item.MenuItem.Id)
+                    {
+                        menuitem.MenuItem.MenuItemIngredients = item.MenuItem.MenuItemIngredients;
+                        menuitem.AddOns = item.AddOns;
+                        if (item.AddOns != null)
+                        {
+                            foreach (AddOn addon in menuitem.AddOns)
+                            {
+                                viewModelCart.TotalPrice += addon.Price;
+                            }
+                        }
+                    }
+                }
+                OrderInfo temp = OrderSerialize(viewModelCart);
+                cart.OrderMenuItems = temp.OrderMenuItems;
+                cart.TotalPrice = temp.TotalPrice;
+                await _context.SaveChangesAsync();
                 return Json(true);
             }
             return Json(false);
@@ -122,27 +150,27 @@ namespace TriCodeTest.Controllers
             return newOrder;
         }
 
-        private Order OrderDeserialize(OrderInfo model)
+        private CartOrder OrderDeserialize(OrderInfo model)
         {
             var test = model;
-            Order OrderModel = new Order
+            CartOrder CartOrderModel = new CartOrder
             {
                 Id = model.Id,
                 User = model.User,
                 DateTime = model.DateTime,
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
-                OrderMenuItems = new List<OrderMenuItem>()
+                CartOrderMenuItems = new List<CartOrderMenuItem>()
             };
             if (model.OrderMenuItems != null)
             {
-                List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
-                OrderModel.OrderMenuItems = OrderMenuItems;
+                List<CartOrderMenuItem> CartOrderMenuItems = JsonConvert.DeserializeObject<List<CartOrderMenuItem>>(model.OrderMenuItems);
+                CartOrderModel.CartOrderMenuItems = CartOrderMenuItems;
             }
-            return OrderModel;
+            return CartOrderModel;
         }
 
-        private OrderInfo OrderSerialize(Order model)
+        private OrderInfo OrderSerialize(CartOrder model)
         {
             OrderInfo OrderInfoModel = new OrderInfo
             {
@@ -152,18 +180,26 @@ namespace TriCodeTest.Controllers
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
             };
-            string json = JsonConvert.SerializeObject(model.OrderMenuItems);
+            string json = JsonConvert.SerializeObject(model.CartOrderMenuItems);
             OrderInfoModel.OrderMenuItems = json;
             return OrderInfoModel;
         }
 
-        private OrderMenuItem ConvertToOrderMenuItem(MenuItem item)
+        private CartOrderMenuItem ConvertToOrderMenuItem(MenuItem item, Subcategory subcategory)
         {
-            OrderMenuItem orderMenuItem = new OrderMenuItem()
+            CartOrderMenuItem cartOrderMenuItem = new CartOrderMenuItem()
             {
                 MenuItem = item,
+                ChoiceOfAddons = subcategory.AddOns
             };
-            return orderMenuItem;
+            //if (subcategory.AddOns != null)
+            //{
+            //    foreach (var addon in subcategory.AddOns)
+            //    {
+            //        cartOrderMenuItem.ChoiceOfAddons.Add(addon);
+            //    }
+            //}
+            return cartOrderMenuItem;
         }
     }
 }

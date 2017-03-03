@@ -1,4 +1,4 @@
-﻿@model TriCodeTest.Models.OrderModels.OrderMenuItem
+﻿@model TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem
 @using Newtonsoft.Json
 
 @{
@@ -38,34 +38,12 @@
         }
 </style>
 
-@*<form asp-action="Edit">
-        <div class="form-horizontal">
-            <hr />
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="DateTime" />
-            <input type="hidden" asp-for="OrderMenuItems" />
-            <input type="hidden" asp-for="TotalPrice" />
-            <div class="form-group">
-                <label asp-for="Status" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
-                    <span asp-validation-for="Status" class="text-danger" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </form>*@
 @* Edit Item Page *@
 
 <div data-role="page" id="edit-item-page">
     @* Header *@
     <div data-role="header">
-        <a href="" data-role="button" onclick="goBack()">Back</a>
+        <a href="" data-role="button" onclick="goBack()">Cancel</a>
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
@@ -96,7 +74,7 @@
                     </fieldset>
                 </form>
             </li>
-            <li><a href="#"><h2>Add-ons</h2></a></li>
+            <li><a href="#" onclick="loadAddonsPage()"><h2>Add-ons</h2></a></li>
             <li><a href="#" onclick="loadIngredientsPage(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
         </ul>
     </div>
@@ -107,7 +85,7 @@
 <div data-role="page" id="edit-ingredient-page">
     @* Header *@
     <div data-role="header">
-        <a href="#" onclick="dontSaveItemChanges()">Back</a>
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
@@ -118,7 +96,6 @@
         <ul data-role="listview">
             @foreach (var ing in Model.MenuItem.MenuItemIngredients)
             {
-                //<li><h2>@ing.Ingredient.Name</h2><p>@ing.Ingredient.Option</p></li>
                 <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                     <h2>@ing.Ingredient.Name</h2>
                     <form id="@ing.Ingredient.Id-choice">
@@ -131,6 +108,55 @@
                             <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
                         </fieldset>
                     </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@* Edit Addons Page *@
+
+<div data-role="page" id="edit-addons-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" data-rel="back" data-role="button">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var addon in Model.ChoiceOfAddons)
+            {
+                @*<li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                    <h2>@addon.Name</h2>
+                    <form id="@addon.Id-choice">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <input type="radio" name="addon-id-@addon.Id" id="ingredient-choice-normal-@addon.Id" value="@Option.Normal" checked="checked" />
+                            <label for="ingredient-choice-normal-@addon.Id">@Option.Normal</label>
+                            <input type="radio" name="addon-id-@addon.Id" id="ingredient-choice-low-@addon.Id" value="@Option.Low" />
+                            <label for="ingredient-choice-low-@addon.Id">@Option.Low</label>
+                            <input type="radio" name="addon-id-@addon.Id" id="ingredient-choice-none-@addon.Id" value="@Option.None" />
+                            <label for="ingredient-choice-none-@addon.Id">@Option.None</label>
+                        </fieldset>
+                    </form>
+                </li>*@
+                <li>@*<h2>@addon.Name</h2><p>@addon.Description</p>*@
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <h2>@addon.Name</h2><p>Price: @String.Format("{0:c}", addon.Price)</p>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-block-b-contents" style="float:right">
+                                <form id="@addon.Id-choice">
+                                        <input type="checkbox" data-role="flipswitch" name="addon-id-@addon.Id" id="addon-choice-@addon.Id"
+                                               data-on-text="Yes" data-off-text="No">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             }
         </ul>
@@ -204,6 +230,11 @@
                 data: ItemObject,
                 success: function(result){
                     console.log(result);
+                    if (result){
+                        window.location = '@Url.Action("Cart", "CustomerMenu")';
+                    } else {
+                        location.reload();
+                    }
                 }
             });
         }
@@ -234,7 +265,6 @@
                 transition: 'slide'
             });
         }
-
         // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
         $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
             $("#" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
@@ -248,6 +278,24 @@
                     case "Low":
                         ingredient.Ingredient.Option = 2;
                         break;
+                }
+            });
+        });
+
+        // Load page to edit addons
+        function loadAddonsPage(){
+            $(":mobile-pagecontainer").pagecontainer("change", "#edit-addons-page", {
+                transition: 'slide'
+            });
+        }
+        
+        $.each(MODEL.ChoiceOfAddons, function(index, addon){
+            $("#" + addon.Id + "-choice").bind("change", function(event, ui){
+                console.log($("input[name=addon-id-" + addon.Id + "]:checked").val());
+                if ($("input[name=addon-id-" + addon.Id + "]:checked").val() == "on"){
+                    MODEL.AddOns.push(addon);
+                } else {
+                    MODEL.AddOns.splice(MODEL.AddOns.indexOf(addon), 1);
                 }
             });
         });
