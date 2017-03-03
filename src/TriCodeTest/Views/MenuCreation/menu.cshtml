@@ -421,17 +421,35 @@
                     @*<div class="form-group"> old menu item place
                     </div>*@
                     <div class="form-group">
+                        <label for="menuitem-description-add" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="menuitem-description-add"></textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="menuitem-price-add" class="form-control-label">Price</label>
                         <input type="number" class="form-control" id="menuitem-price-add" />
                     </div>
-                    <div class="form-group">
-                        <label for="menuitem-size-add" class="form-control-label">Size</label>
-                        <input type="number" class="form-control" id="menuitem-size-add" />
+                    <!--
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                        <label for="menuitem-size-add" class="form-control-label">Sizes</label>
+                       <!-- <input type="number" class="form-control" id="menuitem-size-add" />
+                        <select class="form-control" id="menuitem-size-add">
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                        </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="menuitem-disable-size-add" class="form-control-label">Disable Sizes</label>
+                            <input type="checkbox" id="menuitem-disable-size-add" />
+                        </div>
                     </div>
-                    <div class="form-group">
+                        </div>
+                    -->
+                    @*<div class="form-group">
                         <label for="menuitem-ingredients-add" class="form-control-label">Ingredients</label>
                         <textarea class="form-control" id="menuitem-ingredients-add"></textarea>
-                    </div>
+                    </div>*@
                 </form>
             </div>
             <div class="modal-footer">
@@ -1328,6 +1346,17 @@
 
                 if ($row.length) {
                     var rowData = menuItemTable.row('tr.selected').data();
+                    
+                    var itemId = "";
+                    for (var item in menuItemDictionary)
+                    {
+                        if (menuItemDictionary[item].key == rowData[0])
+                        {
+                            itemId = menuItemDictionary[item].value[6];
+
+                        }
+                        
+                    }
 
                     BootstrapDialog.show({
                         title: 'Remove Menu Item?',
@@ -1341,16 +1370,31 @@
                         }, {
                             label: 'Remove',
                             action: function (dialog) {
-                                for (var item in menuItemDictionary)
-                                {
-                                    if (menuItemDictionary[item].key.toString() == rowData[0])
-                                    {
-                                        menuItemDictionary.splice(item, 1); //Remove item from dictionary
-                                    }
+                                //Post to: MenuCreation/RemoveSubcategory
+                                $.ajax({
+                                    url: '@Url.Action("RemoveMenuItem", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { id: itemId },
+                                    success: function (result) {
+                                        if (result) {
+                                            //Remove from table
+                                            console.log(result);
+                                            //remove item from dictionary
 
-                                }
-                                updateMenuitemTable();
-                                //menuItemTable.row('.selected').remove().draw(false);
+                                            for (var item in menuItemDictionary) {
+                                                if (menuItemDictionary[item].key.toString() == rowData[0]) {
+                                                    menuItemDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+                                            updateMenuitemTable();
+                                            
+
+                                        } else {
+                                            //Do nothing... Maybe display alert
+                                        }
+                                    }
+                                });
 
                                 //Close the Dialog
                                 dialog.close();
@@ -1502,7 +1546,6 @@
 
                 }
             }
-
 
             //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
 
@@ -1756,6 +1799,8 @@
                 $('#addSubcategoryModal').modal('hide');
             });
 
+            //Click listener for when the edit subcategory modal 'submit' button is clicked
+            //submits any changes to a subcategory
             $('#editSubcategorySubmit').on('click', function (e) {
                 console.log("Submit Edit Subcategory");
 
@@ -1854,54 +1899,106 @@
                 $('#editSubcategoryModal').modal('hide');
             });
 
+
+
             //Add and Edit Menu Item Submit button listeners
             $('#addMenuitemSubmit').on('click', function (e) {
                 console.log("Submit Add Menu Item");
 
-                var menuitemImage = $('#menuitem-image-add').val();
+                //var menuitemImage = $('#menuitem-image-add').val();
                 var menuitemName = $('#menuitem-name-add').val();
                 var menuitemPrice = $('#menuitem-price-add').val();
-                var menuitemSize = $('#menuitem-size-add').val();
-                var menuitemIngredients = $('#menuitem-ingredients-add').val();
+                var menuitemDescription = $('#menuitem-description-add').val();
+                //var menuitemIngredients = $('#menuitem-ingredients-add').val();
                 //POST REQUEST GOES HERE MenuCreationController/AddMenuItem
 
-
-
-                console.log(menuitemImage);
-                console.log(menuitemName);
-                console.log(menuitemPrice);
-                console.log(menuitemSize);
-                console.log(menuitemIngredients);
-
-
-
-
-                //Demo Stuff
-                //Steps: get the selected Category, push data to the dictionary
+                //grab the file selected if any
+                //var menuitemImage = document.getElementById('menuitem-image-add');
+                //if (!menuitemImage.files || !menuitemImage)
+                //{
+                //    alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                //}
+                //else if(!menuitemImage.files[0])
+                //{
+                //    alert("No file was selected.");
+                    
+                //}
+                //var menuItemImageData;
+                //file = menuitemImage.files[0];
+                //menuItemImageData = getBase64FileString(file);
+                //reader = new FileReader();
+                //reader.readAsDataURL(file);
+                //reader.onload = function () {
+                //    //console.log("Reader result" + reader.result);
+                //    return reader.result;
+                //};
+                //console.log(reader.readAsBinaryString(file));
+                //console.log(reader.onload);
+                //get selected subcateogry
                 var selectedSubcategory = subCategoryTable.row('tr.selected').data();
-                selectedData = {};
+                console.log(selectedSubcategory);
+                selectedSubcategoryData = "";
                 for (var item in subCategoryDictionary) {
-                    if (subCategoryDictionary[item].key.toString() == selectedSubcategory[0]) {
-
-                        selectedData = subCategoryDictionary[item];
-
+                    if (subCategoryDictionary[item].key == selectedSubcategory[0].toString()) {
+                        console.log("Subcategory Id? " + subCategoryDictionary[item].value[5]);
+                        selectedSubcategoryData = subCategoryDictionary[item].value[5];
                     }
-
                 }
-                //Demo Display
-                menuItemDictionary.push({
-                    key: menuitemName,
-                    value: [selectedData.key,
-                            "", //Menu Item Ingredients
-                            menuitemPrice,
-                            menuitemSize,
-                            menuitemImage,
-                            selectedData.value[6],
-                            Math.floor((Math.random() * 10 ) + 34)]
+                //console.log("Image data? " + reader.);
+                //console.log("Binary string? " + reader.readAsBinaryString);
+
+                //var imageData = $('#menuitem-image-add').attr("files")[0];
+
+
+
+                //Menu Item object
+                var MenuItemModel = {
+                    Id: "",
+                    Name: menuitemName,
+                    Description: menuitemDescription,
+                    Price: menuitemPrice,
+                    ItemImage: "",
+                    Size: "",
+                    SubcategoryId: selectedSubcategoryData,
+                    Subcategory: "",
+                    MenuItemIngredients: []
+                };
+
+                console.log("Menu Item Model: " + MenuItemModel.Name);
+                console.log("Menu Item Model: " + MenuItemModel.Description);
+                console.log("Menu Item Model: " + MenuItemModel.Price);
+                //console.log("Menu Item Model: " + MenuItemModel.ItemImage);
+
+                $.ajax({
+                    url: '@Url.Action("AddMenuItem", "MenuCreation")',
+                    method: 'POST',
+                    data: { obj: MenuItemModel },
+                    success: function (data) {
+                        if (data) { //check if something is returned
+                            console.log(data);
+
+                            var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+
+                            menuItemDictionary.push({
+                                key: data['name'],
+                                value: [selectedSubcategory[0],
+                                        "", //Menu Item Ingredients
+                                        data['price'],
+                                        "",
+                                        "",
+                                        data['subcategoryId'],
+                                        data['id']]
+                            });
+
+                            //Maybe update the subcategory dictionary...
+                            updateMenuitemTable();
+
+                        }
+
+                        //End of data
+                    }
+                    //end of Ajax
                 });
-                updateMenuitemTable();
-
-
 
                 $('#addMenuitemModal').modal('hide');
 

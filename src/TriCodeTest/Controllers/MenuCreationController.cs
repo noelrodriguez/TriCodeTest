@@ -21,6 +21,12 @@ namespace TriCodeTest.Controllers
             _context = context;    
         }
         
+        /// <summary>
+        /// Main menu creation page generation. Takes all menu data from the Menu tables
+        /// then uses the MenuCreationViewModel to cast that data to a list so the menu creation
+        /// page can use it to populate the page with menu data.
+        /// </summary>
+        /// <returns>MenuCreationViewModel</returns>
         // GET: MenuCreation/menu
         public ActionResult Menu()
         {
@@ -40,131 +46,15 @@ namespace TriCodeTest.Controllers
             return View(MCVM);
         }
 
-
+        /// <summary>
+        /// Index listener for MenuCreationController. This is antiquated at this point.
+        /// </summary>
+        /// <returns>A category list to the view. This is antiquated at this point</returns>
         // GET: MenuCreation
         public async Task<IActionResult> Index()
         {
             return View(await _context.Category.ToListAsync());
         }
-
-        //// GET: MenuCreation/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(category);
-        //}
-
-        //// GET: MenuCreation/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: MenuCreation/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,Description,Name")] Category category)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(category);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(category);
-        //}
-
-        
-        //// GET: MenuCreation/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(category);
-        //}
-
-        //// POST: MenuCreation/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Name")] Category category)
-        //{
-        //    if (id != category.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(category);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!CategoryExists(category.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(category);
-        //}
-
-        //// GET: MenuCreation/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(category);
-        //}
-
-        //// POST: MenuCreation/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var category = await _context.Category.SingleOrDefaultAsync(m => m.Id == id);
-        //    _context.Category.Remove(category);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
 
         // POST: MenuCreation/AddIngredient
         [HttpPost]
@@ -320,7 +210,7 @@ namespace TriCodeTest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(obj.Id))
+                    if (!_context.Subcategory.Any(e => e.Id == obj.Id))
                     {
                         return NotFound();
                     }
@@ -407,6 +297,95 @@ namespace TriCodeTest.Controllers
             return Json(true);
         }
 
+        /// <summary>
+        /// Add a new menu item to the database and return that updated object
+        /// </summary>
+        /// <param name="obj">MenuItem Model</param>
+        /// <returns>A MenuItemModel object back to the poster.</returns>
+        [HttpPost]
+        public async Task<ActionResult>  AddMenuItem(MenuItem obj)
+        {   
+            _context.MenuItem.Add(obj); //Add to the database
+            var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
+            if (updated < 1) //determine that at least one item was added to the database
+            {
+                return NotFound();
+            }
+
+            return Json(obj);
+        }
+        /// <summary>
+        /// Update a menu item with a new image. Takes the id of the menu item to update,
+        /// and a base64 image string and converts that string to a byte array to store in
+        /// in the database.
+        /// </summary>
+        /// <param name="id">Id of the menu item to update</param>
+        /// <param name="img">A base64 image string</param>
+        /// <returns>Returns true when update is complete</returns>
+        [HttpPost]
+        public async Task<ActionResult> UpdateItemImage(int id, String img)
+        {
+            var menuitem = await _context.MenuItem.SingleOrDefaultAsync(m => m.Id == id);
+            if (menuitem == null)
+            {
+                return NotFound();
+            }
+            //Convert base64 image string to byte array and add to the database.
+            byte[] image;
+            image = Convert.FromBase64String(img);
+            menuitem.ItemImage = image;
+            _context.MenuItem.Update(menuitem);
+            
+
+            return Json(true);
+        }
+        /// <summary>
+        /// Edit a specific menu item with new data in the database.
+        /// </summary>
+        /// <param name="obj">New menu item data to update with</param>
+        /// <returns>Returns true when update is complete</returns>
+        [HttpPost]
+        public async Task<ActionResult> EditMenuItem(MenuItem obj)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(obj);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.MenuItem.Any(e => e.Id == obj.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return Json(true);
+        }
+
+        /// <summary>
+        /// Remove a menuitem from the database with a specific id
+        /// </summary>
+        /// <param name="id">The id of the Menuitem to remove.</param>
+        /// <returns>Returns true when removal succeeds!</returns>
+        [HttpPost]
+        public async Task<ActionResult> RemoveMenuItem(int id)
+        {
+            var menuitem = await _context.MenuItem.SingleOrDefaultAsync(m => m.Id == id);
+            if (menuitem == null)
+            {
+                return NotFound();
+            }
+            _context.MenuItem.Remove(menuitem);
+            await _context.SaveChangesAsync();
+            return Json(true);
+        }
         private bool CategoryExists(int id)
         {
             return _context.Category.Any(e => e.Id == id);
