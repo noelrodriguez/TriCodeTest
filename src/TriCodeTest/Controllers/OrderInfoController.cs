@@ -33,29 +33,6 @@ namespace TriCodeTest.Controllers
             List<Order> orders = ListOrderDeserialize(allOrderInfos);
             return View(orders);
         }
-        /// <summary>
-        /// Displays details of order info. Used when it was being loaded in a
-        /// separate view.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        // GET: OrderInfo/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orderInfo = await _context.OrderInfo.SingleOrDefaultAsync(m => m.Id == id);
-            if (orderInfo == null)
-            {
-                return NotFound();
-            }
-            var order = OrderDeserialize(orderInfo);
-
-            return View(order);
-        }
 
         /// <summary>
         /// Returns a single Order by the Id passed in.
@@ -70,7 +47,7 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }
 
-            var orderInfo = await _context.OrderInfo.SingleOrDefaultAsync(m => m.Id == id);
+            var orderInfo = await _context.OrderInfo.Include(usr => usr.User).SingleOrDefaultAsync(m => m.Id == id);
             if (orderInfo == null)
             {
                 return NotFound();
@@ -90,9 +67,10 @@ namespace TriCodeTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order)
         {
             OrderInfo orderInfo = OrderSerialize(order);
+            var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -147,6 +125,7 @@ namespace TriCodeTest.Controllers
                 DateTime = model.DateTime,
                 Status = model.Status,
                 TotalPrice = model.TotalPrice,
+                UserId = model.User.Id
             };
             List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
             OrderModel.OrderMenuItems = OrderMenuItems;

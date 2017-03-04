@@ -20,7 +20,7 @@ namespace TriCodeTest.Data
         {
             context.Database.EnsureCreated();
             
-            // This is the code used to create an Order
+            // This is the code used to create an Order (Creates an order with multiple number of same items right now, used for testing)
             /* Add Order
             var Noel = context.Users.Where(x => x.Email == "noel@gmail.com").FirstOrDefault();  // Account you choose to link it to
 
@@ -31,29 +31,33 @@ namespace TriCodeTest.Data
                 User = Noel,
             };
 
-            // The MenuItem and its AddOns are added here. So far just one MenuItem but could switch to more MenuItems
-            OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
-            {
-                MenuItem = context.MenuItem.Include(i => i.MenuItemIngredients).ThenInclude(i => i.Ingredient).Single(m => m.Name == "Chicken Quesadilla"),
-                AddOns = new List<AddOn>
-                {
-                    
-                }
-            };
             List<OrderMenuItem> TheItems = new List<OrderMenuItem>();
-            // 
-            foreach (var ing in MyOrderMenuItem.MenuItem.MenuItemIngredients)
+            for (int i = 0; i < 3; i++)
             {
-                if (ing.Ingredient.Name == "Sour Cream")
+                // The MenuItem and its AddOns are added here. So far just one MenuItem but could switch to more MenuItems
+                OrderMenuItem MyOrderMenuItem = new OrderMenuItem()
                 {
-                    ing.Ingredient.Option = Option.None;
+                    MenuItem = context.MenuItem.Include(ing => ing.MenuItemIngredients).ThenInclude(ing => ing.Ingredient).Single(m => m.Name == "Chicken Quesadilla"),
+                    AddOns = new List<AddOn>
+                {
+                    context.AddOn.SingleOrDefault(a => a.Name == "Croutons"), context.AddOn.SingleOrDefault(a => a.Name == "Pineapple")
                 }
-                //if (ing.Ingredient.Name == "Tomato")
-                //{
-                //    ing.Ingredient.Option = Option.None;
-                //}
+                };
+                
+                // 
+                foreach (var ing in MyOrderMenuItem.MenuItem.MenuItemIngredients)
+                {
+                    if (ing.Ingredient.Name == "Sour Cream")
+                    {
+                        ing.Ingredient.Option = Option.None;
+                    }
+                    if (ing.Ingredient.Name == "Tomato")
+                    {
+                        ing.Ingredient.Option = Option.Low;
+                    }
+                }
+                TheItems.Add(MyOrderMenuItem);
             }
-            TheItems.Add(MyOrderMenuItem);
             MyOrder.OrderMenuItems = TheItems;
 
             double Total = 0;
