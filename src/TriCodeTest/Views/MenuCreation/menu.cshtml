@@ -130,17 +130,12 @@
             <div class="modal-body">
                 <form>
                     @*<div class="row">*@
-                        <div class="form-group">
-                            <label for="menuitem-dropdown" class="form-control-label">Menu Item</label>
-                            <select class="form-control" id="menuitem-dropdown">
-                                <option>Menu Items...</option>
-                            </select>
-                        </div>
                         <div>
                             <h3>Ingredients</h3>
-                            <table id="ingredients" class="display">
+                            <table id="ingredients-manager" class="display">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>Description</th>
                                     </tr>
@@ -157,8 +152,8 @@
                                     <textarea id="addIngredientDescription-text" class="form-control"></textarea>
                                 </div>
                                 <div class="col-md-6" style="float:right">
-                                    <button type="button" id="addIngredientButton" class="btn">Add Ingredient</button>
-                                    <button type="button" id="removeIngredientButton" class="btn">Remove Ingredient</button>
+                                    <button type="button" id="addIngredientButton-manager" class="btn">Add Ingredient</button>
+                                    <button type="button" id="removeIngredientButton-manager" class="btn">Remove Ingredient</button>
                                 </div>
                             </div>
                         </div>
@@ -462,7 +457,7 @@
 
 @*Edit Menu Item*@
 <div class="modal fade" id="editMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="menuitemModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editMenuitemModal">Edit</h5>
@@ -472,39 +467,75 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
-                                <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
+                                        <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="thumbnail">
+                                            <img src="#" alt="preview" id="menuitem-image-edit-preview"/>
+                                        </div>
+                                </div>
+                        
                             </div>
-                            <div class="col-md-6">
-                                <div class="thumbnail">
-                                    <img src="#" alt="preview" id="menuitem-image-edit-preview"/>
+                            <div class="form-group">
+                                <label for="menuitem-image-edit" class="form-control-label">Menu Item Image</label>
+                                <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-edit" />
+                            </div>
+                            <div class="form-group">
+                                <label for="menuitem-name-edit" class="form-control-label">Menu Item</label>
+                                <input type="text" class="form-control" id="menuitem-name-edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="menuitem-description-edit" class="form-control-label">Menu Item Description</label>
+                                <textarea id="menuitem-description-edit" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="menuitem-price-edit" class="form-control-label">Price</label>
+                                <input type="number" class="form-control" id="menuitem-price-edit" />
+                            </div>
+                            <div class="form-group">
+                                <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
+                                <textarea class="form-control" id="menuitem-ingredients-edit" readonly></textarea>
+                            </div>
+                        </div>
+                        <!--Start of Ingredients Section-->
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Ingredients</div>
+                                    <div class="panel-body">
+                                        <table id="ingredients" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="float:left">
+                                        <!--Ingredient table controls to add an ingredient to the selected menu item-->
+                                        <label for="ingredients-dropdown-edit" class="form-control-label">Ingredient List</label>
+                                        <select class="form-control" id="ingredients-dropdown-edit">
+                                        </select>
+                                        
+                                    </div>
+                                    <div class="col-md-6" style="float:right">
+                                        <button type="button" id="addIngredientButton-edit" class="btn">Add Ingredient</button>
+                                        <button type="button" id="removeIngredientButton-edit" class="btn">Remove Ingredient</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="menuitem-image-edit" class="form-control-label">Menu Item Image</label>
-                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-edit" />
-                    </div>
-                    <div class="form-group">
-                        <label for="menuitem-name-edit" class="form-control-label">Menu Item</label>
-                        <input type="text" class="form-control" id="menuitem-name-edit">
-                    </div>
-                    <div class="form-group">
-                        <label for="menuitem-price-edit" class="form-control-label">Price</label>
-                        <input type="number" class="form-control" id="menuitem-price-edit" />
-                    </div>
-                    <div class="form-group">
-                        <label for="menuitem-size-edit" class="form-control-label">Size</label>
-                        <input type="number" class="form-control" id="menuitem-size-edit" />
-                    </div>
-                    <div class="form-group">
-                        <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
-                        <textarea class="form-control" id="menuitem-ingredients-edit"></textarea>
+                        <!--End ingredients Section-->
                     </div>
                 </form>
             </div>
@@ -596,7 +627,8 @@
                         "@item.Size",
                         "@item.ItemImage",
                         "@item.SubcategoryId",
-                        "@item.Id"]
+                        "@item.Id",
+                        "@item.Description"]
             });
             </text>
             }
@@ -693,26 +725,6 @@
                 $('#addCategoryModal').modal('show');
                 var $modal = $('#addCategoryModal');
                 $modal.find('.modal-title').text('Add Category') // Change the modal title
-
-                // On submit add new category and description to the database, redraw the table from the database, and select the new category
-                //$modal.on('submit', function (e) {
-                //    e.preventDefault();
-                //    $.post('test',
-                //        function (data, status, xhr) {
-                //            alert($('#categorySubmit').value());
-
-                //        });
-                //alert($('#categorySubmit').val());
-                //});
-                //alert($('#categorySubmit').val());
-                // On close, do nothing.
-
-                //Add Category to Database and Category table remove all items from subcategories and Menu Items
-                @*categoryTable.row.add([
-                    "@categoryList.First().Name",
-                    "@categoryList.First().Description"
-                ]).draw(false);*@
-
 
                 });
 
@@ -1029,7 +1041,7 @@
 
 
 
-                    
+
                 }
                 else {
                     //TODO change up this erro message so it centers and does stuff.
@@ -1201,9 +1213,6 @@
 
                     }
 
-                    console.log(subcategoryId);
-
-
                     BootstrapDialog.show({
                         title: 'Remove Subcategory?',
                         message: 'Are you sure you would like to remove ' + rowData[0] + '?',
@@ -1295,6 +1304,14 @@
             $('#edit-menuitem').click(function () {
                 var $row = menuItemTable.$('tr.selected');
 
+                //Clear any data already in boxes!
+                $('#menuitem-id-edit').val("")
+                //$('#menuitem-image-edit').val(data.value[4]);
+                $('#menuitem-name-edit').val("");
+                $('#menuitem-price-edit').val("");
+                $('#menuitem-ingredients-edit').val("");
+                $('#menuitem-description-edit').val("");
+
                 if ($row.length)
                 {
                     var rowData = menuItemTable.row('tr.selected').data();
@@ -1307,23 +1324,143 @@
                             data = menuItemDictionary[item];
                         }
                     }
-                    console.log("edit menu item modal show");
-                    console.log("menu item name: " + data.key);
+
+                    $.ajax({
+                        url: '@Url.Action("GetMenuItem", "MenuCreation")',
+                        method: 'GET',
+                        data: { Id: data.value[6] },
+                        success: function (result) {
+                            if (result) {
+                                //Remove from table
+                                console.log(result);
+                                //remove item from dictionary
+                                $('#menuitem-id-edit').val(result['id'])
+                                //$('#menuitem-image-edit').val(data.value[4]);
+                                $('#menuitem-name-edit').val(result['name']);
+                                $('#menuitem-price-edit').val(result['price']);
+                                var ingredients;
+                                for (var item in result['menuItemIngredients'])
+                                {
+                                    ingredients += result['menuItemIngredients'][item].Name; + ","
+
+                                }
+                                $('#menuitem-ingredients-edit').val(data.value[1]);
+                                $('#menuitem-description-edit').val(result['description']);
+
+                            } else {
+                                //Do nothing... Maybe display alert
+                                $('#menuitem-id-edit').val(data.value[6])
+                                //$('#menuitem-image-edit').val(data.value[4]);
+                                $('#menuitem-name-edit').val(data.key);
+                                $('#menuitem-price-edit').val(data.value[2]);
+                                $('#menuitem-ingredients-edit').val(data.value[1]);
+                                $('#menuitem-description-edit').val(data.value[7]);
+                            }
+                        }
+                    });
+
+                    //Get the current list of addons from the database and add it 
+                    $('#ingredients-dropdown-edit option').remove();
+                    $.ajax({
+                        url: '@Url.Action("GetIngredients", "MenuCreation")',
+                        method: 'GET',
+                        success: function (result) {
+                            if (result) {
+                                console.log(result);
+                                //var menuItem = $('#menuitem-dropdown option:selected').text();
+                                //populate the ingredients-dropdown-edit select box!
+                                for (var item in result)
+                                {
+                                    $('#ingredients-dropdown-edit').append('<option>' + result[item]['name'] + '</option>');
+                                }
+
+                            } else {
+
+                            }
+
+                        }
+
+                    });
+
+                    ingredientsTable.clear().draw(true);
+                    //Get the current list of ingredients for the selected menuitem using the id of the item
+                    $.ajax({
+                        url: '@Url.Action("GetMenuItemIngredients", "MenuCreation")',
+                        method: 'GET',
+                        success: function (result) {
+                            if (result) {
+                                console.log("MenuItemIngredients: " + result);
+                                for (var item in result)
+                                {
+                                    console.log(result[item]['name']);
+                                    ingredientsTable.row.add([result[item]['id'], result[item]['name'], result[item]['description']]).draw(true);
+                                }
+
+                            } else {
+
+
+                            }
+
+                        }
+                    });
+
+                   
+
+
 
                     $('#editMenuitemModal').modal('show');
                     var $modal = $('#editMenuitemModal');
                     $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
-                    //$modal.find('.modal-body input').val(rowData[0]);
-                    $('#menuitem-id-edit').val(data.value[6])
-                    $('#menuitem-image-edit').val(data.value[4]);
-                    $('#menuitem-name-edit').val(data.key);
-                    $('#menuitem-price-edit').val(data.value[2]);
-                    $('#menuitem-size-edit').val(data.value[3]);
-                    $('#menuitem-ingredients-edit').val(data.value[1]);
 
 
                 }
             });
+
+            //Adds a new ingredient to the database
+            $('#addIngredientButton-edit').on('click', function () {
+                var ingredientName = $('#ingredients-dropdown-edit option:selected').text();
+                var menuItemId = $('#menuitem-id-edit').val();
+                var menuIngredientId = "";
+
+                var exists = false;
+                ingredientsTable
+                    .data()
+                    .each(function (value, index) {
+                        if (ingredientName == value[1]) {
+                            exists = true;
+                        }
+                    });
+
+                if(!exists)
+                {
+                    //grab the ingredients id
+                    for (var item in ingredientsDictionary)
+                    {
+                        if (ingredientsDictionary[item].key == ingredientName)
+                        {
+                            menuIngredientId = ingredientsDictionary[item].value[3];
+                        }
+                    }
+
+                    $.ajax({
+                        url: '@Url.Action("AddMenuItemIngredient")',
+                        method: 'POST',
+                        data: { itemId: menuItemId, ingredientId: menuIngredientId },
+                        success: function (data) {
+                            if (data)
+                            {
+                                ingredientsTable.row.add([data['id'], data['name'], data['description']]).draw(true);
+                            }
+                        }
+                    });
+
+                } else {
+                    alert("Ingredient is already in this Menu Item.");
+
+                }
+               
+            });
+
 
             $('#menuitem-image-edit').change(function () {
                 readURLmenuItemEdit(this);
@@ -1346,7 +1483,7 @@
 
                 if ($row.length) {
                     var rowData = menuItemTable.row('tr.selected').data();
-                    
+
                     var itemId = "";
                     for (var item in menuItemDictionary)
                     {
@@ -1355,7 +1492,7 @@
                             itemId = menuItemDictionary[item].value[6];
 
                         }
-                        
+
                     }
 
                     BootstrapDialog.show({
@@ -1388,7 +1525,7 @@
 
                                             }
                                             updateMenuitemTable();
-                                            
+
 
                                         } else {
                                             //Do nothing... Maybe display alert
@@ -1425,65 +1562,210 @@
                 }
             });
 
+            //Ingredients Manager table with selection
+            var ingredientsManagerTable = $('#ingredients-manager').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "300px"
+            });
 
+            $('#ingredients-manager tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    ingredientsManagerTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            //Add a new ingredient to the database.
+            $('#addIngredientButton-manager').on('click', function () {
+                var ingredientName = $('#addIngredientName-text').val();
+                var ingredientDescription = $('#addIngredientDescription-text').val();
+
+                var exists = false;
+                ingredientsManagerTable
+                    .data()
+                    .each(function (value, index) {
+                        if (ingredientName == value[1])
+                        {
+                            exists = true;
+
+                        }
+                    });
+
+                if(ingredientName == "" && !exits)
+                {
+                    alert("A name has not been entered, please enter one.");
+                }
+                else {
+                    //Post new ingredient to the database and add it to the table
+                    var IngredientModel = {
+                        Id: "",
+                        Name: ingredientName,
+                        Description: ingredientDescription,
+                        Option: "",
+                        MenuItemIngredients: ""
+                    };
+
+                    $.ajax({
+                        url: "@Url.Action("AddIngredient", "MenuCreation")",
+                        method: 'POST',
+                        data: {obj: IngredientModel},
+                        success: function (data) {
+                            if (data)
+                            {
+                                ingredientsManagerTable.row.add([data['id'], data['name'], data['description']]).draw(true);
+
+                                //Add this data to the ingredientsDictionary
+                                ingredientsDictionary.push({
+                                    key: data['name'],
+                                    value: ["",
+                                            data['description'],
+                                            data['option'],
+                                            data['id']]
+                                });
+                            }
+                            else
+                            {
+                                console.log("Something Happened!");
+
+                            }
+                         }
+                    });
+
+                }
+                $('#addIngredientName-text').val("");
+                $('#addIngredientDescription-text').val("");
+
+            });
+
+            //Remove a selected ingredient from the database
+            $('#removeIngredientButton-manager').on('click', function () {
+                var $row = categoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = ingredientsManagerTable.row('tr.selected').data();
+
+                    var ingredientId = rowData[0];
+
+                    $.ajax({
+                        url: "@Url.Action("RemoveIngredient", "MenuCreation")",
+                        method: 'POST',
+                        data: { id: ingredientId },
+                        success: function (result) {
+                            if (result)
+                            {
+                                ingredientsManagerTable.clear().draw(false);
+                                $.ajax({
+                                    //GET: MenuCreation/GetIngredients
+                                    //retrieves list of Ingredients
+                                    url: '@Url.Action("GetIngredients", "MenuCreation")',
+                                    method: 'GET',
+                                    success: function (data) {
+                                        if (data) { //check if something is returned
+                                            console.log(data);
+                                            for (var item in data) {
+                                                ingredientsManagerTable.row.add([data[item]['id'], data[item]['name'], data[item]['description']]).draw(true);
+
+                                            }
+                                            //Remove the selected ingredient from the the ingredient dictionary
+                                            for (var item in ingredientsDictionary) {
+                                                if (ingredientsDictionary[item].value[3].toString() == rowData[0]) {
+                                                    ingredientsDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+
+                                        } else {
+                                            console.log("No Ingredients to retrieve");
+
+                                        }
+                                    }
+
+                                });
+
+                            }
+
+                        }
+                    });
+
+                }
+
+            });
 
             //Menu Ingredients menu management modal startup button
             $('#manage-ingredients-button').on('click', function () {
                 console.log("Ingredient management Click");
+                //Populate the table with ingredients
+                ingredientsManagerTable.clear().draw(false);
+                $.ajax({
+                    //GET: MenuCreation/GetIngredients
+                    //retrieves list of Ingredients
+                    url: '@Url.Action("GetIngredients", "MenuCreation")',
+                    method: 'GET',
+                    success: function (data) {
+                        if (data) { //check if something is returned
+                            for (var item in data)
+                            {
+                                ingredientsManagerTable.row.add([data[item]['id'], data[item]['name'], data[item]['description']]).draw(true);
 
+                            }
 
+                        } else {
+                            console.log("No Ingredients to retrieve");
 
-                //Populate modal with ingredients and a dropdown of menu items.
-                //$('#menuitem-dropdown').html("<option>Menu Item...</option>");
-                for (var item in menuItemDictionary)
-                {
-                    //ingredientsTable.row.add([ingredientsTable[item].key, [item].value[1]]).draw(false);
-                    $('#menuitem-dropdown').append("<option>" + menuItemDictionary[item].key + "</option>");
-                }
+                        }
+                    }
+
+                });
 
                 $('#ingredientsModal').modal('show');
-
 
             });
 
             //Add ingredient to the ingredient table on the ingredient modal
             //also adds the ingredient to the ingredient dictionary
-            $('#addIngredientButton').on('click', function () {
-                //grab the currently selected menu item, ingredient name, and description
-                var menuItem = $('#menuitem-dropdown option:selected').text();
-                var ingredientName = $('#addIngredientName-text').text();
-                var ingredientDescription = $('#addIngredientDescription-text').text();
+            //$('#addIngredientButton').on('click', function () {
+            //    //grab the currently selected menu item, ingredient name, and description
+            //    var menuItem = $('#menuitem-dropdown option:selected').text();
+            //    var ingredientName = $('#addIngredientName-text').text();
+            //    var ingredientDescription = $('#addIngredientDescription-text').text();
 
-                //Post this data and add to the table. TODO
-                var IngredientModel = {
-                    Id: "",
-                    Name: ingredientName,
-                    Description: ingredientDescription,
-                    Option: { None: 1, Low: 2, Normal: 3 },
-                    menuitemIngredients: ""
-                };
+            //    //Post this data and add to the table. TODO
+            //    var IngredientModel = {
+            //        Id: "",
+            //        Name: ingredientName,
+            //        Description: ingredientDescription,
+            //        Option: { None: 1, Low: 2, Normal: 3 },
+            //        menuitemIngredients: ""
+            //    };
 
-                var MenuItemIngredientModel = {
-                    MenuItemId: "",
-                    IngredientId: "",
-                    MenuItem: "",
-                    Ingredient: IngredientModel
-                };
+            //    var MenuItemIngredientModel = {
+            //        MenuItemId: "",
+            //        IngredientId: "",
+            //        MenuItem: "",
+            //        Ingredient: IngredientModel
+            //    };
 
-            });
+            //});
 
-            //Remove ingredient from the ingredient table on the ingredient modal
-            //also removes the ingredient from the dictionary
-            $('#removeIngredientButton').on('click', function () {
-                //Check if row is selected
-
-
-
-                //grap the currently selected menu item and the current selected row
-                var menuItem = $('#menuitem-dropdown option:selected').text();
+            ////Remove ingredient from the ingredient table on the ingredient modal
+            ////also removes the ingredient from the dictionary
+            //$('#removeIngredientButton').on('click', function () {
+            //    //Check if row is selected
 
 
-            });
+
+            //    //grap the currently selected menu item and the current selected row
+            //    var menuItem = $('#menuitem-dropdown option:selected').text();
+
+
+            //});
 
             //===============Update Menu Table Functions=================================
 
@@ -1921,7 +2203,7 @@
                 //else if(!menuitemImage.files[0])
                 //{
                 //    alert("No file was selected.");
-                    
+
                 //}
                 //var menuItemImageData;
                 //file = menuitemImage.files[0];
@@ -2009,25 +2291,90 @@
 
                 var menuitemID = $('#menuitem-id-edit').val();
                 var menuitemName = $('#menuitem-name-edit').val();
+                var menuitemDescription = $('#menuitem-description-edit').val();
                 var menuitemPrice = $('#menuitem-price-edit').val();
-                var menuitemSize = $('#menuitem-size-edit').val();
-                var menuitemIngredients = $('#menuitem-ingredients-edit').val();
-                //POST GOES HERE MenuCreationController/EditMenuItem
+                //GET: MenuCreationController/GetMenuItem
+                //POST: MenuCreationController/EditMenuItem
 
-                //Display Demo
-                for (var item in menuItemDictionary) {
-                    //Find the selected item and change its values according to the new data.
-                    //TODO: VALIDATE
-                    if (menuItemDictionary[item].value[6] == menuitemID) {
-                        menuItemDictionary[item].key = menuitemName;
-                        menuItemDictionary[item].value[2] = menuitemPrice;
-                        menuItemDictionary[item].value[3] = menuitemSize;
-                        menuItemDictionary[item].value[1] = menuitemIngredients;
+                //Get up to date menuitem information
+                $.ajax({
+                    url: "@Url.Action("GetMenuItem", "MenuCreation")",
+                    method: 'GET',
+                    data: { id: menuitemID },
+                    success: function (result) {
+                        if (result)
+                        {
+                            var MenuItemModel = {
+                                Id: result['id'],
+                                Name: menuitemName,
+                                Description: menuitemDescription,
+                                Price: menuitemPrice,
+                                ItemImage: result['itemImage'],
+                                Size: result['size'],
+                                SubcategoryId: result['subcategoryId'],
+                                Subcategory: result['subcategory'],
+                                MenuItemIngredients: result['menuItemIngredients']
+                            };
+
+                            $.ajax({
+                                url: '@Url.Action("EditMenuItem", "MenuCreation")',
+                                method: 'POST',
+                                data: { obj: MenuItemModel },
+                                success: function (data) {
+                                    if (data) { //check if something is returned
+                                        console.log(data);
+
+                                        //var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                                        menuItemDictionary.push({
+                                            key: menuitemName,
+                                            value: [result['subcategory']['name'],
+                                                    "", //Menu Item Ingredients
+                                                    menuitemPrice,
+                                                    "",
+                                                    "",
+                                                    result['subcategoryId'],
+                                                    result['id'],
+                                                    menuitemDescription]
+                                        });
+
+                                        //Maybe update the subcategory dictionary...
+                                        updateMenuitemTable();
+                        }
+
+                        //End of Post AJAX
                     }
+                    //end of Ajax POST
+                });
 
-                }
+                        } else
+                        {
 
-                updateMenuitemTable(); //Call function to update the menu item table
+                        }
+                    }
+                    //END AJAX GET
+                });
+                //END AJAX
+
+
+
+
+
+
+
+                ////Display Demo
+                //for (var item in menuItemDictionary) {
+                //    //Find the selected item and change its values according to the new data.
+                //    //TODO: VALIDATE
+                //    if (menuItemDictionary[item].value[6] == menuitemID) {
+                //        menuItemDictionary[item].key = menuitemName;
+                //        menuItemDictionary[item].value[2] = menuitemPrice;
+                //        menuItemDictionary[item].value[3] = menuitemSize;
+                //        menuItemDictionary[item].value[1] = menuitemIngredients;
+                //    }
+
+                //}
+
+                //updateMenuitemTable(); //Call function to update the menu item table
 
 
 

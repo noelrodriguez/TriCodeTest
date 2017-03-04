@@ -56,13 +56,6 @@ namespace TriCodeTest.Controllers
             return View(await _context.Category.ToListAsync());
         }
 
-        // POST: MenuCreation/AddIngredient
-        [HttpPost]
-        public ActionResult AddIngredient(Ingredient obj)
-        {
-            return Json(false);
-        }
-
         // POST: MenuCreation/AddCategory
         // Adds the specified category object to the database and returns that updated category
         /// <summary>
@@ -304,15 +297,24 @@ namespace TriCodeTest.Controllers
         /// <returns>A MenuItemModel object back to the poster.</returns>
         [HttpPost]
         public async Task<ActionResult>  AddMenuItem(MenuItem obj)
-        {   
-            _context.MenuItem.Add(obj); //Add to the database
+        {
+            MenuItem newItem = new MenuItem()
+            {
+                Name = obj.Name,
+                Description = obj.Description,
+                Price = obj.Price,
+                SubcategoryId = obj.SubcategoryId
+            };
+
+
+            _context.MenuItem.Add(newItem); //Add to the database
             var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
             if (updated < 1) //determine that at least one item was added to the database
             {
                 return NotFound();
             }
 
-            return Json(obj);
+            return Json(newItem);
         }
         /// <summary>
         /// Update a menu item with a new image. Takes the id of the menu item to update,
@@ -336,7 +338,6 @@ namespace TriCodeTest.Controllers
             menuitem.ItemImage = image;
             _context.MenuItem.Update(menuitem);
             
-
             return Json(true);
         }
         /// <summary>
@@ -383,6 +384,117 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }
             _context.MenuItem.Remove(menuitem);
+            await _context.SaveChangesAsync();
+            return Json(true);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetMenuItem(int id)
+        {
+            var menuitem = await _context.MenuItem.SingleOrDefaultAsync(s => s.Id == id);
+            if (menuitem == null)
+            {
+                return NotFound();
+            }
+
+            return Json(menuitem);
+        }
+        /// <summary>
+        /// Add a new Ingredient to the database and return that new ingredient
+        /// </summary>
+        /// <param name="obj">Ingredient Model</param>
+        /// <returns>A new ingredient model with updated data</returns>
+        [HttpPost]
+        public async Task<ActionResult> AddIngredient(Ingredient obj)
+        {
+            Ingredient newItem = new Ingredient()
+            {
+                Name = obj.Name,
+                Description = obj.Description,
+            };
+
+
+            _context.Ingredient.Add(newItem); //Add to the database
+            var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
+            if (updated < 1) //determine that at least one item was added to the database
+            {
+                return NotFound();
+            }
+
+            return Json(newItem);
+        }
+        /// <summary>
+        /// Retrieves a list of Ingredient objects from the database
+        /// and returns that list to the caller.
+        /// </summary>
+        /// <returns>List of Ingredient objects</returns>
+        [HttpGet]
+        public ActionResult GetIngredients()
+        {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            foreach (var ingredient in _context.Ingredient)
+            {
+                ingredients.Add(ingredient);
+            }
+            return Json(ingredients);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetMenuItemIngredients(int id)
+        {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            foreach (var item in _context.MenuItemIngredients)
+            {
+                if (item.MenuItemId == id)
+                {
+
+                    var ingredient = await _context.Ingredient.SingleOrDefaultAsync(m => m.Id == item.IngredientId);
+                    ingredients.Add(ingredient);
+                }
+
+                
+            }
+            return Json(ingredients);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddMenuItemIngredient(int itemId, int ingredientId)
+        {
+            var item = await _context.MenuItem.FirstOrDefaultAsync(i => i.Id == itemId);
+            var ingredient = await _context.Ingredient.FirstOrDefaultAsync(i => i.Id == ingredientId);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            else if (ingredient == null)
+            {
+                return NotFound();
+            }
+
+            MenuItemIngredients ingredients = new MenuItemIngredients()
+            {
+                IngredientId = ingredientId,
+                MenuItemId = itemId
+            };
+
+            _context.MenuItemIngredients.Add(ingredients); //Add to the database
+            var updated = await _context.SaveChangesAsync(); //Wait for database to update and get data
+            if (updated < 1)
+            {
+                return NotFound();
+            }
+            return Json(ingredient);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RemoveIngredient(int id)
+        {
+            var ingredient = await _context.Ingredient.SingleOrDefaultAsync(m => m.Id == id);
+            if (ingredient == null)
+            {
+                return NotFound();
+            }
+            _context.Ingredient.Remove(ingredient);
             await _context.SaveChangesAsync();
             return Json(true);
         }
