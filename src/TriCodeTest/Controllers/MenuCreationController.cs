@@ -474,7 +474,9 @@ namespace TriCodeTest.Controllers
             MenuItemIngredients ingredients = new MenuItemIngredients()
             {
                 IngredientId = ingredientId,
-                MenuItemId = itemId
+                MenuItemId = itemId,
+                Ingredient = ingredient,
+                MenuItem = item
             };
 
             _context.MenuItemIngredients.Add(ingredients); //Add to the database
