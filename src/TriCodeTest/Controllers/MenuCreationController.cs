@@ -407,6 +407,9 @@ namespace TriCodeTest.Controllers
         [HttpPost]
         public async Task<ActionResult> AddIngredient(Ingredient obj)
         {
+            
+
+            //enum ingredientOption { None, Low, Normal };
             Ingredient newItem = new Ingredient()
             {
                 Name = obj.Name,
@@ -496,22 +499,6 @@ namespace TriCodeTest.Controllers
                 MenuItemId = itemId,
                 IngredientId = ingredientId
             };
-
-            //foreach (var item in _context.MenuItemIngredients)
-            //{
-            //    if (item.MenuItemId == itemId && item.IngredientId == ingredientId)
-            //    {
-            //        _context.MenuItemIngredients.Remove(item);
-            //        var update = await _context.SaveChangesAsync();
-            //        if (update < 1)
-            //        {
-            //            return Json(false);
-            //        } else
-            //        {
-            //            return Json(true);
-            //        }
-            //    }
-            //}
 
             _context.MenuItemIngredients.Remove(newMenuItemIngredient);
             var update = await _context.SaveChangesAsync();

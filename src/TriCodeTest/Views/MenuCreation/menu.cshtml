@@ -58,13 +58,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in subCategoryList)
+                    @*@foreach (var item in subCategoryList)
                     {
                         <tr>
                             <td>@item.Name</td>
                         </tr>
 
-                    }
+                    }*@
                 </tbody>
             </table>
 
@@ -89,14 +89,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in menuItemList)
+                    @*@foreach (var item in menuItemList)
                     {
                         <tr>
                             <td>@item.Name</td>
                             <td>@item.Price</td>
                         </tr>
 
-                    }
+                    }*@
                 </tbody>
             </table>
             <div class="btn pull-left" style="width:100%">
@@ -687,7 +687,7 @@
                 var rowData = categoryTable.row(this).data();
 
                 if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
+                    //$(this).removeClass('selected');
                 }
                 else {
                     categoryTable.$('tr.selected').removeClass('selected');
@@ -829,7 +829,7 @@
 
 
                 if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
+                    //$(this).removeClass('selected');
 
                 }
                 else {
@@ -1266,7 +1266,7 @@
 
             $('#menuitem tbody').on('click', 'tr', function () {
                 if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
+                    //$(this).removeClass('selected');
 
                 }
                 else {
@@ -1761,45 +1761,6 @@
 
             });
 
-            //Add ingredient to the ingredient table on the ingredient modal
-            //also adds the ingredient to the ingredient dictionary
-            //$('#addIngredientButton').on('click', function () {
-            //    //grab the currently selected menu item, ingredient name, and description
-            //    var menuItem = $('#menuitem-dropdown option:selected').text();
-            //    var ingredientName = $('#addIngredientName-text').text();
-            //    var ingredientDescription = $('#addIngredientDescription-text').text();
-
-            //    //Post this data and add to the table. TODO
-            //    var IngredientModel = {
-            //        Id: "",
-            //        Name: ingredientName,
-            //        Description: ingredientDescription,
-            //        Option: { None: 1, Low: 2, Normal: 3 },
-            //        menuitemIngredients: ""
-            //    };
-
-            //    var MenuItemIngredientModel = {
-            //        MenuItemId: "",
-            //        IngredientId: "",
-            //        MenuItem: "",
-            //        Ingredient: IngredientModel
-            //    };
-
-            //});
-
-            ////Remove ingredient from the ingredient table on the ingredient modal
-            ////also removes the ingredient from the dictionary
-            //$('#removeIngredientButton').on('click', function () {
-            //    //Check if row is selected
-
-
-
-            //    //grap the currently selected menu item and the current selected row
-            //    var menuItem = $('#menuitem-dropdown option:selected').text();
-
-
-            //});
-
             //===============Update Menu Table Functions=================================
 
 
@@ -1923,7 +1884,6 @@
                     if (categoryDictionary[item].value[2] == categoryId)
                     {
                         subcategories = categoryDictionary[item].value[0];
-                        //jssubcategories = <%= new JavaScriptSerializer().Serialize(ViewData["subcategories"]) %>;
                     }
 
                 }
@@ -2032,9 +1992,6 @@
                         //Append model to SubcategoryModel AddOns
                         addonList.push(AddOnModel);
                     });
-
-                //console.log("SubcategoryModel Object:");
-                //console.log(SubcategoryModel);
 
                 //console.log("Pre-Post");
                 //Post: MenuCreation/AddSubcategory
@@ -2387,29 +2344,6 @@
                     //END AJAX GET
                 });
                 //END AJAX
-
-
-
-
-
-
-
-                ////Display Demo
-                //for (var item in menuItemDictionary) {
-                //    //Find the selected item and change its values according to the new data.
-                //    //TODO: VALIDATE
-                //    if (menuItemDictionary[item].value[6] == menuitemID) {
-                //        menuItemDictionary[item].key = menuitemName;
-                //        menuItemDictionary[item].value[2] = menuitemPrice;
-                //        menuItemDictionary[item].value[3] = menuitemSize;
-                //        menuItemDictionary[item].value[1] = menuitemIngredients;
-                //    }
-
-                //}
-
-                //updateMenuitemTable(); //Call function to update the menu item table
-
-
 
                 $('#editMenuitemModal').modal('hide');
             });
