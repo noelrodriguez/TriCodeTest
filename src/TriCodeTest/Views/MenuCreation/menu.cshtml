@@ -419,28 +419,6 @@
                         <label for="menuitem-price-add" class="form-control-label">Price</label>
                         <input type="number" class="form-control" id="menuitem-price-add" />
                     </div>
-                    <!--
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                        <label for="menuitem-size-add" class="form-control-label">Sizes</label>
-                       <!-- <input type="number" class="form-control" id="menuitem-size-add" />
-                        <select class="form-control" id="menuitem-size-add">
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Large</option>
-                        </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="menuitem-disable-size-add" class="form-control-label">Disable Sizes</label>
-                            <input type="checkbox" id="menuitem-disable-size-add" />
-                        </div>
-                    </div>
-                        </div>
-                    -->
-                    @*<div class="form-group">
-                            <label for="menuitem-ingredients-add" class="form-control-label">Ingredients</label>
-                            <textarea class="form-control" id="menuitem-ingredients-add"></textarea>
-                        </div>*@
                 </form>
             </div>
             <div class="modal-footer">
@@ -493,10 +471,10 @@
                                 <label for="menuitem-price-edit" class="form-control-label">Price</label>
                                 <input type="number" class="form-control" id="menuitem-price-edit" />
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
                                 <textarea class="form-control" id="menuitem-ingredients-edit" readonly></textarea>
-                            </div>
+                            </div>*@
                         </div>
                         <!--Start of Ingredients Section-->
                         <div class="col-md-8">
@@ -641,22 +619,6 @@
                 </text>
 
             }
-
-            //oops
-            @*//Populate Addon dictionary
-            @foreach (var item in addonList)
-            {
-                <text>
-            addonDictionary.push({
-                key: "@item.Name",
-                value: ["@item.Subcategory.Name",
-                        "@item.Description",
-                        "@item.Price",
-                        "@item.SubcategoryId",
-                        "@item.Id"]
-            });
-            </text>
-            }*@
 
             //Populate ingredients Dictionary
             @foreach (var item in ingredientsList)
@@ -925,24 +887,25 @@
                         }
                     });
                 //Validate
-                if (addonName != "" && !exists)
+                if (addonName != "" || addonPrice != "")
                 {
                     addonTable.row.add([addonName,addonDescription, addonPrice]).draw(true); //Add new data to addonTable
                     //Clear the text boxes for the next input
                     $('#addAddonName-text').val("");
                     $('#addAddonDescription-text').val("");
                     $('#addAddonPrice-text').val("0.00");
-                }
-                else
-                {
+                } else if(!exists) {
+                    alert("Addon name already exists! Please enter another one.");
+                
+                } else {
                     //TODO change up this erro message so it centers and does stuff.
-                    var type = BootstrapDialog.TYPE_WARNING;
-                    BootstrapDialog.show({
-                        type: type,
-                        title: 'Invalid Addon Name',
-                        message: 'Please enter a valid name for the addon, which does not exist already.'
-                    });
-
+                //    var type = BootstrapDialog.TYPE_WARNING;
+                //    BootstrapDialog.show({
+                //        type: type,
+                //        title: 'Invalid Addon Name',
+                //        message: 'Please enter a valid name for the addon, which does not exist already.'
+                //    });
+                    alert("Please enter a valid Name and Price for the addon.");
                 }
 
             });
@@ -990,6 +953,17 @@
                 var addonPrice = $('#editAddonPrice-text').val();
                 var subId = $('#subcategory-id-edit').val();
                 var subName = "";
+                
+                //Check if name already exists in table???!?!?!
+                var exists = false;
+                addonTableEdit
+                    .column(0)
+                    .data()
+                    .each(function (value, index) {
+                        if (addonName == value) {
+                            exists = true;
+                        }
+                    });
 
                 for (var sub in subCategoryDictionary)
                 {
@@ -1011,8 +985,7 @@
                     Subcategory: ""
                 };
 
-
-                if (addonName != "") {
+                if (addonName != "" && !exists) {
                     //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
                     $.ajax({
                         url: '@Url.Action("AddAddon", "MenuCreation")',
@@ -1021,7 +994,7 @@
                         success: function (data) {
                             if (data) {
                                 //Add addon to the table
-                                addonTableEdit.row.add([data['name'], data['price']]).draw(true);
+                                addonTableEdit.row.add([data['name'], data['description'], data['price']]).draw(true);
                                 addonDictionary.push({
                                     key: data['name'],
                                     value: [data['price'],
@@ -1046,7 +1019,7 @@
                     BootstrapDialog.show({
                         type: type,
                         title: 'Invalid Addon Name',
-                        message: 'Please enter a name for the addon.'
+                        message: 'Name already exists or price is invalid.'
                     });
 
                 }
@@ -1095,19 +1068,15 @@
                                 $.ajax({
                                     url: '@Url.Action("RemoveAddon", "MenuCreation")',
                                     method: 'POST',
-                                    data: { obj: AddOnModel },
+                                    data: { id: addonId },
                                     success: function (data) {
                                         if (data) {
-                                            //Add addon to the table
-                                            addonTableEdit.row.add([data['name'], data['price']]).draw(true);
-                                            addonDictionary.push({
-                                                key: data['name'],
-                                                value: [data['price'],
-                                                        data['description'],
-                                                        subName,
-                                                        data['subcategoryId'],
-                                                        data['id']]
-                                            });
+                                            for (var item in addonDictionary) {
+                                                if (addonDictionary[item].key.toString() == rowData[0]) {
+                                                    addonDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
 
                                         }
                                     }
@@ -1150,7 +1119,7 @@
 
 
                 //Clear all controls on the page in the modal so we don't have leftover info
-                
+
 
             });
 
@@ -1306,8 +1275,8 @@
                 }
 
 
-                
-                
+
+
                 //console.log('TEST');
             });
 
@@ -1335,7 +1304,7 @@
                 //$('#menuitem-image-edit').val(data.value[4]);
                 $('#menuitem-name-edit').val("");
                 $('#menuitem-price-edit').val("");
-                $('#menuitem-ingredients-edit').val("");
+                //$('#menuitem-ingredients-edit').val("");
                 $('#menuitem-description-edit').val("");
 
                 if ($row.length)
@@ -1375,7 +1344,7 @@
                                     ingredients += result['menuItemIngredients'][item].Name; + ","
 
                                 }
-                                $('#menuitem-ingredients-edit').val(data.value[1]);
+                                //$('#menuitem-ingredients-edit').val(data.value[1]);
                                 $('#menuitem-description-edit').val(result['description']);
 
                             } else {
@@ -1384,7 +1353,7 @@
                                 //$('#menuitem-image-edit').val(data.value[4]);
                                 $('#menuitem-name-edit').val(data.key);
                                 $('#menuitem-price-edit').val(data.value[2]);
-                                $('#menuitem-ingredients-edit').val(data.value[1]);
+                                //$('#menuitem-ingredients-edit').val(data.value[1]);
                                 $('#menuitem-description-edit').val(data.value[7]);
                             }
                         }
@@ -1424,7 +1393,7 @@
                                 console.log("MenuItemIngredients: " + result);
                                 for (var item in result)
                                 {
-                                    console.log(result[item]['name']);
+                                    //console.log(result[item]['name']);
                                     ingredientsTable.row.add([result[item]['id'], result[item]['name'], result[item]['description']]).draw(true);
                                 }
 
@@ -2046,136 +2015,144 @@
                 var subcategoryName = $('#subcategory-name-add').val();
                 var subcategoryDescription = $('#subcategory-description-add').val();
 
-                //Get the currently selected category from the category table
-                var selectedCategory = categoryTable.row('tr.selected').data();
-                selectedCategoryData = {};
-                for (var item in categoryDictionary)
+                if (subcategoryName == "")
                 {
-                    if (categoryDictionary[item].key.toString() == selectedCategory[0])
+                    alert("A Subcategory name is required.");
+                } else {
+                    //Get the currently selected category from the category table
+                    var selectedCategory = categoryTable.row('tr.selected').data();
+                    selectedCategoryData = {};
+                    for (var item in categoryDictionary)
                     {
-                        console.log(categoryDictionary[item]);
-                        selectedCategoryData = categoryDictionary[item];
+                        if (categoryDictionary[item].key.toString() == selectedCategory[0])
+                        {
+                            console.log(categoryDictionary[item]);
+                            selectedCategoryData = categoryDictionary[item];
+
+                        }
 
                     }
+
+                    //Construct and post the CategoryModel (for reference), SubcategoryModel (to add), and the AddonModel (to Add)
+                    //Selected CategoryModel Date for reference
+                    var CategoryModel = {
+                        Id: selectedCategoryData.value[2],
+                        Name: selectedCategory[0],
+                        Description: selectedCategoryData.value[1],
+                        Subcategories: selectedCategoryData.value[0]
+                    };
+
+                    //New SubcategoryModel
+                    var SubcategoryModel = {
+                        Id: "",
+                        Name: subcategoryName,
+                        Description: subcategoryDescription,
+                        CategoryId: selectedCategoryData.value[2],
+                        Category: "",
+                        MenuItems: [],
+                        AddOns: []
+                    };
+
+                    //Iterate over all addons in the table, create an addon object and append them to the SubcategoryModel AddOns key
+                    var addonList = [];
+                    addonTable
+                        .data()
+                        .each(function (value, index) {
+                            //Value is 3 element array of value[0]: name, value[1]: description, and value[2]: price
+                            console.log(value);
+                            //Create addon model
+                            var AddOnModel = {
+                                Id: "",
+                                Name: value[0],
+                                Description: value[1],
+                                Price: value[2],
+                                SubcategoryId: "",
+                                Subcategory: ""
+                            };
+                            //Append model to SubcategoryModel AddOns
+                            addonList.push(AddOnModel);
+                        });
+
+                    //console.log("Pre-Post");
+                    //Post: MenuCreation/AddSubcategory
+                    var newSubcategoryId;
+                    $.ajax({
+                        url: '@Url.Action("AddSubcategory", "MenuCreation")',
+                        method: 'POST',
+                        data: { subcategoryObj: SubcategoryModel, categoryObj: CategoryModel, addonsObj: addonList },
+                        success: function (result) {
+                            if (result) {
+                                console.log(result);
+                                console.log(result['addOns']);
+                                newSubcategoryId = result['id'];
+                                subCategoryDictionary.push({
+                                    key: result['name'],
+                                    value: [selectedCategory[0], //selected category name
+                                            result['menuitems'], //menuitems
+                                            result['addOns'], //addons
+                                            result['description'],
+                                            result['categoryid'],
+                                            result['id']]
+                                });
+
+                                //on success post get request for addons
+                                console.log("new subcategory id: " + newSubcategoryId);
+                                newSubcategoryId = Number(newSubcategoryId);
+                                //Ajax get
+                                $.ajax({
+                                    //GET: MenuCreation/GetAddons
+                                    //retrieves list of subcategory addons
+                                    url: '@Url.Action("GetAddons", "MenuCreation")',
+                                    method: 'GET',
+                                    data: { id: newSubcategoryId },
+                                    success: function (data) {
+                                        if (data) { //check if something is returned
+                                            //console.log("This is the addon:" + data);
+                                            //add each addon to the addon dictionary
+                                            for (var addon in data)
+                                            {
+                                                addonDictionary.push({
+                                                    key: data[addon]['name'],
+                                                    value: [data[addon]['price'],
+                                                            data[addon]['description'],
+                                                            result['name'],
+                                                            data[addon]['subcategoryId'],
+                                                            data[addon]['id']]
+                                                });
+
+                                            }
+
+                                            //console.log("subcateory category name" + result['name']);
+                                            //console.log("subcateory id" + result[0]['subcategoryId']);
+
+                                        } else {
+                                            console.log("Something happened while getting addons");
+
+                                        }
+                                    }
+
+                                });
+                                //Update the subcategory table to display new subcategory
+                                updateSubcategoryTable();
+
+                            } else {
+                                console.log("Something went wrong while adding the new subcategory.");
+                            }
+                        }
+                    });
+
+                    addonTable.clear();
+                    addonTable.draw();
+
+                    //Clear the text boxes for next input
+                    var subcategoryName = $('#subcategory-name-add').val("");
+                    var subcategoryDescription = $('#subcategory-description-add').val("");
+
+                    $('#addSubcategoryModal').modal('hide');
 
                 }
 
-                //Construct and post the CategoryModel (for reference), SubcategoryModel (to add), and the AddonModel (to Add)
-                //Selected CategoryModel Date for reference
-                var CategoryModel = {
-                    Id: selectedCategoryData.value[2],
-                    Name: selectedCategory[0],
-                    Description: selectedCategoryData.value[1],
-                    Subcategories: selectedCategoryData.value[0]
-                };
 
-                //New SubcategoryModel
-                var SubcategoryModel = {
-                    Id: "",
-                    Name: subcategoryName,
-                    Description: subcategoryDescription,
-                    CategoryId: selectedCategoryData.value[2],
-                    Category: "",
-                    MenuItems: [],
-                    AddOns: []
-                };
-
-                //Iterate over all addons in the table, create an addon object and append them to the SubcategoryModel AddOns key
-                var addonList = [];
-                addonTable
-                    .data()
-                    .each(function (value, index) {
-                        //Value is 3 element array of value[0]: name, value[1]: description, and value[2]: price
-                        console.log(value);
-                        //Create addon model
-                        var AddOnModel = {
-                            Id: "",
-                            Name: value[0],
-                            Description: value[1],
-                            Price: value[2],
-                            SubcategoryId: "",
-                            Subcategory: ""
-                        };
-                        //Append model to SubcategoryModel AddOns
-                        addonList.push(AddOnModel);
-                    });
-
-                //console.log("Pre-Post");
-                //Post: MenuCreation/AddSubcategory
-                var newSubcategoryId;
-                $.ajax({
-                    url: '@Url.Action("AddSubcategory", "MenuCreation")',
-                    method: 'POST',
-                    data: { subcategoryObj: SubcategoryModel, categoryObj: CategoryModel, addonsObj: addonList },
-                    success: function (result) {
-                        if (result) {
-                            console.log(result);
-                            console.log(result['addOns']);
-                            newSubcategoryId = result['id'];
-                            subCategoryDictionary.push({
-                                key: result['name'],
-                                value: [selectedCategory[0], //selected category name
-                                        result['menuitems'], //menuitems
-                                        result['addOns'], //addons
-                                        result['description'],
-                                        result['categoryid'],
-                                        result['id']]
-                            });
-
-                            //on success post get request for addons
-                            console.log("new subcategory id: " + newSubcategoryId);
-                            newSubcategoryId = Number(newSubcategoryId);
-                            //Ajax get
-                            $.ajax({
-                                //GET: MenuCreation/GetAddons
-                                //retrieves list of subcategory addons
-                                url: '@Url.Action("GetAddons", "MenuCreation")',
-                                method: 'GET',
-                                data: { id: newSubcategoryId },
-                                success: function (data) {
-                                    if (data) { //check if something is returned
-                                        //console.log("This is the addon:" + data);
-                                        //add each addon to the addon dictionary
-                                        for (var addon in data)
-                                        {
-                                            addonDictionary.push({
-                                                key: data[addon]['name'],
-                                                value: [data[addon]['price'],
-                                                        data[addon]['description'],
-                                                        result['name'],
-                                                        data[addon]['subcategoryId'],
-                                                        data[addon]['id']]
-                                            });
-
-                                        }
-
-                                        //console.log("subcateory category name" + result['name']);
-                                        //console.log("subcateory id" + result[0]['subcategoryId']);
-
-                                    } else {
-                                        console.log("Something happened while getting addons");
-
-                                    }
-                                }
-
-                            });
-                            //Update the subcategory table to display new subcategory
-                            updateSubcategoryTable();
-
-                        } else {
-                            console.log("Something went wrong while adding the new subcategory.");
-                        }
-                    }
-                });
-
-                addonTable.clear();
-                addonTable.draw();
-
-                //Clear the text boxes for next input
-                var subcategoryName = $('#subcategory-name-add').val("");
-                var subcategoryDescription = $('#subcategory-description-add').val("");
-
-                $('#addSubcategoryModal').modal('hide');
             });
 
             //Click listener for when the edit subcategory modal 'submit' button is clicked
@@ -2187,211 +2164,192 @@
                 var subcategoryName = $('#subcategory-name-edit').val();
                 var subcategoryDescription = $('#subcategory-description-edit').val();
 
-                console.log(subcategoryID);
-                console.log(subcategoryName);
-                console.log(subcategoryDescription);
-
-                var currentSubcategory;
-
-                for (var sub in subCategoryDictionary)
+                if (subcategoryName == "")
                 {
-                    if (subCategoryDictionary[sub].value[5] == subcategoryID)
+                    alert("Subcategory Name can't be empty. Please enter a name.");
+                } else {
+                    //Update the subcategory with new data
+                    var currentSubcategory;
+
+                    for (var sub in subCategoryDictionary)
                     {
-                        currentSubcategory = subCategoryDictionary[sub];
-                    }
-
-                }
-
-                $.ajax({
-                    //GET: MenuCreation/GetSubcategory
-                    url: '@Url.Action("GetSubcategory", "MenuCreation")',
-                    method: 'GET',
-                    data: {id: subcategoryID},
-                    success: function (result) {
-                        if (result) {
-
-                            var SubcategoryModel = {
-                                Id: subcategoryID,
-                                Name: subcategoryName,
-                                Description: subcategoryDescription,
-                                CategoryId: result['categoryId'],
-                                Category: result['category'],
-                                MenuItems: result['menuitems'],
-                                AddOns: result['addOns']
-                            };
-                            //Post data to EditSubcategory
-                            $.ajax({
-                                //Post: MenuCreation/GetAddons
-                                //Posts updated subcategory data to the database.
-                                url: '@Url.Action("EditSubcategory", "MenuCreation")',
-                                method: 'POST',
-                                data: { obj: SubcategoryModel },
-                                success: function (data) {
-                                    if (data) { //check if something is returned
-                                        console.log("New Subcategory name" + subcategoryName);
-                                        //Update javascript dictionary references.
-                                        for (var item in subCategoryDictionary)
-                                        {
-                                            if (subCategoryDictionary[item].value[5] == result['id'])
-                                            {
-                                                subCategoryDictionary[item].key = subcategoryName;
-                                                subCategoryDictionary[item].value[3] = subcategoryDescription;
-                                            }
-
-                                        }
-                                        for (var item in addonDictionary)
-                                        {
-                                            if (addonDictionary[item].value[3] == result['id'])
-                                            {
-                                                addonDictionary[item].value[2] = subcategoryName;
-                                            }
-
-                                        }
-                                        for (var item in menuItemDictionary)
-                                        {
-                                            if (menuItemDictionary[item].value[5] == result['id'])
-                                            {
-                                                menuItemDictionary[item].value[0] = subcategoryName;
-                                            }
-
-                                        }
-
-                                        updateSubcategoryTable(); //Call function to update the subcategory table
-                                    } else {
-                                        console.log("Something happened while getting addons");
-
-                                    }
-                                }
-
-                            });
-
-
-                        } else
+                        if (subCategoryDictionary[sub].value[5] == subcategoryID)
                         {
-                            console.log("Error while getting subcategory");
-
+                            currentSubcategory = subCategoryDictionary[sub];
                         }
 
                     }
-                });
 
-                $('#editSubcategoryModal').modal('hide');
+                    $.ajax({
+                        //GET: MenuCreation/GetSubcategory
+                        url: '@Url.Action("GetSubcategory", "MenuCreation")',
+                        method: 'GET',
+                        data: {id: subcategoryID},
+                        success: function (result) {
+                            if (result) {
+
+                                var SubcategoryModel = {
+                                    Id: subcategoryID,
+                                    Name: subcategoryName,
+                                    Description: subcategoryDescription,
+                                    CategoryId: result['categoryId'],
+                                    Category: result['category'],
+                                    MenuItems: result['menuitems'],
+                                    AddOns: result['addOns']
+                                };
+                                //Post data to EditSubcategory
+                                $.ajax({
+                                    //Post: MenuCreation/GetAddons
+                                    //Posts updated subcategory data to the database.
+                                    url: '@Url.Action("EditSubcategory", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { obj: SubcategoryModel },
+                                    success: function (data) {
+                                        if (data) { //check if something is returned
+                                            console.log("New Subcategory name" + subcategoryName);
+                                            //Update javascript dictionary references.
+                                            for (var item in subCategoryDictionary)
+                                            {
+                                                if (subCategoryDictionary[item].value[5] == result['id'])
+                                                {
+                                                    subCategoryDictionary[item].key = subcategoryName;
+                                                    subCategoryDictionary[item].value[3] = subcategoryDescription;
+                                                }
+
+                                            }
+                                            for (var item in addonDictionary)
+                                            {
+                                                if (addonDictionary[item].value[3] == result['id'])
+                                                {
+                                                    addonDictionary[item].value[2] = subcategoryName;
+                                                }
+
+                                            }
+                                            for (var item in menuItemDictionary)
+                                            {
+                                                if (menuItemDictionary[item].value[5] == result['id'])
+                                                {
+                                                    menuItemDictionary[item].value[0] = subcategoryName;
+                                                }
+
+                                            }
+
+                                            updateSubcategoryTable(); //Call function to update the subcategory table
+                                        } else {
+                                            console.log("Something happened while getting addons");
+
+                                        }
+                                    }
+
+                                });
+
+
+                            } else
+                            {
+                                console.log("Error while getting subcategory");
+
+                            }
+
+                        }
+                    });
+
+                    $('#editSubcategoryModal').modal('hide');
+
+                }
+
+
             });
 
 
 
             //Add and Edit Menu Item Submit button listeners
             $('#addMenuitemSubmit').on('click', function (e) {
-                console.log("Submit Add Menu Item");
+                //console.log("Submit Add Menu Item");
 
                 //var menuitemImage = $('#menuitem-image-add').val();
                 var menuitemName = $('#menuitem-name-add').val();
                 var menuitemPrice = $('#menuitem-price-add').val();
                 var menuitemDescription = $('#menuitem-description-add').val();
                 //var menuitemIngredients = $('#menuitem-ingredients-add').val();
-                //POST REQUEST GOES HERE MenuCreationController/AddMenuItem
-
-                //grab the file selected if any
-                //var menuitemImage = document.getElementById('menuitem-image-add');
-                //if (!menuitemImage.files || !menuitemImage)
-                //{
-                //    alert("Images are not suported in this browser. consider using Chrome or Firefox");
-                //}
-                //else if(!menuitemImage.files[0])
-                //{
-                //    alert("No file was selected.");
-
-                //}
-
-                ////var menuItemImageData;
-                //file = menuitemImage.files[0];
-                //menuItemImageData = getBase64FileString(file);
-                //reader = new FileReader();
-                //reader.readAsDataURL(file);
-                //reader.onload = function () {
-                //    //console.log("Reader result" + reader.result);
-                //    return reader.result;
-                //};
-                //console.log(reader.readAsBinaryString(file));
-                //console.log(reader.onload);
-                //get selected subcateogry
-                var selectedSubcategory = subCategoryTable.row('tr.selected').data();
-                console.log(selectedSubcategory);
-                selectedSubcategoryData = "";
-                for (var item in subCategoryDictionary) {
-                    if (subCategoryDictionary[item].key == selectedSubcategory[0].toString()) {
-                        console.log("Subcategory Id? " + subCategoryDictionary[item].value[5]);
-                        selectedSubcategoryData = subCategoryDictionary[item].value[5];
-                    }
-                }
-                //console.log("Image data? " + reader.);
-                //console.log("Binary string? " + reader.readAsBinaryString);
-
-                //var imageData = $('#menuitem-image-add').attr("files")[0];
 
 
+                if (menuitemName == "")
+                {
+                    alert("A valid name must be entered to add a menu item.");
 
-                //Menu Item object
-                var MenuItemModel = {
-                    Id: "",
-                    Name: menuitemName,
-                    Description: menuitemDescription,
-                    Price: menuitemPrice,
-                    ItemImage: "",
-                    Size: "",
-                    SubcategoryId: selectedSubcategoryData,
-                    Subcategory: "",
-                    MenuItemIngredients: []
-                };
-
-                console.log("Menu Item Model: " + MenuItemModel.Name);
-                console.log("Menu Item Model: " + MenuItemModel.Description);
-                console.log("Menu Item Model: " + MenuItemModel.Price);
-                //console.log("Menu Item Model: " + MenuItemModel.ItemImage);
-
-                $.ajax({
-                    url: '@Url.Action("AddMenuItem", "MenuCreation")',
-                    method: 'POST',
-                    data: { obj: MenuItemModel },
-                    success: function (data) {
-                        if (data) { //check if something is returned
-                            console.log(data);
-                            var menuitemImage = document.getElementById('menuitem-image-add');
-                            if (!menuitemImage.files || !menuitemImage) {
-                                alert("Images are not suported in this browser. consider using Chrome or Firefox");
-                            }
-                            else if (!menuitemImage.files[0]) {
-                                alert("No file was selected.");
-                            }
-                            else {
-                                console.log("Posting image data.");
-                                postMenuItemImage(data['id'], ""); //POST image to the database
-                            }
-
-                            var selectedSubcategory = subCategoryTable.row('tr.selected').data();
-
-                            menuItemDictionary.push({
-                                key: data['name'],
-                                value: [selectedSubcategory[0],
-                                        "", //Menu Item Ingredients
-                                        data['price'],
-                                        "",
-                                        "",
-                                        data['subcategoryId'],
-                                        data['id']]
-                            });
-
-                            //Maybe update the subcategory dictionary...
-                            updateMenuitemTable();
-
+                } else if (isNaN(menuitemPrice)) {
+                    alert("A valid price must be entered to add a menu item.");
+                } else {
+                    //get selected subcateogry
+                    var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                    selectedSubcategoryData = "";
+                    for (var item in subCategoryDictionary) {
+                        if (subCategoryDictionary[item].key == selectedSubcategory[0].toString()) {
+                            //console.log("Subcategory Id? " + subCategoryDictionary[item].value[5]);
+                            selectedSubcategoryData = subCategoryDictionary[item].value[5];
                         }
-
-                        //End of data
                     }
-                    //end of Ajax
-                });
 
-                $('#addMenuitemModal').modal('hide');
+                    //Menu Item object
+                    var MenuItemModel = {
+                        Id: "",
+                        Name: menuitemName,
+                        Description: menuitemDescription,
+                        Price: menuitemPrice,
+                        ItemImage: "",
+                        Size: "",
+                        SubcategoryId: selectedSubcategoryData,
+                        Subcategory: "",
+                        MenuItemIngredients: []
+                    };
+
+                    $.ajax({
+                        url: '@Url.Action("AddMenuItem", "MenuCreation")',
+                        method: 'POST',
+                        data: { obj: MenuItemModel },
+                        success: function (data) {
+                            if (data) { //check if something is returned
+                                console.log(data);
+                                var menuitemImage = document.getElementById('menuitem-image-add');
+                                if (!menuitemImage.files || !menuitemImage) {
+                                    alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                                }
+                                else if (!menuitemImage.files[0]) {
+                                    //alert("No file was selected.");
+                                }
+                                else {
+                                    //console.log("Posting image data.");
+                                    postMenuItemImage(data['id'], ""); //POST image to the database
+                                }
+
+                                var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+
+                                menuItemDictionary.push({
+                                    key: data['name'],
+                                    value: [selectedSubcategory[0],
+                                            "", //Menu Item Ingredients
+                                            data['price'],
+                                            "",
+                                            "",
+                                            data['subcategoryId'],
+                                            data['id']]
+                                });
+
+                                //Maybe update the subcategory dictionary...
+                                updateMenuitemTable();
+
+                            }
+
+                            //End of data
+                        }
+                        //end of Ajax
+                    });
+
+                    $('#addMenuitemModal').modal('hide');
+
+                }
+
+
 
             });
 
@@ -2402,102 +2360,114 @@
                 var menuitemName = $('#menuitem-name-edit').val();
                 var menuitemDescription = $('#menuitem-description-edit').val();
                 var menuitemPrice = $('#menuitem-price-edit').val();
-                //GET: MenuCreationController/GetMenuItem
-                //POST: MenuCreationController/EditMenuItem
 
-                //Get up to date menuitem information
-                $.ajax({
-                    url: "@Url.Action("GetMenuItem", "MenuCreation")",
-                    method: 'GET',
-                    data: { id: menuitemID },
-                    success: function (result) {
-                        if (result)
-                        {
-                            var MenuItemModel = {
-                                Id: result['id'],
-                                Name: menuitemName,
-                                Description: menuitemDescription,
-                                Price: menuitemPrice,
-                                ItemImage: result['itemImage'],
-                                Size: result['size'],
-                                SubcategoryId: result['subcategoryId'],
-                                Subcategory: result['subcategory'],
-                                MenuItemIngredients: result['menuItemIngredients']
-                            };
+                if (menuitemName == "") {
+                    alert("A valid name must be entered for the menu item.");
+                } else if (isNaN(menuitemPrice)) {
+                    alert("A valid price must be entered for the menu item.");
 
-                            $.ajax({
-                                url: '@Url.Action("EditMenuItem", "MenuCreation")',
-                                method: 'POST',
-                                data: { obj: MenuItemModel },
-                                success: function (data) {
-                                    if (data) { //check if something is returned
-                                        console.log(data);
-                                        //Decide whether to post the image
-                                        var menuitemImage = document.getElementById('menuitem-image-edit');
-                                        if (!menuitemImage.files || !menuitemImage) {
-                                            alert("Images are not suported in this browser. consider using Chrome or Firefox");
-                                        }
-                                        else if (!menuitemImage.files[0]) {
-                                            alert("No file was selected.");
+                } else {
+                    //GET: MenuCreationController/GetMenuItem
+                    //POST: MenuCreationController/EditMenuItem
 
-                                        }
-                                        else {
-                                            console.log("Posting image data.");
-                                            postMenuItemImage(result['id'], "edit"); //POST image to the database
-                                        }
-                                        //var selectedSubcategory = subCategoryTable.row('tr.selected').data();
-                                        menuItemDictionary.push({
-                                            key: menuitemName,
-                                            value: [result['subcategory']['name'],
-                                                    "", //Menu Item Ingredients
-                                                    menuitemPrice,
-                                                    "",
-                                                    "",
-                                                    result['subcategoryId'],
-                                                    result['id'],
-                                                    menuitemDescription]
-                                        });
+                    //Get up to date menuitem information
+                    $.ajax({
+                        url: "@Url.Action("GetMenuItem", "MenuCreation")",
+                        method: 'GET',
+                        data: { id: menuitemID },
+                        success: function (result) {
+                            if (result)
+                            {
+                                var MenuItemModel = {
+                                    Id: result['id'],
+                                    Name: menuitemName,
+                                    Description: menuitemDescription,
+                                    Price: menuitemPrice,
+                                    ItemImage: result['itemImage'],
+                                    Size: result['size'],
+                                    SubcategoryId: result['subcategoryId'],
+                                    Subcategory: result['subcategory'],
+                                    MenuItemIngredients: result['menuItemIngredients']
+                                };
 
-                                        //Maybe update the subcategory dictionary...
-                                        updateMenuitemTable();
+                                $.ajax({
+                                    url: '@Url.Action("EditMenuItem", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { obj: MenuItemModel },
+                                    success: function (data) {
+                                        if (data) { //check if something is returned
+                                            console.log(data);
+                                            //Decide whether to post the image
+                                            var menuitemImage = document.getElementById('menuitem-image-edit');
+                                            if (!menuitemImage.files || !menuitemImage) {
+                                                alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                                            }
+                                            else if (!menuitemImage.files[0]) {
+                                                //alert("No file was selected.");
+
+                                            }
+                                            else {
+                                                //console.log("Posting image data.");
+                                                postMenuItemImage(result['id'], "edit"); //POST image to the database
+                                            }
+                                            //Doesn't do anything
+                                            //var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                                            //menuItemDictionary.push({
+                                            //    key: menuitemName,
+                                            //    value: [result['subcategory']['name'],
+                                            //            "", //Menu Item Ingredients
+                                            //            menuitemPrice,
+                                            //            "",
+                                            //            "",
+                                            //            result['subcategoryId'],
+                                            //            result['id'],
+                                            //            menuitemDescription]
+                                            //});
+
+                                            //Maybe update the subcategory dictionary...
+                                            updateMenuitemTable();
+                            }
+
+                            //End of Post AJAX
                         }
+                        //end of Ajax POST
+                    });
 
-                        //End of Post AJAX
-                    }
-                    //end of Ajax POST
-                });
+                            } else
+                            {
 
-                        } else
-                        {
-
+                            }
                         }
-                    }
-                    //END AJAX GET
-                });
-                //END AJAX
+                        //END AJAX GET
+                    });
+                    //END AJAX
 
-                $('#editMenuitemModal').modal('hide');
-            });
-
-            //Listener for menuitem-dropdown selection chenge so different ingredients can show.
-            $('#menuitem-dropdown').change(function () {
-                console.log("Menu Dropdown Action");
-                //grab selected menu item
-                var menuItem = $('#menuitem-dropdown option:selected').text();
-
-                //iterate over ingredients and find which ones are for the selected menu item.
-                for (var item in menuItemIngredientsDictionary)
-                {
-                    console.log(menuItemIngredientsDictionary[item].key);
-                    if (menuItemIngredientsDictionary[item].value[1] == menuItem)
-                    {
-                        ingredientsTable.row.add([menuItemIngredientsDictionary[item].key, menuItemIngredientsDictionary[item].value[1]]).draw(false);
-
-                    }
+                    $('#editMenuitemModal').modal('hide');
 
                 }
 
+
             });
+
+            //Listener for menuitem-dropdown selection chenge so different ingredients can show.
+            //$('#menuitem-dropdown').change(function () {
+            //    console.log("Menu Dropdown Action");
+            //    //grab selected menu item
+            //    var menuItem = $('#menuitem-dropdown option:selected').text();
+
+            //    //iterate over ingredients and find which ones are for the selected menu item.
+            //    for (var item in menuItemIngredientsDictionary)
+            //    {
+            //        console.log(menuItemIngredientsDictionary[item].key);
+            //        if (menuItemIngredientsDictionary[item].value[1] == menuItem)
+            //        {
+            //            ingredientsTable.row.add([menuItemIngredientsDictionary[item].key, menuItemIngredientsDictionary[item].value[1]]).draw(false);
+
+            //        }
+
+            //    }
+
+            //});
 
 
         });
