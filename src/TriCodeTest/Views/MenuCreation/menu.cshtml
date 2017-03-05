@@ -717,6 +717,8 @@
                 //Display category Modal
 
                 //Display modal
+                $('#category-name-add').val("");
+                $('#category-description-add').val("");
                 $('#addCategoryModal').modal('show');
                 var $modal = $('#addCategoryModal');
                 $modal.find('.modal-title').text('Add Category') // Change the modal title
@@ -1127,17 +1129,28 @@
             //Add subcategory Button Listener
             $('#add-subcategory').click(function () {
 
-                $('#addSubcategoryModal').modal('show');
-                var $modal = $('#addSubcategoryModal');
-                $modal.find('.modal-title').text('Add Subcategory') // Change the modal title
+                var $categoryRow = categoryTable.$('tr.selected');
+                //Check if a category is selected
+                if ($categoryRow.length)
+                {
+                    $('#addSubcategoryModal').modal('show');
+                    var $modal = $('#addSubcategoryModal');
+                    $modal.find('.modal-title').text('Add Subcategory') // Change the modal title
+
+                    addonTable.clear();
+                    addonTable.draw(false);
+                    $('#subcategory-name-add').val("");
+                    $('#subcategory-description-add').val("");
+                    $('#addAddonName-text').val("");
+                    $('#addAddonPrice-text').val("");
+
+                } else {
+                    alert("Please select a Category before adding a subcategory");
+                }
+
 
                 //Clear all controls on the page in the modal so we don't have leftover info
-                addonTable.clear();
-                addonTable.draw();
-                $('#subcategory-name-add').val("");
-                $('#subcategory-description-add').val("");
-                $('#addAddonName-text').val("");
-                $('#addAddonPrice-text').val("");
+                
 
             });
 
@@ -1277,7 +1290,24 @@
             });
 
             $('#add-menuitem').click(function () {
-                $('#addMenuitemModal').modal('show');
+                //ensure subcategory is selected
+                var $row = subCategoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    $('#menuitem-image-add').val("");
+                    $('#menuitem-image-add-preview').attr('src', "");
+                    $('#menuitem-name-add').val("");
+                    $('#menuitem-description-add').val("");
+                    $('#menuitem-price-add').val("");
+                    $('#addMenuitemModal').modal('show');
+                } else {
+                    alert("A Subcategory must be selected in order to add a Menu Item.");
+                }
+
+
+                
+                
                 //console.log('TEST');
             });
 
@@ -1301,6 +1331,7 @@
 
                 //Clear any data already in boxes!
                 $('#menuitem-id-edit').val("")
+                $('#menuitem-image-edit').val("");
                 //$('#menuitem-image-edit').val(data.value[4]);
                 $('#menuitem-name-edit').val("");
                 $('#menuitem-price-edit').val("");
@@ -1331,7 +1362,9 @@
                             if (result) {
                                 //Remove from table
                                 console.log(result);
+
                                 //remove item from dictionary
+                                $('#menuitem-image-edit-preview').attr('src', "data:image/jpeg;base64," + result['itemImage']);
                                 $('#menuitem-id-edit').val(result['id'])
                                 //$('#menuitem-image-edit').val(data.value[4]);
                                 $('#menuitem-name-edit').val(result['name']);
@@ -1460,10 +1493,10 @@
 
             });
 
-            //Remove the selected item from the ingredient table and database 
+            //Remove the selected item from the ingredient table and database
             $('#removeIngredientButton-edit').on('click', function () {
                 var $row = ingredientsTable.$('tr.selected');
-                
+
                 if ($row.length) {
                     var menuItemId = $('#menuitem-id-edit').val();
                     var ingredientData = ingredientsTable.row('tr.selected').data();
@@ -1491,7 +1524,7 @@
                 }
 
 
-               
+
             });
 
 
@@ -1630,9 +1663,9 @@
                         }
                     });
 
-                if(ingredientName == "" && !exits)
+                if(ingredientName == "" || exists)
                 {
-                    alert("A name has not been entered, please enter one.");
+                    alert("A name has not been entered, or the ingredient already exits. please enter another name.");
                 }
                 else {
                     //Post new ingredient to the database and add it to the table
@@ -1678,7 +1711,8 @@
 
             //Remove a selected ingredient from the database
             $('#removeIngredientButton-manager').on('click', function () {
-                var $row = categoryTable.$('tr.selected');
+                console.log("Remove click");
+                var $row = ingredientsManagerTable.$('tr.selected');
 
                 if ($row.length)
                 {
@@ -1823,6 +1857,56 @@
                 }
             }
 
+            //Post function for menu item images
+            //Takes menuItemId and if type == "edit" grabs the edit image instead for posting
+            function postMenuItemImage(menuItemId, type) {
+                var menuitemImage;
+                if (type == "edit")
+                {
+                    menuitemImage = document.getElementById('menuitem-image-edit');
+
+                } else {
+                    menuitemImage = document.getElementById('menuitem-image-add');
+                }
+
+
+                if (!menuitemImage.files || !menuitemImage) {
+                    alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                }
+                else if (!menuitemImage.files[0]) {
+                    alert("No file was selected.");
+
+                }
+
+                //var menuItemImageData;
+                file = menuitemImage.files[0];
+                //menuItemImageData = getBase64FileString(file);
+                reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    //console.log("Reader result" + reader.result);
+                    //return reader.result;
+                    var base64String = reader.result;
+                    var stringData = base64String.replace("data:image/jpeg;base64,", "");
+                    $.ajax({
+                        url: '@Url.Action("UpdateItemImage", "MenuCreation")',
+                        method: 'POST',
+                        data: {id: menuItemId, img: stringData},
+                        success: function (data) {
+                            if (data) {
+                                console.log(data);
+
+                            } else {
+                                console.log("An error occurred while updating the menu item image.");
+                            }
+
+                        }
+                    });
+                };
+                //Works... But not sure if this actually does anything.
+
+            }
+
             //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
 
             //Add Category and Edit Category submit listeners
@@ -1833,36 +1917,45 @@
                 console.log(categoryName);
                 console.log(categoryDescription);
 
-                //Post to MenuCreation/AddCategory
-                var CategoryModel = {
-                    Id: "",
-                    Name: categoryName,
-                    Description: categoryDescription,
-                    Subcategories: ""
-                };
+                if (categoryName == "")
+                {
+                    alert("A category name must be entered.");
+                }
+                else {
+                    //Post to MenuCreation/AddCategory
+                    var CategoryModel = {
+                        Id: "",
+                        Name: categoryName,
+                        Description: categoryDescription,
+                        Subcategories: ""
+                    };
 
-                $.ajax({
-                    url: '@Url.Action("AddCategory", "MenuCreation")',
-                    method: 'POST',
-                    data: CategoryModel,
-                    success: function (result) {
-                        if (result) {
-                            console.log(result);
-                            console.log(result['id']); //Grab id
-                            console.log(result['name']); //Grab name
-                            categoryDictionary.push({
-                                key: result['name'],
-                                value: [result['subcategories'], //array of subcategories
-                                        result['description'],
-                                        result['id']]
-                            });
-                            updateCategoryTable();
-                        } else {
-                            console.log("Something went wrong while adding the new category.");
+                    $.ajax({
+                        url: '@Url.Action("AddCategory", "MenuCreation")',
+                        method: 'POST',
+                        data: CategoryModel,
+                        success: function (result) {
+                            if (result) {
+                                console.log(result);
+                                console.log(result['id']); //Grab id
+                                console.log(result['name']); //Grab name
+                                categoryDictionary.push({
+                                    key: result['name'],
+                                    value: [result['subcategories'], //array of subcategories
+                                            result['description'],
+                                            result['id']]
+                                });
+                                updateCategoryTable();
+                            } else {
+                                console.log("Something went wrong while adding the new category.");
+                            }
                         }
-                    }
-                });
-                $('#addCategoryModal').modal('hide');
+                    });
+                    $('#addCategoryModal').modal('hide');
+
+                }
+
+
             });
 
             //EDIT CATEGORY SUBMIT.
@@ -1876,55 +1969,72 @@
                 console.log("Category Description: " + categoryDescription);
                 console.log("Category id: " + categoryId);
 
-                //get list of subcategories
-                var subcategories;
-                var jssubcategories;
-                for (var item in categoryDictionary)
+                if (categoryName == "")
                 {
-                    if (categoryDictionary[item].value[2] == categoryId)
+                    alert("Category Name cannot be empty.");
+
+                } else {
+                    //get list of subcategories
+                    var subcategories;
+                    var jssubcategories;
+                    for (var item in categoryDictionary)
                     {
-                        subcategories = categoryDictionary[item].value[0];
+                        if (categoryDictionary[item].value[2] == categoryId)
+                        {
+                            subcategories = categoryDictionary[item].value[0];
+                        }
+
                     }
+
+                    var CategoryModel = {
+                        Id: categoryId,
+                        Name: categoryName,
+                        Description: categoryDescription,
+                        Subcategories: subcategories
+                    };
+
+
+                    //Post to MenuCreation/EditCategory
+                    $.ajax({
+                        url: '@Url.Action("EditCategory", "MenuCreation")',
+                        method: 'POST',
+                        data: CategoryModel,
+                        success: function (result) {
+                            if (result) {
+                                for (var item in categoryDictionary) {
+                                    //Find the selected item and change its values according to the new data.
+                                    //TODO: VALIDATE
+                                    if (categoryDictionary[item].value[2] == categoryId) {
+                                        categoryDictionary[item].key = categoryName;
+                                        categoryDictionary[item].value[1] = categoryDescription;
+                                    }
+
+                                }
+
+                                for (var item in subCategoryDictionary)
+                                {
+                                    if (subCategoryDictionary[item].value[4] == categoryId)
+                                    {
+                                        subCategoryDictionary[item].value[0] = categoryName;
+                                    }
+                                }
+
+                                updateCategoryTable();
+
+                            } else {
+                                console.log("Something went wrong while adding the new category.");
+                            }
+                        }
+                    });
+
+                    //var selectedCategory = categoryTable.$('tr.selected').data();
+                    //updated selected item with the new data
+
+                    $('#editCategoryModal').modal('hide');
 
                 }
 
-                var CategoryModel = {
-                    Id: categoryId,
-                    Name: categoryName,
-                    Description: categoryDescription,
-                    Subcategories: subcategories
-                };
 
-
-                //Post to MenuCreation/EditCategory
-                $.ajax({
-                    url: '@Url.Action("EditCategory", "MenuCreation")',
-                    method: 'POST',
-                    data: CategoryModel,
-                    success: function (result) {
-                        if (result) {
-                            for (var item in categoryDictionary) {
-                                //Find the selected item and change its values according to the new data.
-                                //TODO: VALIDATE
-                                if (categoryDictionary[item].value[2] == categoryId) {
-                                    categoryDictionary[item].key = categoryName;
-                                    categoryDictionary[item].value[1] = categoryDescription;
-                                }
-
-                            }
-
-                            updateCategoryTable();
-
-                        } else {
-                            console.log("Something went wrong while adding the new category.");
-                        }
-                    }
-                });
-
-                //var selectedCategory = categoryTable.$('tr.selected').data();
-                //updated selected item with the new data
-
-                $('#editCategoryModal').modal('hide');
             });
 
 
@@ -1935,9 +2045,6 @@
 
                 var subcategoryName = $('#subcategory-name-add').val();
                 var subcategoryDescription = $('#subcategory-description-add').val();
-
-                console.log(subcategoryName);
-                console.log(subcategoryDescription);
 
                 //Get the currently selected category from the category table
                 var selectedCategory = categoryTable.row('tr.selected').data();
@@ -2195,7 +2302,8 @@
                 //    alert("No file was selected.");
 
                 //}
-                //var menuItemImageData;
+
+                ////var menuItemImageData;
                 //file = menuitemImage.files[0];
                 //menuItemImageData = getBase64FileString(file);
                 //reader = new FileReader();
@@ -2248,6 +2356,17 @@
                     success: function (data) {
                         if (data) { //check if something is returned
                             console.log(data);
+                            var menuitemImage = document.getElementById('menuitem-image-add');
+                            if (!menuitemImage.files || !menuitemImage) {
+                                alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                            }
+                            else if (!menuitemImage.files[0]) {
+                                alert("No file was selected.");
+                            }
+                            else {
+                                console.log("Posting image data.");
+                                postMenuItemImage(data['id'], ""); //POST image to the database
+                            }
 
                             var selectedSubcategory = subCategoryTable.row('tr.selected').data();
 
@@ -2313,7 +2432,19 @@
                                 success: function (data) {
                                     if (data) { //check if something is returned
                                         console.log(data);
+                                        //Decide whether to post the image
+                                        var menuitemImage = document.getElementById('menuitem-image-edit');
+                                        if (!menuitemImage.files || !menuitemImage) {
+                                            alert("Images are not suported in this browser. consider using Chrome or Firefox");
+                                        }
+                                        else if (!menuitemImage.files[0]) {
+                                            alert("No file was selected.");
 
+                                        }
+                                        else {
+                                            console.log("Posting image data.");
+                                            postMenuItemImage(result['id'], "edit"); //POST image to the database
+                                        }
                                         //var selectedSubcategory = subCategoryTable.row('tr.selected').data();
                                         menuItemDictionary.push({
                                             key: menuitemName,

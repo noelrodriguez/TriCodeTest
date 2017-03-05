@@ -337,8 +337,32 @@ namespace TriCodeTest.Controllers
             image = Convert.FromBase64String(img);
             menuitem.ItemImage = image;
             _context.MenuItem.Update(menuitem);
+            var updated = await _context.SaveChangesAsync();
+            if (updated < 1)
+            {
+                return NotFound();
+            }
 
             return Json(true);
+        }
+        /// <summary>
+        /// Given a menu item id retrieves a menu item and returns
+        /// the menu item image.
+        /// </summary>
+        /// <param name="id">Menuitem Id</param>
+        /// <returns>Base64 image string</returns>
+        [HttpGet]
+        public async Task<ActionResult> GetItemImage(int id)
+        {
+            var menuitem = await _context.MenuItem.SingleOrDefaultAsync(m => m.Id == id);
+            if (menuitem == null)
+            {
+                return NotFound();
+            }
+            //Convert byte arrray to base64 string
+            string image = Convert.ToBase64String(menuitem.ItemImage);
+
+            return Json(image);
         }
         /// <summary>
         /// Edit a specific menu item with new data in the database.
@@ -387,7 +411,11 @@ namespace TriCodeTest.Controllers
             await _context.SaveChangesAsync();
             return Json(true);
         }
-
+        /// <summary>
+        /// Retrieve a menu item from the database with a specific id
+        /// </summary>
+        /// <param name="id">Menu item id to retrieve</param>
+        /// <returns>Menuitem object</returns>
         [HttpGet]
         public async Task<ActionResult> GetMenuItem(int id)
         {
@@ -441,7 +469,12 @@ namespace TriCodeTest.Controllers
             }
             return Json(ingredients);
         }
-
+        /// <summary>
+        /// Get a list of menu item ingredients attached to a specific menu item
+        /// then return that list.
+        /// </summary>
+        /// <param name="id">Menu item id</param>
+        /// <returns>List of menu item ingredients</returns>
         [HttpGet]
         public async Task<ActionResult> GetMenuItemIngredients(int id)
         {
@@ -459,7 +492,13 @@ namespace TriCodeTest.Controllers
             }
             return Json(ingredients);
         }
-
+        /// <summary>
+        /// Map a new menu item ingredient to the specified menu item
+        /// and add it to the database
+        /// </summary>
+        /// <param name="itemId">Menuitem Id</param>
+        /// <param name="ingredientId">Ingredient Id</param>
+        /// <returns>Ingredient object which has been mapped</returns>
         [HttpPost]
         public async Task<ActionResult> AddMenuItemIngredient(int itemId, int ingredientId)
         {
@@ -490,7 +529,13 @@ namespace TriCodeTest.Controllers
             }
             return Json(ingredient);
         }
-
+        /// <summary>
+        /// Remove the mapping of an ingredient to a menu item
+        /// and return true when it succeeds.
+        /// </summary>
+        /// <param name="itemId">Menuitem Id</param>
+        /// <param name="ingredientId">Ingredient Id</param>
+        /// <returns>true or false depending if successful</returns>
         [HttpPost]
         public async Task<ActionResult> RemoveMenuItemIngredient(int itemId, int ingredientId)
         {
@@ -510,7 +555,11 @@ namespace TriCodeTest.Controllers
 
             return Json(true);
         }
-
+        /// <summary>
+        /// Remove an ingredient from the database.
+        /// </summary>
+        /// <param name="id">Ingredient Id</param>
+        /// <returns>True when Ingredient is removed</returns>
         [HttpPost]
         public async Task<ActionResult> RemoveIngredient(int id)
         {
@@ -523,6 +572,11 @@ namespace TriCodeTest.Controllers
             await _context.SaveChangesAsync();
             return Json(true);
         }
+        /// <summary>
+        /// Check if a category exists in the database.
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns>The context of the category.</returns>
         private bool CategoryExists(int id)
         {
             return _context.Category.Any(e => e.Id == id);
