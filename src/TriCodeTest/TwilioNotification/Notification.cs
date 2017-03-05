@@ -14,7 +14,7 @@ namespace TriCodeTest.TwilioNotification
     /// </summary>
     public class Notification
     {
-        private readonly TwilioRestClient twilio;
+        //private readonly TwilioRestClient twilio;
         /// <summary>
         /// Send notifications
         /// </summary>
@@ -29,7 +29,7 @@ namespace TriCodeTest.TwilioNotification
             to,
             from: new PhoneNumber(Credentials.TwilioNumber),
             body: body);
-            Console.WriteLine(message.Sid);
+           // Console.WriteLine(message.Sid);
         }
     }
 }
