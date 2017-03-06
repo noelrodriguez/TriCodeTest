@@ -38,5 +38,6 @@ namespace TriCodeTest.Models.CustomerMenuViewModels
         public MenuItem MenuItem { get; set; }
         public List<AddOn> AddOns { get; set; }
         public List<AddOn> ChoiceOfAddons { get; set; }
+        public string ItemImage { get; set; }
     }
 }
