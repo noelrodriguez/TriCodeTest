@@ -1,4 +1,4 @@
-﻿@model TriCodeTest.Models.OrderModels.OrderMenuItem
+﻿@model TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem
 @using Newtonsoft.Json
 
 @{
@@ -28,44 +28,28 @@
         padding: 0;
     }
 
-        .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
-            border-top-width: 0;
-        }
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+        border-top-width: 0;
+    }
 
-        .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
-        .ui-li-static.ui-collapsible > .ui-collapsible-content {
-            border-bottom-width: 0;
-        }
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+    .ui-li-static.ui-collapsible > .ui-collapsible-content {
+        border-bottom-width: 0;
+    }
+    #remove-item {
+        margin-top: 15px;
+    }
+    #remove-item a {
+        font-size: 18px;
+    }
 </style>
 
-@*<form asp-action="Edit">
-        <div class="form-horizontal">
-            <hr />
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="DateTime" />
-            <input type="hidden" asp-for="OrderMenuItems" />
-            <input type="hidden" asp-for="TotalPrice" />
-            <div class="form-group">
-                <label asp-for="Status" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <select id="statuses" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
-                    <span asp-validation-for="Status" class="text-danger" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </form>*@
 @* Edit Item Page *@
 
 <div data-role="page" id="edit-item-page">
     @* Header *@
     <div data-role="header">
-        <a href="" data-role="button" onclick="goBack()">Back</a>
+        <a href="" data-role="button" onclick="goBack()">Cancel</a>
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
@@ -81,23 +65,42 @@
         </div>
         <ul data-role="listview">
             <li><h4>@Model.MenuItem.Description</h4></li>
-            <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <li data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                 <h2>Size</h2>
                 <form id="size-choice">
                     <fieldset data-role="controlgroup" data-type="horizontal">
-                        <input type="radio" name="size" id="size-choice-null" value=null checked="checked" />
+                        <input type="radio" name="size" id="size-choice-null" value=null 
+                               @if (Model.MenuItem.Size == null)
+                               {
+                                   @:checked="checked"
+                               }/>
                         <label for="size-choice-null">No Size</label>
-                        <input type="radio" name="size" id="size-choice-small" value=@Size.Small />
+                        <input type="radio" name="size" id="size-choice-small" value=@Size.Small 
+                               @if (Model.MenuItem.Size == Size.Small)
+                               {
+                                   @:checked="checked"
+                               }/>
                         <label for="size-choice-small">@Size.Small</label>
-                        <input type="radio" name="size" id="size-choice-medium" value=@Size.Medium />
+                        <input type="radio" name="size" id="size-choice-medium" value=@Size.Medium 
+                               @if (Model.MenuItem.Size == Size.Medium)
+                               {
+                                   @:checked="checked"
+                               }/>
                         <label for="size-choice-medium">@Size.Medium</label>
-                        <input type="radio" name="size" id="size-choice-large" value=@Size.Large />
+                        <input type="radio" name="size" id="size-choice-large" value=@Size.Large 
+                               @if (Model.MenuItem.Size == Size.Large)
+                               {
+                                   @:checked="checked"
+                               }/>
                         <label for="size-choice-large">@Size.Large</label>
                     </fieldset>
                 </form>
             </li>
-            <li><a href="#"><h2>Add-ons</h2></a></li>
+            <li><a href="#" onclick="loadAddonsPage()"><h2>Add-ons</h2></a></li>
             <li><a href="#" onclick="loadIngredientsPage(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
+            <li id="remove-item" data-icon="false">
+                <a href="#" onclick="removeItem()"><h1 style="text-align:center">Remove Item</h1></a>
+            </li>
         </ul>
     </div>
 </div>
@@ -107,7 +110,7 @@
 <div data-role="page" id="edit-ingredient-page">
     @* Header *@
     <div data-role="header">
-        <a href="#" onclick="dontSaveItemChanges()">Back</a>
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
         <h3>
             <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
         </h3>
@@ -118,12 +121,11 @@
         <ul data-role="listview">
             @foreach (var ing in Model.MenuItem.MenuItemIngredients)
             {
-                //<li><h2>@ing.Ingredient.Name</h2><p>@ing.Ingredient.Option</p></li>
                 <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                     <h2>@ing.Ingredient.Name</h2>
-                    <form id="@ing.Ingredient.Id-choice">
+                    <form id="form-ingredient-@ing.Ingredient.Id-choice">
                         <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" checked="checked" />
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" />
                             <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
                             <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
                             <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
@@ -137,43 +139,45 @@
     </div>
 </div>
 
-@*<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-        <h2>Size</h2>
-        <form id="size-choice">
-            <fieldset data-role="controlgroup" data-type="horizontal">
-                <input type="radio" name="size" id="size-choice-null" value="null" checked="checked" />
-                <label for="size-choice-null">No Size</label>
-                <input type="radio" name="size" id="size-choice-small" value="@Size.Small" />
-                <label for="size-choice-small">@Size.Small</label>
-                <input type="radio" name="size" id="size-choice-medium" value="@Size.Medium" />
-                <label for="size-choice-medium">@Size.Medium</label>
-                <input type="radio" name="size" id="size-choice-large" value="@Size.Large" />
-                <label for="size-choice-large">@Size.Large</label>
-            </fieldset>
-        </form>
-    </div>*@
-@*<a href="#"><h2>Test</h2></a>
-    <div data-role="collapsible">
-        <h3>Ingredients</h3>
-        <p>I'm the collapsible content for section 3</p>
-    </div>*@
-@*<ul id="categoryList" data-role="listview">
-        <li><p>@Model.MenuItem.Description</p></li>
-        @if (Model.MenuItem.Size != null)
-        {
-            <li><h2>Size</h2></li>
-        }
-        <li data-role="collapsible" data-iconpos="right" data-inset="false">
-            <h2>Add-ons</h2>
-            <ul data-role="listview" data-theme="b">
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-            </ul>
-        </li>
-        <li><a href="#"><h2>Ingredients</h2></a></li>
-    </ul>*@
+@* Edit Addons Page *@
 
+<div data-role="page" id="edit-addons-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" data-rel="back" data-role="button">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var addon in Model.ChoiceOfAddons)
+            {
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <h2>@addon.Name</h2><p>Price: @String.Format("{0:c}", addon.Price)</p>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-block-b-contents" style="float:right">
+                                <form id="form-addon-@addon.Id-choice">
+                                    <input type="checkbox" data-role="flipswitch" name="addon-id-@addon.Id" id="addon-choice-@addon.Id"
+                                            data-on-text="Yes" data-off-text="No">
+                                    @*<select id="addon-choice-@addon.Id" name="addon-id-@addon.Id" data-role="flipswitch">
+                                        <option value="no">No</option>
+                                        <option value="yes">Yes</option>
+                                    </select>*@
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
 <div>
     <a asp-action="Index">Back to Cart</a>
 </div>
@@ -193,6 +197,25 @@
             window.location = '@Url.Action("EditItem", "CustomerMenu", new { id = Model.MenuItem.Id })';
         }
 
+        function removeItem(){
+            ItemObject = {
+                MenuItem : MODEL.MenuItem
+            };
+            $.ajax({
+                url: '@Url.Action("RemoveItem", "CustomerMenu")',
+                method: 'POST',
+                data: ItemObject,
+                success: function(result){
+                    console.log(result);
+                    if (result){
+                        window.location = '@Url.Action("Cart", "CustomerMenu")';
+                    } else {
+                        location.reload();
+                    }
+                }
+            });
+        }
+
         function postItem(){
             ItemObject = {
                 MenuItem : MODEL.MenuItem,
@@ -204,6 +227,11 @@
                 data: ItemObject,
                 success: function(result){
                     console.log(result);
+                    if (result){
+                        window.location = '@Url.Action("Cart", "CustomerMenu")';
+                    } else {
+                        location.reload();
+                    }
                 }
             });
         }
@@ -234,10 +262,29 @@
                 transition: 'slide'
             });
         }
-
+        // Before showing page, select the chosen ingredient options on the radio buttons
+        $(document).on("pageshow", "#edit-ingredient-page", function() {
+            $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient) {
+                var ingredientNormalChoice = $("#ingredient-choice-normal-" + ingredient.Ingredient.Id);
+                var ingredientLowChoice = $("#ingredient-choice-low-" + ingredient.Ingredient.Id);
+                var ingredientNoneChoice = $("#ingredient-choice-none-" + ingredient.Ingredient.Id);
+                console.log(ingredient.Ingredient.Option);
+                switch(ingredient.Ingredient.Option){
+                    case 0:
+                        ingredientNormalChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 1:
+                        ingredientNoneChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 2:
+                        ingredientLowChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                }
+            });
+        });
         // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
         $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
-            $("#" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+            $("#form-ingredient-" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
                 switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
                     case "Normal":
                         ingredient.Ingredient.Option = 0;
@@ -251,50 +298,38 @@
                 }
             });
         });
+
+        // Load page to edit addons
+        function loadAddonsPage(){
+            $(":mobile-pagecontainer").pagecontainer("change", "#edit-addons-page", {
+                transition: 'slide'
+            });
+        }
+        // Before showing page, select the chosen addons on the flipswitches
+        $(document).on("pageshow", "#edit-addons-page", function() {
+            var tempAddons = [];
+            $.each(MODEL.ChoiceOfAddons, function(index, addon) {
+                $.each(MODEL.AddOns, function(addonIndex, chosenAddon) {
+                    if (chosenAddon.Id == addon.Id) {
+                        tempAddons.push(chosenAddon);
+                        $("#addon-choice-" + addon.Id).prop("checked", true);
+                        $("#addon-choice-" + addon.Id).flipswitch("refresh");
+                    }
+                });
+            });
+            MODEL.AddOns = tempAddons;
+        });
+        // Create listeners for each addons flipswitch to be adding/removing addons to item
+        $.each(MODEL.ChoiceOfAddons, function(index, addon){
+            $("#form-addon-" + addon.Id + "-choice").bind("change", function(event, ui){
+                console.log($("input[name=addon-id-" + addon.Id + "]:checked").val());
+                if ($("input[name=addon-id-" + addon.Id + "]:checked").val() == "on"){
+                    MODEL.AddOns.push(addon);
+                } else {
+                    MODEL.AddOns.splice(MODEL.AddOns.indexOf(addon), 1);
+                }
+            });
+        });
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-@* Details Page *@
-
-@*<div data-role="page" id="details-page">
-        @* Panel
-        <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
-            <ul data-role="listview" id="sidebar">
-                @await Html.PartialAsync("_CustomerLoginPartial")
-            </ul>
-        </div>
-        @* Header
-        <div data-role="header">
-            <a href="#" data-rel="back" data-role="button">Back</a>
-            <a href="#details-page-panel" data-role="button" data-icon="bars">
-                Menu
-            </a>
-            <h3>
-                <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
-            </h3>
-        </div>
-        @* Main Content (gets loaded dynamically)
-        <div role="main" class="ui-content">
-            <div id="details-header-row" class="ui-responsive">
-                <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
-            </div>
-            <div id="description-container" class="ui-responsive">
-                <h6 id="description">
-                    <span id="description-text">Menu item details would go here</span>
-                </h6>
-            </div>
-            <div class="main-details ui-responsive">
-                <div class="ui-block-a" style="width:50%">
-                    <div id="menuitem-labels" class="ui-bar">
-                        Name
-                    </div>
-                </div>
-                <div class="ui-block-b" style="width:50%">
-                    <div id="menuitem-info" class="ui-bar">
-                        Details
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@

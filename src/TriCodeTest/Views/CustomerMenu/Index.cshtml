@@ -19,9 +19,9 @@
 <div data-role="page" id="categories-page">
     @* Panel *@
     <div data-role="panel" class="myPanel" id="category-page-panel" data-position="right">
-        <ul id="sidebar">
+        <ul id="sidebar" style="list-style-type:none;padding-left:0">
             <li>
-                <a role="button" class="btn navbar-btn" href='@Url.Action("Cart", "CustomerMenu")'>Cart</a>
+                <button class="btn btn-link navbar-btn navbar-link" onclick="location.href='@Url.Action("Cart", "CustomerMenu")'">Cart</button>
             </li>
             @await Html.PartialAsync("_CustomerLoginPartial")
         </ul>
@@ -54,7 +54,10 @@
 <div data-role="page" id="subcategories-page">
     @* Panel *@
     <div data-role="panel" class="myPanel" id="subcategory-page-panel" data-position="right">
-        <ul data-role="listview" id="sidebar">
+        <ul id="sidebar" style="list-style-type:none;padding-left:0">
+            <li>
+                <button class="btn btn-link navbar-btn navbar-link" onclick="location.href='@Url.Action("Cart", "CustomerMenu")'">Cart</button>
+            </li>
             @await Html.PartialAsync("_CustomerLoginPartial")
         </ul>
     </div>
@@ -79,7 +82,10 @@
 <div data-role="page" id="menuitems-page">
     @* Panel *@
     <div data-role="panel" class="myPanel" id="menuitem-page-panel" data-position="right">
-        <ul data-role="listview" id="sidebar">
+        <ul id="sidebar" style="list-style-type:none;padding-left:0">
+            <li>
+                <button class="btn btn-link navbar-btn navbar-link" onclick="location.href='@Url.Action("Cart", "CustomerMenu")'">Cart</button>
+            </li>
             @await Html.PartialAsync("_CustomerLoginPartial")
         </ul>
     </div>

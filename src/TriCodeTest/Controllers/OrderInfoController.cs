@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
 using TriCodeTest.Models.OrderModels;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 using TriCodeTest.TwilioNotification;
 
 namespace TriCodeTest.Controllers
@@ -17,10 +18,13 @@ namespace TriCodeTest.Controllers
     public class OrderInfoController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger _logger;
 
-        public OrderInfoController(ApplicationDbContext context)
+
+        public OrderInfoController(ApplicationDbContext context, ILoggerFactory loggerFactory)
         {
-            _context = context;    
+            _context = context;
+            _logger = loggerFactory.CreateLogger<OrderInfoController>();
         }
         /// <summary>
         /// Retrieves all orders in the DB and returns them as a list.
@@ -96,11 +100,12 @@ namespace TriCodeTest.Controllers
                                                         + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
                             if (success)
                             {
-                                ViewBag.Messag = "Message sent";
+                                //ViewBag.Messag = "Message sent";
                                 return RedirectToAction("index");
                             } 
                         } catch (Exception  e)
                         {
+                            _logger.LogWarning(e.Message);
                             return RedirectToAction("Edit");
 
                         }
@@ -114,12 +119,13 @@ namespace TriCodeTest.Controllers
                             ViewBag.Messag = "PhoneNumber incorrect ";
                             if (success)
                             {
-                                ViewBag.Messag = "Message sent";
+                                //ViewBag.Messag = "Message sent";
                                 return RedirectToAction("index");
                             }
                         }
                         catch (Exception e)
                         {
+                            _logger.LogWarning(e.Message);
                             return RedirectToAction("Edit");
                         }
                     }
