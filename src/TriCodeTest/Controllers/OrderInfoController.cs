@@ -22,7 +22,6 @@ namespace TriCodeTest.Controllers
         {
             _context = context;    
         }
-
         /// <summary>
         /// Retrieves all orders in the DB and returns them as a list.
         /// </summary>
@@ -97,7 +96,7 @@ namespace TriCodeTest.Controllers
                                                         + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
                             if (success)
                             {
-                                ViewBag.Messag = "Message sent";
+                                //ViewBag.Messag = "Message sent";
                                 return RedirectToAction("index");
                             } 
                         } catch (Exception  e)
@@ -115,7 +114,7 @@ namespace TriCodeTest.Controllers
                             ViewBag.Messag = "PhoneNumber incorrect ";
                             if (success)
                             {
-                                ViewBag.Messag = "Message sent";
+                                //ViewBag.Messag = "Message sent";
                                 return RedirectToAction("index");
                             }
                         }
