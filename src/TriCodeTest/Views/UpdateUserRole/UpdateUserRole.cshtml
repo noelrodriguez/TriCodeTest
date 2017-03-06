@@ -1,0 +1,57 @@
+@model TriCodeTest.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "UpdateUserRole";
+}
+
+<h2>UpdateUserRole</h2>
+
+<style>
+    a {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #div1 {
+        padding: 25px;
+        margin: 25px;
+    }
+</style>
+
+@using (Html.BeginForm("RoleAddToUser", "UpdateUserRole"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+    </p>
+
+    <input type="submit" value="Save" />
+
+    <a asp-controller="UpdateUserRole" asp-action="Index">Return</a>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
