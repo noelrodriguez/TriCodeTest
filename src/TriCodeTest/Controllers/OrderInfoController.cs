@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Data;
 using TriCodeTest.Models.OrderModels;
 using Newtonsoft.Json;
+using TriCodeTest.TwilioNotification;
 
 namespace TriCodeTest.Controllers
 {
@@ -42,6 +43,7 @@ namespace TriCodeTest.Controllers
         // GET: OrderInfo/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -70,7 +72,8 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order)
         {
             OrderInfo orderInfo = OrderSerialize(order);
-            var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            var numberToSms = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            bool success;
             if (id != orderInfo.Id)
             {
                 return NotFound();
@@ -84,6 +87,42 @@ namespace TriCodeTest.Controllers
                     var entry = _context.Entry(orderInfo);
                     entry.Property(s => s.Status).IsModified = true;
                     await _context.SaveChangesAsync();
+
+                    if (order.Status.Equals(Models.Status.Received))
+                    {
+                        try
+                        {
+                            success = Notification.SendNotification(numberToSms, "Your order has been received."
+                                                        + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
+                            if (success)
+                            {
+                                ViewBag.Messag = "Message sent";
+                                return RedirectToAction("index");
+                            } 
+                        } catch (Exception  e)
+                        {
+                            return RedirectToAction("Edit");
+
+                        }
+
+                    }
+                    if (order.Status.Equals(Models.Status.Pick_Up))
+                    {
+                        try
+                        {
+                            success = Notification.SendNotification(numberToSms, "Your order is ready for pickup. DO NOT REPLY! Data rates may apply");
+                            ViewBag.Messag = "PhoneNumber incorrect ";
+                            if (success)
+                            {
+                                ViewBag.Messag = "Message sent";
+                                return RedirectToAction("index");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            return RedirectToAction("Edit");
+                        }
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -96,7 +135,6 @@ namespace TriCodeTest.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
             }
             return View(order);
         }
