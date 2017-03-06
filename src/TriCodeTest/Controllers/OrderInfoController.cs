@@ -22,6 +22,7 @@ namespace TriCodeTest.Controllers
         {
             _context = context;    
         }
+
         /// <summary>
         /// Retrieves all orders in the DB and returns them as a list.
         /// </summary>
