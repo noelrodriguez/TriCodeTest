@@ -95,11 +95,6 @@ namespace TriCodeTest.Controllers
                     }
                 }
              
-
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -170,69 +165,6 @@ namespace TriCodeTest.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        ///// <summary>
-        ///// Admin registration view
-        ///// </summary>
-        ///// <param name="returnUrl"></param>
-        ///// <returns></returns>
-        //[HttpGet]
-        //[AllowAnonymous] //Admin registration is only for admins.
-        //public IActionResult AdminRegister(string returnUrl = null)
-        //{
-        //    ViewData["ReturnUrl"] = returnUrl;
-        //    return View();
-        //}
-
-        ///// <summary>
-        ///// GET Admin data and register
-        ///// </summary>
-        ///// <param name="model"></param>
-        ///// <param name="returnUrl"></param>
-        ///// <returns></returns>
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AdminRegister(RegisterViewModel model, string returnUrl = null)
-        //{
-        //    ViewData["ReturnUrl"] = returnUrl;
-            
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser
-        //        {
-        //            UserName = model.Email,
-        //            Email = model.Email,
-        //            PhoneNumber = model.Phone,
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //        };
-
-        //        var result = await _userManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            var userRole = await _userManager.FindByNameAsync(model.Email);
-        //            var checkRole = await _userManager.IsInRoleAsync(userRole, model.Email);
-        //            //Two conditions. Check if user is admin or not else make user stuff. 
-        //            if (!checkRole)
-        //            {
-        //                await _userManager.AddToRoleAsync(user, "Admin");
-        //            } 
-        //            else
-        //            {
-        //                await _userManager.AddToRoleAsync(user, "Staff");
-        //            }
-
-        //            await _signInManager.SignInAsync(user, isPersistent: false);
-        //            _logger.LogInformation(3, "User created with password and assigned a role");
-        //            //return RedirectToLocal(returnUrl);
-        //            RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
-        //        }
-        //        AddErrors(result);
-        //    }
-
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
 
         /// <summary>
         /// Log off method

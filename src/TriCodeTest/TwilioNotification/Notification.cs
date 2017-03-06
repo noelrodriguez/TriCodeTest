@@ -21,7 +21,7 @@ namespace TriCodeTest.TwilioNotification
         /// <param name="phoneNumber">phoneNumber</param>
         /// <param name="body">body</param>
 
-        public static void SendNotification(string phoneNumber, string body)
+        public static bool SendNotification(string phoneNumber, string body)
         {
             TwilioClient.Init(Credentials.AcctSID, Credentials.AcctToken);
             var to = new PhoneNumber(phoneNumber);
@@ -29,6 +29,14 @@ namespace TriCodeTest.TwilioNotification
             to,
             from: new PhoneNumber(Credentials.TwilioNumber),
             body: body);
+            if (message.Status.Equals(404))
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+            
            // Console.WriteLine(message.Sid);
         }
     }
