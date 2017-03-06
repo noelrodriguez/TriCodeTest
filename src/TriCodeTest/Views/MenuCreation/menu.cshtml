@@ -2411,18 +2411,20 @@
                 var menuitemDescription = $('#menuitem-description-edit').val();
                 var menuitemPrice = $('#menuitem-price-edit').val();
 
+                var count = 0;
                 var exists = false;
                 menuItemTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (menuitemName == value) {
+                            count++;
                             exists = true;
                         }
                     });
 
 
-                if (menuitemName == "" || exists) {
+                if (menuitemName == "" || count > 1) {
                     alert("A valid name must be entered for the menu item and must not currently exist in the database.");
                 } else if (isNaN(menuitemPrice)) {
                     alert("A valid price must be entered for the menu item.");
