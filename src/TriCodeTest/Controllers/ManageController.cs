@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using TriCodeTest.Models;
 using TriCodeTest.Models.ManageViewModels;
 using TriCodeTest.Services;
+using TriCodeTest.Data;
 
 namespace TriCodeTest.Controllers
 {
@@ -20,21 +21,36 @@ namespace TriCodeTest.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
-
+        private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// Constructor: Initialization and assignment is done here
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="smsSender"></param>
+        /// <param name="loggerFactory"></param>
+        /// <param name="context"></param>
         public ManageController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+            _context = context;
         }
 
+        /// <summary>
+        /// Display data for use to make edits to them.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         //
         // GET: /Manage/Index
         [HttpGet]
@@ -56,10 +72,13 @@ namespace TriCodeTest.Controllers
             }
             var model = new IndexViewModel
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 HasPassword = await _userManager.HasPasswordAsync(user),
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
                 Logins = await _userManager.GetLoginsAsync(user),
+
                 BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user)
             };
             return View(model);
@@ -84,7 +103,10 @@ namespace TriCodeTest.Controllers
             }
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
-
+        /// <summary>
+        ///  Return the view that allows user to add phone number
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Manage/AddPhoneNumber
         public IActionResult AddPhoneNumber()
@@ -92,59 +114,52 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Gets phone number that is assigned to the user 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
+        public async Task<IActionResult> AddPhoneNumber(ApplicationUser model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            // Generate the token and send it
-            var user = await GetCurrentUserAsync();
-            if (user == null)
-            {
-                return View("Error");
-            }
-            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
-            await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
-            return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
-        }
-
-        //
-        // POST: /Manage/EnableTwoFactorAuthentication
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EnableTwoFactorAuthentication()
-        {
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
-                await _userManager.SetTwoFactorEnabledAsync(user, true);
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                _logger.LogInformation(1, "User enabled two-factor authentication.");
+                var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+                userData.PhoneNumber = model.PhoneNumber;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
             }
-            return RedirectToAction(nameof(Index), "Manage");
+
+            return RedirectToAction("index");
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
+            //// Generate the token and send it
+            //var user = await GetCurrentUserAsync();
+            //if (user == null)
+            //{
+            //    return View("Error");
+            //}
+            //var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
+            //await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
+            //return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }
 
-        //
-        // POST: /Manage/DisableTwoFactorAuthentication
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DisableTwoFactorAuthentication()
-        {
-            var user = await GetCurrentUserAsync();
-            if (user != null)
-            {
-                await _userManager.SetTwoFactorEnabledAsync(user, false);
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                _logger.LogInformation(2, "User disabled two-factor authentication.");
-            }
-            return RedirectToAction(nameof(Index), "Manage");
-        }
 
+        /// <summary>
+        /// Get and Check if phone number is valid
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
         //
         // GET: /Manage/VerifyPhoneNumber
         [HttpGet]
@@ -160,6 +175,11 @@ namespace TriCodeTest.Controllers
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
+        /// <summary>
+        /// Before posting phone number to the database do one more check
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
@@ -185,6 +205,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Remove number 
+        /// </summary>
+        /// <returns></returns>
         //
         // POST: /Manage/RemovePhoneNumber
         [HttpPost]
@@ -204,6 +228,10 @@ namespace TriCodeTest.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
+        /// <summary>
+        /// View Change Password 
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Manage/ChangePassword
         [HttpGet]
@@ -212,6 +240,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Make changes to the password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -237,7 +270,10 @@ namespace TriCodeTest.Controllers
             }
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
-
+        /// <summary>
+        /// Set password View
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Manage/SetPassword
         [HttpGet]
@@ -245,7 +281,11 @@ namespace TriCodeTest.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// Set the password (By currently logged in user)
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Manage/SetPassword
         [HttpPost]
@@ -272,6 +312,86 @@ namespace TriCodeTest.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
+        /// <summary>
+        /// User first name view
+        /// </summary>
+        /// <returns></returns>
+        // GET: /Manage/SetPassword
+        [HttpGet]
+        public IActionResult SetFirstName()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Set the first name for the current user 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        // POST: /Manage/SetFirstName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SetFirstName(ApplicationUser model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await GetCurrentUserAsync();
+            if (user != null)
+            {
+                var userData = _context.Users.SingleOrDefault(c => c.Id == user.Id);
+                userData.FirstName = model.FirstName;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
+ 
+            }
+           
+            return RedirectToAction("index");
+        }
+        /// <summary>
+        /// Last name view
+        /// </summary>
+        /// <returns></returns>
+        // GET: /Manage/SetLastName
+        [HttpGet]
+        public IActionResult SetLastName()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Set the first name for the currently logged user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        // POST: /Manage/SetLastName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SetLastName(ApplicationUser model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await GetCurrentUserAsync();
+            if (user != null)
+            {
+                var userData = _context.Users.First(c => c.Id == user.Id);
+                userData.LastName = model.LastName;
+                _context.Users.Update(userData);
+                _context.SaveChanges();
+            }
+       
+
+            return RedirectToAction("index");
+        }
+
+        /// <summary>
+        /// Manage user login
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         //GET: /Manage/ManageLogins
         [HttpGet]
         public async Task<IActionResult> ManageLogins(ManageMessageId? message = null)

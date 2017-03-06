@@ -1,0 +1,1964 @@
+﻿@model TriCodeTest.Models.MenuViewModels.MenuCreationViewModel
+
+@{ 
+    var categoryList = Model.CategoryMenu.ToList();
+    var subCategoryList = Model.SubCategoryMenu.ToList();
+    var menuItemList = Model.MenuItemMenu.ToList();
+    var menuItemIngredientsList = Model.MenuItemIngredientsMenu.ToList();
+    var addonList = Model.AddonMenu.ToList();
+    var ingredientsList = Model.IngridientMenu.ToList();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Menu Management</h2>
+    <div style="display:inline-block;width:100%;">
+        @*Category Table*@
+        <div style="float:left;width:30%;padding-right:10px" class="table-bordered">
+            <h3 style="text-align:center">Categories</h3>
+            <table id="categories" class="display">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in categoryList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+            <div class="btn pull-left" style="width:100%">
+                <table style="width:100%">
+                    <tr><td><button id="add-category" class="btn" style="width:100%">Add Category</button></td></tr>
+                    <tr><td><button id="remove-category" class="btn" style="width:100%">Remove Category</button></td></tr>
+                    <tr><td><button id="edit-category" class="btn" style="width:100%">Edit Category</button></td></tr>
+                </table>
+            </div>
+
+        </div>
+
+        @*Subcategory Table*@
+        <div style="float:left;width:30%;padding-right:10px" class="table-bordered">
+            <h3 style="text-align:center">Subcategories</h3>
+            <table id="subcategory" class="display">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in subCategoryList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+            <div class="btn pull-left" style="width:100%">
+                <table style="width:100%">
+                    <tr><td><button id="add-subcategory" class="btn" style="width:100%">Add Subcategory</button></td></tr>
+                    <tr><td><button id="remove-subcategory" class="btn" style="width:100%">Remove Subcategory</button></td></tr>
+                    <tr><td><button id="edit-subcategory" class="btn" style="width:100%">Edit Subcategory</button></td></tr>
+                </table>
+            </div>
+
+        </div>
+
+        @*Menu Items Table*@
+        <div style="float:left;width:30%;" class="table-bordered">
+            <h3 style="text-align:center">Menu Items</h3>
+                <table id="menuitem" class="display">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in menuItemList)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Price</td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+                <div class="btn pull-left" style="width:100%">
+                    <table style="width:100%">
+                        <!--Menu item control buttons. Includes Add, Remove, and Edit Each displays a modal for the respective function-->
+                        <tr><td><button id="add-menuitem" class="btn" style="width:100%">Add Menu Item</button></td></tr>
+                        <tr><td><button id="remove-menuitem" class="btn" style="width:100%">Remove Menu Item</button></td></tr>
+                        <tr><td><button id="edit-menuitem" class="btn" style="width:100%">Edit Selected Menu Item</button></td></tr>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <!--Manage ingredients menu button. Displays a modal for managing all of the ingredients in the menu-->
+    <button id="manage-ingredients-button" class="btn" style="width:100%">Manage Menu Ingredients</button>
+</body>
+</html>
+
+<!--MODAL SECTION-->
+<!--This section contains modal data for the various controls in Menu Management and allows the display of various tables and inputs in modals-->
+
+<!--Manage ingredients modal. Contains a dropdown of all menu items, as well as a table of their ingredients.-->
+<div class="modal fade" id="ingredientsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ingredientsModalTitle">Manage Ingredients</h5>
+                <!--Put x button on top right-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                <!--End modal header-->
+            </div>
+            <div class="modal-body">
+                <form>
+                    @*<div class="row">*@
+                        <div class="form-group">
+                            <label for="menuitem-dropdown" class="form-control-label">Menu Item</label>
+                            <select class="form-control" id="menuitem-dropdown">
+                                <option>Menu Items...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Ingredients</h3>
+                            <table id="ingredients" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--Ingredient table button controls-->
+                            <div class="row">
+                                <div class="col-md-6" style="float:left">
+                                    <label for="addIngredientName-text" class="form-control-label">Ingredient Name</label>
+                                    <input type="text" id="addIngredientName-text" class="form-control" />
+                                    <label for="addIngredientDescription-text" class="form-control-label">Ingredient Description</label>
+                                    <textarea id="addIngredientDescription-text" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-6" style="float:right">
+                                    <button type="button" id="addIngredientButton" class="btn">Add Ingredient</button>
+                                    <button type="button" id="removeIngredientButton" class="btn">Remove Ingredient</button>
+                                </div>
+                            </div>
+                        </div>
+                    @*</div>*@
+                </form>
+                <!--End modal Body-->
+            </div>
+            <!--End modal content-->
+        </div>
+    </div>
+    <!--End Modal-->
+</div>
+
+@*Add Category Modal*@
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCategoryModalTitle">Add Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-name-add" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="category-name-add">
+                    </div>
+                    <div class="form-group">
+                        <label for="category-description-add" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="category-description-add"></textarea>
+                    </div>
+                    @*<div>
+                            <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="button" id="addCategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Category Modal*@
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModalTitle">Edit Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-id-edit" class="form-control-label">Category ID</label>
+                        <input type="text" class="form-control" id="category-id-edit" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="category-name-edit" class="form-control-label">Category</label>
+                        <input type="text" class="form-control" id="category-name-edit">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text" class="form-control-label">Description</label>
+                        <textarea class="form-control" id="category-description-edit"></textarea>
+                    </div>
+                    @*<div>
+                            <button class="btn btn-primary" id="categorySubmit" type="submit">Submit</button>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="button" id="editCategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Add Subcategory Modal*@
+<div class="modal fade" id="addSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSubcategoryModal">Add</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="subcategory-name" class="form-control-label">Subcategory</label>
+                                <input type="text" class="form-control" id="subcategory-name-add">
+                            </div>
+                            <div class="form-group">
+                                <label for="description-text" class="form-control-label">Description</label>
+                                <textarea class="form-control" id="subcategory-description-add"></textarea>
+                            </div>
+                        </div>
+                        <!--Addon Table and Controls TODO: Ability to edit addons-->
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Addons</div>
+                                    <div class="panel-body">
+                                        <table id="addon" class="display">
+                                            <thead>
+                                                <tr>
+                                                   <th>Name</th>
+                                                    <th>Description</th>
+                                                    <th>Price</th> 
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="float:left">
+                                    <label for="addAddonName-text" class="form-control-label">Addon Name</label>
+                                    <input type="text" id="addAddonName-text" class="form-control" />
+                                    <label for="addAddonDescription-text" class="form-control-label">Addon Description</label>
+                                    <textarea id="addAddonDescription-text" class="form-control"></textarea>
+                                    <label for="addAddonPrice-text" class="form-control-label">Addon Price</label>
+                                    <input type="number" id="addAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
+                                </div>
+                                <div class="col-md-6" style="float:right">
+                                    <button type="button" id="addAddonButton-add" class="btn">Add Addon</button>
+                                    <button type="button" id="removeAddonButton-add" class="btn">Remove Addon</button>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addSubcategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Subcategory Modal*@
+<div class="modal fade" id="editSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="subcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSubcategoryModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="subcategory-id-edit" class="form-control-label">Subcategory ID</label>
+                                <input type="text" class="form-control" id="subcategory-id-edit" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="subcategory-name-edit" class="form-control-label">Subcategory</label>
+                                <input type="text" class="form-control" id="subcategory-name-edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="subcategory-description-edit" class="form-control-label">Description</label>
+                                <textarea class="form-control" id="subcategory-description-edit"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Addons</div>
+                                    <div class="panel-body">
+                                        <table id="addonEdit" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="float:left">
+                                        <!--addonEdit Table controls for adding and removing items editAddonDescription-text-->
+                                        <label for="editAddonName-text" class="form-control-label">Addon Name</label>
+                                        <input type="text" id="editAddonName-text" class="form-control" />
+                                        <label for="editAddonDescription-text" class="form-control-label">Addon Description</label>
+                                        <textarea id="editAddonDescription-text" class="form-control"></textarea>
+                                        <label for="editAddonPrice-text" class="form-control-label">Addon Price</label>
+                                        <input type="number" id="editAddonPrice-text" class="form-control" min="0.00" max="50" step="0.01" value="0.00" />
+                                    </div>
+                                    <div class="col-md-6" style="float:right">
+                                        <button type="button" id="addAddonButton-edit" class="btn">Add Addon</button>
+                                        <button type="button" id="removeAddonButton-edit" class="btn">Remove Addon</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="editSubcategorySubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Add Menu Item*@
+<div class="modal fade" id="addMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="addMenuitemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMenuitemModal">Add Menu Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="menuitem-image-add" class="form-control-label">Menu Item Image</label>
+                                <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-add" />
+                                <label for="menuitem-name-add" class="form-control-label">Menu Item</label>
+                                <input type="text" class="form-control" id="menuitem-name-add">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="thumbnail">
+                                    <img src="#" alt="preview Image" id="menuitem-image-add-preview" />
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group"> old menu item place
+                    </div>*@
+                    <div class="form-group">
+                        <label for="menuitem-price-add" class="form-control-label">Price</label>
+                        <input type="number" class="form-control" id="menuitem-price-add" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-size-add" class="form-control-label">Size</label>
+                        <input type="number" class="form-control" id="menuitem-size-add" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-ingredients-add" class="form-control-label">Ingredients</label>
+                        <textarea class="form-control" id="menuitem-ingredients-add"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="addMenuitemSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Edit Menu Item*@
+<div class="modal fade" id="editMenuitemModal" tabindex="-1" role="dialog" aria-labelledby="menuitemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMenuitemModal">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="menuitem-id-edit" class="form-control-label">Menu Item id</label>
+                                <input type="text" name="menuitemId" class="form-control" id="menuitem-id-edit" readonly />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="thumbnail">
+                                    <img src="#" alt="preview" id="menuitem-image-edit-preview"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-image-edit" class="form-control-label">Menu Item Image</label>
+                        <input type="file" name="menuitemImage" class="form-control" id="menuitem-image-edit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-name-edit" class="form-control-label">Menu Item</label>
+                        <input type="text" class="form-control" id="menuitem-name-edit">
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-price-edit" class="form-control-label">Price</label>
+                        <input type="number" class="form-control" id="menuitem-price-edit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-size-edit" class="form-control-label">Size</label>
+                        <input type="number" class="form-control" id="menuitem-size-edit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
+                        <textarea class="form-control" id="menuitem-ingredients-edit"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="editMenuitemSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Load datatables css*@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" /> @*Allows use of bootstrapDialog*@
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css" />
+@*Load datatables js*@
+@section Scripts{
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+    <script>
+        //http://stackoverflow.com/questions/17356497/get-the-table-row-data-with-a-click
+        $(document).ready(function () {
+            //Global Dictionaries
+            var categoryDictionary = [];
+            var subCategoryDictionary = [];
+            var addonDictionary = [];
+            var menuItemDictionary = [];
+            var addonDictionary = [];
+            var ingredientsDictionary = [];
+            var menuItemIngredientsDictionary = [];
+
+            //load dictionaries with values from the model
+
+            //populate category dictionary
+            @foreach (var item in categoryList)
+            {
+                <text>
+            categoryDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategories",
+                        "@item.Description",
+                        "@item.Id"]
+            });
+            </text>
+
+            }
+
+            //populate subcategory dictionary
+            @foreach (var item in subCategoryList)
+            {
+                <text>
+            subCategoryDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Category.Name",
+                        "@item.MenuItems",
+                        "@item.AddOns",
+                        "@item.Description",
+                        "@item.CategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }
+
+
+            //populate addon dictionary
+            @foreach (var item in addonList)
+            {
+                <text>
+            addonDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Price",
+                        "@item.Description",
+                        "@item.Subcategory.Name",
+                        "@item.SubcategoryId",
+                        "@item.Id"]
+            });
+
+            </text>
+            }
+
+            //Populate menuItem dictionary
+            @foreach (var item in menuItemList)
+            {
+                <text>
+            menuItemDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategory.Name",
+                        "@item.MenuItemIngredients",
+                        "@item.Price",
+                        "@item.Size",
+                        "@item.ItemImage",
+                        "@item.SubcategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }
+
+            //Populate menuItemIngredientsDictionary
+            @foreach (var item in menuItemIngredientsList)
+            {
+                <text>
+            menuItemIngredientsDictionary.push({
+                key: "@item.Ingredient.Name",
+                value: ["@item.IngredientId",
+                        "@item.MenuItem.Name",
+                        "@item.MenuItemId"]
+            });
+                </text>
+
+            }
+
+            //oops
+            @*//Populate Addon dictionary
+            @foreach (var item in addonList)
+            {
+                <text>
+            addonDictionary.push({
+                key: "@item.Name",
+                value: ["@item.Subcategory.Name",
+                        "@item.Description",
+                        "@item.Price",
+                        "@item.SubcategoryId",
+                        "@item.Id"]
+            });
+            </text>
+            }*@
+
+            //Populate ingredients Dictionary
+            @foreach (var item in ingredientsList)
+            {
+                <text>
+            ingredientsDictionary.push({
+                key: "@item.Name",
+                value: ["@item.MenuItemIngredients",
+                        "@item.Description",
+                        "@item.Option",
+                        "@item.Id"]
+            });
+                </text>
+
+            }
+
+            //Categories Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var categoryTable = $('#categories').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+
+
+            $('#categories tbody').on('click', 'tr', function () {
+                //Variable to hold selected Category row data
+                var rowData = categoryTable.row(this).data();
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    categoryTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+                //Clear subCategory and menuItem tables
+                subCategoryTable.clear();
+                subCategoryTable.draw(); // redraws table with no data
+                menuItemTable.clear();
+                menuItemTable.draw(); // redraws table with no data
+
+                //Iterate over all the subcategories in subCategoryDictionary and find
+                //those with the same Category as the one currently selected
+                for (var item in subCategoryDictionary)
+                {
+
+                    if(subCategoryDictionary[item].value[0].toString() == rowData[0])
+                    {
+                        subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
+                    }
+                }
+
+            });
+
+            //Add category
+            $('#add-category').click(function () {
+                //Display category Modal
+
+                //Display modal
+                $('#addCategoryModal').modal('show');
+                var $modal = $('#addCategoryModal');
+                $modal.find('.modal-title').text('Add Category') // Change the modal title
+
+                // On submit add new category and description to the database, redraw the table from the database, and select the new category
+                //$modal.on('submit', function (e) {
+                //    e.preventDefault();
+                //    $.post('test',
+                //        function (data, status, xhr) {
+                //            alert($('#categorySubmit').value());
+
+                //        });
+                //alert($('#categorySubmit').val());
+                //});
+                //alert($('#categorySubmit').val());
+                // On close, do nothing.
+
+                //Add Category to Database and Category table remove all items from subcategories and Menu Items
+                @*categoryTable.row.add([
+                    "@categoryList.First().Name",
+                    "@categoryList.First().Description"
+                ]).draw(false);*@
+
+
+                });
+
+            //Edit Category Button listener
+            $('#edit-category').click(function () {
+                //Check if a row is selected. If not don't show modal
+                var $row = categoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = categoryTable.row('tr.selected').data();
+
+                    var data = {};
+                    //Find all information on selected menu item
+                    for (var item in categoryDictionary) {
+                        if (categoryDictionary[item].key == rowData[0]) {
+                            data = categoryDictionary[item];
+                        }
+                    }
+
+                    $('#editCategoryModal').modal('show');
+                    var $modal = $('#editCategoryModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    $('#category-id-edit').val(data.value[2]);
+                    $('#category-name-edit').val(data.key);
+                    $modal.find('.modal-body textarea').val(rowData[1]) //Add Category Description to Description box
+                }
+
+            });
+
+            //Remove Category Button Listener
+            $('#remove-category').click(function () {
+                var $row = categoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = categoryTable.row('tr.selected').data();
+
+                    var categoryId;
+                    //get Id of rowData
+                    for (var item in categoryDictionary)
+                    {
+                        if (categoryDictionary[item].key == rowData[0])
+                        {
+                            categoryId = categoryDictionary[item].value[2];
+                            console.log(categoryId);
+                        }
+
+                    }
+
+                    BootstrapDialog.show({
+                        title: 'Remove Category?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+
+                                //Post to MenuCreation/RemoveCategory
+                                $.ajax({
+                                    url: '@Url.Action("RemoveCategory", "MenuCreation")',
+                                    method: 'POST',
+                                    data: {Id: categoryId},
+                                    success: function (result) {
+                                        if (result)
+                                        {
+                                            //Remove from table
+                                            console.log(result);
+                                            //remove item from dictionary
+                                            for (var item in categoryDictionary) {
+                                                if (categoryDictionary[item].key.toString() == rowData[0]) {
+                                                    categoryDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+                                            //Update category table with new values
+                                            updateCategoryTable();
+
+                                        } else {
+                                            //Do nothing... Maybe display alert
+                                        }
+                                    }
+                                });
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }]
+                    });
+
+                }
+            });
+
+            //Items Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var subCategoryTable = $('#subcategory').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#subcategory tbody').on('click', 'tr', function () {
+                var rowData = subCategoryTable.row(this).data();
+
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    subCategoryTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+
+                //ACTIVATE TABLE SWITCHING!
+                menuItemTable.clear();
+                menuItemTable.draw();
+
+                for (var item in menuItemDictionary)
+                {
+                    if (menuItemDictionary[item].value[0].toString() == rowData[0])
+                    {
+                        //Add new menuItem to the table
+                        //menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                        menuItemTable.row.add([menuItemDictionary[item].key, menuItemDictionary[item].value[2]]).draw( false );
+                    }
+
+                }
+
+            });
+
+            //Subcategory addon table for the subcategory modals! I decided it would be easier to just implement a new datatable
+            //for this menu type as it should be easier to manage this way.
+            var addonTable = $('#addon').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "300px"
+            });
+
+
+            $('#addon tbody').on('click', 'tr', function () {
+                var rowData = addonTable.row(this).data();
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    addonTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            //Create table for editing addons basically the same thing as addonTable but for editing and you can't reuse the same datatable.
+            var addonTableEdit = $('#addonEdit').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "300px"
+            });
+
+
+            $('#addonEdit tbody').on('click', 'tr', function () {
+                var rowData = addonTableEdit.row(this).data();
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    addonTableEdit.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+            //END SUBCATEGORY TABLE FORMATTING
+
+            $('#addAddonButton-add').on( 'click', function() {
+                //Button listener for clicking the add addon button on the subcategory modal
+                //Appends the values in the text controls to the addon table for the given subcategory
+                //Text controls = 'addAddonName-text' and 'addAddonDescription-text'
+                //If 'addAddonName-text is empty, or the name already exists then don't add it.'
+
+                var addonName = $('#addAddonName-text').val();
+                var addonDescription = $('#addAddonDescription-text').val();
+                var addonPrice = $('#addAddonPrice-text').val();
+
+                //Check if name already exists in table???!?!?!
+                var exists = false;
+                addonTable
+                    .column(0)
+                    .data()
+                    .each(function (value, index) {
+                        if (addonName == value)
+                        {
+                            exists = true;
+                        }
+                    });
+                //Validate
+                if (addonName != "" && !exists)
+                {
+                    addonTable.row.add([addonName,addonDescription, addonPrice]).draw(false); //Add new data to addonTable
+                    //Clear the text boxes for the next input
+                    $('#addAddonName-text').val("");
+                    $('#addAddonDescription-text').val("");
+                    $('#addAddonPrice-text').val("0.00");
+                }
+                else
+                {
+                    //TODO change up this erro message so it centers and does stuff.
+                    var type = BootstrapDialog.TYPE_WARNING;
+                    BootstrapDialog.show({
+                        type: type,
+                        title: 'Invalid Addon Name',
+                        message: 'Please enter a valid name for the addon, which does not exist already.'
+                    });
+
+                }
+
+            });
+
+            //listener for when remove addon button is clicked on the Add subcategory modal
+            $('#removeAddonButton-add').click(function () {
+                var $row = addonTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = addonTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Addon?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+
+                                //Remove the selected row
+                                addonTable.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }]
+                    });
+
+                }
+            });
+
+            //Listenter for when add addon button is clicked
+            $('#addAddonButton-edit').click(function () {
+                //Button listener for clicking the add addon button on the subcategory modal
+                //Appends the values in the text controls to the addon table for the given subcategory
+                //Text controls = 'addAddonName-text' and 'addAddonDescription-text'
+                //If 'addAddonName-text is empty, or the name already exists then don't add it.'
+
+                var addonName = $('#editAddonName-text').val();
+                var addonDescription = $('#editAddonDescription-text').val();
+                var addonPrice = $('#editAddonPrice-text').val();
+                var subId = $('#subcategory-id-edit').val();
+                var subName = "";
+
+                for (var sub in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[sub].value[5] == subId)
+                    {
+                        subName = subCategoryDictionary[sub].key;
+
+                    }
+                }
+
+
+                //Check if name already exists in table???!?!?!
+                var AddOnModel = {
+                    Id: "",
+                    Name: addonName,
+                    Description: addonDescription,
+                    Price: addonPrice,
+                    SubcategoryId: subId,
+                    Subcategory: ""
+                };
+
+
+                if (addonName != "") {
+                    //subCategoryTable.row.add([subCategoryDictionary[item].key]).draw(false);
+                    $.ajax({
+                        url: '@Url.Action("AddAddon", "MenuCreation")',
+                        method: 'POST',
+                        data: { obj: AddOnModel},
+                        success: function (data) {
+                            if (data) {
+                                //Add addon to the table
+                                addonTableEdit.row.add([data['name'], data['price']]).draw(false);
+                                addonDictionary.push({
+                                    key: data['name'],
+                                    value: [data['price'],
+                                            data['description'],
+                                            subName,
+                                            data['subcategoryId'],
+                                            data['id']]
+                                });
+
+                            }
+                        }
+
+                    });
+
+
+
+                    
+                }
+                else {
+                    //TODO change up this erro message so it centers and does stuff.
+                    var type = BootstrapDialog.TYPE_WARNING;
+                    BootstrapDialog.show({
+                        type: type,
+                        title: 'Invalid Addon Name',
+                        message: 'Please enter a name for the addon.'
+                    });
+
+                }
+            });
+
+            //Listener for when remove addon button is clicked on the edit subcategory modal
+            $('#removeAddonButton-edit').click(function () {
+                var $row = addonTableEdit.$('tr.selected');
+                var subName;
+                for (var item in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[item].value[5] == $('#subcategory-id-edit'))
+                    {
+                        subName = subCategoryDictionary[item].key;
+                    }
+                }
+
+
+
+                if ($row.length) {
+                    var rowData = addonTableEdit.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Addon?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                //post to RemoveAddon
+                                var addonId;
+                                for (var item in addonDictionary)
+                                {
+                                    if (addonDictionary[item].key == rowData[0])
+                                    {
+                                        addonId = addonDictionary[item].value[4];
+
+                                    }
+
+                                }
+                                $.ajax({
+                                    url: '@Url.Action("RemoveAddon", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { obj: AddOnModel },
+                                    success: function (data) {
+                                        if (data) {
+                                            //Add addon to the table
+                                            addonTableEdit.row.add([data['name'], data['price']]).draw(false);
+                                            addonDictionary.push({
+                                                key: data['name'],
+                                                value: [data['price'],
+                                                        data['description'],
+                                                        subName,
+                                                        data['subcategoryId'],
+                                                        data['id']]
+                                            });
+
+                                        }
+                                    }
+
+                                });
+
+
+                                //Remove the selected row
+                                addonTableEdit.row('.selected').remove().draw(false);
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }]
+                    });
+
+                }
+            });
+
+            //Add subcategory Button Listener
+            $('#add-subcategory').click(function () {
+
+                $('#addSubcategoryModal').modal('show');
+                var $modal = $('#addSubcategoryModal');
+                $modal.find('.modal-title').text('Add Subcategory') // Change the modal title
+
+                //Clear all controls on the page in the modal so we don't have leftover info
+                addonTable.clear();
+                addonTable.draw();
+                $('#subcategory-name-add').val("");
+                $('#subcategory-description-add').val("");
+                $('#addAddonName-text').val("");
+                $('#addAddonPrice-text').val("");
+
+            });
+
+            //Edit subcategory Button Listener
+            $('#edit-subcategory').click(function () {
+                var $row = subCategoryTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = subCategoryTable.row('tr.selected').data();
+
+                    var data = {};
+                    //Find all information on selected subcategory
+                    for (var item in subCategoryDictionary) {
+                        if (subCategoryDictionary[item].key == rowData[0]) {
+                            data = subCategoryDictionary[item];
+                        }
+                    }
+
+                    //Reset text boxes
+                    $('#editAddonName-text').val("");
+                    $('#editAddonPrice-text').val("0.00");
+                    addonTableEdit.clear();
+                    addonTableEdit.draw();
+                    for (var item in addonDictionary)
+                    {
+                        if(addonDictionary[item].value[2] == rowData[0])
+                        {
+
+                            console.log(addonDictionary[item].key);
+                            addonTableEdit.row.add([addonDictionary[item].key, addonDictionary[item].value[1], addonDictionary[item].value[0]]).draw(false);
+                        }
+
+                    }
+
+
+                    $('#editSubcategoryModal').modal('show');
+                    var $modal = $('#editSubcategoryModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    $('#subcategory-id-edit').val(data.value[5]);
+                    $('#subcategory-name-edit').val(data.key);
+                    $modal.find('.modal-body textarea').val(data.value[3])
+                    $('#editAddonDescription-text').val("");
+
+                    //On submit modal will submit data to database to be changed and redraw the table with the edited data.
+
+                    //On close nothing happens
+
+                }
+
+            });
+
+            //Remove subcategory Button Listener
+            $('#remove-subcategory').click(function () {
+                var $row = subCategoryTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = subCategoryTable.row('tr.selected').data();
+
+                    var subcategoryId;
+
+                    for (var item in subCategoryDictionary)
+                    {
+                        if (subCategoryDictionary[item].key == rowData[0])
+                        {
+                            subcategoryId = subCategoryDictionary[item].value[5];
+                        }
+
+                    }
+
+                    console.log(subcategoryId);
+
+
+                    BootstrapDialog.show({
+                        title: 'Remove Subcategory?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+
+                                //Post to: MenuCreation/RemoveSubcategory
+                                $.ajax({
+                                    url: '@Url.Action("RemoveSubcategory", "MenuCreation")',
+                                    method: 'POST',
+                                    data: { Id: subcategoryId },
+                                    success: function (result) {
+                                        if (result) {
+                                            //Remove from table
+                                            console.log(result);
+                                            //remove item from dictionary
+
+                                            for (var item in subCategoryDictionary) {
+                                                if (subCategoryDictionary[item].key.toString() == rowData[0]) {
+                                                    subCategoryDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+                                            //Update category table with new values
+                                            updateSubcategoryTable();
+
+                                        } else {
+                                            //Do nothing... Maybe display alert
+                                        }
+                                    }
+                                });
+
+                                //Close the Dialog
+                                dialog.close();
+
+                            }
+                        }]
+                    });
+
+                }
+            });
+
+            //Menu Item Table Functions, These functions control the functionality and look and feel of the menu data tables
+            var menuItemTable = $('#menuitem').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "500px"
+            });
+
+            $('#menuitem tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    menuItemTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            $('#add-menuitem').click(function () {
+                $('#addMenuitemModal').modal('show');
+                //console.log('TEST');
+            });
+
+            $('#menuitem-image-add').change(function () {
+                readURLmenuItemAdd(this);
+            });
+
+            //add-menuitem image preview function :) ================================================================
+            function readURLmenuItemAdd(input) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#menuitem-image-add-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+            $('#edit-menuitem').click(function () {
+                var $row = menuItemTable.$('tr.selected');
+
+                if ($row.length)
+                {
+                    var rowData = menuItemTable.row('tr.selected').data();
+                    var data = {};
+                    //Find all information on selected menu item
+                    for (var item in menuItemDictionary)
+                    {
+                        if (menuItemDictionary[item].key == rowData[0])
+                        {
+                            data = menuItemDictionary[item];
+                        }
+                    }
+                    console.log("edit menu item modal show");
+                    console.log("menu item name: " + data.key);
+
+                    $('#editMenuitemModal').modal('show');
+                    var $modal = $('#editMenuitemModal');
+                    $modal.find('.modal-title').text('Edit ' + rowData[0]); //Add category name to the title
+                    //$modal.find('.modal-body input').val(rowData[0]);
+                    $('#menuitem-id-edit').val(data.value[6])
+                    $('#menuitem-image-edit').val(data.value[4]);
+                    $('#menuitem-name-edit').val(data.key);
+                    $('#menuitem-price-edit').val(data.value[2]);
+                    $('#menuitem-size-edit').val(data.value[3]);
+                    $('#menuitem-ingredients-edit').val(data.value[1]);
+
+
+                }
+            });
+
+            $('#menuitem-image-edit').change(function () {
+                readURLmenuItemEdit(this);
+            });
+
+            //edit-menuitem image preview function :) ================================================================
+            function readURLmenuItemEdit(input) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#menuitem-image-edit-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+            //Remove menuitem Button Listener
+            $('#remove-menuitem').click(function () {
+                var $row = menuItemTable.$('tr.selected');
+
+                if ($row.length) {
+                    var rowData = menuItemTable.row('tr.selected').data();
+
+                    BootstrapDialog.show({
+                        title: 'Remove Menu Item?',
+                        message: 'Are you sure you would like to remove ' + rowData[0] + '?',
+                        buttons: [{
+                            label: 'Cancel',
+                            action: function (dialog) {
+                                //Close the Dialog
+                                dialog.close();
+                            }
+                        }, {
+                            label: 'Remove',
+                            action: function (dialog) {
+                                for (var item in menuItemDictionary)
+                                {
+                                    if (menuItemDictionary[item].key.toString() == rowData[0])
+                                    {
+                                        menuItemDictionary.splice(item, 1); //Remove item from dictionary
+                                    }
+
+                                }
+                                updateMenuitemTable();
+                                //menuItemTable.row('.selected').remove().draw(false);
+
+                                //Close the Dialog
+                                dialog.close();
+
+                            }
+                        }]
+                    });
+
+                }
+            });
+
+            //Ingredients table initialization. Contains all ingredients for the menu
+            var ingredientsTable = $('#ingredients').DataTable({
+                "paging": false,
+                "info": false,
+                "scrollY": "300px"
+            });
+
+            $('#ingredients tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    ingredientsTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+
+
+            //Menu Ingredients menu management modal startup button
+            $('#manage-ingredients-button').on('click', function () {
+                console.log("Ingredient management Click");
+
+
+
+                //Populate modal with ingredients and a dropdown of menu items.
+                //$('#menuitem-dropdown').html("<option>Menu Item...</option>");
+                for (var item in menuItemDictionary)
+                {
+                    //ingredientsTable.row.add([ingredientsTable[item].key, [item].value[1]]).draw(false);
+                    $('#menuitem-dropdown').append("<option>" + menuItemDictionary[item].key + "</option>");
+                }
+
+                $('#ingredientsModal').modal('show');
+
+
+            });
+
+            //Add ingredient to the ingredient table on the ingredient modal
+            //also adds the ingredient to the ingredient dictionary
+            $('#addIngredientButton').on('click', function () {
+                //grab the currently selected menu item, ingredient name, and description
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+                var ingredientName = $('#addIngredientName-text').text();
+                var ingredientDescription = $('#addIngredientDescription-text').text();
+
+                //Post this data and add to the table. TODO
+                var IngredientModel = {
+                    Id: "",
+                    Name: ingredientName,
+                    Description: ingredientDescription,
+                    Option: { None: 1, Low: 2, Normal: 3 },
+                    menuitemIngredients: ""
+                };
+
+                var MenuItemIngredientModel = {
+                    MenuItemId: "",
+                    IngredientId: "",
+                    MenuItem: "",
+                    Ingredient: IngredientModel
+                };
+
+            });
+
+            //Remove ingredient from the ingredient table on the ingredient modal
+            //also removes the ingredient from the dictionary
+            $('#removeIngredientButton').on('click', function () {
+                //Check if row is selected
+
+
+
+                //grap the currently selected menu item and the current selected row
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+
+
+            });
+
+            //===============Update Menu Table Functions=================================
+
+
+            function updateCategoryTable() {
+                //Clear Category and menuItem tables
+                categoryTable.clear();
+                categoryTable.draw();
+                subCategoryTable.clear();
+                subCategoryTable.draw();
+                menuItemTable.clear();
+                menuItemTable.draw();
+
+                //Iterate over all the subcategories in subCategoryDictionary and find
+                //those with the same Category as the one currently selected
+                for (var item in categoryDictionary) {
+                    //Add Category to Database and Category table remove all items from subcategories and Menu Items
+                categoryTable.row.add([
+                    categoryDictionary[item].key,
+                    categoryDictionary[item].value[1]
+                ]).draw(false);
+                }
+            }
+
+            //Function to update subCategoryTable
+            function updateSubcategoryTable() {
+                console.log("Updating subcategory table");
+                subCategoryTable.clear();
+                subCategoryTable.draw(); // redraws table with no data
+                menuItemTable.clear();
+                menuItemTable.draw(); // redraws table with no data
+
+                var selectedCategory = categoryTable.row('tr.selected').data(); //Returns array of data that is currently selected in the categoryTable
+
+                for (var item in subCategoryDictionary) {
+                    //console.log(subCategoryDictionary[item]);
+                    if (subCategoryDictionary[item].value[0].toString() == selectedCategory[0].toString())
+                    {
+                        //Add new menuItem to the table
+                        //menuItemTable.row.add([menuItemDictionary[item].key]).draw(false);
+                        subCategoryTable.row.add([subCategoryDictionary[item].key]).draw( false );
+                    }
+
+                }
+            }
+
+            //Function to update menu item table when a new item has been added to the menuItemDictionary
+            function updateMenuitemTable() {
+                menuItemTable.clear();
+                menuItemTable.draw();
+
+                var selectedSubcategory = subCategoryTable.row('tr.selected').data(); //Returns array of data that is currently selected inthe subCategoryTable
+
+                for (var item in menuItemDictionary) {
+
+                    if (menuItemDictionary[item].value[0].toString() == selectedSubcategory[0].toString())
+                    {
+                        menuItemTable.row.add([menuItemDictionary[item].key, menuItemDictionary[item].value[2]]).draw( false );
+                    }
+
+                }
+            }
+
+
+            //===============MODAL SUBMIT CONTROLS FOR POSTING TO THE DATABASE============
+
+            //Add Category and Edit Category submit listeners
+            $('#addCategorySubmit').on('click', function(e) {
+                console.log("Submit Add Category");
+                var categoryName = $('#category-name-add').val();
+                var categoryDescription = $('#category-description-add').val();
+                console.log(categoryName);
+                console.log(categoryDescription);
+
+                //Post to MenuCreation/AddCategory
+                var CategoryModel = {
+                    Id: "",
+                    Name: categoryName,
+                    Description: categoryDescription,
+                    Subcategories: ""
+                };
+
+                $.ajax({
+                    url: '@Url.Action("AddCategory", "MenuCreation")',
+                    method: 'POST',
+                    data: CategoryModel,
+                    success: function (result) {
+                        if (result) {
+                            console.log(result);
+                            console.log(result['id']); //Grab id
+                            console.log(result['name']); //Grab name
+                            categoryDictionary.push({
+                                key: result['name'],
+                                value: [result['subcategories'], //array of subcategories
+                                        result['description'],
+                                        result['id']]
+                            });
+                            updateCategoryTable();
+                        } else {
+                            console.log("Something went wrong while adding the new category.");
+                        }
+                    }
+                });
+                $('#addCategoryModal').modal('hide');
+            });
+
+            //EDIT CATEGORY SUBMIT.
+            $('#editCategorySubmit').on('click', function (e) {
+                console.log("Submit Edit Category");
+
+                var categoryName = $('#category-name-edit').val();
+                var categoryDescription = $('#category-description-edit').val();
+                var categoryId = $('#category-id-edit').val();
+                console.log("Category Name: " + categoryName);
+                console.log("Category Description: " + categoryDescription);
+                console.log("Category id: " + categoryId);
+
+                //get list of subcategories
+                var subcategories;
+                var jssubcategories;
+                for (var item in categoryDictionary)
+                {
+                    if (categoryDictionary[item].value[2] == categoryId)
+                    {
+                        subcategories = categoryDictionary[item].value[0];
+                        //jssubcategories = <%= new JavaScriptSerializer().Serialize(ViewData["subcategories"]) %>;
+                    }
+
+                }
+
+                var CategoryModel = {
+                    Id: categoryId,
+                    Name: categoryName,
+                    Description: categoryDescription,
+                    Subcategories: subcategories
+                };
+
+
+                //Post to MenuCreation/EditCategory
+                $.ajax({
+                    url: '@Url.Action("EditCategory", "MenuCreation")',
+                    method: 'POST',
+                    data: CategoryModel,
+                    success: function (result) {
+                        if (result) {
+                            for (var item in categoryDictionary) {
+                                //Find the selected item and change its values according to the new data.
+                                //TODO: VALIDATE
+                                if (categoryDictionary[item].value[2] == categoryId) {
+                                    categoryDictionary[item].key = categoryName;
+                                    categoryDictionary[item].value[1] = categoryDescription;
+                                }
+
+                            }
+
+                            updateCategoryTable();
+
+                        } else {
+                            console.log("Something went wrong while adding the new category.");
+                        }
+                    }
+                });
+
+                //var selectedCategory = categoryTable.$('tr.selected').data();
+                //updated selected item with the new data
+
+                $('#editCategoryModal').modal('hide');
+            });
+
+
+            //Add Subcategory and Edit Subcategory submit listeners.
+            //submits new subcategory to the database and updates the tables.
+            $('#addSubcategorySubmit').on('click', function (e) {
+                console.log("Submit Add Subcategory");
+
+                var subcategoryName = $('#subcategory-name-add').val();
+                var subcategoryDescription = $('#subcategory-description-add').val();
+
+                console.log(subcategoryName);
+                console.log(subcategoryDescription);
+
+                //Get the currently selected category from the category table
+                var selectedCategory = categoryTable.row('tr.selected').data();
+                selectedCategoryData = {};
+                for (var item in categoryDictionary)
+                {
+                    if (categoryDictionary[item].key.toString() == selectedCategory[0])
+                    {
+                        console.log(categoryDictionary[item]);
+                        selectedCategoryData = categoryDictionary[item];
+
+                    }
+
+                }
+
+                //Construct and post the CategoryModel (for reference), SubcategoryModel (to add), and the AddonModel (to Add)
+                //Selected CategoryModel Date for reference
+                var CategoryModel = {
+                    Id: selectedCategoryData.value[2],
+                    Name: selectedCategory[0],
+                    Description: selectedCategoryData.value[1],
+                    Subcategories: selectedCategoryData.value[0]
+                };
+
+                //New SubcategoryModel
+                var SubcategoryModel = {
+                    Id: "",
+                    Name: subcategoryName,
+                    Description: subcategoryDescription,
+                    CategoryId: selectedCategoryData.value[2],
+                    Category: "",
+                    MenuItems: [],
+                    AddOns: []
+                };
+
+                //Iterate over all addons in the table, create an addon object and append them to the SubcategoryModel AddOns key
+                var addonList = [];
+                addonTable
+                    .data()
+                    .each(function (value, index) {
+                        //Value is 3 element array of value[0]: name, value[1]: description, and value[2]: price
+                        console.log(value);
+                        //Create addon model
+                        var AddOnModel = {
+                            Id: "",
+                            Name: value[0],
+                            Description: value[1],
+                            Price: value[2],
+                            SubcategoryId: "",
+                            Subcategory: ""
+                        };
+                        //Append model to SubcategoryModel AddOns
+                        addonList.push(AddOnModel);
+                    });
+
+                //console.log("SubcategoryModel Object:");
+                //console.log(SubcategoryModel);
+
+                //console.log("Pre-Post");
+                //Post: MenuCreation/AddSubcategory
+                var newSubcategoryId;
+                $.ajax({
+                    url: '@Url.Action("AddSubcategory", "MenuCreation")',
+                    method: 'POST',
+                    data: { subcategoryObj: SubcategoryModel, categoryObj: CategoryModel, addonsObj: addonList },
+                    success: function (result) {
+                        if (result) {
+                            console.log(result);
+                            console.log(result['addOns']);
+                            newSubcategoryId = result['id'];
+                            subCategoryDictionary.push({
+                                key: result['name'],
+                                value: [selectedCategory[0], //selected category name
+                                        result['menuitems'], //menuitems
+                                        result['addOns'], //addons
+                                        result['description'],
+                                        result['categoryid'],
+                                        result['id']]
+                            });
+
+                            //on success post get request for addons
+                            console.log("new subcategory id: " + newSubcategoryId);
+                            newSubcategoryId = Number(newSubcategoryId);
+                            //Ajax get
+                            $.ajax({
+                                //GET: MenuCreation/GetAddons
+                                //retrieves list of subcategory addons
+                                url: '@Url.Action("GetAddons", "MenuCreation")',
+                                method: 'GET',
+                                data: { id: newSubcategoryId },
+                                success: function (data) {
+                                    if (data) { //check if something is returned
+                                        //console.log("This is the addon:" + data);
+                                        //add each addon to the addon dictionary
+                                        for (var addon in data)
+                                        {
+                                            addonDictionary.push({
+                                                key: data[addon]['name'],
+                                                value: [data[addon]['price'],
+                                                        data[addon]['description'],
+                                                        result['name'],
+                                                        data[addon]['subcategoryId'],
+                                                        data[addon]['id']]
+                                            });
+
+                                        }
+
+                                        //console.log("subcateory category name" + result['name']);
+                                        //console.log("subcateory id" + result[0]['subcategoryId']);
+
+                                    } else {
+                                        console.log("Something happened while getting addons");
+
+                                    }
+                                }
+
+                            });
+                            //Update the subcategory table to display new subcategory
+                            updateSubcategoryTable();
+
+                        } else {
+                            console.log("Something went wrong while adding the new subcategory.");
+                        }
+                    }
+                });
+
+                addonTable.clear();
+                addonTable.draw();
+
+                //Clear the text boxes for next input
+                var subcategoryName = $('#subcategory-name-add').val("");
+                var subcategoryDescription = $('#subcategory-description-add').val("");
+
+                $('#addSubcategoryModal').modal('hide');
+            });
+
+            $('#editSubcategorySubmit').on('click', function (e) {
+                console.log("Submit Edit Subcategory");
+
+                var subcategoryID = $('#subcategory-id-edit').val();
+                var subcategoryName = $('#subcategory-name-edit').val();
+                var subcategoryDescription = $('#subcategory-description-edit').val();
+
+                console.log(subcategoryID);
+                console.log(subcategoryName);
+                console.log(subcategoryDescription);
+
+                var currentSubcategory;
+
+                for (var sub in subCategoryDictionary)
+                {
+                    if (subCategoryDictionary[sub].value[5] == subcategoryID)
+                    {
+                        currentSubcategory = subCategoryDictionary[sub];
+                    }
+
+                }
+
+                $.ajax({
+                    //GET: MenuCreation/GetSubcategory
+                    url: '@Url.Action("GetSubcategory", "MenuCreation")',
+                    method: 'GET',
+                    data: {id: subcategoryID},
+                    success: function (result) {
+                        if (result) {
+
+                            var SubcategoryModel = {
+                                Id: subcategoryID,
+                                Name: subcategoryName,
+                                Description: subcategoryDescription,
+                                CategoryId: result['categoryId'],
+                                Category: result['category'],
+                                MenuItems: result['menuitems'],
+                                AddOns: result['addOns']
+                            };
+                            //Post data to EditSubcategory
+                            $.ajax({
+                                //Post: MenuCreation/GetAddons
+                                //Posts updated subcategory data to the database.
+                                url: '@Url.Action("EditSubcategory", "MenuCreation")',
+                                method: 'POST',
+                                data: { obj: SubcategoryModel },
+                                success: function (data) {
+                                    if (data) { //check if something is returned
+                                        console.log("New Subcategory name" + subcategoryName);
+                                        //Update javascript dictionary references.
+                                        for (var item in subCategoryDictionary)
+                                        {
+                                            if (subCategoryDictionary[item].value[5] == result['id'])
+                                            {
+                                                subCategoryDictionary[item].key = subcategoryName;
+                                                subCategoryDictionary[item].value[3] = subcategoryDescription;
+                                            }
+
+                                        }
+                                        for (var item in addonDictionary)
+                                        {
+                                            if (addonDictionary[item].value[3] == result['id'])
+                                            {
+                                                addonDictionary[item].value[2] = subcategoryName;
+                                            }
+
+                                        }
+                                        for (var item in menuItemDictionary)
+                                        {
+                                            if (menuItemDictionary[item].value[5] == result['id'])
+                                            {
+                                                menuItemDictionary[item].value[0] = subcategoryName;
+                                            }
+
+                                        }
+
+                                        updateSubcategoryTable(); //Call function to update the subcategory table
+                                    } else {
+                                        console.log("Something happened while getting addons");
+
+                                    }
+                                }
+
+                            });
+
+
+                        } else
+                        {
+                            console.log("Error while getting subcategory");
+
+                        }
+
+                    }
+                });
+
+                $('#editSubcategoryModal').modal('hide');
+            });
+
+            //Add and Edit Menu Item Submit button listeners
+            $('#addMenuitemSubmit').on('click', function (e) {
+                console.log("Submit Add Menu Item");
+
+                var menuitemImage = $('#menuitem-image-add').val();
+                var menuitemName = $('#menuitem-name-add').val();
+                var menuitemPrice = $('#menuitem-price-add').val();
+                var menuitemSize = $('#menuitem-size-add').val();
+                var menuitemIngredients = $('#menuitem-ingredients-add').val();
+                //POST REQUEST GOES HERE MenuCreationController/AddMenuItem
+
+
+
+                console.log(menuitemImage);
+                console.log(menuitemName);
+                console.log(menuitemPrice);
+                console.log(menuitemSize);
+                console.log(menuitemIngredients);
+
+
+
+
+                //Demo Stuff
+                //Steps: get the selected Category, push data to the dictionary
+                var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                selectedData = {};
+                for (var item in subCategoryDictionary) {
+                    if (subCategoryDictionary[item].key.toString() == selectedSubcategory[0]) {
+
+                        selectedData = subCategoryDictionary[item];
+
+                    }
+
+                }
+                //Demo Display
+                menuItemDictionary.push({
+                    key: menuitemName,
+                    value: [selectedData.key,
+                            "", //Menu Item Ingredients
+                            menuitemPrice,
+                            menuitemSize,
+                            menuitemImage,
+                            selectedData.value[6],
+                            Math.floor((Math.random() * 10 ) + 34)]
+                });
+                updateMenuitemTable();
+
+
+
+                $('#addMenuitemModal').modal('hide');
+
+            });
+
+            $('#editMenuitemSubmit').on('click', function (e) {
+                console.log("Submit Edit Menu Item");
+
+                var menuitemID = $('#menuitem-id-edit').val();
+                var menuitemName = $('#menuitem-name-edit').val();
+                var menuitemPrice = $('#menuitem-price-edit').val();
+                var menuitemSize = $('#menuitem-size-edit').val();
+                var menuitemIngredients = $('#menuitem-ingredients-edit').val();
+                //POST GOES HERE MenuCreationController/EditMenuItem
+
+                //Display Demo
+                for (var item in menuItemDictionary) {
+                    //Find the selected item and change its values according to the new data.
+                    //TODO: VALIDATE
+                    if (menuItemDictionary[item].value[6] == menuitemID) {
+                        menuItemDictionary[item].key = menuitemName;
+                        menuItemDictionary[item].value[2] = menuitemPrice;
+                        menuItemDictionary[item].value[3] = menuitemSize;
+                        menuItemDictionary[item].value[1] = menuitemIngredients;
+                    }
+
+                }
+
+                updateMenuitemTable(); //Call function to update the menu item table
+
+
+
+                $('#editMenuitemModal').modal('hide');
+            });
+
+            //Listener for menuitem-dropdown selection chenge so different ingredients can show.
+            $('#menuitem-dropdown').change(function () {
+                console.log("Menu Dropdown Action");
+                //grab selected menu item
+                var menuItem = $('#menuitem-dropdown option:selected').text();
+
+                //iterate over ingredients and find which ones are for the selected menu item.
+                for (var item in menuItemIngredientsDictionary)
+                {
+                    console.log(menuItemIngredientsDictionary[item].key);
+                    if (menuItemIngredientsDictionary[item].value[1] == menuItem)
+                    {
+                        ingredientsTable.row.add([menuItemIngredientsDictionary[item].key, menuItemIngredientsDictionary[item].value[1]]).draw(false);
+
+                    }
+
+                }
+
+            });
+
+
+        });
+    </script>
+
+}

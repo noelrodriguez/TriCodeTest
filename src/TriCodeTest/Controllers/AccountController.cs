@@ -11,9 +11,13 @@ using Microsoft.Extensions.Logging;
 using TriCodeTest.Models;
 using TriCodeTest.Models.AccountViewModels;
 using TriCodeTest.Services;
+using TriCodeTest.Data;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// This class deals with registration, login, password reset, 
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
@@ -23,6 +27,14 @@ namespace TriCodeTest.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Initial and assign fields.
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="emailSender"></param>
+        /// <param name="smsSender"></param>
+        /// <param name="loggerFactory"></param>
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -37,8 +49,13 @@ namespace TriCodeTest.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-        //
-        // GET: /Account/Login
+
+        /// <summary>
+        /// GET: /Account/Login
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+       
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
@@ -46,8 +63,12 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-        //
+        /// <summary>
+        ///  Log the user in the application
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -63,12 +84,17 @@ namespace TriCodeTest.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    ApplicationUser user = await _userManager.FindByNameAsync(model.Email);
+                    if (await _userManager.IsInRoleAsync(user, "Admin") || await _userManager.IsInRoleAsync(user, "Staff") )
+                    {
+                        return RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl); // This will navigate to the customers view
+                    }
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
+             
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -76,15 +102,20 @@ namespace TriCodeTest.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "User name or Password is wrong");
                     return View(model);
                 }
             }
 
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /// <summary>
+        /// Register user view
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // GET: /Account/Register
         [HttpGet]
@@ -95,6 +126,12 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        ///  Register the user with the data passed
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // POST: /Account/Register
         [HttpPost]
@@ -105,19 +142,22 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                };
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    await _userManager.AddToRoleAsync(user, "Customer");
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    ViewBag.Message = user.FirstName + " created a new account with password. Go to login.";
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
             }
@@ -126,6 +166,10 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Log off method
+        /// </summary>
+        /// <returns></returns>
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -134,9 +178,14 @@ namespace TriCodeTest.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(AccountController.Login), "Account");
         }
-
+        /// <summary>
+        /// External login (Not implemented)
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -150,6 +199,12 @@ namespace TriCodeTest.Controllers
             return Challenge(properties, provider);
         }
 
+        /// <summary>
+        /// ExternalLoginCallback not going to be implemented
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="remoteError"></param>
+        /// <returns></returns>
         //
         // GET: /Account/ExternalLoginCallback
         [HttpGet]
@@ -225,7 +280,12 @@ namespace TriCodeTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View(model);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         // GET: /Account/ConfirmEmail
         [HttpGet]
         [AllowAnonymous]
@@ -253,6 +313,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -271,17 +336,21 @@ namespace TriCodeTest.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
-                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         //
         // GET: /Account/ForgotPasswordConfirmation
         [HttpGet]

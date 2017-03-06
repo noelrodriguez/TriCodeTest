@@ -1,0 +1,181 @@
+@model IEnumerable<TriCodeTest.Models.OrderModels.Order>
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Order Management";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<!--link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" /-->
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-2.5.0/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.0/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css" />*@
+
+<!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Order Details</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul id="orderItem">
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Order Management</h2>
+
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="display:none">
+                Order Id
+            </th>
+            <th>
+                Firstname
+            </th>
+            <th>
+                Lastname
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderMenuItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th style="display:none">
+                @Html.DisplayFor(modelItem => item.Id)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+            <td>
+                @String.Format("{0:t}", item.DateTime)
+            </td>
+            <td>
+                @String.Format("{0}", item.OrderMenuItems.FirstOrDefault().MenuItem.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+                @* This is code for getting the inline update of status working. NOT IMPLEMENTED *@
+                @*<select asp-for="@item.Status" asp-items="Html.GetEnumSelectList<Status>()" id="status-choice"></select>
+                <span asp-validation-for="@item.Status" class="text-danger" />*@
+            </td>
+            <td>
+                @String.Format("{0:c}", item.TotalPrice)
+            </td>
+            <td>
+                @*<a onclick="openModal(@JsonConvert.SerializeObject(item))">Order Details</a> |*@ 
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default">Status</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts
+{   
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+<script>
+    var allOrders = @Html.Raw(JsonConvert.SerializeObject(Model));
+    var table;
+    var row;
+    var status;
+    // This removes the searching, sorting, and paging of the DataTable
+    $(document).ready(function () {
+        table = $('#example').DataTable({
+            "paging": false,
+            "bSort": false,
+            "bFilter": false
+        });
+        
+        // This is functionality for clickin on a row of the DataTable
+        // Clicking on a row opens the order's details
+        $('#example tbody').on('click', 'td:not(:last-child)', function () {
+            row = table.row(this).data();
+            openModal(allOrders[table.row(this).index()]);
+        });
+
+        // Code to get in line status update working. NOT IMPLEMENTED RIGHT NOW
+        $("#status-choice").change('tr', function (event) {
+            status = $(this).val();
+            @*$.ajax({
+                url: @Url.Action("Edit", "OrderInfo"),
+            })*@
+        })
+    });
+
+    // Displays the detailed information of the Order for its AddOns and modified Ingredients
+    function openModal(order)
+    {
+        var itemHTML = $("#orderItem");
+        itemHTML.empty();
+        var orderModal = $("#orderModal");
+
+        // Goes through and begins populating the form with MenuItems and their corresponding AddOns/modified
+        // Ingredients
+        for (var i = 0; i < order.OrderMenuItems.length; i++)
+        {
+            if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length != 0) {
+                itemHTML.append("<strong>" + order.OrderMenuItems[i].MenuItem.Name + "</strong>");
+                itemHTML.append("<li id='itemIngredients" + i + "'>Ingredients: </li>");
+                var ingredientsHTML = $("#itemIngredients" + i);
+                for (var j = 0; j < order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length; j++) {
+                    var ingredient = order.OrderMenuItems[i].MenuItem.MenuItemIngredients[j].Ingredient;
+                    switch (ingredient.Option) {
+                        case 0:
+                            break;
+                        case 1:
+                            ingredientsHTML.append("NO " + ingredient.Name + " | ");
+                            break;
+                        case 2:
+                            ingredientsHTML.append("LOW " + ingredient.Name + " | ");
+                            break;
+                    }
+                }
+            }
+            if (order.OrderMenuItems[i].AddOns.length != 0) {
+                itemHTML.append("<li id='itemAddOns" + i + "'>Add-ons: </li>");
+                var addonsHTML = $("#itemAddOns" + i);
+                for (var j = 0; j < order.OrderMenuItems[i].AddOns.length; j++) {
+                    var addons = order.OrderMenuItems[i].AddOns[j];
+                    addonsHTML.append(addons.Name + " | ");
+                }
+            }
+        }
+        $("#orderModal").modal();
+        return false;
+    }
+</script>
+}
+
+
+@*<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-2.5.0/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.0/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.js"></script>*@
