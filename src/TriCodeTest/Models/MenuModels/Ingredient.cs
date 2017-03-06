@@ -13,7 +13,7 @@ namespace TriCodeTest.Models.MenuModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        [NotMapped]
+        //[NotMapped] Weston: I commented this out so ingredients can be added to the database.
         public Option Option { get; set; }
         // Navigation Properties
         [JsonIgnore]
