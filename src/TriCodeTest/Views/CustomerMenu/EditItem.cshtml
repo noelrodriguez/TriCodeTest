@@ -1,0 +1,335 @@
+﻿@model TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<style>
+    /*#description span {
+        font: bold 18px Cursive;
+    }
+    #header-item-name {
+
+    }*/
+    #header-image h2 {
+        position: absolute;
+        top: 380px;
+        left: 25px;
+        color: white;
+    }
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading {
+        margin: 0;
+    }
+
+    .ui-li-static.ui-collapsible {
+        padding: 0;
+    }
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading > .ui-btn {
+        border-top-width: 0;
+    }
+
+    .ui-li-static.ui-collapsible > .ui-collapsible-heading.ui-collapsible-heading-collapsed > .ui-btn,
+    .ui-li-static.ui-collapsible > .ui-collapsible-content {
+        border-bottom-width: 0;
+    }
+    #remove-item {
+        margin-top: 15px;
+    }
+    #remove-item a {
+        font-size: 18px;
+    }
+</style>
+
+@* Edit Item Page *@
+
+<div data-role="page" id="edit-item-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="" data-role="button" onclick="goBack()">Cancel</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" onclick="postItem()">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <div id="details-header-row">
+            <div id="header-image">
+                <img src="~/images/food-banner.jpeg" id="menuitemImg" />
+                <h2>@Model.MenuItem.Name</h2>
+            </div>
+        </div>
+        <ul data-role="listview">
+            <li><h4>@Model.MenuItem.Description</h4></li>
+            <li data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                <h2>Size</h2>
+                <form id="size-choice">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="size" id="size-choice-null" value=null 
+                               @if (Model.MenuItem.Size == null)
+                               {
+                                   @:checked="checked"
+                               }/>
+                        <label for="size-choice-null">No Size</label>
+                        <input type="radio" name="size" id="size-choice-small" value=@Size.Small 
+                               @if (Model.MenuItem.Size == Size.Small)
+                               {
+                                   @:checked="checked"
+                               }/>
+                        <label for="size-choice-small">@Size.Small</label>
+                        <input type="radio" name="size" id="size-choice-medium" value=@Size.Medium 
+                               @if (Model.MenuItem.Size == Size.Medium)
+                               {
+                                   @:checked="checked"
+                               }/>
+                        <label for="size-choice-medium">@Size.Medium</label>
+                        <input type="radio" name="size" id="size-choice-large" value=@Size.Large 
+                               @if (Model.MenuItem.Size == Size.Large)
+                               {
+                                   @:checked="checked"
+                               }/>
+                        <label for="size-choice-large">@Size.Large</label>
+                    </fieldset>
+                </form>
+            </li>
+            <li><a href="#" onclick="loadAddonsPage()"><h2>Add-ons</h2></a></li>
+            <li><a href="#" onclick="loadIngredientsPage(@JsonConvert.SerializeObject(Model.MenuItem.MenuItemIngredients))"><h2>Ingredients</h2></a></li>
+            <li id="remove-item" data-icon="false">
+                <a href="#" onclick="removeItem()"><h1 style="text-align:center">Remove Item</h1></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@* Edit Ingredients Page *@
+
+<div data-role="page" id="edit-ingredient-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" data-rel="back" data-role="button">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var ing in Model.MenuItem.MenuItemIngredients)
+            {
+                <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                    <h2>@ing.Ingredient.Name</h2>
+                    <form id="form-ingredient-@ing.Ingredient.Id-choice">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" />
+                            <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
+                            <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
+                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-none-@ing.IngredientId" value="@Option.None" />
+                            <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
+                        </fieldset>
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@* Edit Addons Page *@
+
+<div data-role="page" id="edit-addons-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" onclick="dontSaveItemChanges()">Cancel</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+        <a href="#" data-rel="back" data-role="button">Save</a>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var addon in Model.ChoiceOfAddons)
+            {
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <h2>@addon.Name</h2><p>Price: @String.Format("{0:c}", addon.Price)</p>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-block-b-contents" style="float:right">
+                                <form id="form-addon-@addon.Id-choice">
+                                    <input type="checkbox" data-role="flipswitch" name="addon-id-@addon.Id" id="addon-choice-@addon.Id"
+                                            data-on-text="Yes" data-off-text="No">
+                                    @*<select id="addon-choice-@addon.Id" name="addon-id-@addon.Id" data-role="flipswitch">
+                                        <option value="no">No</option>
+                                        <option value="yes">Yes</option>
+                                    </select>*@
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to Cart</a>
+</div>
+
+
+@section Scripts {
+    <script>
+        var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+        var ItemObject;
+
+        // Navigate back to cart
+        function goBack(){
+            window.location = '@Url.Action("Cart", "CustomerMenu")';
+        }
+
+        function dontSaveItemChanges(){
+            window.location = '@Url.Action("EditItem", "CustomerMenu", new { id = Model.MenuItem.Id })';
+        }
+
+        function removeItem(){
+            ItemObject = {
+                MenuItem : MODEL.MenuItem
+            };
+            $.ajax({
+                url: '@Url.Action("RemoveItem", "CustomerMenu")',
+                method: 'POST',
+                data: ItemObject,
+                success: function(result){
+                    console.log(result);
+                    if (result){
+                        window.location = '@Url.Action("Cart", "CustomerMenu")';
+                    } else {
+                        location.reload();
+                    }
+                }
+            });
+        }
+
+        function postItem(){
+            ItemObject = {
+                MenuItem : MODEL.MenuItem,
+                AddOns : MODEL.AddOns
+            };
+            $.ajax({
+                url: '@Url.Action("EditItem", "CustomerMenu")',
+                method: 'POST',
+                data: ItemObject,
+                success: function(result){
+                    console.log(result);
+                    if (result){
+                        window.location = '@Url.Action("Cart", "CustomerMenu")';
+                    } else {
+                        location.reload();
+                    }
+                }
+            });
+        }
+
+        // Create size radio button listener to set new size to javascript object of view model
+        $("#size-choice").bind("change", function(event, ui){
+            switch ($("input[name=size]:checked").val()){
+                case "null":
+                    MODEL.MenuItem.Size = null;
+                    break;
+                case "Small":
+                    MODEL.MenuItem.Size = 0;
+                    break;
+                case "Medium":
+                    MODEL.MenuItem.Size = 1;
+                    break;
+                case "Large":
+                    MODEL.MenuItem.Size = 2;
+                    break;
+            }
+            console.log(MODEL.MenuItem.Size);
+        })
+
+        // Load page to edit ingredients
+        function loadIngredientsPage(ingredientsList){
+            console.log(ingredientsList);
+            $(":mobile-pagecontainer").pagecontainer("change", "#edit-ingredient-page", {
+                transition: 'slide'
+            });
+        }
+        // Before showing page, select the chosen ingredient options on the radio buttons
+        $(document).on("pageshow", "#edit-ingredient-page", function() {
+            $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient) {
+                var ingredientNormalChoice = $("#ingredient-choice-normal-" + ingredient.Ingredient.Id);
+                var ingredientLowChoice = $("#ingredient-choice-low-" + ingredient.Ingredient.Id);
+                var ingredientNoneChoice = $("#ingredient-choice-none-" + ingredient.Ingredient.Id);
+                console.log(ingredient.Ingredient.Option);
+                switch(ingredient.Ingredient.Option){
+                    case 0:
+                        ingredientNormalChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 1:
+                        ingredientNoneChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                    case 2:
+                        ingredientLowChoice.prop("checked", true).checkboxradio("refresh");
+                        break;
+                }
+            });
+        });
+        // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
+        $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
+            $("#form-ingredient-" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+                switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
+                    case "Normal":
+                        ingredient.Ingredient.Option = 0;
+                        break;
+                    case "None":
+                        ingredient.Ingredient.Option = 1;
+                        break;
+                    case "Low":
+                        ingredient.Ingredient.Option = 2;
+                        break;
+                }
+            });
+        });
+
+        // Load page to edit addons
+        function loadAddonsPage(){
+            $(":mobile-pagecontainer").pagecontainer("change", "#edit-addons-page", {
+                transition: 'slide'
+            });
+        }
+        // Before showing page, select the chosen addons on the flipswitches
+        $(document).on("pageshow", "#edit-addons-page", function() {
+            var tempAddons = [];
+            $.each(MODEL.ChoiceOfAddons, function(index, addon) {
+                $.each(MODEL.AddOns, function(addonIndex, chosenAddon) {
+                    if (chosenAddon.Id == addon.Id) {
+                        tempAddons.push(chosenAddon);
+                        $("#addon-choice-" + addon.Id).prop("checked", true);
+                        $("#addon-choice-" + addon.Id).flipswitch("refresh");
+                    }
+                });
+            });
+            MODEL.AddOns = tempAddons;
+        });
+        // Create listeners for each addons flipswitch to be adding/removing addons to item
+        $.each(MODEL.ChoiceOfAddons, function(index, addon){
+            $("#form-addon-" + addon.Id + "-choice").bind("change", function(event, ui){
+                console.log($("input[name=addon-id-" + addon.Id + "]:checked").val());
+                if ($("input[name=addon-id-" + addon.Id + "]:checked").val() == "on"){
+                    MODEL.AddOns.push(addon);
+                } else {
+                    MODEL.AddOns.splice(MODEL.AddOns.indexOf(addon), 1);
+                }
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

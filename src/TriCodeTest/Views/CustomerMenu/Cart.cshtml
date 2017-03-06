@@ -1,0 +1,180 @@
+@model TriCodeTest.Models.CustomerMenuViewModels.CartOrder
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+@* This will need to be moved to a separate linked style sheet under ~/css/*@
+<style>
+    #categoryList {
+        font: bold 24px;
+    }
+    #large-bottom-button {
+        margin-top: 20px !important;
+    }
+    #large-bottom-button a {
+        background: black;
+        color: white;
+        font-size: 20px;
+    }
+</style>
+
+@* Cart Page *@
+<div data-role="page" id="cart-page">
+    @* Panel *@
+    <div data-role="panel" class="myPanel" id="category-page-panel" data-position="right">
+        <ul data-role="listview" id="sidebar">
+            @await Html.PartialAsync("_CustomerLoginPartial")
+        </ul>
+    </div>
+    @* Header *@
+    <div data-role="header">
+        <a href="" style="display:none"></a>
+        <a href="#category-page-panel" data-role="button" data-icon="bars">
+            Menu
+        </a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul id="order-items-list" data-role="listview" data-split-icon="delete">
+            @if (Model == null || Model.CartOrderMenuItems.FirstOrDefault() == null)
+            {
+                <li data-icon="false">
+                    <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
+                </li>
+            }
+            else
+            {
+                @foreach (var menuItem in Model.CartOrderMenuItems)
+                {
+                    <li>
+                        <a href="#" onclick="editItem(@JsonConvert.SerializeObject(menuItem))"><h2>@menuItem.MenuItem.Name</h2></a>
+                    </li>
+                }
+                <li data-icon="false">
+                    <a href=# onclick="addAnotherItem()"><img id="icon-plus" src="~/images/icons/plus_icon.png" /><h2>Add another item</h2><p>Return to menu</p></a>
+                </li>
+                <li id="large-bottom-button" data-icon="false">
+                    <a href="#" onclick="reviewOrder()"><h1 style="text-align:center">Continue</h1></a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@* Reivew Order Page *@
+
+<div data-role="page" id="review-order-page">
+    @* Header *@
+    <div data-role="header">
+        <a href="#" data-rel="back" data-role="button">Back</a>
+        <h3>
+            <a href="#" style="color:inherit;text-decoration:none">Food Order</a>
+        </h3>
+    </div>
+    @* Main Content *@
+    <div role="main" class="ui-content">
+        <ul data-role="listview">
+            @foreach (var menuitem in Model.CartOrderMenuItems)
+            {
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <h2>@menuitem.MenuItem.Name</h2>
+                            @if (menuitem.AddOns != null)
+                            {
+                                <p>
+                                    Add-ons:&nbsp;
+                                    @foreach (var addon in menuitem.AddOns)
+                                    {
+                                        @addon.Name@:,&nbsp;
+                                    }
+                                </p>
+                            }
+                            <p>
+                                @foreach (var ingredient in menuitem.MenuItem.MenuItemIngredients)
+                                {
+                                    if (ingredient.Ingredient.Option != Option.Normal)
+                                    {
+                                        @ingredient.Ingredient.Option@:&nbsp;@ingredient.Ingredient.Name,&nbsp;
+                                    }
+                                }
+                            </p>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-block-b-contents" style="float:right">
+                                @{ double addonsTotalPrice = 0;}
+                                <div style="text-align:right"><h2>@String.Format("{0:c}", menuitem.MenuItem.Price)</h2></div>
+                                @if (menuitem.AddOns != null)
+                                {
+                                    @foreach (var addons in menuitem.AddOns)
+                                    {
+                                        addonsTotalPrice += addons.Price;
+                                    }
+                                    <div><p style="text-align:right">Addons Price: @String.Format("{0:c}", addonsTotalPrice)</p></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+            <li style="text-align:right">
+                <h2 style="font-size:24px">Subtotal @String.Format("{0:c}", Model.TotalPrice)</h2>
+            </li>
+            <li id="large-bottom-button" data-icon="false">
+                <a href="#" onclick="submitOrder()"><h1 style="text-align:center">Order</h1></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts
+{
+<script>
+    var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+
+    // Load page to edit the passed item
+    function editItem(menuitem){
+        console.log(menuitem);
+        console.log(menuitem.MenuItem.Id);
+        window.location = '@Url.Action("EditItem", "CustomerMenu")' + '/' + menuitem.MenuItem.Id;
+    }
+
+    // Navigate back to the menu
+    function addAnotherItem(){
+        window.location = '@Url.Action("Index", "CustomerMenu")';
+    }
+
+    // Loads review page with details of order
+    function reviewOrder(){
+        $(":mobile-pagecontainer").pagecontainer("change", "#review-order-page", {
+            transition: 'slide'
+        });
+    }
+
+    // Submits order and sends to the staff side
+    function submitOrder(){
+        ObjectPassed = {
+            Order : MODEL
+        }
+        $.ajax({
+            url: '@Url.Action("SubmitOrder", "CustomerMenu")',
+            method: 'POST',
+            data: ObjectPassed,
+            success: function(result){
+                console.log(result);
+                if (result){
+                    window.location = '@Url.Action("Index", "CustomerMenu")';
+                } else {
+                    location.reload();
+                }
+            }
+        });
+    }
+</script>
+}
