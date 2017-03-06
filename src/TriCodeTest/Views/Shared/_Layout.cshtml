@@ -8,7 +8,7 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/dist_material/css/bootstrap-material-design.css" />*@
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/dist_material/css/mdb.min.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/dist_material/css/mdb.min.css" />*@
 
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -40,6 +40,8 @@
                         <li><a asp-area="" asp-controller="OrderInfo" asp-action="Index">Orders</a></li>
                         <li><a asp-area="" asp-controller="MenuCreation" asp-action="Menu">Menu</a></li>
                         <li><a asp-area="" asp-controller="UpdateUserRole" asp-action="Index">Accounts</a></li>
+                        <li><a asp-area="" asp-controller="History" asp-action="Index">History</a></li>
+
                     }
                     @if (User.IsInRole("Staff"))
                     {
