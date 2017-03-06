@@ -72,7 +72,8 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order)
         {
             OrderInfo orderInfo = OrderSerialize(order);
-            //var numberToCall = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            var numberToSms = _context.Users.SingleOrDefault(usr => usr.Id == order.UserId).PhoneNumber;
+            bool success;
             if (id != orderInfo.Id)
             {
                 return NotFound();
