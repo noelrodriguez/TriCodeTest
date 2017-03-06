@@ -29,7 +29,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Retrieves all orders in the DB and returns them as a list.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>View containing list of orders</returns>
         // GET: OrderInfo
         public async Task<IActionResult> Index()
         {
@@ -42,8 +42,8 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Returns a single Order by the Id passed in.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Id of an order</param>
+        /// <returns>View to edit single order</returns>
         // GET: OrderInfo/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -65,12 +65,10 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Will update the Order in the database with the new status passed in.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="order"></param>
-        /// <returns></returns>
+        /// <param name="id">Id of an order</param>
+        /// <param name="order">Order object passed in by form</param>
+        /// <returns>Redirect to Index view upon success or editable view of same order object on failure</returns>
         // POST: OrderInfo/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,OrderMenuItems,Status,TotalPrice,UserId")] Order order)
@@ -107,7 +105,6 @@ namespace TriCodeTest.Controllers
                         {
                             _logger.LogWarning(e.Message);
                             return RedirectToAction("Edit");
-
                         }
 
                     }
@@ -148,8 +145,8 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Returns if the Order exists or not.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Id of an order</param>
+        /// <returns>order item</returns>
         private bool OrderInfoExists(int id)
         {
             return _context.OrderInfo.Any(e => e.Id == id);
@@ -158,8 +155,8 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Deserializes an Order and converts it to the view model.
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">Order model from the database</param>
+        /// <returns>View model of order with deserialized JSON for items in order</returns>
         private Order OrderDeserialize(OrderInfo model)
         {
             Order OrderModel = new Order
@@ -179,8 +176,8 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Serializes a view model and converts it to an Order.
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">Order view model</param>
+        /// <returns>Table model from the database with serialized JSON</returns>
         private OrderInfo OrderSerialize(Order model)
         {
             OrderInfo OrderInfoModel = new OrderInfo
@@ -199,8 +196,8 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Deserializes all the Orders in the database to view models.
         /// </summary>
-        /// <param name="listOrderInfo"></param>
-        /// <returns></returns>
+        /// <param name="listOrderInfo">List of order models from the database</param>
+        /// <returns>List of view models of orders with deserialized JSON for items in orders</returns>
         private List<Order> ListOrderDeserialize(List<OrderInfo> listOrderInfo)
         {
             List<Order> ListOrders = new List<Order>();
