@@ -101,7 +101,8 @@ namespace TriCodeTest.Controllers
             }
 
             ApplicationUser user = await GetCurrentUserAsync();
-            List<CartOrderMenuItem> listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).CartOrderMenuItems;
+            List<CartOrderMenuItem> listOfMenuitems = OrderDeserialize(await _context.OrderInfo.Where(usr => usr.User.Id == user.Id)
+                .Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync()).CartOrderMenuItems;
             foreach (var menuitem in listOfMenuitems)
             {
                 if (menuitem.MenuItem.Id == id)
@@ -127,7 +128,8 @@ namespace TriCodeTest.Controllers
         public async Task<ActionResult> EditItem(CartOrderMenuItem item)
         {
             ApplicationUser user = await GetCurrentUserAsync();
-            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id)
+                .Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
             CartOrder viewModelCart = OrderDeserialize(cart);
 
             if (ModelState.IsValid)
@@ -171,7 +173,8 @@ namespace TriCodeTest.Controllers
         public async Task<ActionResult> RemoveItem(CartOrderMenuItem item)
         {
             ApplicationUser user = await GetCurrentUserAsync();
-            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
+            OrderInfo cart = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id)
+                .Where(s => s.Status == Models.Status.Cart).SingleOrDefaultAsync();
             CartOrder viewModelCart = OrderDeserialize(cart);
 
             if (ModelState.IsValid)
@@ -203,7 +206,8 @@ namespace TriCodeTest.Controllers
         public async Task<ActionResult> SubmitOrder(CartOrder order)
         {
             ApplicationUser user = await GetCurrentUserAsync();
-            OrderInfo orderFromDB = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id).Where(o => o.Id == order.Id).SingleOrDefaultAsync();
+            OrderInfo orderFromDB = await _context.OrderInfo.Where(usr => usr.User.Id == user.Id)
+                .Where(o => o.Id == order.Id).SingleOrDefaultAsync();
             if (ModelState.IsValid)
             {
                 orderFromDB.Status = Status.Received;

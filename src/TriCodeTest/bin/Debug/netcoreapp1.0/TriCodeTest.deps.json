@@ -35,11 +35,11 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-          "bootstrap": "3.3.7",
           "jquery.datatables": "1.10.12",
           "jQuery": "3.1.1",
           "bootstrap-dialog": "3.3.4.1",
-          "Twilio": "5.0.2"
+          "Twilio": "5.0.2",
+          "bootstrap": "3.3.7"
         },
         "runtime": {
           "TriCodeTest.dll": {}
