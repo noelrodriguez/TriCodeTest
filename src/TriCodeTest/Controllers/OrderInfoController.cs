@@ -14,13 +14,20 @@ using TriCodeTest.TwilioNotification;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// Order info class
+    /// </summary>
     [Authorize(Roles = "Admin, Staff")]
     public class OrderInfoController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger _logger;
 
-
+        /// <summary>
+        /// Order info constructor
+        /// </summary>
+        /// <param name="context">context</param>
+        /// <param name="loggerFactory">loggerFactory</param>
         public OrderInfoController(ApplicationDbContext context, ILoggerFactory loggerFactory)
         {
             _context = context;

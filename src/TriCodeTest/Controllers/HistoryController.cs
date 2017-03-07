@@ -42,7 +42,7 @@ namespace TriCodeTest.Controllers
         {
             //use userId to select orders submitted by that user
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
-            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId).ToListAsync();
+            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status == Status.Completed).ToListAsync();
 
             //return view with the orders selected
             return View(userOrders);
