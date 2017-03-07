@@ -48,6 +48,7 @@
     <script>
         $(document).ready(function () {
             $("#statuses option[value=0]").remove();
+            $("#statuses option[value=1]").remove();
         });
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

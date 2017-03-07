@@ -150,10 +150,10 @@ namespace TriCodeTest.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Customer");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     ViewBag.Message = user.FirstName + " created a new account with password. Go to login.";
                     _logger.LogInformation(3, "User created a new account with password.");
-                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction(nameof(AccountController.Login), "Account");
                 }
                 AddErrors(result);
             }

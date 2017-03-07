@@ -12,6 +12,7 @@ using TriCodeTest.Models.CustomerMenuViewModels;
 using TriCodeTest.Models.MenuModels;
 using TriCodeTest.Models.OrderModels;
 using Newtonsoft.Json;
+using TriCodeTest.TwilioNotification;
 
 namespace TriCodeTest.Controllers
 {
@@ -213,7 +214,19 @@ namespace TriCodeTest.Controllers
                 orderFromDB.Status = Status.Received;
                 orderFromDB.DateTime = System.DateTime.Now;
                 await _context.SaveChangesAsync();
-                return Json(true);
+            }
+            try
+            {
+                bool success = Notification.SendNotification(user.PhoneNumber, "Your order has been received."
+                                            + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
+                if (success)
+                {
+                    return Json(true);
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(false);
             }
             return Json(false);
         }

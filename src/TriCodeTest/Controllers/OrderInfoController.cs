@@ -90,24 +90,6 @@ namespace TriCodeTest.Controllers
                     entry.Property(s => s.Status).IsModified = true;
                     await _context.SaveChangesAsync();
 
-                    if (order.Status.Equals(Models.Status.Received))
-                    {
-                        try
-                        {
-                            success = Notification.SendNotification(numberToSms, "Your order has been received."
-                                                        + " Estimated time: 15mins depending on the queue. DO NOT REPLY! Data rates may apply");
-                            if (success)
-                            {
-                                //ViewBag.Messag = "Message sent";
-                                return RedirectToAction("index");
-                            } 
-                        } catch (Exception  e)
-                        {
-                            _logger.LogWarning(e.Message);
-                            return RedirectToAction("Edit");
-                        }
-
-                    }
                     if (order.Status.Equals(Models.Status.Pick_Up))
                     {
                         try
@@ -117,15 +99,16 @@ namespace TriCodeTest.Controllers
                             if (success)
                             {
                                 //ViewBag.Messag = "Message sent";
-                                return RedirectToAction("index");
+                                return RedirectToAction("Index");
                             }
                         }
                         catch (Exception e)
                         {
                             _logger.LogWarning(e.Message);
-                            return RedirectToAction("Edit");
+                            return View(order);
                         }
                     }
+                    return RedirectToAction("Index");
                 }
                 catch (DbUpdateConcurrencyException)
                 {

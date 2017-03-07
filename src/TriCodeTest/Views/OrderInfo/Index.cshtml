@@ -158,12 +158,14 @@
                     }
                 }
             }
-            if (order.OrderMenuItems[i].AddOns.length != 0) {
-                itemHTML.append("<li id='itemAddOns" + i + "'>Add-ons: </li>");
-                var addonsHTML = $("#itemAddOns" + i);
-                for (var j = 0; j < order.OrderMenuItems[i].AddOns.length; j++) {
-                    var addons = order.OrderMenuItems[i].AddOns[j];
-                    addonsHTML.append(addons.Name + " | ");
+            if (order.OrderMenuItems[i].AddOns != null){
+                if (order.OrderMenuItems[i].AddOns.length != 0) {
+                    itemHTML.append("<li id='itemAddOns" + i + "'>Add-ons: </li>");
+                    var addonsHTML = $("#itemAddOns" + i);
+                    for (var j = 0; j < order.OrderMenuItems[i].AddOns.length; j++) {
+                        var addons = order.OrderMenuItems[i].AddOns[j];
+                        addonsHTML.append(addons.Name + " | ");
+                    }
                 }
             }
         }
