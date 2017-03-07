@@ -91,7 +91,7 @@ namespace TriCodeTest.Controllers
                     }
                     else
                     {
-                        return RedirectToLocal(returnUrl); // This will navigate to the customers view
+                        return RedirectToAction(nameof(CustomerMenuController.Index), "CustomerMenu", null); ; // This will navigate to the customers view
                     }
                 }
              
