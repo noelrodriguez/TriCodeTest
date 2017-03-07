@@ -1,78 +1,72 @@
 ﻿@model IndexViewModel
-<div class="container-fluid">
+<div class="container" align="center">
     <div class="row">
-        <div class="col-sm-6 col-md-offset-3">
-            <div class="card" style="padding-bottom: 20px">
-                <div class="card-block">
-                    <div class="text-center">
-                        <h3 style="padding-top:20px"><i class="fa fa-pencil"></i> Change your account settings</h3>
-                            <hr class="mt-2 mb-2">
+        <div class="col-md-6 col-md-offset-3 centered-form">
+            <h3><i class="fa fa-pencil"></i> Change your account settings</h3>
+            <hr>
 
-                            <dl class="dl-horizontal">
-                                <dt>First Name:</dt>
-                                <dd>
-                                    @(Model.FirstName ?? "None")
-                                    @if (Model.FirstName != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="SetFirstName" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        {
-                                            <a asp-controller="Manage" asp-action="SetFirstName" class="btn-bracketed btn-raised">Add</a>
-                                        }
+            <dl class="dl-horizontal">
+                <dt>First Name:</dt>
+                <dd>
+                    @(Model.FirstName ?? "None")
+                    @if (Model.FirstName != null)
+                    {
+                        <br />
+                        <a asp-controller="Manage" asp-action="SetFirstName" class="btn-outline-black">Change</a>
+                    }
+                    else
+                    {
+                        {
+                            <a asp-controller="Manage" asp-action="SetFirstName" class="btn-outline-black btn-raised">Add</a>
+                        }
 
-                                    }
+                    }
 
-                                </dd>
-                                <dt>Last Name:</dt>
-                                <dd>
-                                    @(Model.LastName ?? "None")
-                                    @if (Model.LastName != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="SetLastName" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        {
-                                            <a asp-controller="Manage" asp-action="SetLastName" class="btn-bracketed btn-raised">Add</a>
-                                        }
-                                    }
-                                </dd>
-                                <dt>Password:</dt>
-                                <dd>
+                </dd>
+                <dt>Last Name:</dt>
+                <dd>
+                    @(Model.LastName ?? "None")
+                    @if (Model.LastName != null)
+                    {
+                        <br />
+                        <a asp-controller="Manage" asp-action="SetLastName" class="btn-outline-black">Change</a>
+                    }
+                    else
+                    {
+                        {
+                            <a asp-controller="Manage" asp-action="SetLastName" class="btn-outline-black btn-raised">Add</a>
+                        }
+                    }
+                </dd>
+                <dt>Password:</dt>
+                <dd>
 
-                                    @if (Model.HasPassword)
+                    @if (Model.HasPassword)
             {
-                                        <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
-                                    }
-                                    else
-                                    {
-                                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
-                                    }
-                                </dd>
+                        <a asp-controller="Manage" asp-action="ChangePassword" class="btn-outline-black">Change</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="SetPassword" class="btn-outline-black">Create</a>
+                    }
+                </dd>
 
-                                <dt>Phone Number:</dt>
-                                <dd>
-                                    @(Model.PhoneNumber ?? "None")
-                                    @if (Model.PhoneNumber != null)
-                                    {
-                                        <br />
-                                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Change</a>
+                <dt>Phone Number:</dt>
+                <dd>
+                    @(Model.PhoneNumber ?? "None")
+                    @if (Model.PhoneNumber != null)
+                    {
+                        <br />
+                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-outline-black">Change</a>
                                         <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post"></form>
-                                    }
-                                    else
-                                    {
-                                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-bracketed">Add</a>
-                                    }
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn-outline-black">Add</a>
+                    }
 
-                                </dd>
-                            </dl>
-                    </div>
-                </div>
-            </div>
+                </dd>
+            </dl>
         </div>
     </div>
 </div>
