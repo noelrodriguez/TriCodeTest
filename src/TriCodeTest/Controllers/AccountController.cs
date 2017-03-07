@@ -174,7 +174,7 @@ namespace TriCodeTest.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(AccountController.Login), "Account");
+            return RedirectToAction(nameof(AccountController.Login), "Account", null);
         }
 
         /// <summary>
