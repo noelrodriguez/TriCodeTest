@@ -91,7 +91,7 @@ namespace TriCodeTest.Controllers
                     }
                     else
                     {
-                        return RedirectToAction(nameof(CustomerMenuController.Index), "CustomerMenu", null);// This will navigate to the customers view
+                        return RedirectToAction(nameof(CustomerMenuController.Index), "CustomerMenu");// This will navigate to the customers view
                     }
                 }
              
@@ -174,7 +174,7 @@ namespace TriCodeTest.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(AccountController.Login), "Account", null);
+            return RedirectToAction(nameof(AccountController.Login), "Account");
         }
 
         /// <summary>

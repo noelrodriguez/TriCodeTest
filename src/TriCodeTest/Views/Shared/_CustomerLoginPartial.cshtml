@@ -7,6 +7,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+        <ul>
             <li>
                 <input type="button" value="Manage Account" onclick="location.href='@Url.Action("Index", "Manage")'" />
                 @*<a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>*@
@@ -14,6 +15,8 @@
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
             </li>
+        </ul>
+            
     </form>
 }
 else
