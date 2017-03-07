@@ -40,13 +40,15 @@ namespace TriCodeTest.Controllers
         //return the view
         public async Task<IActionResult> Index()
         {
+            //cast int as a status to use for comparison
+            Status stat = (Status)4;
             //use userId to select orders submitted by that user
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
-            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId).ToListAsync();
-
-            //List<OrderInfo> orders = ListOrderDeserializer(userOrders);
+            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status.Equals(stat)).ToListAsync();
 
             List<Order> orders = ListOrderDeserialize(userOrders);
+
+            //return view with the orders selected
             return View(orders);
         }
         /// <summary>
@@ -57,16 +59,16 @@ namespace TriCodeTest.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             //return error if no user can be found
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }//end notFound
-            
+
             //variable to hold the variable that was in the table cell
             var theOrder = await _context.OrderInfo.SingleOrDefaultAsync(i => i.Id == id);
 
             //return error if no order can be found
-            if(theOrder == null)
+            if (theOrder == null)
             {
                 return NotFound();
             }//end notFound
@@ -80,7 +82,7 @@ namespace TriCodeTest.Controllers
         /// <returns>Index view with the updated order</returns>
         [HttpPost]
         public IActionResult resubmitOrder(int? id)
-        { 
+        {
             HistoryViewModel model = new HistoryViewModel();
             {
                 Orders = _context.OrderInfo.ToList();
@@ -126,7 +128,7 @@ namespace TriCodeTest.Controllers
             var userOrders2 = _context.OrderInfo.Where(o => o.User.Id == userId2).ToListAsync();
 
             return RedirectToAction("Index", userOrders2);
-        }    
+        }
 
         /// <summary>
         /// Deserializes all the Orders in the database to view models.
@@ -147,8 +149,10 @@ namespace TriCodeTest.Controllers
                     TotalPrice = oi.TotalPrice,
                 };
                 List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(oi.OrderMenuItems);
+
                 OrderModel.OrderMenuItems = OrderMenuItems;
                 ListOrders.Add(OrderModel);
+                //var orderNames = ListOrders.Select(n => n.OrderMenuItems.Select(p => p.MenuItem.Name));
             }
             return ListOrders;
         }
