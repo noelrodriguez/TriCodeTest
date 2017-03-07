@@ -35,7 +35,11 @@ namespace TriCodeTest.Controllers
             //return view with the orders selected
             return View(userOrders);
         }
-
+        /// <summary>
+        /// Displays order details based on clicked order
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>View with details for order</returns>
         public async Task<IActionResult> Details(int? id)
         {
             //return error if no user can be found
@@ -55,6 +59,11 @@ namespace TriCodeTest.Controllers
 
             return View(theOrder);
         }
+        /// <summary>
+        /// Resets the order state to recieved and the DateTime to the current time
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Index view with the updated order</returns>
         [HttpPost]
         public IActionResult resubmitOrder(int? id)
         { 
