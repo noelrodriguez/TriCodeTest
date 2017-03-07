@@ -10,8 +10,7 @@
       "NETCOREAPP1_0"
     ],
     "optimize": false,
-    "emitEntryPoint": true,
-    "xmlDoc": true
+    "emitEntryPoint": true
   },
   "targets": {
     ".NETCoreApp,Version=v1.0": {
