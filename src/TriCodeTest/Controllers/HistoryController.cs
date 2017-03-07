@@ -40,9 +40,11 @@ namespace TriCodeTest.Controllers
         //return the view
         public async Task<IActionResult> Index()
         {
+            //cast int as a status to use for comparison
+            Status stat = (Status)4;
             //use userId to select orders submitted by that user
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
-            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId).ToListAsync();
+            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status.Equals(stat)).ToListAsync();
 
             //return view with the orders selected
             return View(userOrders);
