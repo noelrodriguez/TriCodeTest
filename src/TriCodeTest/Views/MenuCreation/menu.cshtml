@@ -59,12 +59,12 @@
                 </thead>
                 <tbody>
                     @*@foreach (var item in subCategoryList)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                        </tr>
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                            </tr>
 
-                    }*@
+                        }*@
                 </tbody>
             </table>
 
@@ -90,13 +90,13 @@
                 </thead>
                 <tbody>
                     @*@foreach (var item in menuItemList)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>@item.Price</td>
-                        </tr>
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Price</td>
+                            </tr>
 
-                    }*@
+                        }*@
                 </tbody>
             </table>
             <div class="btn pull-left" style="width:100%">
@@ -472,9 +472,9 @@
                                 <input type="number" class="form-control" id="menuitem-price-edit" />
                             </div>
                             @*<div class="form-group">
-                                <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
-                                <textarea class="form-control" id="menuitem-ingredients-edit" readonly></textarea>
-                            </div>*@
+                                    <label for="menuitem-ingredients" class="form-control-label">Ingredients</label>
+                                    <textarea class="form-control" id="menuitem-ingredients-edit" readonly></textarea>
+                                </div>*@
                         </div>
                         <!--Start of Ingredients Section-->
                         <div class="col-md-8">
@@ -894,9 +894,9 @@
                     $('#addAddonName-text').val("");
                     $('#addAddonDescription-text').val("");
                     $('#addAddonPrice-text').val("0.00");
-                } else if(!exists) {
+                } else if(exists) {
                     alert("Addon name already exists, or is empty! Please enter another one.");
-                
+
                 } else {
                     //TODO change up this erro message so it centers and does stuff.
                 //    var type = BootstrapDialog.TYPE_WARNING;
@@ -953,7 +953,7 @@
                 var addonPrice = $('#editAddonPrice-text').val();
                 var subId = $('#subcategory-id-edit').val();
                 var subName = "";
-                
+
                 //Check if name already exists in table???!?!?!
                 var exists = false;
                 addonTableEdit
@@ -1886,17 +1886,19 @@
                 console.log(categoryName);
                 console.log(categoryDescription);
 
+                var count = 0;
                 var exists = false;
                 categoryTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (categoryName == value) {
+                            count++;
                             exists = true;
                         }
                     });
-
-                if (categoryName == "" || exists)
+                console.log(count);
+                if (categoryName == "" || count > 0)
                 {
                     alert("A category name must be entered, and not already exist.");
                 }
@@ -1948,17 +1950,19 @@
                 console.log("Category Description: " + categoryDescription);
                 console.log("Category id: " + categoryId);
 
+                var count = 0;
                 var exists = false;
                 categoryTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (categoryName == value) {
+                            count++;
                             exists = true;
                         }
                     });
 
-                if (categoryName == "" || exists)
+                if (categoryName == "" || count > 1)
                 {
                     alert("Category Name cannot be empty or currently exist in the database.");
 
@@ -2033,18 +2037,20 @@
 
                 var subcategoryName = $('#subcategory-name-add').val();
                 var subcategoryDescription = $('#subcategory-description-add').val();
-                
+
+                var count = 0;
                 var exists = false;
                 subCategoryTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (subcategoryName == value) {
+                            count++;
                             exists = true;
                         }
                     });
 
-                if (subcategoryName == "" || exists)
+                if (subcategoryName == "" || count > 0)
                 {
                     alert("A Subcategory name is required and must must not currently exist in the database.");
                 } else {
@@ -2193,18 +2199,20 @@
                 var subcategoryName = $('#subcategory-name-edit').val();
                 var subcategoryDescription = $('#subcategory-description-edit').val();
 
+                var count = 0;
                 var exists = false;
                 subCategoryTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (subcategoryName == value) {
+                            count++;
                             exists = true;
                         }
                     });
 
 
-                if (subcategoryName == "" || exists)
+                if (subcategoryName == "" || count > 1)
                 {
                     alert("Subcategory Name can't be empty or exist currently in the database. Please enter another name.");
                 } else {
@@ -2312,18 +2320,20 @@
                 var menuitemDescription = $('#menuitem-description-add').val();
                 //var menuitemIngredients = $('#menuitem-ingredients-add').val();
 
+                var count = 0;
                 var exists = false;
                 menuItemTable
                     .column(0)
                     .data()
                     .each(function (value, index) {
                         if (menuitemName == value) {
+                            count++;
                             exists = true;
                         }
                     });
 
 
-                if (menuitemName == "" || exists)
+                if (menuitemName == "" || count > 0)
                 {
                     alert("A valid name must be entered to add a menu item.");
 
@@ -2473,19 +2483,27 @@
                                                 //console.log("Posting image data.");
                                                 postMenuItemImage(result['id'], "edit"); //POST image to the database
                                             }
-                                            //Doesn't do anything
-                                            //var selectedSubcategory = subCategoryTable.row('tr.selected').data();
-                                            //menuItemDictionary.push({
-                                            //    key: menuitemName,
-                                            //    value: [result['subcategory']['name'],
-                                            //            "", //Menu Item Ingredients
-                                            //            menuitemPrice,
-                                            //            "",
-                                            //            "",
-                                            //            result['subcategoryId'],
-                                            //            result['id'],
-                                            //            menuitemDescription]
-                                            //});
+
+                                            var selectedSubcategory = subCategoryTable.row('tr.selected').data();
+                                            for (var item in menuItemDictionary) {
+                                                if (menuItemDictionary[item].key == result['name']) {
+                                                    menuItemDictionary.splice(item, 1); //Remove item from dictionary
+                                                }
+
+                                            }
+
+
+                                            menuItemDictionary.push({
+                                                key: menuitemName,
+                                                value: [selectedSubcategory,
+                                                        "", //Menu Item Ingredients
+                                                        menuitemPrice,
+                                                        "",
+                                                        "",
+                                                        result['subcategoryId'],
+                                                        result['id'],
+                                                        menuitemDescription]
+                                            });
 
                                             //Maybe update the subcategory dictionary...
                                             updateMenuitemTable();

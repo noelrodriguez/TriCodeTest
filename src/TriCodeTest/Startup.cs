@@ -60,6 +60,7 @@ namespace TriCodeTest
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+
             RoleSeeding.RoleSeeding.SeedRole(app.ApplicationServices).Wait(); //Seed roles
             if (env.IsDevelopment())
             {
