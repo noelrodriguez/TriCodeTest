@@ -4,9 +4,17 @@
     ViewData["Title"] = "Details";
 }
 
+
+
 <h2>Details</h2>
 
-<div>
+<style>
+    #detailDisplay{
+        font-size: 115%
+    }
+</style>
+
+<div id="detailDisplay">
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -42,6 +50,17 @@
     </dl>
 </div>
 
+<form asp-action="resubmitOrder" asp-route-Id="OrderInfo.Id">
+    <div class="form-horizontal">
+        @*<hr />*@
+
+        <input type="hidden" asp-for="Id" name="Id" />
+
+        <div class="form-group">
+            <input type="submit" value="Resbumit Order" class="btn btn-default" />
+        </div>
+    </div>
+</form>
 
     @*<a asp-action="Index">Back to List</a>*@
     <form asp-action="Index">
@@ -56,17 +75,7 @@
         </div>
     </form>
 
-<form asp-action="resubmitOrder" asp-route-Id="OrderInfo.Id">
-    <div class="form-horizontal">
-        @*<hr />*@
 
-        <input type="hidden" asp-for="Id" name="Id" />
-
-        <div class="form-group">
-            <input type="submit" value="Resbumit Order" class="btn btn-default" />
-        </div>
-    </div>
-</form>
 
 
 
