@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-
+using Newtonsoft.Json;
 
 namespace TriCodeTest.Controllers
 {
@@ -46,8 +46,10 @@ namespace TriCodeTest.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
             var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status.Equals(stat)).ToListAsync();
 
-            //return view with the orders selected
-            return View(userOrders);
+            //List<OrderInfo> orders = ListOrderDeserializer(userOrders);
+
+            List<Order> orders = ListOrderDeserialize(userOrders);
+            return View(orders);
         }
         /// <summary>
         /// Displays order details based on clicked order
@@ -126,6 +128,31 @@ namespace TriCodeTest.Controllers
             var userOrders2 = _context.OrderInfo.Where(o => o.User.Id == userId2).ToListAsync();
 
             return RedirectToAction("Index", userOrders2);
-        }   
+        }    
+
+        /// <summary>
+        /// Deserializes all the Orders in the database to view models.
+        /// </summary>
+        /// <param name="listOrderInfo">List of order models from the database</param>
+        /// <returns>List of view models of orders with deserialized JSON for items in orders</returns>
+        private List<Order> ListOrderDeserialize(List<OrderInfo> listOrderInfo)
+        {
+            List<Order> ListOrders = new List<Order>();
+            foreach (OrderInfo oi in listOrderInfo)
+            {
+                Order OrderModel = new Order
+                {
+                    Id = oi.Id,
+                    User = oi.User,
+                    DateTime = oi.DateTime,
+                    Status = oi.Status,
+                    TotalPrice = oi.TotalPrice,
+                };
+                List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(oi.OrderMenuItems);
+                OrderModel.OrderMenuItems = OrderMenuItems;
+                ListOrders.Add(OrderModel);
+            }
+            return ListOrders;
+        }
     }
 }
