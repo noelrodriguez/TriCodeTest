@@ -4,19 +4,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    td:nth-child(even) {
+        background-color: #f7f7f7;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    td{
+        font-size: 110%;
+    }
+</style>
+
+<h2>Order History</h2>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                Date/Time
+                Order Id
             </th>
             <th>
-                Items Ordered
+                Date & Time
+            </th>
+            <th>
+                Items
             </th>
             <th>
                 Status
@@ -30,6 +40,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
             </td>
