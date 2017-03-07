@@ -9,22 +9,34 @@ using Microsoft.EntityFrameworkCore;
 using TriCodeTest.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using TriCodeTest.Models;
+
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// Class history
+    /// </summary>
     public class HistoryController : Controller
     {
 
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Order function
+        /// </summary>
         public List<OrderInfo> Orders { get; private set; }
-
+        /// <summary>
+        /// Controller
+        /// </summary>
+        /// <param name="context">context</param>
         public HistoryController(ApplicationDbContext context)
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Display list of completed orders.
+        /// </summary>
+        /// <returns>Index</returns>
         //return the view
         public async Task<IActionResult> Index()
         {
@@ -38,7 +50,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Displays order details based on clicked order
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">id</param>
         /// <returns>View with details for order</returns>
         public async Task<IActionResult> Details(int? id)
         {
@@ -62,7 +74,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Resets the order state to recieved and the DateTime to the current time
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">id</param>
         /// <returns>Index view with the updated order</returns>
         [HttpPost]
         public IActionResult resubmitOrder(int? id)
