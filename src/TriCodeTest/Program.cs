@@ -7,8 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace TriCodeTest
 {
+    /// <summary>
+    /// Program starts here
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main function that bootstraps the project
+        /// </summary>
+        /// <param name="args">args</param>
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
