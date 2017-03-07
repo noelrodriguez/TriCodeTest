@@ -151,7 +151,8 @@ namespace TriCodeTest.Data
             {
                 context.Subcategory.Add(s);
             }
-            context.SaveChanges();
+
+            SaveChanges(context);
 
             // Addons
             // -----------------------------------------------------
@@ -216,9 +217,9 @@ namespace TriCodeTest.Data
             foreach (Ingredient i in ingredients)
             {
                 context.Ingredient.Add(i);
+                
             }
-            context.SaveChanges();
-
+         
             // MenuItemIngredients
             // -----------------------------------------------------
             var menuItemIngredients = new MenuItemIngredients[]
@@ -362,8 +363,19 @@ namespace TriCodeTest.Data
                     context.MenuItemIngredients.Add(m);
                 }
             }
-
-            context.SaveChanges();
+            SaveChanges(context);
+        }
+        //Handle saveChange exception
+        public static void SaveChanges(ApplicationDbContext context)
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("FATAL ERROR: " + e.Message);
+            }
         }
     }
 }

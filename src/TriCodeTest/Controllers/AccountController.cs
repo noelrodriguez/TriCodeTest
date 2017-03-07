@@ -28,7 +28,7 @@ namespace TriCodeTest.Controllers
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initial and assign fields.
+        /// Initializwe and assign fields.
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
@@ -51,11 +51,11 @@ namespace TriCodeTest.Controllers
 
 
         /// <summary>
-        /// GET: /Account/Login
+        /// Shows the v
         /// </summary>
         /// <param name="returnUrl"></param>
-        /// <returns></returns>
-       
+        /// <returns>view</returns>
+        /// GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
@@ -64,11 +64,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
         /// <summary>
-        ///  Log the user in the application
+        ///  Log the user into the application
         /// </summary>
         /// <param name="model"></param>
         /// <param name="returnUrl"></param>
-        /// <returns></returns>
+        /// <returns>new view</returns>
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -94,10 +94,7 @@ namespace TriCodeTest.Controllers
                         return RedirectToLocal(returnUrl); // This will navigate to the customers view
                     }
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
+             
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning(2, "User account locked out.");
@@ -105,21 +102,19 @@ namespace TriCodeTest.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "User name or Password is wrong");
                     return View(model);
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }
         /// <summary>
         /// Register user view
         /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        //
-        // GET: /Account/Register
+        /// <param name="returnUrl">returnUrl</param>
+        /// <returns>view </returns>
+        /// GET: /Account/Register
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -129,13 +124,12 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        ///  Register the user with the data passed
+        ///  Gets date to create an account
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        //
-        // POST: /Account/Register
+        /// <param name="model">model</param>
+        /// <param name="returnUrl">returnUrl</param>
+        /// <returns>view</returns>
+        /// POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -157,71 +151,9 @@ namespace TriCodeTest.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, "Customer");
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    ViewBag.Message = user.FirstName + " created a new account with password. Go to login.";
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-        /// <summary>
-        /// Admin registration view
-        /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [AllowAnonymous] //Admin registration is only for admins.
-        public IActionResult AdminRegister(string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-        /// <summary>
-        /// GET Admin data and register
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AdminRegister(RegisterViewModel model, string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    PhoneNumber = model.Phone,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                };
-
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    var userRole = await _userManager.FindByNameAsync(model.Email);
-                    var checkRole = await _userManager.IsInRoleAsync(userRole, model.Email);
-                    //Two conditions. Check if user is admin or not else make user stuff. 
-                    if (!checkRole)
-                    {
-                        await _userManager.AddToRoleAsync(user, "Admin");
-                    } 
-                    else
-                    {
-                        await _userManager.AddToRoleAsync(user, "Staff");
-                    }
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created with password and assigned a role");
                     //return RedirectToLocal(returnUrl);
-                    RedirectToAction(nameof(OrderInfoController.Index), "OrderInfo", null);
                 }
                 AddErrors(result);
             }
@@ -244,112 +176,13 @@ namespace TriCodeTest.Controllers
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(AccountController.Login), "Account");
         }
-        /// <summary>
-        /// External login (Not implemented)
-        /// </summary>
-        /// <param name="provider"></param>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public IActionResult ExternalLogin(string provider, string returnUrl = null)
-        {
-            // Request a redirect to the external login provider.
-            var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
-            return Challenge(properties, provider);
-        }
 
         /// <summary>
-        /// ExternalLoginCallback not going to be implemented
+        /// Confirm email after registration.
         /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <param name="remoteError"></param>
-        /// <returns></returns>
-        //
-        // GET: /Account/ExternalLoginCallback
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
-        {
-            if (remoteError != null)
-            {
-                ModelState.AddModelError(string.Empty, $"Error from external provider: {remoteError}");
-                return View(nameof(Login));
-            }
-            var info = await _signInManager.GetExternalLoginInfoAsync();
-            if (info == null)
-            {
-                return RedirectToAction(nameof(Login));
-            }
-
-            // Sign in the user with this external login provider if the user already has a login.
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);
-            if (result.Succeeded)
-            {
-                _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
-                return RedirectToLocal(returnUrl);
-            }
-            if (result.RequiresTwoFactor)
-            {
-                return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
-            }
-            if (result.IsLockedOut)
-            {
-                return View("Lockout");
-            }
-            else
-            {
-                // If the user does not have an account, then ask the user to create an account.
-                ViewData["ReturnUrl"] = returnUrl;
-                ViewData["LoginProvider"] = info.LoginProvider;
-                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
-            }
-        }
-
-        //
-        // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
-        {
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await _signInManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation(6, "User created an account using {Name} provider.", info.LoginProvider);
-                        return RedirectToLocal(returnUrl);
-                    }
-                }
-                AddErrors(result);
-            }
-
-            ViewData["ReturnUrl"] = returnUrl;
-            return View(model);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
+        /// <param name="userId">userId</param>
+        /// <param name="code">code</param>
+        /// <returns>error or success view</returns>
         // GET: /Account/ConfirmEmail
         [HttpGet]
         [AllowAnonymous]
@@ -378,10 +211,10 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Reset password function. Takes current password and replaces with it with new one.
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>view reset</returns>
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -397,8 +230,6 @@ namespace TriCodeTest.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
-
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
@@ -412,11 +243,10 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// 
+        /// View to confirm password reset
         /// </summary>
-        /// <returns></returns>
-        //
-        // GET: /Account/ForgotPasswordConfirmation
+        /// <returns>view</returns>
+        /// GET: /Account/ForgotPasswordConfirmation
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
@@ -424,7 +254,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
-        //
+        /// <summary>
+        /// Show error or view if the code is correct
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns>view</returns>
         // GET: /Account/ResetPassword
         [HttpGet]
         [AllowAnonymous]
@@ -433,7 +267,11 @@ namespace TriCodeTest.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
+        /// <summary>
+        /// Resets users password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> view model</returns>
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -468,109 +306,8 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/SendCode
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult> SendCode(string returnUrl = null, bool rememberMe = false)
-        {
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                return View("Error");
-            }
-            var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(user);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
-
-        //
-        // POST: /Account/SendCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendCode(SendCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                return View("Error");
-            }
-
-            // Generate the token and send it
-            var code = await _userManager.GenerateTwoFactorTokenAsync(user, model.SelectedProvider);
-            if (string.IsNullOrWhiteSpace(code))
-            {
-                return View("Error");
-            }
-
-            var message = "Your security code is: " + code;
-            if (model.SelectedProvider == "Email")
-            {
-                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
-            }
-            else if (model.SelectedProvider == "Phone")
-            {
-                await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
-            }
-
-            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
-        }
-
-        //
-        // GET: /Account/VerifyCode
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> VerifyCode(string provider, bool rememberMe, string returnUrl = null)
-        {
-            // Require that the user has already logged in via username/password or external login
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                return View("Error");
-            }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
-
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> VerifyCode(VerifyCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // The following code protects for brute force attacks against the two factor codes.
-            // If a user enters incorrect codes for a specified amount of time then the user account
-            // will be locked out for a specified amount of time.
-            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe, model.RememberBrowser);
-            if (result.Succeeded)
-            {
-                return RedirectToLocal(model.ReturnUrl);
-            }
-            if (result.IsLockedOut)
-            {
-                _logger.LogWarning(7, "User account locked out.");
-                return View("Lockout");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid code.");
-                return View(model);
-            }
-        }
-
         #region Helpers
-
+  
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)

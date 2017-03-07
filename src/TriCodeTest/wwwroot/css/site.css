@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+      background-color: #efefef;
 }
 
 /* Wrapping element */
@@ -8,6 +9,14 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+.navbar {
+  background-color: #3097d1;
+}
+
+.container .navbar-brand {
+    color:white;
+    font-weight:bold;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -47,4 +56,30 @@ textarea {
   .carousel-caption {
     display: none
   }
+}
+.centered-form {
+ background-color: #FFFFFF;
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 0.2px #888888;
+  padding: 10px;
+}
+ 
+.navbar-custom {
+    background-color:#3097d1;
+    color:#ffffff;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  background-color: #ff6a00;
+  color: #ffffff;
 }
