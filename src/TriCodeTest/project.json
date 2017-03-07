@@ -1,4 +1,8 @@
 {
+  "title": "Tricode Documentation",
+  "copyright": "Central Washington Univeristy",
+  "description": "Food ordering application",
+  "language": "en-US",
   "userSecretsId": "aspnet-TriCodeTest-4c260973-06b4-422a-a39c-29ba17c5fbc2",
 
   "dependencies": {
@@ -76,7 +80,8 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "xmlDoc": true
   },
 
   "runtimeOptions": {
