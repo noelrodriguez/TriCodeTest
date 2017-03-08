@@ -62,6 +62,7 @@ namespace TriCodeTest.Controllers
 
             //variable to hold the variable that was in the table cell
             var theOrder = await _context.OrderInfo.Include(usr => usr.User).SingleOrDefaultAsync(m => m.Id == id);
+            Console.WriteLine(theOrder.OrderMenuItems);
 
             var theOrderDS = OrderDeserialize(theOrder);
 
