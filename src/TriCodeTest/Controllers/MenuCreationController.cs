@@ -381,7 +381,7 @@ namespace TriCodeTest.Controllers
         /// Given a menu item id retrieves a menu item and returns
         /// the menu item image.
         /// </summary>
-        /// <param name="id">Menuitem Id</param>
+        /// <param name="id">Menu item Id</param>
         /// <returns>
         /// Base64 image string
         /// </returns>

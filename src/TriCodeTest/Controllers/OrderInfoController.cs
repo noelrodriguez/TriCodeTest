@@ -112,7 +112,7 @@ namespace TriCodeTest.Controllers
                             ViewBag.Messag = "PhoneNumber incorrect ";
                             if (success)
                             {
-                                //ViewBag.Messag = "Message sent";
+                                //ViewBag.Message = "Message sent";
                                 return RedirectToAction("Index");
                             }
                         }
@@ -152,7 +152,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Deserializes an Order and converts it to the view model.
+        /// Deserialize an Order and converts it to the view model.
         /// </summary>
         /// <param name="model">Order model from the database</param>
         /// <returns>
@@ -197,7 +197,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Deserializes all the Orders in the database to view models.
+        /// Deserialize all the Orders in the database to view models.
         /// </summary>
         /// <param name="listOrderInfo">List of order models from the database</param>
         /// <returns>

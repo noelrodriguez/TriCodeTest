@@ -63,8 +63,9 @@ namespace TriCodeTest.Controllers
             //variable to hold the variable that was in the table cell
             var theOrder = await _context.OrderInfo.Include(usr => usr.User).SingleOrDefaultAsync(m => m.Id == id);
 
-            var theOrderDS = OrderDeserialize(theOrder);
-
+            //var theOrderDS = OrderDeserialize(theOrder);
+            List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(theOrder.OrderMenuItems);
+            Console.WriteLine(OrderMenuItems);
             //var theOrderDS = OrderDeserialize(theOrder);
 
             //return error if no order can be found
@@ -73,7 +74,7 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }//end notFound
 
-            return View(theOrderDS);
+            return View(OrderMenuItems);
         }
         /// <summary>
         /// Resets the order state to received and the DateTime to the current time
