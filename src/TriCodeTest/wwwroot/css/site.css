@@ -4,6 +4,14 @@
       background-color: #efefef;
 }
 
+.header-navbar {
+    background-color: #3097D1 !important;
+    text-shadow: 0 0 0 !important;
+}
+.header-navbar a {
+    vertical-align: middle;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

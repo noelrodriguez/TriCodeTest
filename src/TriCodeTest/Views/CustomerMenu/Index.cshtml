@@ -38,7 +38,7 @@
         </ul>
     </div>
     @* Header *@
-    <div data-role="header">
+    <div data-role="header" class="header-navbar">
         <a href="" style="display:none"></a>
         <a href="#category-page-panel" data-role="button" data-icon="bars">
             Menu
@@ -79,7 +79,7 @@
         </ul>
     </div>
     @* Header *@
-    <div data-role="header">
+    <div data-role="header" class="header-navbar">
         <a href="#" data-rel="back" data-role="button">Back</a>
         <a href="#subcategory-page-panel" data-role="button" data-icon="bars">
             Menu
@@ -113,7 +113,7 @@
         </ul>
     </div>
     @* Header *@
-    <div data-role="header">
+    <div data-role="header" class="header-navbar">
         <a href="#" data-rel="back" data-role="button">Back</a>
         <a href="#menuitem-page-panel" data-role="button" data-icon="bars">
             Menu
@@ -125,50 +125,6 @@
     @* Main Content (gets loaded dynamically) *@
     <div role="main" class="ui-content">
         <ul id="menuitemList" data-role="listview"></ul>
-    </div>
-</div>
-
-@* Details Page *@
-
-<div data-role="page" id="details-page">
-    @* Panel *@
-    <div data-role="panel" class="myPanel" id="details-page-panel" data-position="right">
-        <ul data-role="listview" id="sidebar">
-            @await Html.PartialAsync("_CustomerLoginPartial")
-        </ul>
-    </div>
-    @* Header *@
-    <div data-role="header">
-        <a href="#" data-rel="back" data-role="button">Back</a>
-        <a href="#details-page-panel" data-role="button" data-icon="bars">
-            Menu
-        </a>
-        <h3>
-            <a href="#categories-page" style="color:inherit;text-decoration:none">Food Order</a>
-        </h3>
-    </div>
-    @* Main Content (gets loaded dynamically) *@
-    <div role="main" class="ui-content">
-        <div id="details-header-row" class="ui-responsive">
-            <img src="~/images/menuitem/food-banner.jpg" id="menuitemImg" style="width:100%;height:300px" />
-        </div>
-        <div id="description-container" class="ui-responsive">
-            <h6 id="description">
-                <span id="description-text">Menu item details would go here</span>
-            </h6>
-        </div>
-        <div class="main-details ui-responsive">
-            <div class="ui-block-a" style="width:50%">
-                <div id="menuitem-labels" class="ui-bar">
-                    Name
-                </div>
-            </div>
-            <div class="ui-block-b" style="width:50%">
-                <div id="menuitem-info" class="ui-bar">
-                    Details
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
