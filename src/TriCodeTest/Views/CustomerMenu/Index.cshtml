@@ -12,6 +12,17 @@
 #description span {
     font: bold 18px Cursive;
 }
+.featured-item-image {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+.banner-img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+}
 </style>
 
 @* Categories Page *@
@@ -41,6 +52,9 @@
     </div>
     @* Main Content *@
     <div role="main" class="ui-content">
+        <div class="featured-item-image">
+            <img src="~/images/category-food-banner.jpeg" class="banner-img"/>
+        </div>
         <ul id="categoryList" data-role="listview">
             @foreach (var category in Model.Categories)
             {
@@ -79,6 +93,9 @@
     </div>
     @* Main Content (gets loaded dynamically) *@
     <div role="main" class="ui-content">
+        <div class="featured-item-image">
+            <img src="~/images/subcategory-food-banner.jpg" class="banner-img" />
+        </div>
         <ul id="subcategoryList" data-role="listview"></ul>
     </div>
 </div>
