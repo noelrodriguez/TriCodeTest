@@ -1,4 +1,4 @@
-@model TriCodeTest.Models.OrderModels.OrderInfo
+@model TriCodeTest.Models.OrderModels.Order
 
 @{
     ViewData["Title"] = "Details";
@@ -30,7 +30,7 @@
             @Html.DisplayFor(model => model.DateTime)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.OrderMenuItems)
+            Menu Items
         </dt>
         <dd>
             @Html.DisplayFor(model => model.OrderMenuItems)

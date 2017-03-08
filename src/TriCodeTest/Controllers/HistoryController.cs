@@ -65,7 +65,11 @@ namespace TriCodeTest.Controllers
             }//end notFound
 
             //variable to hold the variable that was in the table cell
-            var theOrder = await _context.OrderInfo.SingleOrDefaultAsync(i => i.Id == id);
+            var theOrder = await _context.OrderInfo.Include(usr => usr.User).SingleOrDefaultAsync(m => m.Id == id);
+
+            var theOrderDS = OrderDeserialize(theOrder);
+
+            //var theOrderDS = OrderDeserialize(theOrder);
 
             //return error if no order can be found
             if (theOrder == null)
@@ -73,7 +77,7 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }//end notFound
 
-            return View(theOrder);
+            return View(theOrderDS);
         }
         /// <summary>
         /// Resets the order state to recieved and the DateTime to the current time
@@ -155,6 +159,27 @@ namespace TriCodeTest.Controllers
                 //var orderNames = ListOrders.Select(n => n.OrderMenuItems.Select(p => p.MenuItem.Name));
             }
             return ListOrders;
+        }
+
+        /// <summary>
+        /// Deserializes an Order and converts it to the view model.
+        /// </summary>
+        /// <param name="model">Order model from the database</param>
+        /// <returns>View model of order with deserialized JSON for items in order</returns>
+        private Order OrderDeserialize(OrderInfo model)
+        {
+            Order OrderModel = new Order
+            {
+                Id = model.Id,
+                User = model.User,
+                DateTime = model.DateTime,
+                Status = model.Status,
+                TotalPrice = model.TotalPrice,
+                UserId = model.User.Id
+            };
+            List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
+            OrderModel.OrderMenuItems = OrderMenuItems;
+            return OrderModel;
         }
     }
 }
