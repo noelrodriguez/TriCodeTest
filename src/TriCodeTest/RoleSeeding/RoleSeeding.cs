@@ -11,7 +11,6 @@ namespace TriCodeTest.RoleSeeding
 {
     /// <summary>
     /// This class does role seeding during application bootstraping.
-    /// The has roles array
     /// Has a function called SeedRole that take a parameter of type
     /// IServiceProvider
     /// </summary>
