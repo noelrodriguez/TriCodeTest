@@ -7,19 +7,26 @@
 }
 
 <style>
-    /*#description span {
-        font: bold 18px Cursive;
-    }
-    #header-item-name {
-
-    }*/
-    #header-image h2 {
+    .item-name-caption {
         position: absolute;
-        top: 380px;
-        left: 25px;
+        top: 80%;
+        width: 100%;
+        text-align: center;
         color: white;
+        font-size: 2em;
     }
-
+    .featured-item-image {
+        max-width: 100%;
+        height: auto;
+        width: auto\9;
+        position: relative;
+    }
+    .banner-img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        max-width: 100%;
+    }
     .ui-li-static.ui-collapsible > .ui-collapsible-heading {
         margin: 0;
     }
@@ -58,9 +65,9 @@
     @* Main Content *@
     <div role="main" class="ui-content">
         <div id="details-header-row">
-            <div id="header-image">
-                <img src="~/images/food-banner.jpeg" id="menuitemImg" />
-                <h2>@Model.MenuItem.Name</h2>
+            <div class="featured-item-image">
+                <div class="item-name-caption">@Model.MenuItem.Name</div>
+                <img src="~/images/food-banner.jpeg" class="banner-img" />
             </div>
         </div>
         <ul data-role="listview">
