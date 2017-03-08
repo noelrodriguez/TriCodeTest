@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [Authorize(Roles = "Admin")]
     public class UpdateUserRoleController : Controller
     {
@@ -24,6 +28,12 @@ namespace TriCodeTest.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateUserRoleController"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="roleManager">The role manager.</param>
+        /// <param name="context">The context.</param>
         public UpdateUserRoleController(
             UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager,
             ApplicationDbContext context)
@@ -33,6 +43,10 @@ namespace TriCodeTest.Controllers
             _context = context;
         }
         // GET: /<controller>/
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             UpdateUserRoleViewModel model = new UpdateUserRoleViewModel()
@@ -51,6 +65,11 @@ namespace TriCodeTest.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Updates the user role.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns></returns>
         public ActionResult UpdateUserRole(FormCollection userId)
         {
             UpdateUserRoleViewModel model = new UpdateUserRoleViewModel()
@@ -69,6 +88,11 @@ namespace TriCodeTest.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Sets the role admin.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> setRoleAdmin([FromBody] PostRoleUpdateUserRoleViewModel model)
@@ -98,6 +122,11 @@ namespace TriCodeTest.Controllers
             return Content(successfullyChanged.ToString());
         }
 
+        /// <summary>
+        /// Sets the role staff.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> setRoleStaff([FromBody] PostRoleUpdateUserRoleViewModel model)
@@ -127,6 +156,11 @@ namespace TriCodeTest.Controllers
             return Content(succcessfullyChanged.ToString());
         }
 
+        /// <summary>
+        /// Sets the role customer.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> setRoleCustomer([FromBody] PostRoleUpdateUserRoleViewModel model)
@@ -156,6 +190,12 @@ namespace TriCodeTest.Controllers
             return Content(successfullyChanged.ToString());
         }
 
+        /// <summary>
+        /// Roles the add to user.
+        /// </summary>
+        /// <param name="UserName">Name of the user.</param>
+        /// <param name="RoleName">Name of the role.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RoleAddToUser(string UserName, string RoleName)

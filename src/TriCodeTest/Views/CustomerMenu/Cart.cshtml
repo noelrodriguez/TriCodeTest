@@ -138,27 +138,40 @@
 <script>
     var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
 
-    // Load page to edit the passed item
     function editItem(menuitem){
+        /// <summary>
+        /// Edits the item.
+        /// </summary>
+        /// <param name="menuitem">The menuitem.</param>
+        /// <returns></returns>
         console.log(menuitem);
         console.log(menuitem.MenuItem.Id);
         window.location = '@Url.Action("EditItem", "CustomerMenu")' + '/' + menuitem.MenuItem.Id;
     }
 
-    // Navigate back to the menu
     function addAnotherItem(){
+        /// <summary>
+        /// Adds another item.
+        /// </summary>
+        /// <returns></returns>
         window.location = '@Url.Action("Index", "CustomerMenu")';
     }
 
-    // Loads review page with details of order
     function reviewOrder(){
+        /// <summary>
+        /// Reviews the order.
+        /// </summary>
+        /// <returns></returns>
         $(":mobile-pagecontainer").pagecontainer("change", "#review-order-page", {
             transition: 'slide'
         });
     }
 
-    // Submits order and sends to the staff side
     function submitOrder(){
+        /// <summary>
+        /// Submits the order.
+        /// </summary>
+        /// <returns></returns>
         ObjectPassed = {
             Order : MODEL
         }

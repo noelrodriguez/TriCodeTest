@@ -10,7 +10,7 @@ using Twilio.Types;
 namespace TriCodeTest.TwilioNotification
 {
     /// <summary>
-    /// 
+    /// Notification. Sends notification 
     /// </summary>
     public class Notification
     {
@@ -20,6 +20,7 @@ namespace TriCodeTest.TwilioNotification
         /// </summary>
         /// <param name="phoneNumber">phoneNumber</param>
         /// <param name="body">body</param>
+        /// <returns></returns>
 
         public static bool SendNotification(string phoneNumber, string body)
         {
@@ -37,7 +38,6 @@ namespace TriCodeTest.TwilioNotification
                 return true;
             }
             
-           // Console.WriteLine(message.Sid);
         }
     }
 }

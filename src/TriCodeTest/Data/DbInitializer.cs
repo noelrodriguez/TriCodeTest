@@ -14,8 +14,15 @@ using Newtonsoft.Json;
 
 namespace TriCodeTest.Data
 {
+    /// <summary>
+    /// DbInitializer
+    /// </summary>
     public class DbInitializer
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public static void Initialize(ApplicationDbContext context)
         {
             context.Database.EnsureCreated();
