@@ -40,8 +40,12 @@ namespace TriCodeTest.Controllers
         //return the view
         public async Task<IActionResult> Index()
         {
+            //cast int as a status to use for comparison
+            Status stat = (Status)4;
+            //use userId to select orders submitted by that user
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
-            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status == Status.Completed).ToListAsync();
+            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status.Equals(stat)).ToListAsync();
+
             List<Order> orders = ListOrderDeserialize(userOrders);
 
             //return view with the orders selected
@@ -66,7 +70,7 @@ namespace TriCodeTest.Controllers
             //var theOrderDS = OrderDeserialize(theOrder);
             List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(theOrder.OrderMenuItems);
             Console.WriteLine(OrderMenuItems);
-            //var theOrderDS = OrderDeserialize(theOrder);
+            var theOrderDS = OrderDeserialize(theOrder);
 
             //return error if no order can be found
             if (theOrder == null)
@@ -74,10 +78,11 @@ namespace TriCodeTest.Controllers
                 return NotFound();
             }//end notFound
 
-            return View(OrderMenuItems);
+            return View(theOrderDS/*OrderMenuItems*/);
         }
+
         /// <summary>
-        /// Resets the order state to received and the DateTime to the current time
+        /// Resets the order state to recieved and the DateTime to the current time
         /// </summary>
         /// <param name="id">id</param>
         /// <returns>Index view with the updated order</returns>
@@ -132,7 +137,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Deserialize all the Orders in the database to view models.
+        /// Deserializes all the Orders in the database to view models.
         /// </summary>
         /// <param name="listOrderInfo">List of order models from the database</param>
         /// <returns>List of view models of orders with deserialized JSON for items in orders</returns>
@@ -159,7 +164,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Deserialized an Order and converts it to the view model.
+        /// Deserializes an Order and converts it to the view model.
         /// </summary>
         /// <param name="model">Order model from the database</param>
         /// <returns>View model of order with deserialized JSON for items in order</returns>
@@ -174,7 +179,7 @@ namespace TriCodeTest.Controllers
                 TotalPrice = model.TotalPrice,
                 UserId = model.User.Id
             };
-            List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems);
+            List<OrderMenuItem> OrderMenuItems = JsonConvert.DeserializeObject<List<OrderMenuItem>>(model.OrderMenuItems.ToString());
             OrderModel.OrderMenuItems = OrderMenuItems;
             return OrderModel;
         }
