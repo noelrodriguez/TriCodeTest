@@ -16,6 +16,7 @@ namespace TriCodeTest.Controllers
     /// <summary>
     /// Class history
     /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class HistoryController : Controller
     {
 
@@ -24,6 +25,9 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Order function
         /// </summary>
+        /// <value>
+        /// The orders.
+        /// </value>
         public List<OrderInfo> Orders { get; private set; }
         /// <summary>
         /// Controller
@@ -36,7 +40,9 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Display list of completed orders.
         /// </summary>
-        /// <returns>Index</returns>
+        /// <returns>
+        /// Index
+        /// </returns>
         //return the view
         public async Task<IActionResult> Index()
         {
@@ -51,7 +57,9 @@ namespace TriCodeTest.Controllers
         /// Displays order details based on clicked order
         /// </summary>
         /// <param name="id">id</param>
-        /// <returns>View with details for order</returns>
+        /// <returns>
+        /// View with details for order
+        /// </returns>
         public async Task<IActionResult> Details(int? id)
         {
             //return error if no user can be found
@@ -75,7 +83,9 @@ namespace TriCodeTest.Controllers
         /// Resets the order state to recieved and the DateTime to the current time
         /// </summary>
         /// <param name="id">id</param>
-        /// <returns>Index view with the updated order</returns>
+        /// <returns>
+        /// Index view with the updated order
+        /// </returns>
         [HttpPost]
         public IActionResult resubmitOrder(int? id)
         { 

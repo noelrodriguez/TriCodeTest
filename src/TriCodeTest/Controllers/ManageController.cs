@@ -13,6 +13,10 @@ using TriCodeTest.Data;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// ManageController
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [Authorize]
     public class ManageController : Controller
     {
@@ -25,12 +29,12 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Constructor: Initialization and assignment is done here
         /// </summary>
-        /// <param name="userManager"></param>
-        /// <param name="signInManager"></param>
-        /// <param name="emailSender"></param>
-        /// <param name="smsSender"></param>
-        /// <param name="loggerFactory"></param>
-        /// <param name="context"></param>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="emailSender">The email sender.</param>
+        /// <param name="smsSender">The SMS sender.</param>
+        /// <param name="loggerFactory">The logger factory.</param>
+        /// <param name="context">The context.</param>
         public ManageController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
@@ -49,7 +53,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Display data for use to make edits to them.
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message.</param>
         /// <returns></returns>
         //
         // GET: /Manage/Index
@@ -86,6 +90,11 @@ namespace TriCodeTest.Controllers
 
         //
         // POST: /Manage/RemoveLogin
+        /// <summary>
+        /// Removes the login.
+        /// </summary>
+        /// <param name="account">The account.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
@@ -104,7 +113,7 @@ namespace TriCodeTest.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
         /// <summary>
-        ///  Return the view that allows user to add phone number
+        /// Return the view that allows user to add phone number
         /// </summary>
         /// <returns></returns>
         //
@@ -115,9 +124,9 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Gets phone number that is assigned to the user 
+        /// Gets phone number that is assigned to the user
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         //
         // POST: /Manage/AddPhoneNumber
@@ -139,26 +148,13 @@ namespace TriCodeTest.Controllers
             }
 
             return RedirectToAction("index");
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(model);
-            //}
-            //// Generate the token and send it
-            //var user = await GetCurrentUserAsync();
-            //if (user == null)
-            //{
-            //    return View("Error");
-            //}
-            //var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
-            //await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
-            //return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }
 
 
         /// <summary>
         /// Get and Check if phone number is valid
         /// </summary>
-        /// <param name="phoneNumber"></param>
+        /// <param name="phoneNumber">The phone number.</param>
         /// <returns></returns>
         //
         // GET: /Manage/VerifyPhoneNumber
@@ -178,7 +174,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Before posting phone number to the database do one more check
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         //
         // POST: /Manage/VerifyPhoneNumber
@@ -206,7 +202,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Remove number 
+        /// Remove number
         /// </summary>
         /// <returns></returns>
         //
@@ -229,7 +225,7 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// View Change Password 
+        /// View Change Password
         /// </summary>
         /// <returns></returns>
         //
@@ -243,7 +239,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Make changes to the password
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         //
         // POST: /Manage/ChangePassword
@@ -284,7 +280,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Set the password (By currently logged in user)
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         //
         // POST: /Manage/SetPassword
@@ -324,9 +320,9 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        /// Set the first name for the current user 
+        /// Set the first name for the current user
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         // POST: /Manage/SetFirstName
         [HttpPost]
@@ -363,7 +359,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Set the first name for the currently logged user
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">The model.</param>
         /// <returns></returns>
         // POST: /Manage/SetLastName
         [HttpPost]
@@ -390,7 +386,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Manage user login
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The message.</param>
         /// <returns></returns>
         //GET: /Manage/ManageLogins
         [HttpGet]
@@ -418,6 +414,11 @@ namespace TriCodeTest.Controllers
 
         //
         // POST: /Manage/LinkLogin
+        /// <summary>
+        /// Links the login.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult LinkLogin(string provider)
@@ -430,6 +431,10 @@ namespace TriCodeTest.Controllers
 
         //
         // GET: /Manage/LinkLoginCallback
+        /// <summary>
+        /// Links the login callback.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> LinkLoginCallback()
         {
@@ -450,6 +455,10 @@ namespace TriCodeTest.Controllers
 
         #region Helpers
 
+        /// <summary>
+        /// Adds the errors.
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -458,18 +467,49 @@ namespace TriCodeTest.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ManageMessageId
         {
+            /// <summary>
+            /// The add phone success
+            /// </summary>
             AddPhoneSuccess,
+            /// <summary>
+            /// The add login success
+            /// </summary>
             AddLoginSuccess,
+            /// <summary>
+            /// The change password success
+            /// </summary>
             ChangePasswordSuccess,
+            /// <summary>
+            /// The set two factor success
+            /// </summary>
             SetTwoFactorSuccess,
+            /// <summary>
+            /// The set password success
+            /// </summary>
             SetPasswordSuccess,
+            /// <summary>
+            /// The remove login success
+            /// </summary>
             RemoveLoginSuccess,
+            /// <summary>
+            /// The remove phone success
+            /// </summary>
             RemovePhoneSuccess,
+            /// <summary>
+            /// The error
+            /// </summary>
             Error
         }
 
+        /// <summary>
+        /// Gets the current user asynchronous.
+        /// </summary>
+        /// <returns></returns>
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);

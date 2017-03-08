@@ -105,8 +105,11 @@
     var table;
     var row;
     var status;
-    // This removes the searching, sorting, and paging of the DataTable
+    
     $(document).ready(function () {
+        /// <summary>
+        /// This removes the searching, sorting, and paging of the DataTable
+        /// </summary>
         table = $('#example').DataTable({
             "paging": false,
             "bSort": false,
@@ -129,9 +132,15 @@
         })
     });
 
-    // Displays the detailed information of the Order for its AddOns and modified Ingredients
+ 
     function openModal(order)
     {
+        /// <summary>
+        /// Opens the modal.
+        /// Displays the detailed information of the Order for its AddOns and modified Ingredients
+        /// </summary>
+        /// <param name="order">The order.</param>
+        /// <returns></returns>
         var itemHTML = $("#orderItem");
         itemHTML.empty();
         var orderModal = $("#orderModal");

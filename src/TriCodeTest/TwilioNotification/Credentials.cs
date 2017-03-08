@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace TriCodeTest.TwilioNotification
 {
     /// <summary>
-    /// 
+    /// Credentials holds twilio account info
     /// </summary>
     public class Credentials
     {
@@ -19,7 +19,7 @@ namespace TriCodeTest.TwilioNotification
         /// </summary>
         public static string AcctToken = "5aa7fc1c4d9ecbdf551d64d521440f97";
         /// <summary>
-        /// Twilios varified number to send message. 
+        /// Twilios varified number to send message.
         /// </summary>
         public static string TwilioNumber = "+15096787994";
 
