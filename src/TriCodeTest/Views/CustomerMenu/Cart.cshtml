@@ -8,16 +8,14 @@
 
 @* This will need to be moved to a separate linked style sheet under ~/css/*@
 <style>
-    #categoryList {
-        font: bold 24px;
-    }
     #large-bottom-button {
         margin-top: 20px !important;
     }
     #large-bottom-button a {
         background: black;
         color: white;
-        font-size: 20px;
+        font-size: 1.3em;
+        letter-spacing: 1px;
     }
 </style>
 
@@ -97,6 +95,8 @@
                                 </p>
                             }
                             <p>
+                            @if (menuitem.MenuItem.MenuItemIngredients != null)
+                            {
                                 @foreach (var ingredient in menuitem.MenuItem.MenuItemIngredients)
                                 {
                                     if (ingredient.Ingredient.Option != Option.Normal)
@@ -104,6 +104,7 @@
                                         @ingredient.Ingredient.Option@:&nbsp;@ingredient.Ingredient.Name,&nbsp;
                                     }
                                 }
+                            }
                             </p>
                         </div>
                         <div class="ui-block-b">
@@ -124,7 +125,7 @@
                 </li>
             }
             <li style="text-align:right">
-                <h2 style="font-size:24px">Subtotal @String.Format("{0:c}", Model.TotalPrice)</h2>
+                <h2 style="font-size:1.6em">Subtotal @String.Format("{0:c}", Model.TotalPrice)</h2>
             </li>
             <li id="large-bottom-button" data-icon="false">
                 <a href="#" onclick="submitOrder()"><h1 style="text-align:center">Order</h1></a>

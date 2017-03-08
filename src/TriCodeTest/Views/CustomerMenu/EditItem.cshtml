@@ -47,7 +47,7 @@
         margin-top: 15px;
     }
     #remove-item a {
-        font-size: 18px;
+        font-size: 1.3em;
     }
 </style>
 
@@ -126,21 +126,24 @@
     @* Main Content *@
     <div role="main" class="ui-content">
         <ul data-role="listview">
-            @foreach (var ing in Model.MenuItem.MenuItemIngredients)
+            @if (Model.MenuItem.MenuItemIngredients != null)
             {
-                <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-                    <h2>@ing.Ingredient.Name</h2>
-                    <form id="form-ingredient-@ing.Ingredient.Id-choice">
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" />
-                            <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
-                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
-                            <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
-                            <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-none-@ing.IngredientId" value="@Option.None" />
-                            <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
-                        </fieldset>
-                    </form>
-                </li>
+                @foreach (var ing in Model.MenuItem.MenuItemIngredients)
+                {
+                    <li data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                        <h2>@ing.Ingredient.Name</h2>
+                        <form id="form-ingredient-@ing.Ingredient.Id-choice">
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-normal-@ing.IngredientId" value="@Option.Normal" />
+                                <label for="ingredient-choice-normal-@ing.IngredientId">@Option.Normal</label>
+                                <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-low-@ing.IngredientId" value="@Option.Low" />
+                                <label for="ingredient-choice-low-@ing.IngredientId">@Option.Low</label>
+                                <input type="radio" name="ingredient-id-@ing.Ingredient.Id" id="ingredient-choice-none-@ing.IngredientId" value="@Option.None" />
+                                <label for="ingredient-choice-none-@ing.IngredientId">@Option.None</label>
+                            </fieldset>
+                        </form>
+                    </li>
+                }
             }
         </ul>
     </div>

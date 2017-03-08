@@ -9,6 +9,11 @@
 <!--link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" /-->
 @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-2.5.0/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.0/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css" />*@
 
+<style>
+    #orderItem strong {
+        font-size: 16px;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -149,21 +154,23 @@
         // Ingredients
         for (var i = 0; i < order.OrderMenuItems.length; i++)
         {
-            if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length != 0) {
-                itemHTML.append("<strong>" + order.OrderMenuItems[i].MenuItem.Name + "</strong>");
-                itemHTML.append("<li id='itemIngredients" + i + "'>Ingredients: </li>");
-                var ingredientsHTML = $("#itemIngredients" + i);
-                for (var j = 0; j < order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length; j++) {
-                    var ingredient = order.OrderMenuItems[i].MenuItem.MenuItemIngredients[j].Ingredient;
-                    switch (ingredient.Option) {
-                        case 0:
-                            break;
-                        case 1:
-                            ingredientsHTML.append("NO " + ingredient.Name + " | ");
-                            break;
-                        case 2:
-                            ingredientsHTML.append("LOW " + ingredient.Name + " | ");
-                            break;
+            itemHTML.append("<strong>" + order.OrderMenuItems[i].MenuItem.Name + "</strong></br>");
+            if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients != null){
+                if (order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length != 0) {
+                    itemHTML.append("<li id='itemIngredients" + i + "'>Ingredients: </li>");
+                    var ingredientsHTML = $("#itemIngredients" + i);
+                    for (var j = 0; j < order.OrderMenuItems[i].MenuItem.MenuItemIngredients.length; j++) {
+                        var ingredient = order.OrderMenuItems[i].MenuItem.MenuItemIngredients[j].Ingredient;
+                        switch (ingredient.Option) {
+                            case 0:
+                                break;
+                            case 1:
+                                ingredientsHTML.append("NO " + ingredient.Name + " | ");
+                                break;
+                            case 2:
+                                ingredientsHTML.append("LOW " + ingredient.Name + " | ");
+                                break;
+                        }
                     }
                 }
             }
