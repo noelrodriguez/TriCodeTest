@@ -40,7 +40,8 @@ namespace TriCodeTest.Controllers
         //return the view
         public async Task<IActionResult> Index()
         {
-
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);//current users id
+            var userOrders = await _context.OrderInfo.Where(o => o.User.Id == userId && o.Status == Status.Completed).ToListAsync();
             List<Order> orders = ListOrderDeserialize(userOrders);
 
             //return view with the orders selected
