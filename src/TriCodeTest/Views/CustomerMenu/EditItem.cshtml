@@ -192,19 +192,32 @@
 
 @section Scripts {
     <script>
+        /// <var>The model</var>
         var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
+        /// <var>The item object</var>
         var ItemObject;
 
-        // Navigate back to cart
         function goBack(){
+            /// <summary>
+            /// Goes the back to cart.
+            /// </summary>
+            /// <returns></returns>
             window.location = '@Url.Action("Cart", "CustomerMenu")';
         }
 
         function dontSaveItemChanges(){
+            /// <summary>
+            /// Donts the save item changes.
+            /// </summary>
+            /// <returns></returns>
             window.location = '@Url.Action("EditItem", "CustomerMenu", new { id = Model.MenuItem.Id })';
         }
 
         function removeItem(){
+            /// <summary>
+            /// Removes the item.
+            /// </summary>
+            /// <returns></returns>
             ItemObject = {
                 MenuItem : MODEL.MenuItem
             };
@@ -224,6 +237,10 @@
         }
 
         function postItem(){
+            /// <summary>
+            /// Posts the item.
+            /// </summary>
+            /// <returns></returns>
             ItemObject = {
                 MenuItem : MODEL.MenuItem,
                 AddOns : MODEL.AddOns
@@ -243,8 +260,14 @@
             });
         }
 
-        // Create size radio button listener to set new size to javascript object of view model
+       
         $("#size-choice").bind("change", function(event, ui){
+            /// <summary>
+            /// Create size radio button listener to set new size to javascript object of view model
+            /// </summary>
+            /// <param name="event">The event.</param>
+            /// <param name="ui">The UI.</param>
+            /// <returns></returns>
             switch ($("input[name=size]:checked").val()){
                 case "null":
                     MODEL.MenuItem.Size = null;
@@ -262,16 +285,32 @@
             console.log(MODEL.MenuItem.Size);
         })
 
-        // Load page to edit ingredients
+        
         function loadIngredientsPage(ingredientsList){
+            /// <summary>
+            /// Loads the ingredients page.
+            /// Load page to edit ingredients
+            /// </summary>
+            /// <param name="ingredientsList">The ingredients list.</param>
+            /// <returns></returns>
             console.log(ingredientsList);
             $(":mobile-pagecontainer").pagecontainer("change", "#edit-ingredient-page", {
                 transition: 'slide'
             });
         }
-        // Before showing page, select the chosen ingredient options on the radio buttons
+        
         $(document).on("pageshow", "#edit-ingredient-page", function() {
+            /// <summary>
+            /// Before showing page, select the chosen ingredient options on the radio buttons
+            /// </summary>
+            /// <returns></returns>
             $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient) {
+                /// <summary>
+                /// the specified index.
+                /// </summary>
+                /// <param name="index">The index.</param>
+                /// <param name="ingredient">The ingredient.</param>
+                /// <returns></returns>
                 var ingredientNormalChoice = $("#ingredient-choice-normal-" + ingredient.Ingredient.Id);
                 var ingredientLowChoice = $("#ingredient-choice-low-" + ingredient.Ingredient.Id);
                 var ingredientNoneChoice = $("#ingredient-choice-none-" + ingredient.Ingredient.Id);
@@ -289,9 +328,21 @@
                 }
             });
         });
-        // Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
+       
         $.each(MODEL.MenuItem.MenuItemIngredients, function(index, ingredient){
+            /// <summary>
+            /// Create listeners for each set of radio buttons that set the new ingredient option to javascript object of view model
+            /// </summary>
+            /// <param name="index">The index.</param>
+            /// <param name="ingredient">The ingredient.</param>
+            /// <returns></returns>
             $("#form-ingredient-" + ingredient.Ingredient.Id + "-choice").bind("change", function(event, ui){
+                /// <summary>
+                /// the specified event.
+                /// </summary>
+                /// <param name="event">The event.</param>
+                /// <param name="ui">The UI.</param>
+                /// <returns></returns>
                 switch ($("input[name=ingredient-id-" + ingredient.Ingredient.Id + "]:checked").val()){
                     case "Normal":
                         ingredient.Ingredient.Option = 0;
@@ -312,11 +363,28 @@
                 transition: 'slide'
             });
         }
-        // Before showing page, select the chosen addons on the flipswitches
+        
         $(document).on("pageshow", "#edit-addons-page", function() {
+            /// <summary>
+            /// this instance.
+            /// Before showing page, select the chosen addons on the flipswitches
+            /// </summary>
+            /// <returns></returns>
             var tempAddons = [];
             $.each(MODEL.ChoiceOfAddons, function(index, addon) {
+                /// <summary>
+                /// the specified index.
+                /// </summary>
+                /// <param name="index">The index.</param>
+                /// <param name="addon">The addon.</param>
+                /// <returns></returns>
                 $.each(MODEL.AddOns, function(addonIndex, chosenAddon) {
+                    /// <summary>
+                    /// s the specified addon index.
+                    /// </summary>
+                    /// <param name="addonIndex">Index of the addon.</param>
+                    /// <param name="chosenAddon">The chosen addon.</param>
+                    /// <returns></returns>
                     if (chosenAddon.Id == addon.Id) {
                         tempAddons.push(chosenAddon);
                         $("#addon-choice-" + addon.Id).prop("checked", true);
@@ -326,9 +394,21 @@
             });
             MODEL.AddOns = tempAddons;
         });
-        // Create listeners for each addons flipswitch to be adding/removing addons to item
+        
         $.each(MODEL.ChoiceOfAddons, function(index, addon){
+            /// <summary>
+            /// Create listeners for each addons flipswitch to be adding/removing addons to item
+            /// </summary>
+            /// <param name="index">The index.</param>
+            /// <param name="addon">The addon.</param>
+            /// <returns></returns>
             $("#form-addon-" + addon.Id + "-choice").bind("change", function(event, ui){
+                /// <summary>
+                /// the specified event.
+                /// </summary>
+                /// <param name="event">The event.</param>
+                /// <param name="ui">The UI.</param>
+                /// <returns></returns>
                 console.log($("input[name=addon-id-" + addon.Id + "]:checked").val());
                 if ($("input[name=addon-id-" + addon.Id + "]:checked").val() == "on"){
                     MODEL.AddOns.push(addon);

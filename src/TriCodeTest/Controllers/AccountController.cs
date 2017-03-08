@@ -64,11 +64,13 @@ namespace TriCodeTest.Controllers
             return View();
         }
         /// <summary>
-        ///  Log the user into the application
+        /// Log the user into the application
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="returnUrl"></param>
-        /// <returns>new view</returns>
+        /// <param name="model">The model.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// new view
+        /// </returns>
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -113,7 +115,9 @@ namespace TriCodeTest.Controllers
         /// Register user view
         /// </summary>
         /// <param name="returnUrl">returnUrl</param>
-        /// <returns>view </returns>
+        /// <returns>
+        /// view
+        /// </returns>
         /// GET: /Account/Register
         [HttpGet]
         [AllowAnonymous]
@@ -124,11 +128,13 @@ namespace TriCodeTest.Controllers
         }
 
         /// <summary>
-        ///  Gets date to create an account
+        /// Gets date to create an account
         /// </summary>
         /// <param name="model">model</param>
         /// <param name="returnUrl">returnUrl</param>
-        /// <returns>view</returns>
+        /// <returns>
+        /// view
+        /// </returns>
         /// POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]

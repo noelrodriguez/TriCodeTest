@@ -6,7 +6,7 @@
 
 <h2>Update User Roles</h2>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+<input type="text" id="myInput" onkeyup="searchUsers()" placeholder="Search for names...">
 
 <style>
     tr {
@@ -21,6 +21,9 @@
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
+    }
+    .display {
+        background-color: white;
     }
 
     button {
@@ -119,6 +122,12 @@
     var x;
 
     function updateUserRole(user, roles){
+        /// <summary>
+        /// Updates the user role.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <param name="roles">The roles.</param>
+        /// <returns></returns>
         console.log(user.Email);
         console.log(roles.Name);
         var data = { Email:user.Email, Role:roles.Name };
@@ -182,7 +191,11 @@
             });
         }
     }
-function myFunction() {
+function searchUsers() {
+    /// <summary>
+    /// Search users
+    /// </summary>
+    /// <returns></returns>
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();

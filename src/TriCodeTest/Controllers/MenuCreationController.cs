@@ -12,10 +12,18 @@ using Newtonsoft.Json;
 
 namespace TriCodeTest.Controllers
 {
+    /// <summary>
+    /// MenuCreationController
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class MenuCreationController : Controller
     {
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MenuCreationController"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public MenuCreationController(ApplicationDbContext context)
         {
             _context = context;
@@ -26,7 +34,9 @@ namespace TriCodeTest.Controllers
         /// then uses the MenuCreationViewModel to cast that data to a list so the menu creation
         /// page can use it to populate the page with menu data.
         /// </summary>
-        /// <returns>MenuCreationViewModel</returns>
+        /// <returns>
+        /// MenuCreationViewModel
+        /// </returns>
         // GET: MenuCreation/menu
         public ActionResult Menu()
         {
@@ -49,7 +59,9 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Index listener for MenuCreationController. This is antiquated at this point.
         /// </summary>
-        /// <returns>A category list to the view. This is antiquated at this point</returns>
+        /// <returns>
+        /// A category list to the view. This is antiquated at this point
+        /// </returns>
         // GET: MenuCreation
         public async Task<IActionResult> Index()
         {
@@ -82,7 +94,9 @@ namespace TriCodeTest.Controllers
         /// Removes a Category specified by its Id.
         /// </summary>
         /// <param name="id">Id of the category which is to be removed</param>
-        /// <returns>True once category has been removed.</returns>
+        /// <returns>
+        /// True once category has been removed.
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> RemoveCategory(int id)
         {
@@ -103,7 +117,9 @@ namespace TriCodeTest.Controllers
         /// Edits a given Category with new data specified by the parameters.
         /// </summary>
         /// <param name="obj">Category Model Object containing data to update existing category.</param>
-        /// <returns>True when update has completed.</returns>
+        /// <returns>
+        /// True when update has completed.
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> EditCategory(Category obj)
         {
@@ -133,7 +149,9 @@ namespace TriCodeTest.Controllers
         /// Get request for a specific subcategory with a specific id
         /// </summary>
         /// <param name="id">Database Id of a subcategory</param>
-        /// <returns>Returns a subcategory model object matching the id</returns>
+        /// <returns>
+        /// Returns a subcategory model object matching the id
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult> GetSubcategory(int id)
         {
@@ -151,12 +169,14 @@ namespace TriCodeTest.Controllers
         // Given subcategory, category, and a list of addons update the database and return the
         // subcategory object.
         /// <summary>
-        /// Add a new subcategory to the database 
+        /// Add a new subcategory to the database
         /// </summary>
         /// <param name="subcategoryObj">Subcategory Model Object containing data to add</param>
         /// <param name="categoryObj">Category Model Object which should be tied to the new subcategory</param>
         /// <param name="addonsObj">Addon Model List which contains a list of addons contained in the new subcategory</param>
-        /// <returns>True when completed.</returns>
+        /// <returns>
+        /// True when completed.
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> AddSubcategory(Subcategory subcategoryObj, Category categoryObj, List<AddOn> addonsObj)
         {
@@ -190,7 +210,9 @@ namespace TriCodeTest.Controllers
         /// Given a subcategory model object update the existing subcategory in the database with the new data
         /// </summary>
         /// <param name="obj">Subcategory Model Object</param>
-        /// <returns>Returns true when object is updated in database</returns>
+        /// <returns>
+        /// Returns true when object is updated in database
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> EditSubcategory(Subcategory obj)
         {
@@ -219,7 +241,9 @@ namespace TriCodeTest.Controllers
         /// Returns a list of the addons with the specific subcategory id.
         /// </summary>
         /// <param name="id">The id of the subcategory containing the addons.</param>
-        /// <returns>List of addons</returns>
+        /// <returns>
+        /// List of addons
+        /// </returns>
         // GET: MenuCreation/GetAddons
         //Given subcategory construct list of addons and return them!
         [HttpGet]
@@ -239,7 +263,9 @@ namespace TriCodeTest.Controllers
         /// Takes an Addon Model Object and adds it to the database
         /// </summary>
         /// <param name="obj">Addon Model Object</param>
-        /// <returns>Returns addon model object when complete</returns>
+        /// <returns>
+        /// Returns addon model object when complete
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> AddAddon(AddOn obj)
         {
@@ -274,7 +300,9 @@ namespace TriCodeTest.Controllers
         /// Returns true when completed.
         /// </summary>
         /// <param name="id">The id of the subcategory to remove.</param>
-        /// <returns>True when function succeeds.</returns>
+        /// <returns>
+        /// True when function succeeds.
+        /// </returns>
         // POST: MenuCreation/RemoveSubcategory
         // Remove the indicated subcategory and return true when complete
         [HttpPost]
@@ -294,7 +322,9 @@ namespace TriCodeTest.Controllers
         /// Add a new menu item to the database and return that updated object
         /// </summary>
         /// <param name="obj">MenuItem Model</param>
-        /// <returns>A MenuItemModel object back to the poster.</returns>
+        /// <returns>
+        /// A MenuItemModel object back to the poster.
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> AddMenuItem(MenuItem obj)
         {
@@ -323,7 +353,9 @@ namespace TriCodeTest.Controllers
         /// </summary>
         /// <param name="id">Id of the menu item to update</param>
         /// <param name="img">A base64 image string</param>
-        /// <returns>Returns true when update is complete</returns>
+        /// <returns>
+        /// Returns true when update is complete
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> UpdateItemImage(int id, String img)
         {
@@ -350,7 +382,9 @@ namespace TriCodeTest.Controllers
         /// the menu item image.
         /// </summary>
         /// <param name="id">Menuitem Id</param>
-        /// <returns>Base64 image string</returns>
+        /// <returns>
+        /// Base64 image string
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult> GetItemImage(int id)
         {
@@ -368,7 +402,9 @@ namespace TriCodeTest.Controllers
         /// Edit a specific menu item with new data in the database.
         /// </summary>
         /// <param name="obj">New menu item data to update with</param>
-        /// <returns>Returns true when update is complete</returns>
+        /// <returns>
+        /// Returns true when update is complete
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> EditMenuItem(MenuItem obj)
         {
@@ -398,7 +434,9 @@ namespace TriCodeTest.Controllers
         /// Remove a menuitem from the database with a specific id
         /// </summary>
         /// <param name="id">The id of the Menuitem to remove.</param>
-        /// <returns>Returns true when removal succeeds!</returns>
+        /// <returns>
+        /// Returns true when removal succeeds!
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> RemoveMenuItem(int id)
         {
@@ -415,7 +453,9 @@ namespace TriCodeTest.Controllers
         /// Retrieve a menu item from the database with a specific id
         /// </summary>
         /// <param name="id">Menu item id to retrieve</param>
-        /// <returns>Menuitem object</returns>
+        /// <returns>
+        /// Menuitem object
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult> GetMenuItem(int id)
         {
@@ -431,7 +471,9 @@ namespace TriCodeTest.Controllers
         /// Add a new Ingredient to the database and return that new ingredient
         /// </summary>
         /// <param name="obj">Ingredient Model</param>
-        /// <returns>A new ingredient model with updated data</returns>
+        /// <returns>
+        /// A new ingredient model with updated data
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> AddIngredient(Ingredient obj)
         {
@@ -458,7 +500,9 @@ namespace TriCodeTest.Controllers
         /// Retrieves a list of Ingredient objects from the database
         /// and returns that list to the caller.
         /// </summary>
-        /// <returns>List of Ingredient objects</returns>
+        /// <returns>
+        /// List of Ingredient objects
+        /// </returns>
         [HttpGet]
         public ActionResult GetIngredients()
         {
@@ -474,7 +518,9 @@ namespace TriCodeTest.Controllers
         /// then return that list.
         /// </summary>
         /// <param name="id">Menu item id</param>
-        /// <returns>List of menu item ingredients</returns>
+        /// <returns>
+        /// List of menu item ingredients
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult> GetMenuItemIngredients(int id)
         {
@@ -498,7 +544,9 @@ namespace TriCodeTest.Controllers
         /// </summary>
         /// <param name="itemId">Menuitem Id</param>
         /// <param name="ingredientId">Ingredient Id</param>
-        /// <returns>Ingredient object which has been mapped</returns>
+        /// <returns>
+        /// Ingredient object which has been mapped
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> AddMenuItemIngredient(int itemId, int ingredientId)
         {
@@ -535,7 +583,9 @@ namespace TriCodeTest.Controllers
         /// </summary>
         /// <param name="itemId">Menuitem Id</param>
         /// <param name="ingredientId">Ingredient Id</param>
-        /// <returns>true or false depending if successful</returns>
+        /// <returns>
+        /// true or false depending if successful
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> RemoveMenuItemIngredient(int itemId, int ingredientId)
         {
@@ -559,7 +609,9 @@ namespace TriCodeTest.Controllers
         /// Remove an ingredient from the database.
         /// </summary>
         /// <param name="id">Ingredient Id</param>
-        /// <returns>True when Ingredient is removed</returns>
+        /// <returns>
+        /// True when Ingredient is removed
+        /// </returns>
         [HttpPost]
         public async Task<ActionResult> RemoveIngredient(int id)
         {
@@ -576,7 +628,9 @@ namespace TriCodeTest.Controllers
         /// Check if a category exists in the database.
         /// </summary>
         /// <param name="id">Category Id</param>
-        /// <returns>The context of the category.</returns>
+        /// <returns>
+        /// The context of the category.
+        /// </returns>
         private bool CategoryExists(int id)
         {
             return _context.Category.Any(e => e.Id == id);
