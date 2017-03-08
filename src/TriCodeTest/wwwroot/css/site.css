@@ -7,9 +7,7 @@
 .header-navbar {
     background-color: #3097D1 !important;
     text-shadow: 0 0 0 !important;
-}
-.header-navbar a {
-    vertical-align: middle;
+    color: white !important;
 }
 
 /* Wrapping element */
