@@ -1,0 +1,1859 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<title>TriCodeTest - Table of Content</title>
+<link rel="stylesheet" href="TOC.css">
+<link rel="shortcut icon" href="favicon.ico"/>
+<script type="text/javascript" src="TOC.js"></script>
+</head>
+
+<body onload="javascript: Initialize('.aspx');" onresize="javascript: ResizeTree();">
+<form id="IndexForm" runat="server">
+
+<div id="TOCDiv" class="TOCDiv">
+
+<div id="divSearchOpts" class="SearchOpts" style="height: 90px; display: none;">
+	<img class="TOCLink" onclick="javascript: ShowHideSearch(false);"
+		src="Close.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;"/>
+	<span class="Title">Keyword(s) to search:</span>
+	<input id="txtSearchText" type="text" style="width: 100%;" 
+		onkeypress="javascript: return OnSearchTextKeyPress(event);" /><br />
+	<input id="chkSortByTitle" type="checkbox" /><label for="chkSortByTitle">&nbsp;Sort results by title</label>
+	<input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+</div>
+
+<div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+	<img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+		src="Close.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;"/>
+	<span class="Title">Keyword Index</span>
+</div>
+
+<div id="divNavOpts" class="NavOpts" style="height: 28px;">
+    <img class="TOCLink" onclick="javascript: SyncTOC();" src="SyncTOC.png"
+        height="24" width="24" alt="Sync to TOC" title="Sync to TOC" />
+    <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+        src="ExpandAll.png" height="24" width="24" alt="Expand all" title="Expand all" />
+    <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+        src="CollapseAll.png" height="24" width="24" alt="Collapse all" title="Collapse all" />
+    <img class="TOCLink" onclick="javascript: ShowDirectLink();"
+        src="Link.png" height="24" width="24" alt="Get direct link to the displayed topic" title="Get direct link to the displayed topic" />
+    <a href="#" onclick="javascript: TopicContent.history.go(-1); return false;">
+		<img class="TOCLink" style="float: right;" 
+        src="Back.png" height="24" width="24" alt="Previous page" title="Previous page" /></a>
+</div>
+
+<div class="Tree" id="divSearchResults" style="display: none;"
+    onselectstart="javascript: return false;">
+</div>
+
+<div class="Tree" id="divIndexResults" style="display: none;"
+    onselectstart="javascript: return false;">
+</div>
+
+<div class="Tree" id="divTree" onselectstart="javascript: return false;">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.htm" target="TopicContent">TriCodeTest Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Program.htm" target="TopicContent">Program Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Program.htm" target="TopicContent">Program Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Program.htm" target="TopicContent">Program Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Program.Main.htm" target="TopicContent">Main Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Startup.htm" target="TopicContent">Startup Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Startup.htm" target="TopicContent">Startup Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Startup.-ctor.htm" target="TopicContent">Startup Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Startup.htm" target="TopicContent">Startup Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Startup.Configure.htm" target="TopicContent">Configure Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Startup.ConfigureServices.htm" target="TopicContent">ConfigureServices Method </a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Startup.htm" target="TopicContent">Startup Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Startup.Configuration.htm" target="TopicContent">Configuration Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Controllers.htm" target="TopicContent">TriCodeTest.Controllers Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.AccountController.htm" target="TopicContent">AccountController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.AccountController.htm" target="TopicContent">AccountController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.-ctor.htm" target="TopicContent">AccountController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.AccountController.htm" target="TopicContent">AccountController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.AccountController._emailSender.htm" target="TopicContent">_emailSender Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.AccountController._logger.htm" target="TopicContent">_logger Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.AccountController._signInManager.htm" target="TopicContent">_signInManager Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.AccountController._smsSender.htm" target="TopicContent">_smsSender Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.AccountController._userManager.htm" target="TopicContent">_userManager Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.AccountController.htm" target="TopicContent">AccountController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.AddErrors.htm" target="TopicContent">AddErrors Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ConfirmEmail.htm" target="TopicContent">ConfirmEmail Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.AccountController.ForgotPassword.htm" target="TopicContent">ForgotPassword Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ForgotPassword.htm" target="TopicContent">ForgotPassword Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ForgotPassword_1.htm" target="TopicContent">ForgotPassword Method (ForgotPasswordViewModel)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ForgotPasswordConfirmation.htm" target="TopicContent">ForgotPasswordConfirmation Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.GetCurrentUserAsync.htm" target="TopicContent">GetCurrentUserAsync Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.AccountController.Login.htm" target="TopicContent">Login Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.Login.htm" target="TopicContent">Login Method (String)</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.Login_1.htm" target="TopicContent">Login Method (LoginViewModel, String)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.LogOff.htm" target="TopicContent">LogOff Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.RedirectToLocal.htm" target="TopicContent">RedirectToLocal Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.AccountController.Register.htm" target="TopicContent">Register Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.Register.htm" target="TopicContent">Register Method (String)</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.Register_1.htm" target="TopicContent">Register Method (RegisterViewModel, String)</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.AccountController.ResetPassword.htm" target="TopicContent">ResetPassword Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ResetPassword.htm" target="TopicContent">ResetPassword Method (String)</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ResetPassword_1.htm" target="TopicContent">ResetPassword Method (ResetPasswordViewModel)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.AccountController.ResetPasswordConfirmation.htm" target="TopicContent">ResetPasswordConfirmation Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.CustomerMenuController.htm" target="TopicContent">CustomerMenuController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.CustomerMenuController.htm" target="TopicContent">CustomerMenuController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.-ctor.htm" target="TopicContent">CustomerMenuController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.CustomerMenuController.htm" target="TopicContent">CustomerMenuController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.CustomerMenuController._context.htm" target="TopicContent">_context Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.CustomerMenuController._userManager.htm" target="TopicContent">_userManager Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.CustomerMenuController.htm" target="TopicContent">CustomerMenuController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.AddNewOrderToDatabase.htm" target="TopicContent">AddNewOrderToDatabase Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.CalculateTotalPrice.htm" target="TopicContent">CalculateTotalPrice Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.Cart.htm" target="TopicContent">Cart Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.ConvertToOrderMenuItem.htm" target="TopicContent">ConvertToOrderMenuItem Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm" target="TopicContent">EditItem Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm" target="TopicContent">EditItem Method (Nullable(Int32))</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.EditItem_1.htm" target="TopicContent">EditItem Method (CartOrderMenuItem)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.GetCurrentUserAsync.htm" target="TopicContent">GetCurrentUserAsync Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderDeserialize.htm" target="TopicContent">OrderDeserialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderSerialize.htm" target="TopicContent">OrderSerialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.PostMenuItemToCart.htm" target="TopicContent">PostMenuItemToCart Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.RemoveItem.htm" target="TopicContent">RemoveItem Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.CustomerMenuController.SubmitOrder.htm" target="TopicContent">SubmitOrder Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.HistoryController.htm" target="TopicContent">HistoryController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.HistoryController.htm" target="TopicContent">HistoryController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.-ctor.htm" target="TopicContent">HistoryController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.HistoryController.htm" target="TopicContent">HistoryController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.HistoryController._context.htm" target="TopicContent">_context Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.HistoryController.htm" target="TopicContent">HistoryController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.Details.htm" target="TopicContent">Details Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.ListOrderDeserialize.htm" target="TopicContent">ListOrderDeserialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.OrderDeserialize.htm" target="TopicContent">OrderDeserialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HistoryController.resubmitOrder.htm" target="TopicContent">resubmitOrder Method </a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Controllers.HistoryController.htm" target="TopicContent">HistoryController Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Controllers.HistoryController.Orders.htm" target="TopicContent">Orders Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.HomeController.htm" target="TopicContent">HomeController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.HomeController.htm" target="TopicContent">HomeController Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.HomeController.htm" target="TopicContent">HomeController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HomeController.About.htm" target="TopicContent">About Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HomeController.Contact.htm" target="TopicContent">Contact Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HomeController.Error.htm" target="TopicContent">Error Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.HomeController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.ManageController.htm" target="TopicContent">ManageController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.ManageController.htm" target="TopicContent">ManageController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.-ctor.htm" target="TopicContent">ManageController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.ManageController.htm" target="TopicContent">ManageController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._context.htm" target="TopicContent">_context Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._emailSender.htm" target="TopicContent">_emailSender Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._logger.htm" target="TopicContent">_logger Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._signInManager.htm" target="TopicContent">_signInManager Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._smsSender.htm" target="TopicContent">_smsSender Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.ManageController._userManager.htm" target="TopicContent">_userManager Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.ManageController.htm" target="TopicContent">ManageController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.AddErrors.htm" target="TopicContent">AddErrors Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm" target="TopicContent">AddPhoneNumber Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm" target="TopicContent">AddPhoneNumber Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.AddPhoneNumber_1.htm" target="TopicContent">AddPhoneNumber Method (ApplicationUser)</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.ChangePassword.htm" target="TopicContent">ChangePassword Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.ChangePassword.htm" target="TopicContent">ChangePassword Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.ChangePassword_1.htm" target="TopicContent">ChangePassword Method (ChangePasswordViewModel)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.GetCurrentUserAsync.htm" target="TopicContent">GetCurrentUserAsync Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.LinkLogin.htm" target="TopicContent">LinkLogin Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.LinkLoginCallback.htm" target="TopicContent">LinkLoginCallback Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.ManageLogins.htm" target="TopicContent">ManageLogins Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.RemoveLogin.htm" target="TopicContent">RemoveLogin Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.RemovePhoneNumber.htm" target="TopicContent">RemovePhoneNumber Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.SetFirstName.htm" target="TopicContent">SetFirstName Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetFirstName.htm" target="TopicContent">SetFirstName Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetFirstName_1.htm" target="TopicContent">SetFirstName Method (ApplicationUser)</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.SetLastName.htm" target="TopicContent">SetLastName Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetLastName.htm" target="TopicContent">SetLastName Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetLastName_1.htm" target="TopicContent">SetLastName Method (ApplicationUser)</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.SetPassword.htm" target="TopicContent">SetPassword Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetPassword.htm" target="TopicContent">SetPassword Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.SetPassword_1.htm" target="TopicContent">SetPassword Method (SetPasswordViewModel)</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm" target="TopicContent">VerifyPhoneNumber Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm" target="TopicContent">VerifyPhoneNumber Method (String)</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber_1.htm" target="TopicContent">VerifyPhoneNumber Method (VerifyPhoneNumberViewModel)</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" target="TopicContent">ManageController.ManageMessageId Enumeration</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.MenuCreationController.htm" target="TopicContent">MenuCreationController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.MenuCreationController.htm" target="TopicContent">MenuCreationController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.-ctor.htm" target="TopicContent">MenuCreationController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.MenuCreationController.htm" target="TopicContent">MenuCreationController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.MenuCreationController._context.htm" target="TopicContent">_context Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.MenuCreationController.htm" target="TopicContent">MenuCreationController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddAddon.htm" target="TopicContent">AddAddon Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddCategory.htm" target="TopicContent">AddCategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddIngredient.htm" target="TopicContent">AddIngredient Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItem.htm" target="TopicContent">AddMenuItem Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItemIngredient.htm" target="TopicContent">AddMenuItemIngredient Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.AddSubcategory.htm" target="TopicContent">AddSubcategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.CategoryExists.htm" target="TopicContent">CategoryExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.EditCategory.htm" target="TopicContent">EditCategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.EditMenuItem.htm" target="TopicContent">EditMenuItem Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.EditSubcategory.htm" target="TopicContent">EditSubcategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetAddons.htm" target="TopicContent">GetAddons Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetIngredients.htm" target="TopicContent">GetIngredients Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetItemImage.htm" target="TopicContent">GetItemImage Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItem.htm" target="TopicContent">GetMenuItem Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItemIngredients.htm" target="TopicContent">GetMenuItemIngredients Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.GetSubcategory.htm" target="TopicContent">GetSubcategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.Menu.htm" target="TopicContent">Menu Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveAddon.htm" target="TopicContent">RemoveAddon Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveCategory.htm" target="TopicContent">RemoveCategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveIngredient.htm" target="TopicContent">RemoveIngredient Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItem.htm" target="TopicContent">RemoveMenuItem Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItemIngredient.htm" target="TopicContent">RemoveMenuItemIngredient Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveSubcategory.htm" target="TopicContent">RemoveSubcategory Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.MenuCreationController.UpdateItemImage.htm" target="TopicContent">UpdateItemImage Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.OrderInfoController.htm" target="TopicContent">OrderInfoController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.OrderInfoController.htm" target="TopicContent">OrderInfoController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.-ctor.htm" target="TopicContent">OrderInfoController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.OrderInfoController.htm" target="TopicContent">OrderInfoController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.OrderInfoController._context.htm" target="TopicContent">_context Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.OrderInfoController._logger.htm" target="TopicContent">_logger Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.OrderInfoController.htm" target="TopicContent">OrderInfoController Methods</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Overload-TriCodeTest.Controllers.OrderInfoController.Edit.htm" target="TopicContent">Edit Method </a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.Edit.htm" target="TopicContent">Edit Method (Nullable(Int32))</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.Edit_1.htm" target="TopicContent">Edit Method (Int32, Order)</a>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.ListOrderDeserialize.htm" target="TopicContent">ListOrderDeserialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.OrderDeserialize.htm" target="TopicContent">OrderDeserialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.OrderInfoExists.htm" target="TopicContent">OrderInfoExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.OrderInfoController.OrderSerialize.htm" target="TopicContent">OrderSerialize Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Controllers.UpdateUserRoleController.htm" target="TopicContent">UpdateUserRoleController Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" target="TopicContent">UpdateUserRoleController Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.-ctor.htm" target="TopicContent">UpdateUserRoleController Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" target="TopicContent">UpdateUserRoleController Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.UpdateUserRoleController._context.htm" target="TopicContent">_context Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.UpdateUserRoleController._roleManager.htm" target="TopicContent">_roleManager Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.Controllers.UpdateUserRoleController._userManager.htm" target="TopicContent">_userManager Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" target="TopicContent">UpdateUserRoleController Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.Index.htm" target="TopicContent">Index Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.RoleAddToUser.htm" target="TopicContent">RoleAddToUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleAdmin.htm" target="TopicContent">setRoleAdmin Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleCustomer.htm" target="TopicContent">setRoleCustomer Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleStaff.htm" target="TopicContent">setRoleStaff Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Controllers.UpdateUserRoleController.UpdateUserRole.htm" target="TopicContent">UpdateUserRole Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Data.htm" target="TopicContent">TriCodeTest.Data Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.ApplicationDbContext.htm" target="TopicContent">ApplicationDbContext Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.ApplicationDbContext.htm" target="TopicContent">ApplicationDbContext Members</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.ApplicationDbContext.-ctor.htm" target="TopicContent">ApplicationDbContext Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.ApplicationDbContext.htm" target="TopicContent">ApplicationDbContext Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.ApplicationDbContext.OnModelCreating.htm" target="TopicContent">OnModelCreating Method </a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Data.ApplicationDbContext.htm" target="TopicContent">ApplicationDbContext Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.AddOn.htm" target="TopicContent">AddOn Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.Category.htm" target="TopicContent">Category Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.Ingredient.htm" target="TopicContent">Ingredient Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItem.htm" target="TopicContent">MenuItem Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.OrderInfo.htm" target="TopicContent">OrderInfo Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Data.ApplicationDbContext.Subcategory.htm" target="TopicContent">Subcategory Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.DbInitializer.htm" target="TopicContent">DbInitializer Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.DbInitializer.htm" target="TopicContent">DbInitializer Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.DbInitializer.htm" target="TopicContent">DbInitializer Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.DbInitializer.Initialize.htm" target="TopicContent">Initialize Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.DbInitializer.SaveChanges.htm" target="TopicContent">SaveChanges Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Data.Migrations.htm" target="TopicContent">TriCodeTest.Data.Migrations Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" target="TopicContent">CreateIdentitySchema Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" target="TopicContent">CreateIdentitySchema Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" target="TopicContent">CreateIdentitySchema Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.BuildTargetModel.htm" target="TopicContent">BuildTargetModel Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Down.htm" target="TopicContent">Down Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Up.htm" target="TopicContent">Up Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" target="TopicContent">MenuItemIngredientsKey Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" target="TopicContent">MenuItemIngredientsKey Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" target="TopicContent">MenuItemIngredientsKey Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.BuildTargetModel.htm" target="TopicContent">BuildTargetModel Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Down.htm" target="TopicContent">Down Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Up.htm" target="TopicContent">Up Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.Migrations.ModelsCreation.htm" target="TopicContent">ModelsCreation Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" target="TopicContent">ModelsCreation Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" target="TopicContent">ModelsCreation Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.ModelsCreation.BuildTargetModel.htm" target="TopicContent">BuildTargetModel Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Down.htm" target="TopicContent">Down Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Up.htm" target="TopicContent">Up Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" target="TopicContent">NameForApplicationUser Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" target="TopicContent">NameForApplicationUser Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" target="TopicContent">NameForApplicationUser Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.BuildTargetModel.htm" target="TopicContent">BuildTargetModel Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Down.htm" target="TopicContent">Down Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Up.htm" target="TopicContent">Up Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.htm" target="TopicContent">TriCodeTest.Models Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ApplicationUser.htm" target="TopicContent">ApplicationUser Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ApplicationUser.htm" target="TopicContent">ApplicationUser Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ApplicationUser.htm" target="TopicContent">ApplicationUser Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ApplicationUser.FirstName.htm" target="TopicContent">FirstName Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ApplicationUser.LastName.htm" target="TopicContent">LastName Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.HistoryViewModel.htm" target="TopicContent">HistoryViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.HistoryViewModel.htm" target="TopicContent">HistoryViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.HistoryViewModel.htm" target="TopicContent">HistoryViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.HistoryViewModel.Orders.htm" target="TopicContent">Orders Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.HistoryViewModel.Users.htm" target="TopicContent">Users Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/T-TriCodeTest.Models.Option.htm" target="TopicContent">Option Enumeration</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.PostHistoryViewModel.htm" target="TopicContent">PostHistoryViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.PostHistoryViewModel.htm" target="TopicContent">PostHistoryViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.PostHistoryViewModel.htm" target="TopicContent">PostHistoryViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.PostHistoryViewModel.DateTime.htm" target="TopicContent">DateTime Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.PostHistoryViewModel.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.PostHistoryViewModel.Status.htm" target="TopicContent">Status Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" target="TopicContent">PostRoleUpdateUserRoleViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" target="TopicContent">PostRoleUpdateUserRoleViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" target="TopicContent">PostRoleUpdateUserRoleViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Role.htm" target="TopicContent">Role Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/T-TriCodeTest.Models.Size.htm" target="TopicContent">Size Enumeration</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/T-TriCodeTest.Models.Status.htm" target="TopicContent">Status Enumeration</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" target="TopicContent">UpdateUserRoleViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" target="TopicContent">UpdateUserRoleViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" target="TopicContent">UpdateUserRoleViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Roles.htm" target="TopicContent">Roles Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Users.htm" target="TopicContent">Users Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.AccountViewModels.htm" target="TopicContent">TriCodeTest.Models.AccountViewModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" target="TopicContent">ExternalLoginConfirmationViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" target="TopicContent">ExternalLoginConfirmationViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" target="TopicContent">ExternalLoginConfirmationViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" target="TopicContent">ForgotPasswordViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" target="TopicContent">ForgotPasswordViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" target="TopicContent">ForgotPasswordViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" target="TopicContent">LoginViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" target="TopicContent">LoginViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" target="TopicContent">LoginViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Password.htm" target="TopicContent">Password Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.RememberMe.htm" target="TopicContent">RememberMe Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" target="TopicContent">RegisterViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" target="TopicContent">RegisterViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" target="TopicContent">RegisterViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.ConfirmPassword.htm" target="TopicContent">ConfirmPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.FirstName.htm" target="TopicContent">FirstName Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.LastName.htm" target="TopicContent">LastName Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Password.htm" target="TopicContent">Password Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Phone.htm" target="TopicContent">Phone Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" target="TopicContent">ResetPasswordViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" target="TopicContent">ResetPasswordViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" target="TopicContent">ResetPasswordViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Code.htm" target="TopicContent">Code Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.ConfirmPassword.htm" target="TopicContent">ConfirmPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Email.htm" target="TopicContent">Email Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Password.htm" target="TopicContent">Password Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" target="TopicContent">SendCodeViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" target="TopicContent">SendCodeViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" target="TopicContent">SendCodeViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.Providers.htm" target="TopicContent">Providers Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.RememberMe.htm" target="TopicContent">RememberMe Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.ReturnUrl.htm" target="TopicContent">ReturnUrl Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.SelectedProvider.htm" target="TopicContent">SelectedProvider Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" target="TopicContent">VerifyCodeViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" target="TopicContent">VerifyCodeViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" target="TopicContent">VerifyCodeViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Code.htm" target="TopicContent">Code Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Provider.htm" target="TopicContent">Provider Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberBrowser.htm" target="TopicContent">RememberBrowser Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberMe.htm" target="TopicContent">RememberMe Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.ReturnUrl.htm" target="TopicContent">ReturnUrl Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.CustomerMenuViewModels.htm" target="TopicContent">TriCodeTest.Models.CustomerMenuViewModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" target="TopicContent">CartOrder Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" target="TopicContent">CartOrder Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" target="TopicContent">CartOrder Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.CartOrderMenuItems.htm" target="TopicContent">CartOrderMenuItems Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.DateTime.htm" target="TopicContent">DateTime Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Status.htm" target="TopicContent">Status Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.TotalPrice.htm" target="TopicContent">TotalPrice Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.User.htm" target="TopicContent">User Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.UserId.htm" target="TopicContent">UserId Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" target="TopicContent">CartOrderMenuItem Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" target="TopicContent">CartOrderMenuItem Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" target="TopicContent">CartOrderMenuItem Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.AddOns.htm" target="TopicContent">AddOns Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ChoiceOfAddons.htm" target="TopicContent">ChoiceOfAddons Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ItemImage.htm" target="TopicContent">ItemImage Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.MenuItem.htm" target="TopicContent">MenuItem Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" target="TopicContent">LoadMenuViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" target="TopicContent">LoadMenuViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" target="TopicContent">LoadMenuViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Categories.htm" target="TopicContent">Categories Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.MenuItems.htm" target="TopicContent">MenuItems Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Subcategories.htm" target="TopicContent">Subcategories Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.ManageViewModels.htm" target="TopicContent">TriCodeTest.Models.ManageViewModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" target="TopicContent">AddPhoneNumberViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" target="TopicContent">AddPhoneNumberViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" target="TopicContent">AddPhoneNumberViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.PhoneNumber.htm" target="TopicContent">PhoneNumber Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" target="TopicContent">ChangePasswordViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" target="TopicContent">ChangePasswordViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" target="TopicContent">ChangePasswordViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.ConfirmPassword.htm" target="TopicContent">ConfirmPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.NewPassword.htm" target="TopicContent">NewPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.OldPassword.htm" target="TopicContent">OldPassword Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" target="TopicContent">ConfigureTwoFactorViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" target="TopicContent">ConfigureTwoFactorViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" target="TopicContent">ConfigureTwoFactorViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.Providers.htm" target="TopicContent">Providers Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.SelectedProvider.htm" target="TopicContent">SelectedProvider Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" target="TopicContent">FactorViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" target="TopicContent">FactorViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" target="TopicContent">FactorViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.FactorViewModel.Purpose.htm" target="TopicContent">Purpose Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" target="TopicContent">IndexViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" target="TopicContent">IndexViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" target="TopicContent">IndexViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.BrowserRemembered.htm" target="TopicContent">BrowserRemembered Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.FirstName.htm" target="TopicContent">FirstName Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.HasPassword.htm" target="TopicContent">HasPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.LastName.htm" target="TopicContent">LastName Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.Logins.htm" target="TopicContent">Logins Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.PhoneNumber.htm" target="TopicContent">PhoneNumber Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.TwoFactor.htm" target="TopicContent">TwoFactor Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" target="TopicContent">ManageLoginsViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" target="TopicContent">ManageLoginsViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" target="TopicContent">ManageLoginsViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.CurrentLogins.htm" target="TopicContent">CurrentLogins Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.OtherLogins.htm" target="TopicContent">OtherLogins Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" target="TopicContent">RemoveLoginViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" target="TopicContent">RemoveLoginViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" target="TopicContent">RemoveLoginViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.LoginProvider.htm" target="TopicContent">LoginProvider Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.ProviderKey.htm" target="TopicContent">ProviderKey Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" target="TopicContent">SetPasswordViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" target="TopicContent">SetPasswordViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" target="TopicContent">SetPasswordViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.ConfirmPassword.htm" target="TopicContent">ConfirmPassword Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.NewPassword.htm" target="TopicContent">NewPassword Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" target="TopicContent">VerifyPhoneNumberViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" target="TopicContent">VerifyPhoneNumberViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" target="TopicContent">VerifyPhoneNumberViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.Code.htm" target="TopicContent">Code Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.PhoneNumber.htm" target="TopicContent">PhoneNumber Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.MenuModels.htm" target="TopicContent">TriCodeTest.Models.MenuModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.AddOn.htm" target="TopicContent">AddOn Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.AddOn.htm" target="TopicContent">AddOn Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.AddOn.htm" target="TopicContent">AddOn Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.Description.htm" target="TopicContent">Description Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.Name.htm" target="TopicContent">Name Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.Price.htm" target="TopicContent">Price Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.Subcategory.htm" target="TopicContent">Subcategory Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.AddOn.SubcategoryId.htm" target="TopicContent">SubcategoryId Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.Category.htm" target="TopicContent">Category Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.Category.htm" target="TopicContent">Category Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.Category.htm" target="TopicContent">Category Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Category.Description.htm" target="TopicContent">Description Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Category.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Category.Name.htm" target="TopicContent">Name Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Category.Subcategories.htm" target="TopicContent">Subcategories Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.Ingredient.htm" target="TopicContent">Ingredient Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.Ingredient.htm" target="TopicContent">Ingredient Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.Ingredient.htm" target="TopicContent">Ingredient Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Ingredient.Description.htm" target="TopicContent">Description Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Ingredient.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Ingredient.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Ingredient.Name.htm" target="TopicContent">Name Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Ingredient.Option.htm" target="TopicContent">Option Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.MenuItem.htm" target="TopicContent">MenuItem Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItem.htm" target="TopicContent">MenuItem Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItem.htm" target="TopicContent">MenuItem Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Description.htm" target="TopicContent">Description Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.ItemImage.htm" target="TopicContent">ItemImage Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Name.htm" target="TopicContent">Name Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Price.htm" target="TopicContent">Price Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Size.htm" target="TopicContent">Size Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.Subcategory.htm" target="TopicContent">Subcategory Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItem.SubcategoryId.htm" target="TopicContent">SubcategoryId Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" target="TopicContent">MenuItemIngredients Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.Ingredient.htm" target="TopicContent">Ingredient Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.IngredientId.htm" target="TopicContent">IngredientId Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItem.htm" target="TopicContent">MenuItem Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItemId.htm" target="TopicContent">MenuItemId Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuModels.Subcategory.htm" target="TopicContent">Subcategory Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuModels.Subcategory.htm" target="TopicContent">Subcategory Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuModels.Subcategory.htm" target="TopicContent">Subcategory Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.AddOns.htm" target="TopicContent">AddOns Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.Category.htm" target="TopicContent">Category Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.CategoryId.htm" target="TopicContent">CategoryId Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.Description.htm" target="TopicContent">Description Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.MenuItems.htm" target="TopicContent">MenuItems Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuModels.Subcategory.Name.htm" target="TopicContent">Name Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.MenuViewModels.htm" target="TopicContent">TriCodeTest.Models.MenuViewModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" target="TopicContent">MenuCreationViewModel Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" target="TopicContent">MenuCreationViewModel Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" target="TopicContent">MenuCreationViewModel Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.AddonMenu.htm" target="TopicContent">AddonMenu Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.CategoryMenu.htm" target="TopicContent">CategoryMenu Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.IngridientMenu.htm" target="TopicContent">IngridientMenu Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemIngredientsMenu.htm" target="TopicContent">MenuItemIngredientsMenu Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemMenu.htm" target="TopicContent">MenuItemMenu Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.SubCategoryMenu.htm" target="TopicContent">SubCategoryMenu Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Models.OrderModels.htm" target="TopicContent">TriCodeTest.Models.OrderModels Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.OrderModels.Order.htm" target="TopicContent">Order Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.OrderModels.Order.htm" target="TopicContent">Order Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.OrderModels.Order.htm" target="TopicContent">Order Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.DateTime.htm" target="TopicContent">DateTime Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.OrderMenuItems.htm" target="TopicContent">OrderMenuItems Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.Status.htm" target="TopicContent">Status Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.TotalPrice.htm" target="TopicContent">TotalPrice Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.User.htm" target="TopicContent">User Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.Order.UserId.htm" target="TopicContent">UserId Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.OrderModels.OrderInfo.htm" target="TopicContent">OrderInfo Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" target="TopicContent">OrderInfo Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" target="TopicContent">OrderInfo Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.DateTime.htm" target="TopicContent">DateTime Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Id.htm" target="TopicContent">Id Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.OrderMenuItems.htm" target="TopicContent">OrderMenuItems Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Status.htm" target="TopicContent">Status Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.TotalPrice.htm" target="TopicContent">TotalPrice Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderInfo.User.htm" target="TopicContent">User Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" target="TopicContent">OrderMenuItem Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" target="TopicContent">OrderMenuItem Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Properties.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" target="TopicContent">OrderMenuItem Properties</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.AddOns.htm" target="TopicContent">AddOns Property </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.MenuItem.htm" target="TopicContent">MenuItem Property </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.RoleSeeding.htm" target="TopicContent">TriCodeTest.RoleSeeding Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.RoleSeeding.RoleSeeding.htm" target="TopicContent">RoleSeeding Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" target="TopicContent">RoleSeeding Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" target="TopicContent">RoleSeeding Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.RoleSeeding.RoleSeeding.Roles.htm" target="TopicContent">Roles Field</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" target="TopicContent">RoleSeeding Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.RoleSeeding.RoleSeeding.SeedRole.htm" target="TopicContent">SeedRole Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.Services.htm" target="TopicContent">TriCodeTest.Services Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Services.AuthMessageSender.htm" target="TopicContent">AuthMessageSender Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Services.AuthMessageSender.htm" target="TopicContent">AuthMessageSender Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Services.AuthMessageSender.htm" target="TopicContent">AuthMessageSender Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Services.AuthMessageSender.SendEmailAsync.htm" target="TopicContent">SendEmailAsync Method </a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Services.AuthMessageSender.SendSmsAsync.htm" target="TopicContent">SendSmsAsync Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Services.IEmailSender.htm" target="TopicContent">IEmailSender Interface</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Services.IEmailSender.htm" target="TopicContent">IEmailSender Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Services.IEmailSender.htm" target="TopicContent">IEmailSender Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Services.IEmailSender.SendEmailAsync.htm" target="TopicContent">SendEmailAsync Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.Services.ISmsSender.htm" target="TopicContent">ISmsSender Interface</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.Services.ISmsSender.htm" target="TopicContent">ISmsSender Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.Services.ISmsSender.htm" target="TopicContent">ISmsSender Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.Services.ISmsSender.SendSmsAsync.htm" target="TopicContent">SendSmsAsync Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/N-TriCodeTest.TwilioNotification.htm" target="TopicContent">TriCodeTest.TwilioNotification Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.TwilioNotification.Credentials.htm" target="TopicContent">Credentials Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.TwilioNotification.Credentials.htm" target="TopicContent">Credentials Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Fields.T-TriCodeTest.TwilioNotification.Credentials.htm" target="TopicContent">Credentials Fields</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.TwilioNotification.Credentials.AcctSID.htm" target="TopicContent">AcctSID Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.TwilioNotification.Credentials.AcctToken.htm" target="TopicContent">AcctToken Field</a>
+</div>
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/F-TriCodeTest.TwilioNotification.Credentials.TwilioNumber.htm" target="TopicContent">TwilioNumber Field</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/T-TriCodeTest.TwilioNotification.Notification.htm" target="TopicContent">Notification Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/AllMembers.T-TriCodeTest.TwilioNotification.Notification.htm" target="TopicContent">Notification Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="html/Methods.T-TriCodeTest.TwilioNotification.Notification.htm" target="TopicContent">Notification Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="html/M-TriCodeTest.TwilioNotification.Notification.SendNotification.htm" target="TopicContent">SendNotification Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+
+<iframe id="TopicContent" name="TopicContent" class="TopicContent" src="html/n-tricodetest.htm">
+This page uses an IFRAME but your browser does not support it.
+</iframe>
+
+</form>
+
+</body>
+
+</html>

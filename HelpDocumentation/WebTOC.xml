@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="8f71733f-79c7-496a-86a3-bc25524cec5d" Title="TriCodeTest Namespace" Url="html/N-TriCodeTest.htm">
+    <HelpTOCNode Id="271cbb73-5df0-407c-a1d2-b12df0b841c5" Title="Program Class" Url="html/T-TriCodeTest.Program.htm">
+      <HelpTOCNode Title="Program Members" Url="html/AllMembers.T-TriCodeTest.Program.htm" />
+      <HelpTOCNode Id="e98c1caa-30ac-42c0-b1eb-8fd24aa1ed7a" Title="Program Methods" Url="html/Methods.T-TriCodeTest.Program.htm">
+        <HelpTOCNode Title="Main Method " Url="html/M-TriCodeTest.Program.Main.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="757d74e9-7ab9-4193-b783-59f49f6becb0" Title="Startup Class" Url="html/T-TriCodeTest.Startup.htm">
+      <HelpTOCNode Title="Startup Members" Url="html/AllMembers.T-TriCodeTest.Startup.htm" />
+      <HelpTOCNode Title="Startup Constructor " Url="html/M-TriCodeTest.Startup.-ctor.htm" />
+      <HelpTOCNode Id="3372a628-aee6-4e5a-a8d3-5d48065f0b7f" Title="Startup Methods" Url="html/Methods.T-TriCodeTest.Startup.htm">
+        <HelpTOCNode Title="Configure Method " Url="html/M-TriCodeTest.Startup.Configure.htm" />
+        <HelpTOCNode Title="ConfigureServices Method " Url="html/M-TriCodeTest.Startup.ConfigureServices.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="972206d7-37f8-4d33-8bf2-73530142b33a" Title="Startup Properties" Url="html/Properties.T-TriCodeTest.Startup.htm">
+        <HelpTOCNode Title="Configuration Property " Url="html/P-TriCodeTest.Startup.Configuration.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="5dc29371-3af6-4e6b-a9a6-b2c48ff671aa" Title="TriCodeTest.Controllers Namespace" Url="html/N-TriCodeTest.Controllers.htm">
+    <HelpTOCNode Id="c30f1455-8b10-43fc-9bda-b30959f47bec" Title="AccountController Class" Url="html/T-TriCodeTest.Controllers.AccountController.htm">
+      <HelpTOCNode Title="AccountController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.AccountController.htm" />
+      <HelpTOCNode Title="AccountController Constructor " Url="html/M-TriCodeTest.Controllers.AccountController.-ctor.htm" />
+      <HelpTOCNode Id="a45ca96e-ab3a-423b-9ac0-e9e377f6847f" Title="AccountController Fields" Url="html/Fields.T-TriCodeTest.Controllers.AccountController.htm">
+        <HelpTOCNode Title="_emailSender Field" Url="html/F-TriCodeTest.Controllers.AccountController._emailSender.htm" />
+        <HelpTOCNode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.AccountController._logger.htm" />
+        <HelpTOCNode Title="_signInManager Field" Url="html/F-TriCodeTest.Controllers.AccountController._signInManager.htm" />
+        <HelpTOCNode Title="_smsSender Field" Url="html/F-TriCodeTest.Controllers.AccountController._smsSender.htm" />
+        <HelpTOCNode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.AccountController._userManager.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1e0ef7fd-9002-4dac-826a-b384bc08221b" Title="AccountController Methods" Url="html/Methods.T-TriCodeTest.Controllers.AccountController.htm">
+        <HelpTOCNode Title="AddErrors Method " Url="html/M-TriCodeTest.Controllers.AccountController.AddErrors.htm" />
+        <HelpTOCNode Title="ConfirmEmail Method " Url="html/M-TriCodeTest.Controllers.AccountController.ConfirmEmail.htm" />
+        <HelpTOCNode Id="0d072d03-699e-4e06-9de0-588ba5fb3d87" Title="ForgotPassword Method " Url="html/Overload-TriCodeTest.Controllers.AccountController.ForgotPassword.htm">
+          <HelpTOCNode Title="ForgotPassword Method " Url="html/M-TriCodeTest.Controllers.AccountController.ForgotPassword.htm" />
+          <HelpTOCNode Title="ForgotPassword Method (ForgotPasswordViewModel)" Url="html/M-TriCodeTest.Controllers.AccountController.ForgotPassword_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ForgotPasswordConfirmation Method " Url="html/M-TriCodeTest.Controllers.AccountController.ForgotPasswordConfirmation.htm" />
+        <HelpTOCNode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.AccountController.GetCurrentUserAsync.htm" />
+        <HelpTOCNode Id="8079e2ba-9682-4ad3-b697-a4cbea6c2e66" Title="Login Method " Url="html/Overload-TriCodeTest.Controllers.AccountController.Login.htm">
+          <HelpTOCNode Title="Login Method (String)" Url="html/M-TriCodeTest.Controllers.AccountController.Login.htm" />
+          <HelpTOCNode Title="Login Method (LoginViewModel, String)" Url="html/M-TriCodeTest.Controllers.AccountController.Login_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="LogOff Method " Url="html/M-TriCodeTest.Controllers.AccountController.LogOff.htm" />
+        <HelpTOCNode Title="RedirectToLocal Method " Url="html/M-TriCodeTest.Controllers.AccountController.RedirectToLocal.htm" />
+        <HelpTOCNode Id="4504193e-5ddd-453f-9b2e-3f030a829602" Title="Register Method " Url="html/Overload-TriCodeTest.Controllers.AccountController.Register.htm">
+          <HelpTOCNode Title="Register Method (String)" Url="html/M-TriCodeTest.Controllers.AccountController.Register.htm" />
+          <HelpTOCNode Title="Register Method (RegisterViewModel, String)" Url="html/M-TriCodeTest.Controllers.AccountController.Register_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="d64314b2-28fb-4454-9d49-4c457613b29a" Title="ResetPassword Method " Url="html/Overload-TriCodeTest.Controllers.AccountController.ResetPassword.htm">
+          <HelpTOCNode Title="ResetPassword Method (String)" Url="html/M-TriCodeTest.Controllers.AccountController.ResetPassword.htm" />
+          <HelpTOCNode Title="ResetPassword Method (ResetPasswordViewModel)" Url="html/M-TriCodeTest.Controllers.AccountController.ResetPassword_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="ResetPasswordConfirmation Method " Url="html/M-TriCodeTest.Controllers.AccountController.ResetPasswordConfirmation.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8f13febb-e743-4780-b83f-428fa3891c0f" Title="CustomerMenuController Class" Url="html/T-TriCodeTest.Controllers.CustomerMenuController.htm">
+      <HelpTOCNode Title="CustomerMenuController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+      <HelpTOCNode Title="CustomerMenuController Constructor " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.-ctor.htm" />
+      <HelpTOCNode Id="36667efe-c75a-40ce-a507-a80d13d0e4cb" Title="CustomerMenuController Fields" Url="html/Fields.T-TriCodeTest.Controllers.CustomerMenuController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._context.htm" />
+        <HelpTOCNode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._userManager.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e2d6c3a5-795a-4540-80b8-b4e671d31252" Title="CustomerMenuController Methods" Url="html/Methods.T-TriCodeTest.Controllers.CustomerMenuController.htm">
+        <HelpTOCNode Title="AddNewOrderToDatabase Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.AddNewOrderToDatabase.htm" />
+        <HelpTOCNode Title="CalculateTotalPrice Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.CalculateTotalPrice.htm" />
+        <HelpTOCNode Title="Cart Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Cart.htm" />
+        <HelpTOCNode Title="ConvertToOrderMenuItem Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.ConvertToOrderMenuItem.htm" />
+        <HelpTOCNode Id="99f3dc3c-fe09-46b4-a885-6a7d833ec9b4" Title="EditItem Method " Url="html/Overload-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm">
+          <HelpTOCNode Title="EditItem Method (Nullable(Int32))" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm" />
+          <HelpTOCNode Title="EditItem Method (CartOrderMenuItem)" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.EditItem_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.GetCurrentUserAsync.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Index.htm" />
+        <HelpTOCNode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderDeserialize.htm" />
+        <HelpTOCNode Title="OrderSerialize Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderSerialize.htm" />
+        <HelpTOCNode Title="PostMenuItemToCart Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.PostMenuItemToCart.htm" />
+        <HelpTOCNode Title="RemoveItem Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.RemoveItem.htm" />
+        <HelpTOCNode Title="SubmitOrder Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.SubmitOrder.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="524c31eb-d056-4037-ae60-4833165e6095" Title="HistoryController Class" Url="html/T-TriCodeTest.Controllers.HistoryController.htm">
+      <HelpTOCNode Title="HistoryController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HistoryController.htm" />
+      <HelpTOCNode Title="HistoryController Constructor " Url="html/M-TriCodeTest.Controllers.HistoryController.-ctor.htm" />
+      <HelpTOCNode Id="ec1c066e-81e4-4f03-a3fc-3992925b546d" Title="HistoryController Fields" Url="html/Fields.T-TriCodeTest.Controllers.HistoryController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.HistoryController._context.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3c74eefc-9d89-4ec5-a37b-99592acae79e" Title="HistoryController Methods" Url="html/Methods.T-TriCodeTest.Controllers.HistoryController.htm">
+        <HelpTOCNode Title="Details Method " Url="html/M-TriCodeTest.Controllers.HistoryController.Details.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.HistoryController.Index.htm" />
+        <HelpTOCNode Title="ListOrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.HistoryController.ListOrderDeserialize.htm" />
+        <HelpTOCNode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.HistoryController.OrderDeserialize.htm" />
+        <HelpTOCNode Title="resubmitOrder Method " Url="html/M-TriCodeTest.Controllers.HistoryController.resubmitOrder.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7e845a6a-9fbf-4b95-a8fa-d546b5d2ddd5" Title="HistoryController Properties" Url="html/Properties.T-TriCodeTest.Controllers.HistoryController.htm">
+        <HelpTOCNode Title="Orders Property " Url="html/P-TriCodeTest.Controllers.HistoryController.Orders.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8a919eaa-c0ef-40ee-a6ca-1bc9736b6271" Title="HomeController Class" Url="html/T-TriCodeTest.Controllers.HomeController.htm">
+      <HelpTOCNode Title="HomeController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HomeController.htm" />
+      <HelpTOCNode Id="5e13116e-86a1-4220-8338-c9345d7154b0" Title="HomeController Methods" Url="html/Methods.T-TriCodeTest.Controllers.HomeController.htm">
+        <HelpTOCNode Title="About Method " Url="html/M-TriCodeTest.Controllers.HomeController.About.htm" />
+        <HelpTOCNode Title="Contact Method " Url="html/M-TriCodeTest.Controllers.HomeController.Contact.htm" />
+        <HelpTOCNode Title="Error Method " Url="html/M-TriCodeTest.Controllers.HomeController.Error.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.HomeController.Index.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2dfa0b61-f089-4613-b750-087ba44a753b" Title="ManageController Class" Url="html/T-TriCodeTest.Controllers.ManageController.htm">
+      <HelpTOCNode Title="ManageController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.ManageController.htm" />
+      <HelpTOCNode Title="ManageController Constructor " Url="html/M-TriCodeTest.Controllers.ManageController.-ctor.htm" />
+      <HelpTOCNode Id="6705c2cb-bde9-4c43-8aa1-456de8e90c1a" Title="ManageController Fields" Url="html/Fields.T-TriCodeTest.Controllers.ManageController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.ManageController._context.htm" />
+        <HelpTOCNode Title="_emailSender Field" Url="html/F-TriCodeTest.Controllers.ManageController._emailSender.htm" />
+        <HelpTOCNode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.ManageController._logger.htm" />
+        <HelpTOCNode Title="_signInManager Field" Url="html/F-TriCodeTest.Controllers.ManageController._signInManager.htm" />
+        <HelpTOCNode Title="_smsSender Field" Url="html/F-TriCodeTest.Controllers.ManageController._smsSender.htm" />
+        <HelpTOCNode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.ManageController._userManager.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0e3d2b40-109f-40f7-b26a-b7eb941fc6c7" Title="ManageController Methods" Url="html/Methods.T-TriCodeTest.Controllers.ManageController.htm">
+        <HelpTOCNode Title="AddErrors Method " Url="html/M-TriCodeTest.Controllers.ManageController.AddErrors.htm" />
+        <HelpTOCNode Id="05495db9-e3f0-4db3-8910-48e6dca11a08" Title="AddPhoneNumber Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm">
+          <HelpTOCNode Title="AddPhoneNumber Method " Url="html/M-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm" />
+          <HelpTOCNode Title="AddPhoneNumber Method (ApplicationUser)" Url="html/M-TriCodeTest.Controllers.ManageController.AddPhoneNumber_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="d6d67d12-800f-40f0-8e32-538b9aff178a" Title="ChangePassword Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.ChangePassword.htm">
+          <HelpTOCNode Title="ChangePassword Method " Url="html/M-TriCodeTest.Controllers.ManageController.ChangePassword.htm" />
+          <HelpTOCNode Title="ChangePassword Method (ChangePasswordViewModel)" Url="html/M-TriCodeTest.Controllers.ManageController.ChangePassword_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.ManageController.GetCurrentUserAsync.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.ManageController.Index.htm" />
+        <HelpTOCNode Title="LinkLogin Method " Url="html/M-TriCodeTest.Controllers.ManageController.LinkLogin.htm" />
+        <HelpTOCNode Title="LinkLoginCallback Method " Url="html/M-TriCodeTest.Controllers.ManageController.LinkLoginCallback.htm" />
+        <HelpTOCNode Title="ManageLogins Method " Url="html/M-TriCodeTest.Controllers.ManageController.ManageLogins.htm" />
+        <HelpTOCNode Title="RemoveLogin Method " Url="html/M-TriCodeTest.Controllers.ManageController.RemoveLogin.htm" />
+        <HelpTOCNode Title="RemovePhoneNumber Method " Url="html/M-TriCodeTest.Controllers.ManageController.RemovePhoneNumber.htm" />
+        <HelpTOCNode Id="81ac2272-b368-4ba7-bf65-fe21b90e6ae6" Title="SetFirstName Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.SetFirstName.htm">
+          <HelpTOCNode Title="SetFirstName Method " Url="html/M-TriCodeTest.Controllers.ManageController.SetFirstName.htm" />
+          <HelpTOCNode Title="SetFirstName Method (ApplicationUser)" Url="html/M-TriCodeTest.Controllers.ManageController.SetFirstName_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f5ccef29-9f87-4989-b6b5-183f15a2cfff" Title="SetLastName Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.SetLastName.htm">
+          <HelpTOCNode Title="SetLastName Method " Url="html/M-TriCodeTest.Controllers.ManageController.SetLastName.htm" />
+          <HelpTOCNode Title="SetLastName Method (ApplicationUser)" Url="html/M-TriCodeTest.Controllers.ManageController.SetLastName_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="460d3374-78ab-421b-ac74-e778c061b8e8" Title="SetPassword Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.SetPassword.htm">
+          <HelpTOCNode Title="SetPassword Method " Url="html/M-TriCodeTest.Controllers.ManageController.SetPassword.htm" />
+          <HelpTOCNode Title="SetPassword Method (SetPasswordViewModel)" Url="html/M-TriCodeTest.Controllers.ManageController.SetPassword_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="5a7c015f-ff04-4041-ab04-9279c8e65255" Title="VerifyPhoneNumber Method " Url="html/Overload-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm">
+          <HelpTOCNode Title="VerifyPhoneNumber Method (String)" Url="html/M-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm" />
+          <HelpTOCNode Title="VerifyPhoneNumber Method (VerifyPhoneNumberViewModel)" Url="html/M-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="ManageController.ManageMessageId Enumeration" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+    <HelpTOCNode Id="6d340181-7518-416c-bc43-581eef996b9a" Title="MenuCreationController Class" Url="html/T-TriCodeTest.Controllers.MenuCreationController.htm">
+      <HelpTOCNode Title="MenuCreationController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+      <HelpTOCNode Title="MenuCreationController Constructor " Url="html/M-TriCodeTest.Controllers.MenuCreationController.-ctor.htm" />
+      <HelpTOCNode Id="f5e37988-46cb-43b1-a925-9e62dc6a4aff" Title="MenuCreationController Fields" Url="html/Fields.T-TriCodeTest.Controllers.MenuCreationController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.MenuCreationController._context.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="84c1c2a6-6d49-4fd1-aa78-3b4e8481c150" Title="MenuCreationController Methods" Url="html/Methods.T-TriCodeTest.Controllers.MenuCreationController.htm">
+        <HelpTOCNode Title="AddAddon Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddAddon.htm" />
+        <HelpTOCNode Title="AddCategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddCategory.htm" />
+        <HelpTOCNode Title="AddIngredient Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddIngredient.htm" />
+        <HelpTOCNode Title="AddMenuItem Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItem.htm" />
+        <HelpTOCNode Title="AddMenuItemIngredient Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItemIngredient.htm" />
+        <HelpTOCNode Title="AddSubcategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddSubcategory.htm" />
+        <HelpTOCNode Title="CategoryExists Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.CategoryExists.htm" />
+        <HelpTOCNode Title="EditCategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditCategory.htm" />
+        <HelpTOCNode Title="EditMenuItem Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditMenuItem.htm" />
+        <HelpTOCNode Title="EditSubcategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditSubcategory.htm" />
+        <HelpTOCNode Title="GetAddons Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetAddons.htm" />
+        <HelpTOCNode Title="GetIngredients Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetIngredients.htm" />
+        <HelpTOCNode Title="GetItemImage Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetItemImage.htm" />
+        <HelpTOCNode Title="GetMenuItem Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItem.htm" />
+        <HelpTOCNode Title="GetMenuItemIngredients Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItemIngredients.htm" />
+        <HelpTOCNode Title="GetSubcategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetSubcategory.htm" />
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.Index.htm" />
+        <HelpTOCNode Title="Menu Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.Menu.htm" />
+        <HelpTOCNode Title="RemoveAddon Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveAddon.htm" />
+        <HelpTOCNode Title="RemoveCategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveCategory.htm" />
+        <HelpTOCNode Title="RemoveIngredient Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveIngredient.htm" />
+        <HelpTOCNode Title="RemoveMenuItem Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItem.htm" />
+        <HelpTOCNode Title="RemoveMenuItemIngredient Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItemIngredient.htm" />
+        <HelpTOCNode Title="RemoveSubcategory Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveSubcategory.htm" />
+        <HelpTOCNode Title="UpdateItemImage Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.UpdateItemImage.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="606be1c1-0816-4370-b2ae-e4b2cb991e64" Title="OrderInfoController Class" Url="html/T-TriCodeTest.Controllers.OrderInfoController.htm">
+      <HelpTOCNode Title="OrderInfoController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+      <HelpTOCNode Title="OrderInfoController Constructor " Url="html/M-TriCodeTest.Controllers.OrderInfoController.-ctor.htm" />
+      <HelpTOCNode Id="84e50d02-a72d-4a19-842c-fe851cba32fb" Title="OrderInfoController Fields" Url="html/Fields.T-TriCodeTest.Controllers.OrderInfoController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._context.htm" />
+        <HelpTOCNode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._logger.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="10e4b587-4d81-411c-a245-976dd2e2fc79" Title="OrderInfoController Methods" Url="html/Methods.T-TriCodeTest.Controllers.OrderInfoController.htm">
+        <HelpTOCNode Id="2137b1b6-9e33-4bc4-a972-6910e0611d33" Title="Edit Method " Url="html/Overload-TriCodeTest.Controllers.OrderInfoController.Edit.htm">
+          <HelpTOCNode Title="Edit Method (Nullable(Int32))" Url="html/M-TriCodeTest.Controllers.OrderInfoController.Edit.htm" />
+          <HelpTOCNode Title="Edit Method (Int32, Order)" Url="html/M-TriCodeTest.Controllers.OrderInfoController.Edit_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.Index.htm" />
+        <HelpTOCNode Title="ListOrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.ListOrderDeserialize.htm" />
+        <HelpTOCNode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderDeserialize.htm" />
+        <HelpTOCNode Title="OrderInfoExists Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderInfoExists.htm" />
+        <HelpTOCNode Title="OrderSerialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderSerialize.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="30df7a20-8660-42e0-b590-56645e397425" Title="UpdateUserRoleController Class" Url="html/T-TriCodeTest.Controllers.UpdateUserRoleController.htm">
+      <HelpTOCNode Title="UpdateUserRoleController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+      <HelpTOCNode Title="UpdateUserRoleController Constructor " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.-ctor.htm" />
+      <HelpTOCNode Id="af936a2d-479a-496f-9afa-97465cb48a0a" Title="UpdateUserRoleController Fields" Url="html/Fields.T-TriCodeTest.Controllers.UpdateUserRoleController.htm">
+        <HelpTOCNode Title="_context Field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._context.htm" />
+        <HelpTOCNode Title="_roleManager Field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._roleManager.htm" />
+        <HelpTOCNode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._userManager.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="73cbd039-f961-41eb-a81c-6fedf1beffbc" Title="UpdateUserRoleController Methods" Url="html/Methods.T-TriCodeTest.Controllers.UpdateUserRoleController.htm">
+        <HelpTOCNode Title="Index Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.Index.htm" />
+        <HelpTOCNode Title="RoleAddToUser Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.RoleAddToUser.htm" />
+        <HelpTOCNode Title="setRoleAdmin Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleAdmin.htm" />
+        <HelpTOCNode Title="setRoleCustomer Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleCustomer.htm" />
+        <HelpTOCNode Title="setRoleStaff Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleStaff.htm" />
+        <HelpTOCNode Title="UpdateUserRole Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.UpdateUserRole.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="a798bd22-7b9e-4f4d-a8a1-877114f8f57a" Title="TriCodeTest.Data Namespace" Url="html/N-TriCodeTest.Data.htm">
+    <HelpTOCNode Id="af90510d-f412-46e5-a4ed-0bb91ae5696b" Title="ApplicationDbContext Class" Url="html/T-TriCodeTest.Data.ApplicationDbContext.htm">
+      <HelpTOCNode Title="ApplicationDbContext Members" Url="html/AllMembers.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+      <HelpTOCNode Title="ApplicationDbContext Constructor " Url="html/M-TriCodeTest.Data.ApplicationDbContext.-ctor.htm" />
+      <HelpTOCNode Id="ca7136a5-59e3-4bcc-9ddc-85404b5a6c77" Title="ApplicationDbContext Methods" Url="html/Methods.T-TriCodeTest.Data.ApplicationDbContext.htm">
+        <HelpTOCNode Title="OnModelCreating Method " Url="html/M-TriCodeTest.Data.ApplicationDbContext.OnModelCreating.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1e5a3d2d-73a8-439a-9958-fa1960f44b3f" Title="ApplicationDbContext Properties" Url="html/Properties.T-TriCodeTest.Data.ApplicationDbContext.htm">
+        <HelpTOCNode Title="AddOn Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.AddOn.htm" />
+        <HelpTOCNode Title="Category Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Category.htm" />
+        <HelpTOCNode Title="Ingredient Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Ingredient.htm" />
+        <HelpTOCNode Title="MenuItem Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItem.htm" />
+        <HelpTOCNode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItemIngredients.htm" />
+        <HelpTOCNode Title="OrderInfo Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.OrderInfo.htm" />
+        <HelpTOCNode Title="Subcategory Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Subcategory.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b24121dc-cbf1-4a64-9935-fc11bcbd1f6e" Title="DbInitializer Class" Url="html/T-TriCodeTest.Data.DbInitializer.htm">
+      <HelpTOCNode Title="DbInitializer Members" Url="html/AllMembers.T-TriCodeTest.Data.DbInitializer.htm" />
+      <HelpTOCNode Id="5290d4c4-ac27-4549-aba9-10e89e71a98d" Title="DbInitializer Methods" Url="html/Methods.T-TriCodeTest.Data.DbInitializer.htm">
+        <HelpTOCNode Title="Initialize Method " Url="html/M-TriCodeTest.Data.DbInitializer.Initialize.htm" />
+        <HelpTOCNode Title="SaveChanges Method " Url="html/M-TriCodeTest.Data.DbInitializer.SaveChanges.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="1c6b389b-76de-4d34-a1e0-a8a2ce872281" Title="TriCodeTest.Data.Migrations Namespace" Url="html/N-TriCodeTest.Data.Migrations.htm">
+    <HelpTOCNode Id="26e62fcf-e6ce-48d8-8868-a3a9b6f76d1a" Title="CreateIdentitySchema Class" Url="html/T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm">
+      <HelpTOCNode Title="CreateIdentitySchema Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+      <HelpTOCNode Id="64857ff4-f103-43b0-a205-de56a5014367" Title="CreateIdentitySchema Methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm">
+        <HelpTOCNode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.BuildTargetModel.htm" />
+        <HelpTOCNode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Down.htm" />
+        <HelpTOCNode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Up.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c2202294-91d4-47ed-89b4-7e1c7da6f8c3" Title="MenuItemIngredientsKey Class" Url="html/T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm">
+      <HelpTOCNode Title="MenuItemIngredientsKey Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+      <HelpTOCNode Id="d6a687bd-eb6f-43e2-8d2e-fc3919a9510e" Title="MenuItemIngredientsKey Methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm">
+        <HelpTOCNode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.BuildTargetModel.htm" />
+        <HelpTOCNode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Down.htm" />
+        <HelpTOCNode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Up.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f1612b63-5e6a-41ed-a405-b6635dbad4b7" Title="ModelsCreation Class" Url="html/T-TriCodeTest.Data.Migrations.ModelsCreation.htm">
+      <HelpTOCNode Title="ModelsCreation Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+      <HelpTOCNode Id="bc1de42a-fca0-4c34-8264-45324fcdca8e" Title="ModelsCreation Methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.ModelsCreation.htm">
+        <HelpTOCNode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.BuildTargetModel.htm" />
+        <HelpTOCNode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Down.htm" />
+        <HelpTOCNode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Up.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="04aed3a0-0d97-43b1-9a9a-7ab18ee51c4a" Title="NameForApplicationUser Class" Url="html/T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm">
+      <HelpTOCNode Title="NameForApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+      <HelpTOCNode Id="d3aa0a50-009d-41f7-96f5-4e1edb4af4c4" Title="NameForApplicationUser Methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm">
+        <HelpTOCNode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.BuildTargetModel.htm" />
+        <HelpTOCNode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Down.htm" />
+        <HelpTOCNode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Up.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c19ae85e-7c6f-4897-9a66-e557e8d0107e" Title="TriCodeTest.Models Namespace" Url="html/N-TriCodeTest.Models.htm">
+    <HelpTOCNode Id="f9074f04-5247-4858-8d49-05f6d7594dd0" Title="ApplicationUser Class" Url="html/T-TriCodeTest.Models.ApplicationUser.htm">
+      <HelpTOCNode Title="ApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Models.ApplicationUser.htm" />
+      <HelpTOCNode Id="abe06d94-3e0d-4c27-bafc-e83639ada2f5" Title="ApplicationUser Properties" Url="html/Properties.T-TriCodeTest.Models.ApplicationUser.htm">
+        <HelpTOCNode Title="FirstName Property " Url="html/P-TriCodeTest.Models.ApplicationUser.FirstName.htm" />
+        <HelpTOCNode Title="LastName Property " Url="html/P-TriCodeTest.Models.ApplicationUser.LastName.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cc4d6d8e-1aad-468e-b638-6af8d8007b75" Title="HistoryViewModel Class" Url="html/T-TriCodeTest.Models.HistoryViewModel.htm">
+      <HelpTOCNode Title="HistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.HistoryViewModel.htm" />
+      <HelpTOCNode Id="8192ed95-8570-40ab-a265-a1f3c2c997db" Title="HistoryViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.HistoryViewModel.htm">
+        <HelpTOCNode Title="Orders Property " Url="html/P-TriCodeTest.Models.HistoryViewModel.Orders.htm" />
+        <HelpTOCNode Title="Users Property " Url="html/P-TriCodeTest.Models.HistoryViewModel.Users.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Option Enumeration" Url="html/T-TriCodeTest.Models.Option.htm" />
+    <HelpTOCNode Id="d782cea7-45d1-4c5c-aa0d-6919b5bfbad5" Title="PostHistoryViewModel Class" Url="html/T-TriCodeTest.Models.PostHistoryViewModel.htm">
+      <HelpTOCNode Title="PostHistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+      <HelpTOCNode Id="499a499c-9480-4875-a877-b9e431e950ff" Title="PostHistoryViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.PostHistoryViewModel.htm">
+        <HelpTOCNode Title="DateTime Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.DateTime.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Id.htm" />
+        <HelpTOCNode Title="Status Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Status.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="34ceaeb8-b5a4-41e5-b22f-a554df2b407e" Title="PostRoleUpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm">
+      <HelpTOCNode Title="PostRoleUpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+      <HelpTOCNode Id="83c30f7d-fb83-432f-8657-f8530102a884" Title="PostRoleUpdateUserRoleViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Email.htm" />
+        <HelpTOCNode Title="Role Property " Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Role.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Size Enumeration" Url="html/T-TriCodeTest.Models.Size.htm" />
+    <HelpTOCNode Title="Status Enumeration" Url="html/T-TriCodeTest.Models.Status.htm" />
+    <HelpTOCNode Id="0d657c22-281b-454e-b521-a663a7f18658" Title="UpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.UpdateUserRoleViewModel.htm">
+      <HelpTOCNode Title="UpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+      <HelpTOCNode Id="d3eb8a37-e3ab-4a33-a092-ed10bb561b34" Title="UpdateUserRoleViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm">
+        <HelpTOCNode Title="Roles Property " Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Roles.htm" />
+        <HelpTOCNode Title="Users Property " Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Users.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7b5e3646-9285-4fa4-914b-c0aa09a0f4a6" Title="TriCodeTest.Models.AccountViewModels Namespace" Url="html/N-TriCodeTest.Models.AccountViewModels.htm">
+    <HelpTOCNode Id="81e3a518-8383-4096-8ef2-1b762f367b0f" Title="ExternalLoginConfirmationViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm">
+      <HelpTOCNode Title="ExternalLoginConfirmationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+      <HelpTOCNode Id="86ec9555-0d4e-4206-b0c7-6a95ff4ce0ac" Title="ExternalLoginConfirmationViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.Email.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="62bffb3e-6116-44dd-87d8-c3c76541ec14" Title="ForgotPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm">
+      <HelpTOCNode Title="ForgotPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+      <HelpTOCNode Id="c8c3996e-b5c0-4416-8a2d-f7832ef691c0" Title="ForgotPasswordViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.Email.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="042cf883-404f-4cfa-99f9-d86b9aa2d89b" Title="LoginViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm">
+      <HelpTOCNode Title="LoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+      <HelpTOCNode Id="ffd8f985-140a-4ed1-b705-b3d4a4153896" Title="LoginViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm">
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Email.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Password.htm" />
+        <HelpTOCNode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.RememberMe.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="00b16ecc-b38b-4346-8686-7ae91de369bb" Title="RegisterViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm">
+      <HelpTOCNode Title="RegisterViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+      <HelpTOCNode Id="c8c6c2c7-c5e0-4116-aed6-7f38bbb98f7f" Title="RegisterViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm">
+        <HelpTOCNode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.ConfirmPassword.htm" />
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Email.htm" />
+        <HelpTOCNode Title="FirstName Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.FirstName.htm" />
+        <HelpTOCNode Title="LastName Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.LastName.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Password.htm" />
+        <HelpTOCNode Title="Phone Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Phone.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bac2b9bd-f458-493e-90eb-06308e82af18" Title="ResetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm">
+      <HelpTOCNode Title="ResetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+      <HelpTOCNode Id="f5524c07-24a7-4f5c-b235-203dd1032bff" Title="ResetPasswordViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm">
+        <HelpTOCNode Title="Code Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Code.htm" />
+        <HelpTOCNode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.ConfirmPassword.htm" />
+        <HelpTOCNode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Email.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Password.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8af7332b-416c-40a5-93bd-27fe2efe0735" Title="SendCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm">
+      <HelpTOCNode Title="SendCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+      <HelpTOCNode Id="e7888a7e-825d-4667-93a4-f24431539509" Title="SendCodeViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm">
+        <HelpTOCNode Title="Providers Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.Providers.htm" />
+        <HelpTOCNode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.RememberMe.htm" />
+        <HelpTOCNode Title="ReturnUrl Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.ReturnUrl.htm" />
+        <HelpTOCNode Title="SelectedProvider Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.SelectedProvider.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cdddb69a-a227-489f-a386-538bbb7a04ef" Title="VerifyCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm">
+      <HelpTOCNode Title="VerifyCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+      <HelpTOCNode Id="1a5c66b8-fa9b-4329-aa22-ccad2f7e163f" Title="VerifyCodeViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm">
+        <HelpTOCNode Title="Code Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Code.htm" />
+        <HelpTOCNode Title="Provider Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Provider.htm" />
+        <HelpTOCNode Title="RememberBrowser Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberBrowser.htm" />
+        <HelpTOCNode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberMe.htm" />
+        <HelpTOCNode Title="ReturnUrl Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.ReturnUrl.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="a82251d3-e09c-473b-a689-614e1135dfde" Title="TriCodeTest.Models.CustomerMenuViewModels Namespace" Url="html/N-TriCodeTest.Models.CustomerMenuViewModels.htm">
+    <HelpTOCNode Id="dd656dbc-71bb-4e43-adda-5570bbc91468" Title="CartOrder Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm">
+      <HelpTOCNode Title="CartOrder Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+      <HelpTOCNode Id="fd0c62ae-09de-44db-82bf-869c43d03758" Title="CartOrder Properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm">
+        <HelpTOCNode Title="CartOrderMenuItems Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.CartOrderMenuItems.htm" />
+        <HelpTOCNode Title="DateTime Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.DateTime.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Id.htm" />
+        <HelpTOCNode Title="Status Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Status.htm" />
+        <HelpTOCNode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.TotalPrice.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.User.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c58077c9-9c88-48f3-8f90-a607772105e1" Title="CartOrderMenuItem Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm">
+      <HelpTOCNode Title="CartOrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+      <HelpTOCNode Id="92a26b4b-23d4-4c9e-9310-77bc9f8d09af" Title="CartOrderMenuItem Properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm">
+        <HelpTOCNode Title="AddOns Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.AddOns.htm" />
+        <HelpTOCNode Title="ChoiceOfAddons Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ChoiceOfAddons.htm" />
+        <HelpTOCNode Title="ItemImage Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ItemImage.htm" />
+        <HelpTOCNode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.MenuItem.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b946460d-4984-4195-9702-c0fb65def44c" Title="LoadMenuViewModel Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm">
+      <HelpTOCNode Title="LoadMenuViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+      <HelpTOCNode Id="e95ad143-e66a-4fa4-a698-66f0d38f5401" Title="LoadMenuViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm">
+        <HelpTOCNode Title="Categories Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Categories.htm" />
+        <HelpTOCNode Title="MenuItems Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.MenuItems.htm" />
+        <HelpTOCNode Title="Subcategories Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Subcategories.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="dc4e00bb-61f1-4e4f-8847-755b6c5ea5e9" Title="TriCodeTest.Models.ManageViewModels Namespace" Url="html/N-TriCodeTest.Models.ManageViewModels.htm">
+    <HelpTOCNode Id="a4fef59f-d973-4104-a38a-236783c25794" Title="AddPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm">
+      <HelpTOCNode Title="AddPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+      <HelpTOCNode Id="6bde6353-25ce-4cfc-9d55-cb4a458a1299" Title="AddPhoneNumberViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm">
+        <HelpTOCNode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.PhoneNumber.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="16daad2c-539e-4e0f-8bf3-d10464ad1649" Title="ChangePasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm">
+      <HelpTOCNode Title="ChangePasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+      <HelpTOCNode Id="679835a9-6d38-4522-af41-01dc5c004ea6" Title="ChangePasswordViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm">
+        <HelpTOCNode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.ConfirmPassword.htm" />
+        <HelpTOCNode Title="NewPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.NewPassword.htm" />
+        <HelpTOCNode Title="OldPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.OldPassword.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8f58679a-29d3-42d3-8301-39fad997afca" Title="ConfigureTwoFactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm">
+      <HelpTOCNode Title="ConfigureTwoFactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+      <HelpTOCNode Id="40dc46bc-f193-4d3b-b38e-a513ce9efea6" Title="ConfigureTwoFactorViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm">
+        <HelpTOCNode Title="Providers Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.Providers.htm" />
+        <HelpTOCNode Title="SelectedProvider Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.SelectedProvider.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5dc0df75-b087-49a4-9814-abb741a2963b" Title="FactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm">
+      <HelpTOCNode Title="FactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+      <HelpTOCNode Id="38450094-2c9c-4dc7-9f06-1407712a5a7c" Title="FactorViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm">
+        <HelpTOCNode Title="Purpose Property " Url="html/P-TriCodeTest.Models.ManageViewModels.FactorViewModel.Purpose.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="975f4b7d-ec18-473b-9439-58dea996cd7b" Title="IndexViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm">
+      <HelpTOCNode Title="IndexViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+      <HelpTOCNode Id="b076c529-934d-4c55-a81b-507dfd56a71c" Title="IndexViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm">
+        <HelpTOCNode Title="BrowserRemembered Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.BrowserRemembered.htm" />
+        <HelpTOCNode Title="FirstName Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.FirstName.htm" />
+        <HelpTOCNode Title="HasPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.HasPassword.htm" />
+        <HelpTOCNode Title="LastName Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.LastName.htm" />
+        <HelpTOCNode Title="Logins Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.Logins.htm" />
+        <HelpTOCNode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.PhoneNumber.htm" />
+        <HelpTOCNode Title="TwoFactor Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.TwoFactor.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="abb87942-4260-469d-9528-c802c09c0ee3" Title="ManageLoginsViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm">
+      <HelpTOCNode Title="ManageLoginsViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+      <HelpTOCNode Id="176f2410-9bbb-4675-9a96-622c33b6498a" Title="ManageLoginsViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm">
+        <HelpTOCNode Title="CurrentLogins Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.CurrentLogins.htm" />
+        <HelpTOCNode Title="OtherLogins Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.OtherLogins.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ec433e72-11a0-477e-b976-67f1700a7914" Title="RemoveLoginViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm">
+      <HelpTOCNode Title="RemoveLoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+      <HelpTOCNode Id="a01f8276-9037-40c3-b93c-2d618f86d4fc" Title="RemoveLoginViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm">
+        <HelpTOCNode Title="LoginProvider Property " Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.LoginProvider.htm" />
+        <HelpTOCNode Title="ProviderKey Property " Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.ProviderKey.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ec2538de-951e-4025-8916-efd65200c0d7" Title="SetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm">
+      <HelpTOCNode Title="SetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+      <HelpTOCNode Id="f2f65189-a473-49ff-8099-8303090048cc" Title="SetPasswordViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm">
+        <HelpTOCNode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.ConfirmPassword.htm" />
+        <HelpTOCNode Title="NewPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.NewPassword.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d0d73423-e7da-43a5-8b0a-a625650b8ccc" Title="VerifyPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm">
+      <HelpTOCNode Title="VerifyPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+      <HelpTOCNode Id="c3416ad7-7630-4486-85b3-f3f328282a1a" Title="VerifyPhoneNumberViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm">
+        <HelpTOCNode Title="Code Property " Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.Code.htm" />
+        <HelpTOCNode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.PhoneNumber.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="8ea197fa-7ddf-471b-ada2-163f71c674c6" Title="TriCodeTest.Models.MenuModels Namespace" Url="html/N-TriCodeTest.Models.MenuModels.htm">
+    <HelpTOCNode Id="88dc58a7-f885-4518-abfb-8cfe41c1ebd7" Title="AddOn Class" Url="html/T-TriCodeTest.Models.MenuModels.AddOn.htm">
+      <HelpTOCNode Title="AddOn Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+      <HelpTOCNode Id="736c259a-e7f7-4f28-ad06-840b4232dda8" Title="AddOn Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.AddOn.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Description.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Id.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Name.htm" />
+        <HelpTOCNode Title="Price Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Price.htm" />
+        <HelpTOCNode Title="Subcategory Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Subcategory.htm" />
+        <HelpTOCNode Title="SubcategoryId Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.SubcategoryId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0394c860-fb7c-4f96-973c-2d6c3df63873" Title="Category Class" Url="html/T-TriCodeTest.Models.MenuModels.Category.htm">
+      <HelpTOCNode Title="Category Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Category.htm" />
+      <HelpTOCNode Id="13af783b-65fe-46c1-93ef-315ee377498b" Title="Category Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Category.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Description.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Id.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Name.htm" />
+        <HelpTOCNode Title="Subcategories Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Subcategories.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9c8a2396-fa3b-43c5-997a-adf710099465" Title="Ingredient Class" Url="html/T-TriCodeTest.Models.MenuModels.Ingredient.htm">
+      <HelpTOCNode Title="Ingredient Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+      <HelpTOCNode Id="fc07101a-a85d-4b4e-8ac1-1a94db9b61e8" Title="Ingredient Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Ingredient.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Description.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Id.htm" />
+        <HelpTOCNode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.MenuItemIngredients.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Name.htm" />
+        <HelpTOCNode Title="Option Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Option.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d91574a1-7ce9-48d4-80c0-a3ad32136bcf" Title="MenuItem Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItem.htm">
+      <HelpTOCNode Title="MenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+      <HelpTOCNode Id="60dc9116-5cec-4afb-8d82-316e0dda3e5f" Title="MenuItem Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItem.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Description.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Id.htm" />
+        <HelpTOCNode Title="ItemImage Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.ItemImage.htm" />
+        <HelpTOCNode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.MenuItemIngredients.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Name.htm" />
+        <HelpTOCNode Title="Price Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Price.htm" />
+        <HelpTOCNode Title="Size Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Size.htm" />
+        <HelpTOCNode Title="Subcategory Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Subcategory.htm" />
+        <HelpTOCNode Title="SubcategoryId Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.SubcategoryId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="693df17b-ccb5-4ada-a70f-27c8b4676a9b" Title="MenuItemIngredients Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm">
+      <HelpTOCNode Title="MenuItemIngredients Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+      <HelpTOCNode Id="d5bd6cf0-dab5-4a75-a23b-d19e71a32096" Title="MenuItemIngredients Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm">
+        <HelpTOCNode Title="Ingredient Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.Ingredient.htm" />
+        <HelpTOCNode Title="IngredientId Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.IngredientId.htm" />
+        <HelpTOCNode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItem.htm" />
+        <HelpTOCNode Title="MenuItemId Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItemId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c923bae2-c77b-4ef1-8546-98c150d765f1" Title="Subcategory Class" Url="html/T-TriCodeTest.Models.MenuModels.Subcategory.htm">
+      <HelpTOCNode Title="Subcategory Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+      <HelpTOCNode Id="1005f6b8-699a-4398-80be-123aa9050db0" Title="Subcategory Properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Subcategory.htm">
+        <HelpTOCNode Title="AddOns Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.AddOns.htm" />
+        <HelpTOCNode Title="Category Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Category.htm" />
+        <HelpTOCNode Title="CategoryId Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.CategoryId.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Description.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Id.htm" />
+        <HelpTOCNode Title="MenuItems Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.MenuItems.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Name.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="b827c74e-94c3-4b82-9969-7c4130d0ff39" Title="TriCodeTest.Models.MenuViewModels Namespace" Url="html/N-TriCodeTest.Models.MenuViewModels.htm">
+    <HelpTOCNode Id="293abb52-cc69-430f-ba6b-32df324c7f0e" Title="MenuCreationViewModel Class" Url="html/T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm">
+      <HelpTOCNode Title="MenuCreationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+      <HelpTOCNode Id="dccaf066-4aff-41b1-8cc0-6c45a0c4da81" Title="MenuCreationViewModel Properties" Url="html/Properties.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm">
+        <HelpTOCNode Title="AddonMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.AddonMenu.htm" />
+        <HelpTOCNode Title="CategoryMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.CategoryMenu.htm" />
+        <HelpTOCNode Title="IngridientMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.IngridientMenu.htm" />
+        <HelpTOCNode Title="MenuItemIngredientsMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemIngredientsMenu.htm" />
+        <HelpTOCNode Title="MenuItemMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemMenu.htm" />
+        <HelpTOCNode Title="SubCategoryMenu Property " Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.SubCategoryMenu.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="117002e0-e083-4797-960e-40ba0eb82f89" Title="TriCodeTest.Models.OrderModels Namespace" Url="html/N-TriCodeTest.Models.OrderModels.htm">
+    <HelpTOCNode Id="dffbe7c0-7749-4077-b868-1a2543abb682" Title="Order Class" Url="html/T-TriCodeTest.Models.OrderModels.Order.htm">
+      <HelpTOCNode Title="Order Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.Order.htm" />
+      <HelpTOCNode Id="15e338e8-5cf8-4214-a38c-6aee5a24798e" Title="Order Properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.Order.htm">
+        <HelpTOCNode Title="DateTime Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.DateTime.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.Id.htm" />
+        <HelpTOCNode Title="OrderMenuItems Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.OrderMenuItems.htm" />
+        <HelpTOCNode Title="Status Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.Status.htm" />
+        <HelpTOCNode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.TotalPrice.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.User.htm" />
+        <HelpTOCNode Title="UserId Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.UserId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cc31cae0-3b03-4ad0-9e8d-0309df867535" Title="OrderInfo Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderInfo.htm">
+      <HelpTOCNode Title="OrderInfo Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+      <HelpTOCNode Id="9551081b-0e09-4428-b8c3-5533f09d8d22" Title="OrderInfo Properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.OrderInfo.htm">
+        <HelpTOCNode Title="DateTime Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.DateTime.htm" />
+        <HelpTOCNode Title="Id Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Id.htm" />
+        <HelpTOCNode Title="OrderMenuItems Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.OrderMenuItems.htm" />
+        <HelpTOCNode Title="Status Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Status.htm" />
+        <HelpTOCNode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.TotalPrice.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.User.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d2dcf9f9-aeae-412b-bd76-872de78d2aab" Title="OrderMenuItem Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm">
+      <HelpTOCNode Title="OrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+      <HelpTOCNode Id="43361aae-0ffa-4a27-b0a7-6d2229414a06" Title="OrderMenuItem Properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm">
+        <HelpTOCNode Title="AddOns Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.AddOns.htm" />
+        <HelpTOCNode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.MenuItem.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d9ebbb9d-c3d1-47a4-a1e2-f72e7f6f189b" Title="TriCodeTest.RoleSeeding Namespace" Url="html/N-TriCodeTest.RoleSeeding.htm">
+    <HelpTOCNode Id="008127a9-6d7c-4aaf-ae63-fdd19544d108" Title="RoleSeeding Class" Url="html/T-TriCodeTest.RoleSeeding.RoleSeeding.htm">
+      <HelpTOCNode Title="RoleSeeding Members" Url="html/AllMembers.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+      <HelpTOCNode Id="16deacec-be7b-4043-a5ce-d4d8c5842d00" Title="RoleSeeding Fields" Url="html/Fields.T-TriCodeTest.RoleSeeding.RoleSeeding.htm">
+        <HelpTOCNode Title="Roles Field" Url="html/F-TriCodeTest.RoleSeeding.RoleSeeding.Roles.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cf11c0dc-32d2-4d9d-b867-6b8ddf1ef2cb" Title="RoleSeeding Methods" Url="html/Methods.T-TriCodeTest.RoleSeeding.RoleSeeding.htm">
+        <HelpTOCNode Title="SeedRole Method " Url="html/M-TriCodeTest.RoleSeeding.RoleSeeding.SeedRole.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="2672b979-02c4-4206-bd37-90b1e3319898" Title="TriCodeTest.Services Namespace" Url="html/N-TriCodeTest.Services.htm">
+    <HelpTOCNode Id="aaaa4c5a-7b53-40c5-bb25-b8e6454decc5" Title="AuthMessageSender Class" Url="html/T-TriCodeTest.Services.AuthMessageSender.htm">
+      <HelpTOCNode Title="AuthMessageSender Members" Url="html/AllMembers.T-TriCodeTest.Services.AuthMessageSender.htm" />
+      <HelpTOCNode Id="b0ba2705-668c-4b99-ae63-05c3363c2495" Title="AuthMessageSender Methods" Url="html/Methods.T-TriCodeTest.Services.AuthMessageSender.htm">
+        <HelpTOCNode Title="SendEmailAsync Method " Url="html/M-TriCodeTest.Services.AuthMessageSender.SendEmailAsync.htm" />
+        <HelpTOCNode Title="SendSmsAsync Method " Url="html/M-TriCodeTest.Services.AuthMessageSender.SendSmsAsync.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="073c58f2-ec14-4aba-9f04-33b2bfb51405" Title="IEmailSender Interface" Url="html/T-TriCodeTest.Services.IEmailSender.htm">
+      <HelpTOCNode Title="IEmailSender Members" Url="html/AllMembers.T-TriCodeTest.Services.IEmailSender.htm" />
+      <HelpTOCNode Id="ff827369-255c-478c-a9da-48bdc61f5763" Title="IEmailSender Methods" Url="html/Methods.T-TriCodeTest.Services.IEmailSender.htm">
+        <HelpTOCNode Title="SendEmailAsync Method " Url="html/M-TriCodeTest.Services.IEmailSender.SendEmailAsync.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3dc77bc6-df5e-4779-91bf-9e521b7a9be3" Title="ISmsSender Interface" Url="html/T-TriCodeTest.Services.ISmsSender.htm">
+      <HelpTOCNode Title="ISmsSender Members" Url="html/AllMembers.T-TriCodeTest.Services.ISmsSender.htm" />
+      <HelpTOCNode Id="dd514c1d-48a1-4598-ab08-c0ef55102067" Title="ISmsSender Methods" Url="html/Methods.T-TriCodeTest.Services.ISmsSender.htm">
+        <HelpTOCNode Title="SendSmsAsync Method " Url="html/M-TriCodeTest.Services.ISmsSender.SendSmsAsync.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="beed922e-949d-4fdb-92e2-ad06a0c11160" Title="TriCodeTest.TwilioNotification Namespace" Url="html/N-TriCodeTest.TwilioNotification.htm">
+    <HelpTOCNode Id="4337474f-4fce-41a0-b297-2bf28c22e294" Title="Credentials Class" Url="html/T-TriCodeTest.TwilioNotification.Credentials.htm">
+      <HelpTOCNode Title="Credentials Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Credentials.htm" />
+      <HelpTOCNode Id="7ceaf1a0-bc06-4606-93a3-abb88b25862b" Title="Credentials Fields" Url="html/Fields.T-TriCodeTest.TwilioNotification.Credentials.htm">
+        <HelpTOCNode Title="AcctSID Field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctSID.htm" />
+        <HelpTOCNode Title="AcctToken Field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctToken.htm" />
+        <HelpTOCNode Title="TwilioNumber Field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.TwilioNumber.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1c5b5f74-9d5a-4bb6-864d-91d6abf73a91" Title="Notification Class" Url="html/T-TriCodeTest.TwilioNotification.Notification.htm">
+      <HelpTOCNode Title="Notification Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Notification.htm" />
+      <HelpTOCNode Id="ffad9a38-ccda-4f58-ba37-18d981fa1195" Title="Notification Methods" Url="html/Methods.T-TriCodeTest.TwilioNotification.Notification.htm">
+        <HelpTOCNode Title="SendNotification Method " Url="html/M-TriCodeTest.TwilioNotification.Notification.SendNotification.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

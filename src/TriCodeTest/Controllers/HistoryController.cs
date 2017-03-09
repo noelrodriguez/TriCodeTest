@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : TriCodeTest
+// Author           : Alex
+// Created          : 03-05-2017
+//
+// Last Modified By : cosmost
+// Last Modified On : 03-08-2017
+// ***********************************************************************
+// <copyright file="HistoryController.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +29,19 @@ namespace TriCodeTest.Controllers
     /// <summary>
     /// Class history
     /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class HistoryController : Controller
     {
 
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly ApplicationDbContext _context;
 
         /// <summary>
         /// Order function
         /// </summary>
+        /// <value>The orders.</value>
         public List<OrderInfo> Orders { get; private set; }
         /// <summary>
         /// Controller

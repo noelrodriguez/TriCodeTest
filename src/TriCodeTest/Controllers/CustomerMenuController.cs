@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : TriCodeTest
+// Author           : noelrodriguez
+// Created          : 03-05-2017
+//
+// Last Modified By : cosmost
+// Last Modified On : 03-08-2017
+// ***********************************************************************
+// <copyright file="CustomerMenuController.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +36,17 @@ namespace TriCodeTest.Controllers
     [Authorize]
     public class CustomerMenuController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private readonly UserManager<ApplicationUser> _userManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerMenuController"/> class.
+        /// Initializes a new instance of the <see cref="CustomerMenuController" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="userManager">The user manager.</param>
@@ -178,9 +197,7 @@ namespace TriCodeTest.Controllers
         /// Removes passed item from user's cart
         /// </summary>
         /// <param name="item">Item to remove from cart</param>
-        /// <returns>
-        /// True or false if item was successfully removed from cart
-        /// </returns>
+        /// <returns>True or false if item was successfully removed from cart</returns>
         [HttpPost]
         public async Task<ActionResult> RemoveItem(CartOrderMenuItem item)
         {
@@ -212,9 +229,7 @@ namespace TriCodeTest.Controllers
         /// Submits the order and changes it's status from Cart to Received
         /// </summary>
         /// <param name="order">Order containing menu items</param>
-        /// <returns>
-        /// True or false if successfully submitted order
-        /// </returns>
+        /// <returns>True or false if successfully submitted order</returns>
         // POST: CustomerMenu/SubmitOrder/{OrderObject}
         [HttpPost]
         public async Task<ActionResult> SubmitOrder(CartOrder order)
@@ -247,7 +262,7 @@ namespace TriCodeTest.Controllers
         /// <summary>
         /// Gets the current user asynchronous.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApplicationUser&gt;.</returns>
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
@@ -257,9 +272,7 @@ namespace TriCodeTest.Controllers
         /// Creates a new empty cart if a cart hasn't been created already
         /// </summary>
         /// <param name="user">User to create the cart for</param>
-        /// <returns>
-        /// Newly created order
-        /// </returns>
+        /// <returns>Newly created order</returns>
         private OrderInfo AddNewOrderToDatabase(ApplicationUser user)
         {
             OrderInfo newOrder = new OrderInfo()
@@ -278,9 +291,7 @@ namespace TriCodeTest.Controllers
         /// Deserializes an Order and converts it to the view model
         /// </summary>
         /// <param name="model">Order from the databsase</param>
-        /// <returns>
-        /// View model of order with deserialized JSON for items in order
-        /// </returns>
+        /// <returns>View model of order with deserialized JSON for items in order</returns>
         private CartOrder OrderDeserialize(OrderInfo model)
         {
             CartOrder CartOrderModel = new CartOrder
@@ -304,9 +315,7 @@ namespace TriCodeTest.Controllers
         /// Serializes a view model and converts it to an Order
         /// </summary>
         /// <param name="model">Order view model</param>
-        /// <returns>
-        /// Table model from the database with serialized JSON
-        /// </returns>
+        /// <returns>Table model from the database with serialized JSON</returns>
         private OrderInfo OrderSerialize(CartOrder model)
         {
             OrderInfo OrderInfoModel = new OrderInfo
@@ -327,9 +336,7 @@ namespace TriCodeTest.Controllers
         /// </summary>
         /// <param name="item">Menu item to convert to view model</param>
         /// <param name="subcategory">Subcategory to grab addons from</param>
-        /// <returns>
-        /// View model of item and addons
-        /// </returns>
+        /// <returns>View model of item and addons</returns>
         private CartOrderMenuItem ConvertToOrderMenuItem(MenuItem item, Subcategory subcategory)
         {
             CartOrderMenuItem cartOrderMenuItem = new CartOrderMenuItem()
@@ -344,9 +351,7 @@ namespace TriCodeTest.Controllers
         /// Calculates total price of order
         /// </summary>
         /// <param name="order">Order to calculate price for</param>
-        /// <returns>
-        /// Total price
-        /// </returns>
+        /// <returns>Total price</returns>
         private double CalculateTotalPrice(CartOrder order)
         {
             double totalPrice = 0;

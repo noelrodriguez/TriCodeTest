@@ -1,0 +1,1363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="About method" Url="html/M-TriCodeTest.Controllers.HomeController.About.htm" />
+  <HelpKINode Title="AccountController class">
+    <HelpKINode Title="AccountController Class" Url="html/T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="about AccountController class" Url="html/T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.AccountController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.AccountController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AccountController.AccountController constructor" Url="html/M-TriCodeTest.Controllers.AccountController.-ctor.htm" />
+  <HelpKINode Title="AccountController.AddErrors method" Url="html/M-TriCodeTest.Controllers.AccountController.AddErrors.htm" />
+  <HelpKINode Title="AccountController.ConfirmEmail method" Url="html/M-TriCodeTest.Controllers.AccountController.ConfirmEmail.htm" />
+  <HelpKINode Title="AccountController.ForgotPassword method" Url="html/Overload-TriCodeTest.Controllers.AccountController.ForgotPassword.htm" />
+  <HelpKINode Title="AccountController.ForgotPasswordConfirmation method" Url="html/M-TriCodeTest.Controllers.AccountController.ForgotPasswordConfirmation.htm" />
+  <HelpKINode Title="AccountController.GetCurrentUserAsync method" Url="html/M-TriCodeTest.Controllers.AccountController.GetCurrentUserAsync.htm" />
+  <HelpKINode Title="AccountController.Login method" Url="html/Overload-TriCodeTest.Controllers.AccountController.Login.htm" />
+  <HelpKINode Title="AccountController.LogOff method" Url="html/M-TriCodeTest.Controllers.AccountController.LogOff.htm" />
+  <HelpKINode Title="AccountController.RedirectToLocal method" Url="html/M-TriCodeTest.Controllers.AccountController.RedirectToLocal.htm" />
+  <HelpKINode Title="AccountController.Register method" Url="html/Overload-TriCodeTest.Controllers.AccountController.Register.htm" />
+  <HelpKINode Title="AccountController.ResetPassword method" Url="html/Overload-TriCodeTest.Controllers.AccountController.ResetPassword.htm" />
+  <HelpKINode Title="AccountController.ResetPasswordConfirmation method" Url="html/M-TriCodeTest.Controllers.AccountController.ResetPasswordConfirmation.htm" />
+  <HelpKINode Title="AccountController._emailSender field" Url="html/F-TriCodeTest.Controllers.AccountController._emailSender.htm" />
+  <HelpKINode Title="AccountController._logger field" Url="html/F-TriCodeTest.Controllers.AccountController._logger.htm" />
+  <HelpKINode Title="AccountController._signInManager field" Url="html/F-TriCodeTest.Controllers.AccountController._signInManager.htm" />
+  <HelpKINode Title="AccountController._smsSender field" Url="html/F-TriCodeTest.Controllers.AccountController._smsSender.htm" />
+  <HelpKINode Title="AccountController._userManager field" Url="html/F-TriCodeTest.Controllers.AccountController._userManager.htm" />
+  <HelpKINode Title="AcctSID field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctSID.htm" />
+  <HelpKINode Title="AcctToken field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctToken.htm" />
+  <HelpKINode Title="AddAddon method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddAddon.htm" />
+  <HelpKINode Title="AddCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddCategory.htm" />
+  <HelpKINode Title="AddErrors method">
+    <HelpKINode Title="AddErrors Method " Url="html/M-TriCodeTest.Controllers.ManageController.AddErrors.htm" />
+    <HelpKINode Title="AddErrors Method " Url="html/M-TriCodeTest.Controllers.AccountController.AddErrors.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddIngredient.htm" />
+  <HelpKINode Title="AddLoginSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="AddLoginSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.AddLoginSuccess.htm" />
+  <HelpKINode Title="AddMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItem.htm" />
+  <HelpKINode Title="AddMenuItemIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItemIngredient.htm" />
+  <HelpKINode Title="AddNewOrderToDatabase method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.AddNewOrderToDatabase.htm" />
+  <HelpKINode Title="AddOn class">
+    <HelpKINode Title="AddOn Class" Url="html/T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+    <HelpKINode Title="AddOn Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+    <HelpKINode Title="about AddOn class" Url="html/T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddOn property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.AddOn.htm" />
+  <HelpKINode Title="AddOn.Description property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Description.htm" />
+  <HelpKINode Title="AddOn.Id property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Id.htm" />
+  <HelpKINode Title="AddOn.Name property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Name.htm" />
+  <HelpKINode Title="AddOn.Price property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Price.htm" />
+  <HelpKINode Title="AddOn.Subcategory property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Subcategory.htm" />
+  <HelpKINode Title="AddOn.SubcategoryId property" Url="html/P-TriCodeTest.Models.MenuModels.AddOn.SubcategoryId.htm" />
+  <HelpKINode Title="AddonMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.AddonMenu.htm" />
+  <HelpKINode Title="AddOns property">
+    <HelpKINode Title="AddOns Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.AddOns.htm" />
+    <HelpKINode Title="AddOns Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.AddOns.htm" />
+    <HelpKINode Title="AddOns Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.AddOns.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddPhoneNumber method" Url="html/Overload-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm" />
+  <HelpKINode Title="AddPhoneNumberViewModel class">
+    <HelpKINode Title="AddPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+    <HelpKINode Title="AddPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+    <HelpKINode Title="about AddPhoneNumberViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddPhoneNumberViewModel.PhoneNumber property" Url="html/P-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.PhoneNumber.htm" />
+  <HelpKINode Title="AddPhoneSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="AddPhoneSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.AddPhoneSuccess.htm" />
+  <HelpKINode Title="AddSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddSubcategory.htm" />
+  <HelpKINode Title="ApplicationDbContext class">
+    <HelpKINode Title="ApplicationDbContext Class" Url="html/T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="ApplicationDbContext Members" Url="html/AllMembers.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="about ApplicationDbContext class" Url="html/T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Data.ApplicationDbContext.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ApplicationDbContext.AddOn property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.AddOn.htm" />
+  <HelpKINode Title="ApplicationDbContext.ApplicationDbContext constructor" Url="html/M-TriCodeTest.Data.ApplicationDbContext.-ctor.htm" />
+  <HelpKINode Title="ApplicationDbContext.Category property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.Category.htm" />
+  <HelpKINode Title="ApplicationDbContext.Ingredient property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.Ingredient.htm" />
+  <HelpKINode Title="ApplicationDbContext.MenuItem property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItem.htm" />
+  <HelpKINode Title="ApplicationDbContext.MenuItemIngredients property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItemIngredients.htm" />
+  <HelpKINode Title="ApplicationDbContext.OnModelCreating method" Url="html/M-TriCodeTest.Data.ApplicationDbContext.OnModelCreating.htm" />
+  <HelpKINode Title="ApplicationDbContext.OrderInfo property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.OrderInfo.htm" />
+  <HelpKINode Title="ApplicationDbContext.Subcategory property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.Subcategory.htm" />
+  <HelpKINode Title="ApplicationUser class">
+    <HelpKINode Title="ApplicationUser Class" Url="html/T-TriCodeTest.Models.ApplicationUser.htm" />
+    <HelpKINode Title="ApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Models.ApplicationUser.htm" />
+    <HelpKINode Title="about ApplicationUser class" Url="html/T-TriCodeTest.Models.ApplicationUser.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ApplicationUser.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ApplicationUser.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ApplicationUser.FirstName property" Url="html/P-TriCodeTest.Models.ApplicationUser.FirstName.htm" />
+  <HelpKINode Title="ApplicationUser.LastName property" Url="html/P-TriCodeTest.Models.ApplicationUser.LastName.htm" />
+  <HelpKINode Title="AuthMessageSender class">
+    <HelpKINode Title="AuthMessageSender Class" Url="html/T-TriCodeTest.Services.AuthMessageSender.htm" />
+    <HelpKINode Title="AuthMessageSender Members" Url="html/AllMembers.T-TriCodeTest.Services.AuthMessageSender.htm" />
+    <HelpKINode Title="about AuthMessageSender class" Url="html/T-TriCodeTest.Services.AuthMessageSender.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Services.AuthMessageSender.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Services.AuthMessageSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AuthMessageSender.SendEmailAsync method" Url="html/M-TriCodeTest.Services.AuthMessageSender.SendEmailAsync.htm" />
+  <HelpKINode Title="AuthMessageSender.SendSmsAsync method" Url="html/M-TriCodeTest.Services.AuthMessageSender.SendSmsAsync.htm" />
+  <HelpKINode Title="BrowserRemembered property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.BrowserRemembered.htm" />
+  <HelpKINode Title="BuildTargetModel method">
+    <HelpKINode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.BuildTargetModel.htm" />
+    <HelpKINode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.BuildTargetModel.htm" />
+    <HelpKINode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.BuildTargetModel.htm" />
+    <HelpKINode Title="BuildTargetModel Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.BuildTargetModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CalculateTotalPrice method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.CalculateTotalPrice.htm" />
+  <HelpKINode Title="Cart enumeration member" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="Cart field" Url="html/F-TriCodeTest.Models.Status.Cart.htm" />
+  <HelpKINode Title="Cart method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Cart.htm" />
+  <HelpKINode Title="CartOrder class">
+    <HelpKINode Title="CartOrder Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+    <HelpKINode Title="CartOrder Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+    <HelpKINode Title="about CartOrder class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CartOrder.CartOrderMenuItems property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.CartOrderMenuItems.htm" />
+  <HelpKINode Title="CartOrder.DateTime property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.DateTime.htm" />
+  <HelpKINode Title="CartOrder.Id property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Id.htm" />
+  <HelpKINode Title="CartOrder.Status property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Status.htm" />
+  <HelpKINode Title="CartOrder.TotalPrice property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.TotalPrice.htm" />
+  <HelpKINode Title="CartOrder.User property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.User.htm" />
+  <HelpKINode Title="CartOrder.UserId property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.UserId.htm" />
+  <HelpKINode Title="CartOrderMenuItem class">
+    <HelpKINode Title="CartOrderMenuItem Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+    <HelpKINode Title="CartOrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+    <HelpKINode Title="about CartOrderMenuItem class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CartOrderMenuItem.AddOns property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.AddOns.htm" />
+  <HelpKINode Title="CartOrderMenuItem.ChoiceOfAddons property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ChoiceOfAddons.htm" />
+  <HelpKINode Title="CartOrderMenuItem.ItemImage property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ItemImage.htm" />
+  <HelpKINode Title="CartOrderMenuItem.MenuItem property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.MenuItem.htm" />
+  <HelpKINode Title="CartOrderMenuItems property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.CartOrderMenuItems.htm" />
+  <HelpKINode Title="Categories property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Categories.htm" />
+  <HelpKINode Title="Category class">
+    <HelpKINode Title="Category Class" Url="html/T-TriCodeTest.Models.MenuModels.Category.htm" />
+    <HelpKINode Title="Category Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Category.htm" />
+    <HelpKINode Title="about Category class" Url="html/T-TriCodeTest.Models.MenuModels.Category.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Category.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Category.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Category property">
+    <HelpKINode Title="Category Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Category.htm" />
+    <HelpKINode Title="Category Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Category.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Category.Description property" Url="html/P-TriCodeTest.Models.MenuModels.Category.Description.htm" />
+  <HelpKINode Title="Category.Id property" Url="html/P-TriCodeTest.Models.MenuModels.Category.Id.htm" />
+  <HelpKINode Title="Category.Name property" Url="html/P-TriCodeTest.Models.MenuModels.Category.Name.htm" />
+  <HelpKINode Title="Category.Subcategories property" Url="html/P-TriCodeTest.Models.MenuModels.Category.Subcategories.htm" />
+  <HelpKINode Title="CategoryExists method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.CategoryExists.htm" />
+  <HelpKINode Title="CategoryId property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.CategoryId.htm" />
+  <HelpKINode Title="CategoryMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.CategoryMenu.htm" />
+  <HelpKINode Title="ChangePassword method" Url="html/Overload-TriCodeTest.Controllers.ManageController.ChangePassword.htm" />
+  <HelpKINode Title="ChangePasswordSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="ChangePasswordSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess.htm" />
+  <HelpKINode Title="ChangePasswordViewModel class">
+    <HelpKINode Title="ChangePasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+    <HelpKINode Title="ChangePasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+    <HelpKINode Title="about ChangePasswordViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ChangePasswordViewModel.ConfirmPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.ConfirmPassword.htm" />
+  <HelpKINode Title="ChangePasswordViewModel.NewPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.NewPassword.htm" />
+  <HelpKINode Title="ChangePasswordViewModel.OldPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.OldPassword.htm" />
+  <HelpKINode Title="ChoiceOfAddons property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ChoiceOfAddons.htm" />
+  <HelpKINode Title="Code property">
+    <HelpKINode Title="Code Property " Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.Code.htm" />
+    <HelpKINode Title="Code Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Code.htm" />
+    <HelpKINode Title="Code Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Code.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Completed enumeration member" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="Completed field" Url="html/F-TriCodeTest.Models.Status.Completed.htm" />
+  <HelpKINode Title="Configuration property" Url="html/P-TriCodeTest.Startup.Configuration.htm" />
+  <HelpKINode Title="Configure method" Url="html/M-TriCodeTest.Startup.Configure.htm" />
+  <HelpKINode Title="ConfigureServices method" Url="html/M-TriCodeTest.Startup.ConfigureServices.htm" />
+  <HelpKINode Title="ConfigureTwoFactorViewModel class">
+    <HelpKINode Title="ConfigureTwoFactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+    <HelpKINode Title="ConfigureTwoFactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+    <HelpKINode Title="about ConfigureTwoFactorViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConfigureTwoFactorViewModel.Providers property" Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.Providers.htm" />
+  <HelpKINode Title="ConfigureTwoFactorViewModel.SelectedProvider property" Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.SelectedProvider.htm" />
+  <HelpKINode Title="ConfirmEmail method" Url="html/M-TriCodeTest.Controllers.AccountController.ConfirmEmail.htm" />
+  <HelpKINode Title="ConfirmPassword property">
+    <HelpKINode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.ConfirmPassword.htm" />
+    <HelpKINode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.ConfirmPassword.htm" />
+    <HelpKINode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.ConfirmPassword.htm" />
+    <HelpKINode Title="ConfirmPassword Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.ConfirmPassword.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Contact method" Url="html/M-TriCodeTest.Controllers.HomeController.Contact.htm" />
+  <HelpKINode Title="ConvertToOrderMenuItem method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.ConvertToOrderMenuItem.htm" />
+  <HelpKINode Title="CreateIdentitySchema class">
+    <HelpKINode Title="CreateIdentitySchema Class" Url="html/T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+    <HelpKINode Title="CreateIdentitySchema Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+    <HelpKINode Title="about CreateIdentitySchema class" Url="html/T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CreateIdentitySchema.BuildTargetModel method" Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.BuildTargetModel.htm" />
+  <HelpKINode Title="CreateIdentitySchema.Down method" Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Down.htm" />
+  <HelpKINode Title="CreateIdentitySchema.Up method" Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Up.htm" />
+  <HelpKINode Title="Credentials class">
+    <HelpKINode Title="Credentials Class" Url="html/T-TriCodeTest.TwilioNotification.Credentials.htm" />
+    <HelpKINode Title="Credentials Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Credentials.htm" />
+    <HelpKINode Title="about Credentials class" Url="html/T-TriCodeTest.TwilioNotification.Credentials.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Credentials.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.TwilioNotification.Credentials.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Credentials.AcctSID field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctSID.htm" />
+  <HelpKINode Title="Credentials.AcctToken field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.AcctToken.htm" />
+  <HelpKINode Title="Credentials.TwilioNumber field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.TwilioNumber.htm" />
+  <HelpKINode Title="CurrentLogins property" Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.CurrentLogins.htm" />
+  <HelpKINode Title="CustomerMenuController class">
+    <HelpKINode Title="CustomerMenuController Class" Url="html/T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="CustomerMenuController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="about CustomerMenuController class" Url="html/T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CustomerMenuController.AddNewOrderToDatabase method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.AddNewOrderToDatabase.htm" />
+  <HelpKINode Title="CustomerMenuController.CalculateTotalPrice method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.CalculateTotalPrice.htm" />
+  <HelpKINode Title="CustomerMenuController.Cart method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Cart.htm" />
+  <HelpKINode Title="CustomerMenuController.ConvertToOrderMenuItem method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.ConvertToOrderMenuItem.htm" />
+  <HelpKINode Title="CustomerMenuController.CustomerMenuController constructor" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.-ctor.htm" />
+  <HelpKINode Title="CustomerMenuController.EditItem method" Url="html/Overload-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm" />
+  <HelpKINode Title="CustomerMenuController.GetCurrentUserAsync method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.GetCurrentUserAsync.htm" />
+  <HelpKINode Title="CustomerMenuController.Index method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Index.htm" />
+  <HelpKINode Title="CustomerMenuController.OrderDeserialize method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderDeserialize.htm" />
+  <HelpKINode Title="CustomerMenuController.OrderSerialize method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderSerialize.htm" />
+  <HelpKINode Title="CustomerMenuController.PostMenuItemToCart method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.PostMenuItemToCart.htm" />
+  <HelpKINode Title="CustomerMenuController.RemoveItem method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.RemoveItem.htm" />
+  <HelpKINode Title="CustomerMenuController.SubmitOrder method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.SubmitOrder.htm" />
+  <HelpKINode Title="CustomerMenuController._context field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._context.htm" />
+  <HelpKINode Title="CustomerMenuController._userManager field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._userManager.htm" />
+  <HelpKINode Title="DateTime property">
+    <HelpKINode Title="DateTime Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.DateTime.htm" />
+    <HelpKINode Title="DateTime Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.DateTime.htm" />
+    <HelpKINode Title="DateTime Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.DateTime.htm" />
+    <HelpKINode Title="DateTime Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.DateTime.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DbInitializer class">
+    <HelpKINode Title="DbInitializer Class" Url="html/T-TriCodeTest.Data.DbInitializer.htm" />
+    <HelpKINode Title="DbInitializer Members" Url="html/AllMembers.T-TriCodeTest.Data.DbInitializer.htm" />
+    <HelpKINode Title="about DbInitializer class" Url="html/T-TriCodeTest.Data.DbInitializer.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.DbInitializer.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.DbInitializer.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DbInitializer.Initialize method" Url="html/M-TriCodeTest.Data.DbInitializer.Initialize.htm" />
+  <HelpKINode Title="DbInitializer.SaveChanges method" Url="html/M-TriCodeTest.Data.DbInitializer.SaveChanges.htm" />
+  <HelpKINode Title="Description property">
+    <HelpKINode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Description.htm" />
+    <HelpKINode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Description.htm" />
+    <HelpKINode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Description.htm" />
+    <HelpKINode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Description.htm" />
+    <HelpKINode Title="Description Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Description.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Details method" Url="html/M-TriCodeTest.Controllers.HistoryController.Details.htm" />
+  <HelpKINode Title="Down method">
+    <HelpKINode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Down.htm" />
+    <HelpKINode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Down.htm" />
+    <HelpKINode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Down.htm" />
+    <HelpKINode Title="Down Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Down.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Edit method" Url="html/Overload-TriCodeTest.Controllers.OrderInfoController.Edit.htm" />
+  <HelpKINode Title="EditCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditCategory.htm" />
+  <HelpKINode Title="EditItem method" Url="html/Overload-TriCodeTest.Controllers.CustomerMenuController.EditItem.htm" />
+  <HelpKINode Title="EditMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditMenuItem.htm" />
+  <HelpKINode Title="EditSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditSubcategory.htm" />
+  <HelpKINode Title="Email property">
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.Email.htm" />
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.Email.htm" />
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Email.htm" />
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Email.htm" />
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Email.htm" />
+    <HelpKINode Title="Email Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Email.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Error enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="Error field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.Error.htm" />
+  <HelpKINode Title="Error method" Url="html/M-TriCodeTest.Controllers.HomeController.Error.htm" />
+  <HelpKINode Title="ExternalLoginConfirmationViewModel class">
+    <HelpKINode Title="ExternalLoginConfirmationViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+    <HelpKINode Title="ExternalLoginConfirmationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+    <HelpKINode Title="about ExternalLoginConfirmationViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExternalLoginConfirmationViewModel.Email property" Url="html/P-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.Email.htm" />
+  <HelpKINode Title="FactorViewModel class">
+    <HelpKINode Title="FactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+    <HelpKINode Title="FactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+    <HelpKINode Title="about FactorViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FactorViewModel.Purpose property" Url="html/P-TriCodeTest.Models.ManageViewModels.FactorViewModel.Purpose.htm" />
+  <HelpKINode Title="FirstName property">
+    <HelpKINode Title="FirstName Property " Url="html/P-TriCodeTest.Models.ApplicationUser.FirstName.htm" />
+    <HelpKINode Title="FirstName Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.FirstName.htm" />
+    <HelpKINode Title="FirstName Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.FirstName.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ForgotPassword method" Url="html/Overload-TriCodeTest.Controllers.AccountController.ForgotPassword.htm" />
+  <HelpKINode Title="ForgotPasswordConfirmation method" Url="html/M-TriCodeTest.Controllers.AccountController.ForgotPasswordConfirmation.htm" />
+  <HelpKINode Title="ForgotPasswordViewModel class">
+    <HelpKINode Title="ForgotPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+    <HelpKINode Title="ForgotPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+    <HelpKINode Title="about ForgotPasswordViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ForgotPasswordViewModel.Email property" Url="html/P-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.Email.htm" />
+  <HelpKINode Title="GetAddons method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetAddons.htm" />
+  <HelpKINode Title="GetCurrentUserAsync method">
+    <HelpKINode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.AccountController.GetCurrentUserAsync.htm" />
+    <HelpKINode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.ManageController.GetCurrentUserAsync.htm" />
+    <HelpKINode Title="GetCurrentUserAsync Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.GetCurrentUserAsync.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetIngredients method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetIngredients.htm" />
+  <HelpKINode Title="GetItemImage method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetItemImage.htm" />
+  <HelpKINode Title="GetMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItem.htm" />
+  <HelpKINode Title="GetMenuItemIngredients method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItemIngredients.htm" />
+  <HelpKINode Title="GetSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetSubcategory.htm" />
+  <HelpKINode Title="HasPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.HasPassword.htm" />
+  <HelpKINode Title="HistoryController class">
+    <HelpKINode Title="HistoryController Class" Url="html/T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="HistoryController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="about HistoryController class" Url="html/T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.HistoryController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Controllers.HistoryController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HistoryController.Details method" Url="html/M-TriCodeTest.Controllers.HistoryController.Details.htm" />
+  <HelpKINode Title="HistoryController.HistoryController constructor" Url="html/M-TriCodeTest.Controllers.HistoryController.-ctor.htm" />
+  <HelpKINode Title="HistoryController.Index method" Url="html/M-TriCodeTest.Controllers.HistoryController.Index.htm" />
+  <HelpKINode Title="HistoryController.ListOrderDeserialize method" Url="html/M-TriCodeTest.Controllers.HistoryController.ListOrderDeserialize.htm" />
+  <HelpKINode Title="HistoryController.OrderDeserialize method" Url="html/M-TriCodeTest.Controllers.HistoryController.OrderDeserialize.htm" />
+  <HelpKINode Title="HistoryController.Orders property" Url="html/P-TriCodeTest.Controllers.HistoryController.Orders.htm" />
+  <HelpKINode Title="HistoryController.resubmitOrder method" Url="html/M-TriCodeTest.Controllers.HistoryController.resubmitOrder.htm" />
+  <HelpKINode Title="HistoryController._context field" Url="html/F-TriCodeTest.Controllers.HistoryController._context.htm" />
+  <HelpKINode Title="HistoryViewModel class">
+    <HelpKINode Title="HistoryViewModel Class" Url="html/T-TriCodeTest.Models.HistoryViewModel.htm" />
+    <HelpKINode Title="HistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.HistoryViewModel.htm" />
+    <HelpKINode Title="about HistoryViewModel class" Url="html/T-TriCodeTest.Models.HistoryViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.HistoryViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.HistoryViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HistoryViewModel.Orders property" Url="html/P-TriCodeTest.Models.HistoryViewModel.Orders.htm" />
+  <HelpKINode Title="HistoryViewModel.Users property" Url="html/P-TriCodeTest.Models.HistoryViewModel.Users.htm" />
+  <HelpKINode Title="HomeController class">
+    <HelpKINode Title="HomeController Class" Url="html/T-TriCodeTest.Controllers.HomeController.htm" />
+    <HelpKINode Title="HomeController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HomeController.htm" />
+    <HelpKINode Title="about HomeController class" Url="html/T-TriCodeTest.Controllers.HomeController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.HomeController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.HomeController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HomeController.About method" Url="html/M-TriCodeTest.Controllers.HomeController.About.htm" />
+  <HelpKINode Title="HomeController.Contact method" Url="html/M-TriCodeTest.Controllers.HomeController.Contact.htm" />
+  <HelpKINode Title="HomeController.Error method" Url="html/M-TriCodeTest.Controllers.HomeController.Error.htm" />
+  <HelpKINode Title="HomeController.Index method" Url="html/M-TriCodeTest.Controllers.HomeController.Index.htm" />
+  <HelpKINode Title="Id property">
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.Id.htm" />
+    <HelpKINode Title="Id Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Id.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEmailSender interface">
+    <HelpKINode Title="IEmailSender Interface" Url="html/T-TriCodeTest.Services.IEmailSender.htm" />
+    <HelpKINode Title="IEmailSender Members" Url="html/AllMembers.T-TriCodeTest.Services.IEmailSender.htm" />
+    <HelpKINode Title="about IEmailSender interface" Url="html/T-TriCodeTest.Services.IEmailSender.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Services.IEmailSender.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Services.IEmailSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEmailSender.SendEmailAsync method" Url="html/M-TriCodeTest.Services.IEmailSender.SendEmailAsync.htm" />
+  <HelpKINode Title="Index method">
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.ManageController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.HistoryController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.HomeController.Index.htm" />
+    <HelpKINode Title="Index Method " Url="html/M-TriCodeTest.Controllers.MenuCreationController.Index.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexViewModel class">
+    <HelpKINode Title="IndexViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+    <HelpKINode Title="IndexViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+    <HelpKINode Title="about IndexViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IndexViewModel.BrowserRemembered property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.BrowserRemembered.htm" />
+  <HelpKINode Title="IndexViewModel.FirstName property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.FirstName.htm" />
+  <HelpKINode Title="IndexViewModel.HasPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.HasPassword.htm" />
+  <HelpKINode Title="IndexViewModel.LastName property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.LastName.htm" />
+  <HelpKINode Title="IndexViewModel.Logins property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.Logins.htm" />
+  <HelpKINode Title="IndexViewModel.PhoneNumber property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.PhoneNumber.htm" />
+  <HelpKINode Title="IndexViewModel.TwoFactor property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.TwoFactor.htm" />
+  <HelpKINode Title="Ingredient class">
+    <HelpKINode Title="Ingredient Class" Url="html/T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+    <HelpKINode Title="Ingredient Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+    <HelpKINode Title="about Ingredient class" Url="html/T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Ingredient property">
+    <HelpKINode Title="Ingredient Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.Ingredient.htm" />
+    <HelpKINode Title="Ingredient Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Ingredient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Ingredient.Description property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Description.htm" />
+  <HelpKINode Title="Ingredient.Id property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Id.htm" />
+  <HelpKINode Title="Ingredient.MenuItemIngredients property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.MenuItemIngredients.htm" />
+  <HelpKINode Title="Ingredient.Name property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Name.htm" />
+  <HelpKINode Title="Ingredient.Option property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Option.htm" />
+  <HelpKINode Title="IngredientId property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.IngredientId.htm" />
+  <HelpKINode Title="IngridientMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.IngridientMenu.htm" />
+  <HelpKINode Title="Initialize method" Url="html/M-TriCodeTest.Data.DbInitializer.Initialize.htm" />
+  <HelpKINode Title="In_Progress enumeration member" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="In_Progress field" Url="html/F-TriCodeTest.Models.Status.In_Progress.htm" />
+  <HelpKINode Title="ISmsSender interface">
+    <HelpKINode Title="ISmsSender Interface" Url="html/T-TriCodeTest.Services.ISmsSender.htm" />
+    <HelpKINode Title="ISmsSender Members" Url="html/AllMembers.T-TriCodeTest.Services.ISmsSender.htm" />
+    <HelpKINode Title="about ISmsSender interface" Url="html/T-TriCodeTest.Services.ISmsSender.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Services.ISmsSender.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Services.ISmsSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ISmsSender.SendSmsAsync method" Url="html/M-TriCodeTest.Services.ISmsSender.SendSmsAsync.htm" />
+  <HelpKINode Title="ItemImage property">
+    <HelpKINode Title="ItemImage Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.ItemImage.htm" />
+    <HelpKINode Title="ItemImage Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.ItemImage.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Large enumeration member" Url="html/T-TriCodeTest.Models.Size.htm" />
+  <HelpKINode Title="Large field" Url="html/F-TriCodeTest.Models.Size.Large.htm" />
+  <HelpKINode Title="LastName property">
+    <HelpKINode Title="LastName Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.LastName.htm" />
+    <HelpKINode Title="LastName Property " Url="html/P-TriCodeTest.Models.ApplicationUser.LastName.htm" />
+    <HelpKINode Title="LastName Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.LastName.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LinkLogin method" Url="html/M-TriCodeTest.Controllers.ManageController.LinkLogin.htm" />
+  <HelpKINode Title="LinkLoginCallback method" Url="html/M-TriCodeTest.Controllers.ManageController.LinkLoginCallback.htm" />
+  <HelpKINode Title="ListOrderDeserialize method">
+    <HelpKINode Title="ListOrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.HistoryController.ListOrderDeserialize.htm" />
+    <HelpKINode Title="ListOrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.ListOrderDeserialize.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LoadMenuViewModel class">
+    <HelpKINode Title="LoadMenuViewModel Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+    <HelpKINode Title="LoadMenuViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+    <HelpKINode Title="about LoadMenuViewModel class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LoadMenuViewModel.Categories property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Categories.htm" />
+  <HelpKINode Title="LoadMenuViewModel.MenuItems property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.MenuItems.htm" />
+  <HelpKINode Title="LoadMenuViewModel.Subcategories property" Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Subcategories.htm" />
+  <HelpKINode Title="Login method" Url="html/Overload-TriCodeTest.Controllers.AccountController.Login.htm" />
+  <HelpKINode Title="LoginProvider property" Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.LoginProvider.htm" />
+  <HelpKINode Title="Logins property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.Logins.htm" />
+  <HelpKINode Title="LoginViewModel class">
+    <HelpKINode Title="LoginViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+    <HelpKINode Title="LoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+    <HelpKINode Title="about LoginViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LoginViewModel.Email property" Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Email.htm" />
+  <HelpKINode Title="LoginViewModel.Password property" Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Password.htm" />
+  <HelpKINode Title="LoginViewModel.RememberMe property" Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.RememberMe.htm" />
+  <HelpKINode Title="LogOff method" Url="html/M-TriCodeTest.Controllers.AccountController.LogOff.htm" />
+  <HelpKINode Title="Low enumeration member" Url="html/T-TriCodeTest.Models.Option.htm" />
+  <HelpKINode Title="Low field" Url="html/F-TriCodeTest.Models.Option.Low.htm" />
+  <HelpKINode Title="Main method" Url="html/M-TriCodeTest.Program.Main.htm" />
+  <HelpKINode Title="ManageController class">
+    <HelpKINode Title="ManageController Class" Url="html/T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="ManageController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="about ManageController class" Url="html/T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.ManageController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.ManageController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ManageController.AddErrors method" Url="html/M-TriCodeTest.Controllers.ManageController.AddErrors.htm" />
+  <HelpKINode Title="ManageController.AddPhoneNumber method" Url="html/Overload-TriCodeTest.Controllers.ManageController.AddPhoneNumber.htm" />
+  <HelpKINode Title="ManageController.ChangePassword method" Url="html/Overload-TriCodeTest.Controllers.ManageController.ChangePassword.htm" />
+  <HelpKINode Title="ManageController.GetCurrentUserAsync method" Url="html/M-TriCodeTest.Controllers.ManageController.GetCurrentUserAsync.htm" />
+  <HelpKINode Title="ManageController.Index method" Url="html/M-TriCodeTest.Controllers.ManageController.Index.htm" />
+  <HelpKINode Title="ManageController.LinkLogin method" Url="html/M-TriCodeTest.Controllers.ManageController.LinkLogin.htm" />
+  <HelpKINode Title="ManageController.LinkLoginCallback method" Url="html/M-TriCodeTest.Controllers.ManageController.LinkLoginCallback.htm" />
+  <HelpKINode Title="ManageController.ManageController constructor" Url="html/M-TriCodeTest.Controllers.ManageController.-ctor.htm" />
+  <HelpKINode Title="ManageController.ManageLogins method" Url="html/M-TriCodeTest.Controllers.ManageController.ManageLogins.htm" />
+  <HelpKINode Title="ManageController.ManageMessageId enumeration" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="ManageController.RemoveLogin method" Url="html/M-TriCodeTest.Controllers.ManageController.RemoveLogin.htm" />
+  <HelpKINode Title="ManageController.RemovePhoneNumber method" Url="html/M-TriCodeTest.Controllers.ManageController.RemovePhoneNumber.htm" />
+  <HelpKINode Title="ManageController.SetFirstName method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetFirstName.htm" />
+  <HelpKINode Title="ManageController.SetLastName method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetLastName.htm" />
+  <HelpKINode Title="ManageController.SetPassword method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetPassword.htm" />
+  <HelpKINode Title="ManageController.VerifyPhoneNumber method" Url="html/Overload-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm" />
+  <HelpKINode Title="ManageController._context field" Url="html/F-TriCodeTest.Controllers.ManageController._context.htm" />
+  <HelpKINode Title="ManageController._emailSender field" Url="html/F-TriCodeTest.Controllers.ManageController._emailSender.htm" />
+  <HelpKINode Title="ManageController._logger field" Url="html/F-TriCodeTest.Controllers.ManageController._logger.htm" />
+  <HelpKINode Title="ManageController._signInManager field" Url="html/F-TriCodeTest.Controllers.ManageController._signInManager.htm" />
+  <HelpKINode Title="ManageController._smsSender field" Url="html/F-TriCodeTest.Controllers.ManageController._smsSender.htm" />
+  <HelpKINode Title="ManageController._userManager field" Url="html/F-TriCodeTest.Controllers.ManageController._userManager.htm" />
+  <HelpKINode Title="ManageLogins method" Url="html/M-TriCodeTest.Controllers.ManageController.ManageLogins.htm" />
+  <HelpKINode Title="ManageLoginsViewModel class">
+    <HelpKINode Title="ManageLoginsViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+    <HelpKINode Title="ManageLoginsViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+    <HelpKINode Title="about ManageLoginsViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ManageLoginsViewModel.CurrentLogins property" Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.CurrentLogins.htm" />
+  <HelpKINode Title="ManageLoginsViewModel.OtherLogins property" Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.OtherLogins.htm" />
+  <HelpKINode Title="ManageMessageId.AddLoginSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.AddLoginSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.AddPhoneSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.AddPhoneSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.ChangePasswordSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.Error field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.Error.htm" />
+  <HelpKINode Title="ManageMessageId.RemoveLoginSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.RemoveLoginSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.RemovePhoneSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.RemovePhoneSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.SetPasswordSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.SetPasswordSuccess.htm" />
+  <HelpKINode Title="ManageMessageId.SetTwoFactorSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.SetTwoFactorSuccess.htm" />
+  <HelpKINode Title="Medium enumeration member" Url="html/T-TriCodeTest.Models.Size.htm" />
+  <HelpKINode Title="Medium field" Url="html/F-TriCodeTest.Models.Size.Medium.htm" />
+  <HelpKINode Title="Menu method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.Menu.htm" />
+  <HelpKINode Title="MenuCreationController class">
+    <HelpKINode Title="MenuCreationController Class" Url="html/T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="MenuCreationController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="about MenuCreationController class" Url="html/T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.MenuCreationController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuCreationController.AddAddon method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddAddon.htm" />
+  <HelpKINode Title="MenuCreationController.AddCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddCategory.htm" />
+  <HelpKINode Title="MenuCreationController.AddIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddIngredient.htm" />
+  <HelpKINode Title="MenuCreationController.AddMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItem.htm" />
+  <HelpKINode Title="MenuCreationController.AddMenuItemIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddMenuItemIngredient.htm" />
+  <HelpKINode Title="MenuCreationController.AddSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.AddSubcategory.htm" />
+  <HelpKINode Title="MenuCreationController.CategoryExists method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.CategoryExists.htm" />
+  <HelpKINode Title="MenuCreationController.EditCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditCategory.htm" />
+  <HelpKINode Title="MenuCreationController.EditMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditMenuItem.htm" />
+  <HelpKINode Title="MenuCreationController.EditSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.EditSubcategory.htm" />
+  <HelpKINode Title="MenuCreationController.GetAddons method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetAddons.htm" />
+  <HelpKINode Title="MenuCreationController.GetIngredients method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetIngredients.htm" />
+  <HelpKINode Title="MenuCreationController.GetItemImage method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetItemImage.htm" />
+  <HelpKINode Title="MenuCreationController.GetMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItem.htm" />
+  <HelpKINode Title="MenuCreationController.GetMenuItemIngredients method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetMenuItemIngredients.htm" />
+  <HelpKINode Title="MenuCreationController.GetSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.GetSubcategory.htm" />
+  <HelpKINode Title="MenuCreationController.Index method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.Index.htm" />
+  <HelpKINode Title="MenuCreationController.Menu method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.Menu.htm" />
+  <HelpKINode Title="MenuCreationController.MenuCreationController constructor" Url="html/M-TriCodeTest.Controllers.MenuCreationController.-ctor.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveAddon method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveAddon.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveCategory.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveIngredient.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItem.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveMenuItemIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItemIngredient.htm" />
+  <HelpKINode Title="MenuCreationController.RemoveSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveSubcategory.htm" />
+  <HelpKINode Title="MenuCreationController.UpdateItemImage method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.UpdateItemImage.htm" />
+  <HelpKINode Title="MenuCreationController._context field" Url="html/F-TriCodeTest.Controllers.MenuCreationController._context.htm" />
+  <HelpKINode Title="MenuCreationViewModel class">
+    <HelpKINode Title="MenuCreationViewModel Class" Url="html/T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+    <HelpKINode Title="MenuCreationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+    <HelpKINode Title="about MenuCreationViewModel class" Url="html/T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuCreationViewModel.AddonMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.AddonMenu.htm" />
+  <HelpKINode Title="MenuCreationViewModel.CategoryMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.CategoryMenu.htm" />
+  <HelpKINode Title="MenuCreationViewModel.IngridientMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.IngridientMenu.htm" />
+  <HelpKINode Title="MenuCreationViewModel.MenuItemIngredientsMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemIngredientsMenu.htm" />
+  <HelpKINode Title="MenuCreationViewModel.MenuItemMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemMenu.htm" />
+  <HelpKINode Title="MenuCreationViewModel.SubCategoryMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.SubCategoryMenu.htm" />
+  <HelpKINode Title="MenuItem class">
+    <HelpKINode Title="MenuItem Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+    <HelpKINode Title="MenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+    <HelpKINode Title="about MenuItem class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuItem property">
+    <HelpKINode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItem.htm" />
+    <HelpKINode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.MenuItem.htm" />
+    <HelpKINode Title="MenuItem Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItem.htm" />
+    <HelpKINode Title="MenuItem Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.MenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuItem.Description property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Description.htm" />
+  <HelpKINode Title="MenuItem.Id property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Id.htm" />
+  <HelpKINode Title="MenuItem.ItemImage property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.ItemImage.htm" />
+  <HelpKINode Title="MenuItem.MenuItemIngredients property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.MenuItemIngredients.htm" />
+  <HelpKINode Title="MenuItem.Name property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Name.htm" />
+  <HelpKINode Title="MenuItem.Price property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Price.htm" />
+  <HelpKINode Title="MenuItem.Size property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Size.htm" />
+  <HelpKINode Title="MenuItem.Subcategory property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Subcategory.htm" />
+  <HelpKINode Title="MenuItem.SubcategoryId property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.SubcategoryId.htm" />
+  <HelpKINode Title="MenuItemId property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItemId.htm" />
+  <HelpKINode Title="MenuItemIngredients class">
+    <HelpKINode Title="MenuItemIngredients Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+    <HelpKINode Title="MenuItemIngredients Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+    <HelpKINode Title="about MenuItemIngredients class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuItemIngredients property">
+    <HelpKINode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.MenuItemIngredients.htm" />
+    <HelpKINode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.MenuItemIngredients.htm" />
+    <HelpKINode Title="MenuItemIngredients Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.MenuItemIngredients.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuItemIngredients.Ingredient property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.Ingredient.htm" />
+  <HelpKINode Title="MenuItemIngredients.IngredientId property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.IngredientId.htm" />
+  <HelpKINode Title="MenuItemIngredients.MenuItem property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItem.htm" />
+  <HelpKINode Title="MenuItemIngredients.MenuItemId property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItemIngredients.MenuItemId.htm" />
+  <HelpKINode Title="MenuItemIngredientsKey class">
+    <HelpKINode Title="MenuItemIngredientsKey Class" Url="html/T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+    <HelpKINode Title="MenuItemIngredientsKey Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+    <HelpKINode Title="about MenuItemIngredientsKey class" Url="html/T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MenuItemIngredientsKey.BuildTargetModel method" Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.BuildTargetModel.htm" />
+  <HelpKINode Title="MenuItemIngredientsKey.Down method" Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Down.htm" />
+  <HelpKINode Title="MenuItemIngredientsKey.Up method" Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Up.htm" />
+  <HelpKINode Title="MenuItemIngredientsMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemIngredientsMenu.htm" />
+  <HelpKINode Title="MenuItemMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.MenuItemMenu.htm" />
+  <HelpKINode Title="MenuItems property">
+    <HelpKINode Title="MenuItems Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.MenuItems.htm" />
+    <HelpKINode Title="MenuItems Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.MenuItems.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ModelsCreation class">
+    <HelpKINode Title="ModelsCreation Class" Url="html/T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+    <HelpKINode Title="ModelsCreation Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+    <HelpKINode Title="about ModelsCreation class" Url="html/T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ModelsCreation.BuildTargetModel method" Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.BuildTargetModel.htm" />
+  <HelpKINode Title="ModelsCreation.Down method" Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Down.htm" />
+  <HelpKINode Title="ModelsCreation.Up method" Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Up.htm" />
+  <HelpKINode Title="Name property">
+    <HelpKINode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Name.htm" />
+    <HelpKINode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Name.htm" />
+    <HelpKINode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Name.htm" />
+    <HelpKINode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Name.htm" />
+    <HelpKINode Title="Name Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Name.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NameForApplicationUser class">
+    <HelpKINode Title="NameForApplicationUser Class" Url="html/T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+    <HelpKINode Title="NameForApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+    <HelpKINode Title="about NameForApplicationUser class" Url="html/T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NameForApplicationUser.BuildTargetModel method" Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.BuildTargetModel.htm" />
+  <HelpKINode Title="NameForApplicationUser.Down method" Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Down.htm" />
+  <HelpKINode Title="NameForApplicationUser.Up method" Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Up.htm" />
+  <HelpKINode Title="NewPassword property">
+    <HelpKINode Title="NewPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.NewPassword.htm" />
+    <HelpKINode Title="NewPassword Property " Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.NewPassword.htm" />
+  </HelpKINode>
+  <HelpKINode Title="None enumeration member" Url="html/T-TriCodeTest.Models.Option.htm" />
+  <HelpKINode Title="None field" Url="html/F-TriCodeTest.Models.Option.None.htm" />
+  <HelpKINode Title="Normal enumeration member" Url="html/T-TriCodeTest.Models.Option.htm" />
+  <HelpKINode Title="Normal field" Url="html/F-TriCodeTest.Models.Option.Normal.htm" />
+  <HelpKINode Title="Notification class">
+    <HelpKINode Title="Notification Class" Url="html/T-TriCodeTest.TwilioNotification.Notification.htm" />
+    <HelpKINode Title="Notification Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Notification.htm" />
+    <HelpKINode Title="about Notification class" Url="html/T-TriCodeTest.TwilioNotification.Notification.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Notification.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.TwilioNotification.Notification.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Notification.SendNotification method" Url="html/M-TriCodeTest.TwilioNotification.Notification.SendNotification.htm" />
+  <HelpKINode Title="OldPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.OldPassword.htm" />
+  <HelpKINode Title="OnModelCreating method" Url="html/M-TriCodeTest.Data.ApplicationDbContext.OnModelCreating.htm" />
+  <HelpKINode Title="Option enumeration" Url="html/T-TriCodeTest.Models.Option.htm" />
+  <HelpKINode Title="Option property" Url="html/P-TriCodeTest.Models.MenuModels.Ingredient.Option.htm" />
+  <HelpKINode Title="Option.Low field" Url="html/F-TriCodeTest.Models.Option.Low.htm" />
+  <HelpKINode Title="Option.None field" Url="html/F-TriCodeTest.Models.Option.None.htm" />
+  <HelpKINode Title="Option.Normal field" Url="html/F-TriCodeTest.Models.Option.Normal.htm" />
+  <HelpKINode Title="Order class">
+    <HelpKINode Title="Order Class" Url="html/T-TriCodeTest.Models.OrderModels.Order.htm" />
+    <HelpKINode Title="Order Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.Order.htm" />
+    <HelpKINode Title="about Order class" Url="html/T-TriCodeTest.Models.OrderModels.Order.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.Order.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.Order.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Order.DateTime property" Url="html/P-TriCodeTest.Models.OrderModels.Order.DateTime.htm" />
+  <HelpKINode Title="Order.Id property" Url="html/P-TriCodeTest.Models.OrderModels.Order.Id.htm" />
+  <HelpKINode Title="Order.OrderMenuItems property" Url="html/P-TriCodeTest.Models.OrderModels.Order.OrderMenuItems.htm" />
+  <HelpKINode Title="Order.Status property" Url="html/P-TriCodeTest.Models.OrderModels.Order.Status.htm" />
+  <HelpKINode Title="Order.TotalPrice property" Url="html/P-TriCodeTest.Models.OrderModels.Order.TotalPrice.htm" />
+  <HelpKINode Title="Order.User property" Url="html/P-TriCodeTest.Models.OrderModels.Order.User.htm" />
+  <HelpKINode Title="Order.UserId property" Url="html/P-TriCodeTest.Models.OrderModels.Order.UserId.htm" />
+  <HelpKINode Title="OrderDeserialize method">
+    <HelpKINode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.HistoryController.OrderDeserialize.htm" />
+    <HelpKINode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderDeserialize.htm" />
+    <HelpKINode Title="OrderDeserialize Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderDeserialize.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OrderInfo class">
+    <HelpKINode Title="OrderInfo Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+    <HelpKINode Title="OrderInfo Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+    <HelpKINode Title="about OrderInfo class" Url="html/T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OrderInfo property" Url="html/P-TriCodeTest.Data.ApplicationDbContext.OrderInfo.htm" />
+  <HelpKINode Title="OrderInfo.DateTime property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.DateTime.htm" />
+  <HelpKINode Title="OrderInfo.Id property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Id.htm" />
+  <HelpKINode Title="OrderInfo.OrderMenuItems property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.OrderMenuItems.htm" />
+  <HelpKINode Title="OrderInfo.Status property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Status.htm" />
+  <HelpKINode Title="OrderInfo.TotalPrice property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.TotalPrice.htm" />
+  <HelpKINode Title="OrderInfo.User property" Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.User.htm" />
+  <HelpKINode Title="OrderInfoController class">
+    <HelpKINode Title="OrderInfoController Class" Url="html/T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="OrderInfoController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="about OrderInfoController class" Url="html/T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.OrderInfoController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OrderInfoController.Edit method" Url="html/Overload-TriCodeTest.Controllers.OrderInfoController.Edit.htm" />
+  <HelpKINode Title="OrderInfoController.Index method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.Index.htm" />
+  <HelpKINode Title="OrderInfoController.ListOrderDeserialize method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.ListOrderDeserialize.htm" />
+  <HelpKINode Title="OrderInfoController.OrderDeserialize method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderDeserialize.htm" />
+  <HelpKINode Title="OrderInfoController.OrderInfoController constructor" Url="html/M-TriCodeTest.Controllers.OrderInfoController.-ctor.htm" />
+  <HelpKINode Title="OrderInfoController.OrderInfoExists method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderInfoExists.htm" />
+  <HelpKINode Title="OrderInfoController.OrderSerialize method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderSerialize.htm" />
+  <HelpKINode Title="OrderInfoController._context field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._context.htm" />
+  <HelpKINode Title="OrderInfoController._logger field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._logger.htm" />
+  <HelpKINode Title="OrderInfoExists method" Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderInfoExists.htm" />
+  <HelpKINode Title="OrderMenuItem class">
+    <HelpKINode Title="OrderMenuItem Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+    <HelpKINode Title="OrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+    <HelpKINode Title="about OrderMenuItem class" Url="html/T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OrderMenuItem.AddOns property" Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.AddOns.htm" />
+  <HelpKINode Title="OrderMenuItem.MenuItem property" Url="html/P-TriCodeTest.Models.OrderModels.OrderMenuItem.MenuItem.htm" />
+  <HelpKINode Title="OrderMenuItems property">
+    <HelpKINode Title="OrderMenuItems Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.OrderMenuItems.htm" />
+    <HelpKINode Title="OrderMenuItems Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.OrderMenuItems.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Orders property">
+    <HelpKINode Title="Orders Property " Url="html/P-TriCodeTest.Controllers.HistoryController.Orders.htm" />
+    <HelpKINode Title="Orders Property " Url="html/P-TriCodeTest.Models.HistoryViewModel.Orders.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OrderSerialize method">
+    <HelpKINode Title="OrderSerialize Method " Url="html/M-TriCodeTest.Controllers.OrderInfoController.OrderSerialize.htm" />
+    <HelpKINode Title="OrderSerialize Method " Url="html/M-TriCodeTest.Controllers.CustomerMenuController.OrderSerialize.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OtherLogins property" Url="html/P-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.OtherLogins.htm" />
+  <HelpKINode Title="Password property">
+    <HelpKINode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.Password.htm" />
+    <HelpKINode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Password.htm" />
+    <HelpKINode Title="Password Property " Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Password.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Phone property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Phone.htm" />
+  <HelpKINode Title="PhoneNumber property">
+    <HelpKINode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.PhoneNumber.htm" />
+    <HelpKINode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.PhoneNumber.htm" />
+    <HelpKINode Title="PhoneNumber Property " Url="html/P-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.PhoneNumber.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Pick_Up enumeration member" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="Pick_Up field" Url="html/F-TriCodeTest.Models.Status.Pick_Up.htm" />
+  <HelpKINode Title="PostHistoryViewModel class">
+    <HelpKINode Title="PostHistoryViewModel Class" Url="html/T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+    <HelpKINode Title="PostHistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+    <HelpKINode Title="about PostHistoryViewModel class" Url="html/T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PostHistoryViewModel.DateTime property" Url="html/P-TriCodeTest.Models.PostHistoryViewModel.DateTime.htm" />
+  <HelpKINode Title="PostHistoryViewModel.Id property" Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Id.htm" />
+  <HelpKINode Title="PostHistoryViewModel.Status property" Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Status.htm" />
+  <HelpKINode Title="PostMenuItemToCart method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.PostMenuItemToCart.htm" />
+  <HelpKINode Title="PostRoleUpdateUserRoleViewModel class">
+    <HelpKINode Title="PostRoleUpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="PostRoleUpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="about PostRoleUpdateUserRoleViewModel class" Url="html/T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PostRoleUpdateUserRoleViewModel.Email property" Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Email.htm" />
+  <HelpKINode Title="PostRoleUpdateUserRoleViewModel.Role property" Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Role.htm" />
+  <HelpKINode Title="Price property">
+    <HelpKINode Title="Price Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Price.htm" />
+    <HelpKINode Title="Price Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Price.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Program class">
+    <HelpKINode Title="Program Class" Url="html/T-TriCodeTest.Program.htm" />
+    <HelpKINode Title="Program Members" Url="html/AllMembers.T-TriCodeTest.Program.htm" />
+    <HelpKINode Title="about Program class" Url="html/T-TriCodeTest.Program.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Program.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Program.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Program.Main method" Url="html/M-TriCodeTest.Program.Main.htm" />
+  <HelpKINode Title="Provider property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Provider.htm" />
+  <HelpKINode Title="ProviderKey property" Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.ProviderKey.htm" />
+  <HelpKINode Title="Providers property">
+    <HelpKINode Title="Providers Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.Providers.htm" />
+    <HelpKINode Title="Providers Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.Providers.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Purpose property" Url="html/P-TriCodeTest.Models.ManageViewModels.FactorViewModel.Purpose.htm" />
+  <HelpKINode Title="Received enumeration member" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="Received field" Url="html/F-TriCodeTest.Models.Status.Received.htm" />
+  <HelpKINode Title="RedirectToLocal method" Url="html/M-TriCodeTest.Controllers.AccountController.RedirectToLocal.htm" />
+  <HelpKINode Title="Register method" Url="html/Overload-TriCodeTest.Controllers.AccountController.Register.htm" />
+  <HelpKINode Title="RegisterViewModel class">
+    <HelpKINode Title="RegisterViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+    <HelpKINode Title="RegisterViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+    <HelpKINode Title="about RegisterViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RegisterViewModel.ConfirmPassword property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.ConfirmPassword.htm" />
+  <HelpKINode Title="RegisterViewModel.Email property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Email.htm" />
+  <HelpKINode Title="RegisterViewModel.FirstName property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.FirstName.htm" />
+  <HelpKINode Title="RegisterViewModel.LastName property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.LastName.htm" />
+  <HelpKINode Title="RegisterViewModel.Password property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Password.htm" />
+  <HelpKINode Title="RegisterViewModel.Phone property" Url="html/P-TriCodeTest.Models.AccountViewModels.RegisterViewModel.Phone.htm" />
+  <HelpKINode Title="RememberBrowser property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberBrowser.htm" />
+  <HelpKINode Title="RememberMe property">
+    <HelpKINode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.RememberMe.htm" />
+    <HelpKINode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberMe.htm" />
+    <HelpKINode Title="RememberMe Property " Url="html/P-TriCodeTest.Models.AccountViewModels.LoginViewModel.RememberMe.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RemoveAddon method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveAddon.htm" />
+  <HelpKINode Title="RemoveCategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveCategory.htm" />
+  <HelpKINode Title="RemoveIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveIngredient.htm" />
+  <HelpKINode Title="RemoveItem method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.RemoveItem.htm" />
+  <HelpKINode Title="RemoveLogin method" Url="html/M-TriCodeTest.Controllers.ManageController.RemoveLogin.htm" />
+  <HelpKINode Title="RemoveLoginSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="RemoveLoginSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.RemoveLoginSuccess.htm" />
+  <HelpKINode Title="RemoveLoginViewModel class">
+    <HelpKINode Title="RemoveLoginViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+    <HelpKINode Title="RemoveLoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+    <HelpKINode Title="about RemoveLoginViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RemoveLoginViewModel.LoginProvider property" Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.LoginProvider.htm" />
+  <HelpKINode Title="RemoveLoginViewModel.ProviderKey property" Url="html/P-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.ProviderKey.htm" />
+  <HelpKINode Title="RemoveMenuItem method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItem.htm" />
+  <HelpKINode Title="RemoveMenuItemIngredient method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveMenuItemIngredient.htm" />
+  <HelpKINode Title="RemovePhoneNumber method" Url="html/M-TriCodeTest.Controllers.ManageController.RemovePhoneNumber.htm" />
+  <HelpKINode Title="RemovePhoneSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="RemovePhoneSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.RemovePhoneSuccess.htm" />
+  <HelpKINode Title="RemoveSubcategory method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.RemoveSubcategory.htm" />
+  <HelpKINode Title="ResetPassword method" Url="html/Overload-TriCodeTest.Controllers.AccountController.ResetPassword.htm" />
+  <HelpKINode Title="ResetPasswordConfirmation method" Url="html/M-TriCodeTest.Controllers.AccountController.ResetPasswordConfirmation.htm" />
+  <HelpKINode Title="ResetPasswordViewModel class">
+    <HelpKINode Title="ResetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+    <HelpKINode Title="ResetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+    <HelpKINode Title="about ResetPasswordViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ResetPasswordViewModel.Code property" Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Code.htm" />
+  <HelpKINode Title="ResetPasswordViewModel.ConfirmPassword property" Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.ConfirmPassword.htm" />
+  <HelpKINode Title="ResetPasswordViewModel.Email property" Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Email.htm" />
+  <HelpKINode Title="ResetPasswordViewModel.Password property" Url="html/P-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.Password.htm" />
+  <HelpKINode Title="resubmitOrder method" Url="html/M-TriCodeTest.Controllers.HistoryController.resubmitOrder.htm" />
+  <HelpKINode Title="ReturnUrl property">
+    <HelpKINode Title="ReturnUrl Property " Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.ReturnUrl.htm" />
+    <HelpKINode Title="ReturnUrl Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.ReturnUrl.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Role property" Url="html/P-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.Role.htm" />
+  <HelpKINode Title="RoleAddToUser method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.RoleAddToUser.htm" />
+  <HelpKINode Title="Roles field" Url="html/F-TriCodeTest.RoleSeeding.RoleSeeding.Roles.htm" />
+  <HelpKINode Title="Roles property" Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Roles.htm" />
+  <HelpKINode Title="RoleSeeding class">
+    <HelpKINode Title="RoleSeeding Class" Url="html/T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="RoleSeeding Members" Url="html/AllMembers.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="about RoleSeeding class" Url="html/T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RoleSeeding.Roles field" Url="html/F-TriCodeTest.RoleSeeding.RoleSeeding.Roles.htm" />
+  <HelpKINode Title="RoleSeeding.SeedRole method" Url="html/M-TriCodeTest.RoleSeeding.RoleSeeding.SeedRole.htm" />
+  <HelpKINode Title="SaveChanges method" Url="html/M-TriCodeTest.Data.DbInitializer.SaveChanges.htm" />
+  <HelpKINode Title="SeedRole method" Url="html/M-TriCodeTest.RoleSeeding.RoleSeeding.SeedRole.htm" />
+  <HelpKINode Title="SelectedProvider property">
+    <HelpKINode Title="SelectedProvider Property " Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.SelectedProvider.htm" />
+    <HelpKINode Title="SelectedProvider Property " Url="html/P-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.SelectedProvider.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendCodeViewModel class">
+    <HelpKINode Title="SendCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+    <HelpKINode Title="SendCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+    <HelpKINode Title="about SendCodeViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendCodeViewModel.Providers property" Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.Providers.htm" />
+  <HelpKINode Title="SendCodeViewModel.RememberMe property" Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.RememberMe.htm" />
+  <HelpKINode Title="SendCodeViewModel.ReturnUrl property" Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.ReturnUrl.htm" />
+  <HelpKINode Title="SendCodeViewModel.SelectedProvider property" Url="html/P-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.SelectedProvider.htm" />
+  <HelpKINode Title="SendEmailAsync method">
+    <HelpKINode Title="SendEmailAsync Method " Url="html/M-TriCodeTest.Services.AuthMessageSender.SendEmailAsync.htm" />
+    <HelpKINode Title="SendEmailAsync Method " Url="html/M-TriCodeTest.Services.IEmailSender.SendEmailAsync.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SendNotification method" Url="html/M-TriCodeTest.TwilioNotification.Notification.SendNotification.htm" />
+  <HelpKINode Title="SendSmsAsync method">
+    <HelpKINode Title="SendSmsAsync Method " Url="html/M-TriCodeTest.Services.AuthMessageSender.SendSmsAsync.htm" />
+    <HelpKINode Title="SendSmsAsync Method " Url="html/M-TriCodeTest.Services.ISmsSender.SendSmsAsync.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetFirstName method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetFirstName.htm" />
+  <HelpKINode Title="SetLastName method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetLastName.htm" />
+  <HelpKINode Title="SetPassword method" Url="html/Overload-TriCodeTest.Controllers.ManageController.SetPassword.htm" />
+  <HelpKINode Title="SetPasswordSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="SetPasswordSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.SetPasswordSuccess.htm" />
+  <HelpKINode Title="SetPasswordViewModel class">
+    <HelpKINode Title="SetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+    <HelpKINode Title="SetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+    <HelpKINode Title="about SetPasswordViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetPasswordViewModel.ConfirmPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.ConfirmPassword.htm" />
+  <HelpKINode Title="SetPasswordViewModel.NewPassword property" Url="html/P-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.NewPassword.htm" />
+  <HelpKINode Title="setRoleAdmin method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleAdmin.htm" />
+  <HelpKINode Title="setRoleCustomer method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleCustomer.htm" />
+  <HelpKINode Title="setRoleStaff method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleStaff.htm" />
+  <HelpKINode Title="SetTwoFactorSuccess enumeration member" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="SetTwoFactorSuccess field" Url="html/F-TriCodeTest.Controllers.ManageController.ManageMessageId.SetTwoFactorSuccess.htm" />
+  <HelpKINode Title="Size enumeration" Url="html/T-TriCodeTest.Models.Size.htm" />
+  <HelpKINode Title="Size property" Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Size.htm" />
+  <HelpKINode Title="Size.Large field" Url="html/F-TriCodeTest.Models.Size.Large.htm" />
+  <HelpKINode Title="Size.Medium field" Url="html/F-TriCodeTest.Models.Size.Medium.htm" />
+  <HelpKINode Title="Size.Small field" Url="html/F-TriCodeTest.Models.Size.Small.htm" />
+  <HelpKINode Title="Small enumeration member" Url="html/T-TriCodeTest.Models.Size.htm" />
+  <HelpKINode Title="Small field" Url="html/F-TriCodeTest.Models.Size.Small.htm" />
+  <HelpKINode Title="Startup class">
+    <HelpKINode Title="Startup Class" Url="html/T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="Startup Members" Url="html/AllMembers.T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="about Startup class" Url="html/T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Startup.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Startup.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Startup.Configuration property" Url="html/P-TriCodeTest.Startup.Configuration.htm" />
+  <HelpKINode Title="Startup.Configure method" Url="html/M-TriCodeTest.Startup.Configure.htm" />
+  <HelpKINode Title="Startup.ConfigureServices method" Url="html/M-TriCodeTest.Startup.ConfigureServices.htm" />
+  <HelpKINode Title="Startup.Startup constructor" Url="html/M-TriCodeTest.Startup.-ctor.htm" />
+  <HelpKINode Title="Status enumeration" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="Status property">
+    <HelpKINode Title="Status Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.Status.htm" />
+    <HelpKINode Title="Status Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.Status.htm" />
+    <HelpKINode Title="Status Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.Status.htm" />
+    <HelpKINode Title="Status Property " Url="html/P-TriCodeTest.Models.PostHistoryViewModel.Status.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Status.Cart field" Url="html/F-TriCodeTest.Models.Status.Cart.htm" />
+  <HelpKINode Title="Status.Completed field" Url="html/F-TriCodeTest.Models.Status.Completed.htm" />
+  <HelpKINode Title="Status.In_Progress field" Url="html/F-TriCodeTest.Models.Status.In_Progress.htm" />
+  <HelpKINode Title="Status.Pick_Up field" Url="html/F-TriCodeTest.Models.Status.Pick_Up.htm" />
+  <HelpKINode Title="Status.Received field" Url="html/F-TriCodeTest.Models.Status.Received.htm" />
+  <HelpKINode Title="Subcategories property">
+    <HelpKINode Title="Subcategories Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.Subcategories.htm" />
+    <HelpKINode Title="Subcategories Property " Url="html/P-TriCodeTest.Models.MenuModels.Category.Subcategories.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subcategory class">
+    <HelpKINode Title="Subcategory Class" Url="html/T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+    <HelpKINode Title="Subcategory Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+    <HelpKINode Title="about Subcategory class" Url="html/T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subcategory property">
+    <HelpKINode Title="Subcategory Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.Subcategory.htm" />
+    <HelpKINode Title="Subcategory Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.Subcategory.htm" />
+    <HelpKINode Title="Subcategory Property " Url="html/P-TriCodeTest.Data.ApplicationDbContext.Subcategory.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Subcategory.AddOns property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.AddOns.htm" />
+  <HelpKINode Title="Subcategory.Category property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Category.htm" />
+  <HelpKINode Title="Subcategory.CategoryId property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.CategoryId.htm" />
+  <HelpKINode Title="Subcategory.Description property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Description.htm" />
+  <HelpKINode Title="Subcategory.Id property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Id.htm" />
+  <HelpKINode Title="Subcategory.MenuItems property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.MenuItems.htm" />
+  <HelpKINode Title="Subcategory.Name property" Url="html/P-TriCodeTest.Models.MenuModels.Subcategory.Name.htm" />
+  <HelpKINode Title="SubcategoryId property">
+    <HelpKINode Title="SubcategoryId Property " Url="html/P-TriCodeTest.Models.MenuModels.MenuItem.SubcategoryId.htm" />
+    <HelpKINode Title="SubcategoryId Property " Url="html/P-TriCodeTest.Models.MenuModels.AddOn.SubcategoryId.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SubCategoryMenu property" Url="html/P-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.SubCategoryMenu.htm" />
+  <HelpKINode Title="SubmitOrder method" Url="html/M-TriCodeTest.Controllers.CustomerMenuController.SubmitOrder.htm" />
+  <HelpKINode Title="TotalPrice property">
+    <HelpKINode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.TotalPrice.htm" />
+    <HelpKINode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.TotalPrice.htm" />
+    <HelpKINode Title="TotalPrice Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.TotalPrice.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest namespace" Url="html/N-TriCodeTest.htm" />
+  <HelpKINode Title="TriCodeTest.Controllers namespace" Url="html/N-TriCodeTest.Controllers.htm" />
+  <HelpKINode Title="TriCodeTest.Controllers.AccountController class">
+    <HelpKINode Title="AccountController Class" Url="html/T-TriCodeTest.Controllers.AccountController.htm" />
+    <HelpKINode Title="AccountController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.AccountController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.CustomerMenuController class">
+    <HelpKINode Title="CustomerMenuController Class" Url="html/T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+    <HelpKINode Title="CustomerMenuController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.CustomerMenuController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.HistoryController class">
+    <HelpKINode Title="HistoryController Class" Url="html/T-TriCodeTest.Controllers.HistoryController.htm" />
+    <HelpKINode Title="HistoryController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HistoryController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.HomeController class">
+    <HelpKINode Title="HomeController Class" Url="html/T-TriCodeTest.Controllers.HomeController.htm" />
+    <HelpKINode Title="HomeController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.HomeController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.ManageController class">
+    <HelpKINode Title="ManageController Class" Url="html/T-TriCodeTest.Controllers.ManageController.htm" />
+    <HelpKINode Title="ManageController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.ManageController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.ManageController.ManageMessageId enumeration" Url="html/T-TriCodeTest.Controllers.ManageController.ManageMessageId.htm" />
+  <HelpKINode Title="TriCodeTest.Controllers.MenuCreationController class">
+    <HelpKINode Title="MenuCreationController Class" Url="html/T-TriCodeTest.Controllers.MenuCreationController.htm" />
+    <HelpKINode Title="MenuCreationController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.MenuCreationController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.OrderInfoController class">
+    <HelpKINode Title="OrderInfoController Class" Url="html/T-TriCodeTest.Controllers.OrderInfoController.htm" />
+    <HelpKINode Title="OrderInfoController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.OrderInfoController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Controllers.UpdateUserRoleController class">
+    <HelpKINode Title="UpdateUserRoleController Class" Url="html/T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="UpdateUserRoleController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data namespace" Url="html/N-TriCodeTest.Data.htm" />
+  <HelpKINode Title="TriCodeTest.Data.ApplicationDbContext class">
+    <HelpKINode Title="ApplicationDbContext Class" Url="html/T-TriCodeTest.Data.ApplicationDbContext.htm" />
+    <HelpKINode Title="ApplicationDbContext Members" Url="html/AllMembers.T-TriCodeTest.Data.ApplicationDbContext.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data.DbInitializer class">
+    <HelpKINode Title="DbInitializer Class" Url="html/T-TriCodeTest.Data.DbInitializer.htm" />
+    <HelpKINode Title="DbInitializer Members" Url="html/AllMembers.T-TriCodeTest.Data.DbInitializer.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data.Migrations namespace" Url="html/N-TriCodeTest.Data.Migrations.htm" />
+  <HelpKINode Title="TriCodeTest.Data.Migrations.CreateIdentitySchema class">
+    <HelpKINode Title="CreateIdentitySchema Class" Url="html/T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+    <HelpKINode Title="CreateIdentitySchema Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.CreateIdentitySchema.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data.Migrations.MenuItemIngredientsKey class">
+    <HelpKINode Title="MenuItemIngredientsKey Class" Url="html/T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+    <HelpKINode Title="MenuItemIngredientsKey Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data.Migrations.ModelsCreation class">
+    <HelpKINode Title="ModelsCreation Class" Url="html/T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+    <HelpKINode Title="ModelsCreation Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.ModelsCreation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Data.Migrations.NameForApplicationUser class">
+    <HelpKINode Title="NameForApplicationUser Class" Url="html/T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+    <HelpKINode Title="NameForApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Data.Migrations.NameForApplicationUser.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models namespace" Url="html/N-TriCodeTest.Models.htm" />
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels namespace" Url="html/N-TriCodeTest.Models.AccountViewModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel class">
+    <HelpKINode Title="ExternalLoginConfirmationViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+    <HelpKINode Title="ExternalLoginConfirmationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ExternalLoginConfirmationViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel class">
+    <HelpKINode Title="ForgotPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+    <HelpKINode Title="ForgotPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ForgotPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.LoginViewModel class">
+    <HelpKINode Title="LoginViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+    <HelpKINode Title="LoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.LoginViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.RegisterViewModel class">
+    <HelpKINode Title="RegisterViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+    <HelpKINode Title="RegisterViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.RegisterViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel class">
+    <HelpKINode Title="ResetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+    <HelpKINode Title="ResetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.ResetPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.SendCodeViewModel class">
+    <HelpKINode Title="SendCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+    <HelpKINode Title="SendCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.SendCodeViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel class">
+    <HelpKINode Title="VerifyCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+    <HelpKINode Title="VerifyCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ApplicationUser class">
+    <HelpKINode Title="ApplicationUser Class" Url="html/T-TriCodeTest.Models.ApplicationUser.htm" />
+    <HelpKINode Title="ApplicationUser Members" Url="html/AllMembers.T-TriCodeTest.Models.ApplicationUser.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.CustomerMenuViewModels namespace" Url="html/N-TriCodeTest.Models.CustomerMenuViewModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.CustomerMenuViewModels.CartOrder class">
+    <HelpKINode Title="CartOrder Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+    <HelpKINode Title="CartOrder Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem class">
+    <HelpKINode Title="CartOrderMenuItem Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+    <HelpKINode Title="CartOrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.CartOrderMenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel class">
+    <HelpKINode Title="LoadMenuViewModel Class" Url="html/T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+    <HelpKINode Title="LoadMenuViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.CustomerMenuViewModels.LoadMenuViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.HistoryViewModel class">
+    <HelpKINode Title="HistoryViewModel Class" Url="html/T-TriCodeTest.Models.HistoryViewModel.htm" />
+    <HelpKINode Title="HistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.HistoryViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels namespace" Url="html/N-TriCodeTest.Models.ManageViewModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel class">
+    <HelpKINode Title="AddPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+    <HelpKINode Title="AddPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.AddPhoneNumberViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel class">
+    <HelpKINode Title="ChangePasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+    <HelpKINode Title="ChangePasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ChangePasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel class">
+    <HelpKINode Title="ConfigureTwoFactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+    <HelpKINode Title="ConfigureTwoFactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ConfigureTwoFactorViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.FactorViewModel class">
+    <HelpKINode Title="FactorViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+    <HelpKINode Title="FactorViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.FactorViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.IndexViewModel class">
+    <HelpKINode Title="IndexViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+    <HelpKINode Title="IndexViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.IndexViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel class">
+    <HelpKINode Title="ManageLoginsViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+    <HelpKINode Title="ManageLoginsViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.ManageLoginsViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel class">
+    <HelpKINode Title="RemoveLoginViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+    <HelpKINode Title="RemoveLoginViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.RemoveLoginViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.SetPasswordViewModel class">
+    <HelpKINode Title="SetPasswordViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+    <HelpKINode Title="SetPasswordViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.SetPasswordViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel class">
+    <HelpKINode Title="VerifyPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+    <HelpKINode Title="VerifyPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels namespace" Url="html/N-TriCodeTest.Models.MenuModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.AddOn class">
+    <HelpKINode Title="AddOn Class" Url="html/T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+    <HelpKINode Title="AddOn Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.AddOn.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.Category class">
+    <HelpKINode Title="Category Class" Url="html/T-TriCodeTest.Models.MenuModels.Category.htm" />
+    <HelpKINode Title="Category Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Category.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.Ingredient class">
+    <HelpKINode Title="Ingredient Class" Url="html/T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+    <HelpKINode Title="Ingredient Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Ingredient.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.MenuItem class">
+    <HelpKINode Title="MenuItem Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+    <HelpKINode Title="MenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.MenuItemIngredients class">
+    <HelpKINode Title="MenuItemIngredients Class" Url="html/T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+    <HelpKINode Title="MenuItemIngredients Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.MenuItemIngredients.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuModels.Subcategory class">
+    <HelpKINode Title="Subcategory Class" Url="html/T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+    <HelpKINode Title="Subcategory Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuModels.Subcategory.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.MenuViewModels namespace" Url="html/N-TriCodeTest.Models.MenuViewModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.MenuViewModels.MenuCreationViewModel class">
+    <HelpKINode Title="MenuCreationViewModel Class" Url="html/T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+    <HelpKINode Title="MenuCreationViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.MenuViewModels.MenuCreationViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.Option enumeration" Url="html/T-TriCodeTest.Models.Option.htm" />
+  <HelpKINode Title="TriCodeTest.Models.OrderModels namespace" Url="html/N-TriCodeTest.Models.OrderModels.htm" />
+  <HelpKINode Title="TriCodeTest.Models.OrderModels.Order class">
+    <HelpKINode Title="Order Class" Url="html/T-TriCodeTest.Models.OrderModels.Order.htm" />
+    <HelpKINode Title="Order Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.Order.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.OrderModels.OrderInfo class">
+    <HelpKINode Title="OrderInfo Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+    <HelpKINode Title="OrderInfo Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderInfo.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.OrderModels.OrderMenuItem class">
+    <HelpKINode Title="OrderMenuItem Class" Url="html/T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+    <HelpKINode Title="OrderMenuItem Members" Url="html/AllMembers.T-TriCodeTest.Models.OrderModels.OrderMenuItem.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.PostHistoryViewModel class">
+    <HelpKINode Title="PostHistoryViewModel Class" Url="html/T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+    <HelpKINode Title="PostHistoryViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostHistoryViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.PostRoleUpdateUserRoleViewModel class">
+    <HelpKINode Title="PostRoleUpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="PostRoleUpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.PostRoleUpdateUserRoleViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Models.Size enumeration" Url="html/T-TriCodeTest.Models.Size.htm" />
+  <HelpKINode Title="TriCodeTest.Models.Status enumeration" Url="html/T-TriCodeTest.Models.Status.htm" />
+  <HelpKINode Title="TriCodeTest.Models.UpdateUserRoleViewModel class">
+    <HelpKINode Title="UpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="UpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Program class">
+    <HelpKINode Title="Program Class" Url="html/T-TriCodeTest.Program.htm" />
+    <HelpKINode Title="Program Members" Url="html/AllMembers.T-TriCodeTest.Program.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.RoleSeeding namespace" Url="html/N-TriCodeTest.RoleSeeding.htm" />
+  <HelpKINode Title="TriCodeTest.RoleSeeding.RoleSeeding class">
+    <HelpKINode Title="RoleSeeding Class" Url="html/T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+    <HelpKINode Title="RoleSeeding Members" Url="html/AllMembers.T-TriCodeTest.RoleSeeding.RoleSeeding.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Services namespace" Url="html/N-TriCodeTest.Services.htm" />
+  <HelpKINode Title="TriCodeTest.Services.AuthMessageSender class">
+    <HelpKINode Title="AuthMessageSender Class" Url="html/T-TriCodeTest.Services.AuthMessageSender.htm" />
+    <HelpKINode Title="AuthMessageSender Members" Url="html/AllMembers.T-TriCodeTest.Services.AuthMessageSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Services.IEmailSender interface">
+    <HelpKINode Title="IEmailSender Interface" Url="html/T-TriCodeTest.Services.IEmailSender.htm" />
+    <HelpKINode Title="IEmailSender Members" Url="html/AllMembers.T-TriCodeTest.Services.IEmailSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Services.ISmsSender interface">
+    <HelpKINode Title="ISmsSender Interface" Url="html/T-TriCodeTest.Services.ISmsSender.htm" />
+    <HelpKINode Title="ISmsSender Members" Url="html/AllMembers.T-TriCodeTest.Services.ISmsSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.Startup class">
+    <HelpKINode Title="Startup Class" Url="html/T-TriCodeTest.Startup.htm" />
+    <HelpKINode Title="Startup Members" Url="html/AllMembers.T-TriCodeTest.Startup.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.TwilioNotification namespace" Url="html/N-TriCodeTest.TwilioNotification.htm" />
+  <HelpKINode Title="TriCodeTest.TwilioNotification.Credentials class">
+    <HelpKINode Title="Credentials Class" Url="html/T-TriCodeTest.TwilioNotification.Credentials.htm" />
+    <HelpKINode Title="Credentials Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Credentials.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TriCodeTest.TwilioNotification.Notification class">
+    <HelpKINode Title="Notification Class" Url="html/T-TriCodeTest.TwilioNotification.Notification.htm" />
+    <HelpKINode Title="Notification Members" Url="html/AllMembers.T-TriCodeTest.TwilioNotification.Notification.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TwilioNumber field" Url="html/F-TriCodeTest.TwilioNotification.Credentials.TwilioNumber.htm" />
+  <HelpKINode Title="TwoFactor property" Url="html/P-TriCodeTest.Models.ManageViewModels.IndexViewModel.TwoFactor.htm" />
+  <HelpKINode Title="Up method">
+    <HelpKINode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.MenuItemIngredientsKey.Up.htm" />
+    <HelpKINode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.CreateIdentitySchema.Up.htm" />
+    <HelpKINode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.NameForApplicationUser.Up.htm" />
+    <HelpKINode Title="Up Method " Url="html/M-TriCodeTest.Data.Migrations.ModelsCreation.Up.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UpdateItemImage method" Url="html/M-TriCodeTest.Controllers.MenuCreationController.UpdateItemImage.htm" />
+  <HelpKINode Title="UpdateUserRole method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.UpdateUserRole.htm" />
+  <HelpKINode Title="UpdateUserRoleController class">
+    <HelpKINode Title="UpdateUserRoleController Class" Url="html/T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="UpdateUserRoleController Members" Url="html/AllMembers.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="about UpdateUserRoleController class" Url="html/T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="constructor" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-TriCodeTest.Controllers.UpdateUserRoleController.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UpdateUserRoleController.Index method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.Index.htm" />
+  <HelpKINode Title="UpdateUserRoleController.RoleAddToUser method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.RoleAddToUser.htm" />
+  <HelpKINode Title="UpdateUserRoleController.setRoleAdmin method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleAdmin.htm" />
+  <HelpKINode Title="UpdateUserRoleController.setRoleCustomer method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleCustomer.htm" />
+  <HelpKINode Title="UpdateUserRoleController.setRoleStaff method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.setRoleStaff.htm" />
+  <HelpKINode Title="UpdateUserRoleController.UpdateUserRole method" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.UpdateUserRole.htm" />
+  <HelpKINode Title="UpdateUserRoleController.UpdateUserRoleController constructor" Url="html/M-TriCodeTest.Controllers.UpdateUserRoleController.-ctor.htm" />
+  <HelpKINode Title="UpdateUserRoleController._context field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._context.htm" />
+  <HelpKINode Title="UpdateUserRoleController._roleManager field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._roleManager.htm" />
+  <HelpKINode Title="UpdateUserRoleController._userManager field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._userManager.htm" />
+  <HelpKINode Title="UpdateUserRoleViewModel class">
+    <HelpKINode Title="UpdateUserRoleViewModel Class" Url="html/T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="UpdateUserRoleViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="about UpdateUserRoleViewModel class" Url="html/T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.UpdateUserRoleViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UpdateUserRoleViewModel.Roles property" Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Roles.htm" />
+  <HelpKINode Title="UpdateUserRoleViewModel.Users property" Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Users.htm" />
+  <HelpKINode Title="User property">
+    <HelpKINode Title="User Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.User.htm" />
+    <HelpKINode Title="User Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.User.htm" />
+    <HelpKINode Title="User Property " Url="html/P-TriCodeTest.Models.OrderModels.OrderInfo.User.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UserId property">
+    <HelpKINode Title="UserId Property " Url="html/P-TriCodeTest.Models.CustomerMenuViewModels.CartOrder.UserId.htm" />
+    <HelpKINode Title="UserId Property " Url="html/P-TriCodeTest.Models.OrderModels.Order.UserId.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Users property">
+    <HelpKINode Title="Users Property " Url="html/P-TriCodeTest.Models.UpdateUserRoleViewModel.Users.htm" />
+    <HelpKINode Title="Users Property " Url="html/P-TriCodeTest.Models.HistoryViewModel.Users.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VerifyCodeViewModel class">
+    <HelpKINode Title="VerifyCodeViewModel Class" Url="html/T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+    <HelpKINode Title="VerifyCodeViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+    <HelpKINode Title="about VerifyCodeViewModel class" Url="html/T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VerifyCodeViewModel.Code property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Code.htm" />
+  <HelpKINode Title="VerifyCodeViewModel.Provider property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.Provider.htm" />
+  <HelpKINode Title="VerifyCodeViewModel.RememberBrowser property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberBrowser.htm" />
+  <HelpKINode Title="VerifyCodeViewModel.RememberMe property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.RememberMe.htm" />
+  <HelpKINode Title="VerifyCodeViewModel.ReturnUrl property" Url="html/P-TriCodeTest.Models.AccountViewModels.VerifyCodeViewModel.ReturnUrl.htm" />
+  <HelpKINode Title="VerifyPhoneNumber method" Url="html/Overload-TriCodeTest.Controllers.ManageController.VerifyPhoneNumber.htm" />
+  <HelpKINode Title="VerifyPhoneNumberViewModel class">
+    <HelpKINode Title="VerifyPhoneNumberViewModel Class" Url="html/T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+    <HelpKINode Title="VerifyPhoneNumberViewModel Members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+    <HelpKINode Title="about VerifyPhoneNumberViewModel class" Url="html/T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VerifyPhoneNumberViewModel.Code property" Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.Code.htm" />
+  <HelpKINode Title="VerifyPhoneNumberViewModel.PhoneNumber property" Url="html/P-TriCodeTest.Models.ManageViewModels.VerifyPhoneNumberViewModel.PhoneNumber.htm" />
+  <HelpKINode Title="_context field">
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._context.htm" />
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.MenuCreationController._context.htm" />
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._context.htm" />
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.HistoryController._context.htm" />
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._context.htm" />
+    <HelpKINode Title="_context Field" Url="html/F-TriCodeTest.Controllers.ManageController._context.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_emailSender field">
+    <HelpKINode Title="_emailSender Field" Url="html/F-TriCodeTest.Controllers.AccountController._emailSender.htm" />
+    <HelpKINode Title="_emailSender Field" Url="html/F-TriCodeTest.Controllers.ManageController._emailSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_logger field">
+    <HelpKINode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.AccountController._logger.htm" />
+    <HelpKINode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.ManageController._logger.htm" />
+    <HelpKINode Title="_logger Field" Url="html/F-TriCodeTest.Controllers.OrderInfoController._logger.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_roleManager field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._roleManager.htm" />
+  <HelpKINode Title="_signInManager field">
+    <HelpKINode Title="_signInManager Field" Url="html/F-TriCodeTest.Controllers.AccountController._signInManager.htm" />
+    <HelpKINode Title="_signInManager Field" Url="html/F-TriCodeTest.Controllers.ManageController._signInManager.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_smsSender field">
+    <HelpKINode Title="_smsSender Field" Url="html/F-TriCodeTest.Controllers.ManageController._smsSender.htm" />
+    <HelpKINode Title="_smsSender Field" Url="html/F-TriCodeTest.Controllers.AccountController._smsSender.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_userManager field">
+    <HelpKINode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.UpdateUserRoleController._userManager.htm" />
+    <HelpKINode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.ManageController._userManager.htm" />
+    <HelpKINode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.AccountController._userManager.htm" />
+    <HelpKINode Title="_userManager Field" Url="html/F-TriCodeTest.Controllers.CustomerMenuController._userManager.htm" />
+  </HelpKINode>
+</HelpKI>

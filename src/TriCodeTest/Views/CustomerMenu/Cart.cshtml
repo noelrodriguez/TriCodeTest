@@ -137,6 +137,7 @@
 @section Scripts
 {
 <script>
+    /// <var>The model</var>
     var MODEL = @Html.Raw(JsonConvert.SerializeObject(Model));
 
     function editItem(menuitem){
@@ -144,7 +145,6 @@
         /// Edits the item.
         /// </summary>
         /// <param name="menuitem">The menuitem.</param>
-        /// <returns></returns>
         console.log(menuitem);
         console.log(menuitem.MenuItem.Id);
         window.location = '@Url.Action("EditItem", "CustomerMenu")' + '/' + menuitem.MenuItem.Id;
@@ -154,7 +154,6 @@
         /// <summary>
         /// Adds another item.
         /// </summary>
-        /// <returns></returns>
         window.location = '@Url.Action("Index", "CustomerMenu")';
     }
 
@@ -162,7 +161,6 @@
         /// <summary>
         /// Reviews the order.
         /// </summary>
-        /// <returns></returns>
         $(":mobile-pagecontainer").pagecontainer("change", "#review-order-page", {
             transition: 'slide'
         });
@@ -172,7 +170,6 @@
         /// <summary>
         /// Submits the order.
         /// </summary>
-        /// <returns></returns>
         ObjectPassed = {
             Order : MODEL
         }
@@ -181,6 +178,10 @@
             method: 'POST',
             data: ObjectPassed,
             success: function(result){
+                /// <summary>
+                /// 
+                /// </summary>
+                /// <param name="result">The result.</param>
                 console.log(result);
                 if (result){
                     window.location = '@Url.Action("Index", "CustomerMenu")';
